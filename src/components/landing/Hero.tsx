@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -99,11 +100,16 @@ export function Hero() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_28%,rgba(255,255,255,0.22),transparent_16rem)]" />
             <div className="relative overflow-hidden rounded-[24px] border border-white/14 bg-[linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04))] p-5">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[linear-gradient(155deg,#eef5f3_0%,#d7ebe5_46%,#7bbbc0_100%)]">
-                <div className="absolute inset-x-8 bottom-0 h-[72%] rounded-t-[999px] border border-white/50 bg-[linear-gradient(160deg,rgba(5,46,58,0.92),rgba(15,83,102,0.72))] shadow-[0_-18px_70px_rgba(255,255,255,0.28)]" />
-                <div className="absolute left-1/2 top-[18%] grid size-28 -translate-x-1/2 place-items-center rounded-full border border-white/70 bg-[linear-gradient(135deg,#ffffff,#d6f7f4)] text-3xl font-semibold text-[#073B4C] shadow-[0_20px_60px_rgba(5,46,58,0.22)]">
-                  BE
-                </div>
-                <div className="absolute inset-x-5 bottom-5 rounded-[22px] border border-white/45 bg-white/75 p-5 text-[#073B4C] shadow-[0_18px_45px_rgba(5,46,58,0.16)] backdrop-blur-xl">
+                <Image
+                  src="/borja.png"
+                  alt="Borja Estarellas Botín, fisioterapeuta en Madrid"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 36rem, 92vw"
+                  className="object-cover object-[50%_22%]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#052E3A]/58 via-transparent to-white/8" />
+                <div className="absolute inset-x-5 bottom-5 rounded-[22px] border border-white/45 bg-white/78 p-5 text-[#073B4C] shadow-[0_18px_45px_rgba(5,46,58,0.16)] backdrop-blur-xl">
                   <p className="text-lg font-semibold">
                     {siteConfig.fullName}
                   </p>
