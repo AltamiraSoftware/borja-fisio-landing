@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --color-petrol: #073b4c;
+  --color-night: #052e3a;
+  --color-steel: #0f5366;
+  --color-cyan: #2ec4c6;
+  --color-sage: #a4be7b;
+  --color-off-white: #f7faf8;
+  --color-mist: #eef5f3;
+  --color-text: #102a33;
+  --color-muted: #5b6b73;
+  --shadow-premium: 0 24px 80px rgba(5, 46, 58, 0.14);
+  --shadow-glass: 0 24px 60px rgba(5, 46, 58, 0.16);
+}
+
+@theme inline {
+  --color-background: var(--color-off-white);
+  --color-foreground: var(--color-text);
+  --font-sans: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(46, 196, 198, 0.08), transparent 32rem),
+    linear-gradient(180deg, #f7faf8 0%, #eef5f3 58%, #f7faf8 100%);
+  color: var(--color-text);
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(46, 196, 198, 0.25);
+  color: var(--color-night);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.premium-hero-bg {
+  background:
+    radial-gradient(circle at 74% 28%, rgba(255, 255, 255, 0.26) 0, transparent 20rem),
+    radial-gradient(circle at 78% 24%, rgba(46, 196, 198, 0.32) 0, transparent 24rem),
+    radial-gradient(circle at 14% 18%, rgba(164, 190, 123, 0.16) 0, transparent 22rem),
+    radial-gradient(circle at 55% 100%, rgba(255, 255, 255, 0.08) 0, transparent 28rem),
+    linear-gradient(135deg, #052e3a 0%, #073b4c 45%, #0f5366 100%);
+}
+
+.premium-dark-bg {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(46, 196, 198, 0.22) 0, transparent 24rem),
+    radial-gradient(circle at 90% 0%, rgba(164, 190, 123, 0.14) 0, transparent 22rem),
+    linear-gradient(135deg, #052e3a 0%, #073b4c 50%, #0f5366 100%);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #ffffff 0%, #b7f7f2 42%, #2ec4c6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
