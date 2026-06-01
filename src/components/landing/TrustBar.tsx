@@ -22,8 +22,8 @@ export function TrustBar() {
           const Icon = icons[item.icon];
 
           return (
-            <GlassCard key={item.title} className="p-6">
-              <div className="mb-5 grid size-11 place-items-center rounded-2xl bg-[#2EC4C6]/12 text-[#0F5366]">
+            <GlassCard key={item.title} className="p-6 text-center">
+              <div className="mx-auto mb-5 grid size-11 place-items-center rounded-2xl bg-[#2EC4C6]/12 text-[#0F5366]">
                 <Icon className="size-5" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-semibold text-[#073B4C]">

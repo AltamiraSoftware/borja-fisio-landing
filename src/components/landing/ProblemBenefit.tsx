@@ -16,7 +16,7 @@ export function ProblemBenefit() {
         />
 
         <GlassCard className="relative overflow-hidden p-7 md:p-8">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(46,196,198,0.16),transparent_18rem)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(46,196,198,0.14)_0%,rgba(255,255,255,0)_64%)]" />
           <div className="relative">
             <div className="mb-6 flex items-center justify-between gap-4">
               <div>

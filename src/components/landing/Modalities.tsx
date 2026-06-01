@@ -20,7 +20,7 @@ const clinicPoints = [
 
 export function Modalities() {
   return (
-    <section id="modalidades" className="bg-[#EEF5F3] px-4 py-20">
+    <section id="modalidades" className="px-4 py-20">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           align="center"
@@ -31,7 +31,7 @@ export function Modalities() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <GlassCard className="relative overflow-hidden p-8 md:p-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_88%_12%,rgba(46,196,198,0.18),transparent_20rem)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(46,196,198,0.16)_0%,rgba(255,255,255,0)_64%)]" />
             <div className="relative">
               <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-[#073B4C] text-white">
                 <MapPinned className="size-6" aria-hidden="true" />

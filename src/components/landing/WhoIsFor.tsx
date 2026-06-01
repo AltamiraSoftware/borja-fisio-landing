@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function WhoIsFor() {
   return (
-    <section className="bg-[#EEF5F3] px-4 py-20">
+    <section className="px-4 py-20">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.92fr_1.08fr]">
         <div>
           <SectionHeader

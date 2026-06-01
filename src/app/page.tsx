@@ -26,7 +26,7 @@ export default function Home() {
         }}
       />
       <Header />
-      <main>
+      <main className="page-flow-bg">
         <Hero />
         <TrustBar />
         <ProblemBenefit />

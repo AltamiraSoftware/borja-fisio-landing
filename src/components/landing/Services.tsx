@@ -40,7 +40,7 @@ export function Services() {
             const Icon = icons[service.icon];
 
             return (
-              <GlassCard key={service.title} className="group flex min-h-64 flex-col p-6">
+              <GlassCard key={service.title} className="group flex min-h-64 flex-col items-center p-6 text-center">
                 <div className="grid size-12 place-items-center rounded-2xl bg-[#073B4C] text-white shadow-[0_14px_34px_rgba(7,59,76,0.18)]">
                   <Icon className="size-5" aria-hidden="true" />
                 </div>
@@ -52,7 +52,7 @@ export function Services() {
                 </p>
                 <a
                   href="#contacto"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#0F5366] transition group-hover:text-[#0b8f91]"
+                  className="mt-6 inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#0F5366] transition group-hover:text-[#0b8f91]"
                 >
                   Consultar tratamiento
                   <ArrowUpRight className="size-4" aria-hidden="true" />

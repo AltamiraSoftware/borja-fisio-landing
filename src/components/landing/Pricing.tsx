@@ -8,7 +8,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function Pricing() {
   return (
-    <section id="precio" className="bg-[#EEF5F3] px-4 py-20">
+    <section id="precio" className="px-4 py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <SectionHeader
           eyebrow="Precio"
@@ -17,7 +17,7 @@ export function Pricing() {
         />
 
         <GlassCard className="relative overflow-hidden p-8 md:p-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(164,190,123,0.22),transparent_20rem)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(164,190,123,0.20)_0%,rgba(255,255,255,0)_66%)]" />
           <div className="relative">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
