@@ -1,10 +1,10 @@
 export const navLinks = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Modalidades", href: "#modalidades" },
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Precio", href: "#precio" },
-  { label: "Contacto", href: "#contacto" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Modalidades", href: "/#modalidades" },
+  { label: "Sobre mí", href: "/#sobre-mi" },
+  { label: "Precio", href: "/#precio" },
+  { label: "Contacto", href: "/#contacto" },
+  { label: "FAQ", href: "/#faq" },
 ] as const;
 
 export const trustItems = [
@@ -45,41 +45,49 @@ export const services = [
   {
     icon: "home",
     title: "Fisioterapia a domicilio",
+    href: "/fisioterapia/fisioterapia-domicilio",
     text: "Sesiones completas en tu casa, con valoración, tratamiento y pautas adaptadas a tu entorno.",
   },
   {
     icon: "neck",
     title: "Dolor cervical",
+    href: "/fisioterapia/dolor-cervical",
     text: "Abordaje de rigidez, molestias cervicales, tensión y limitaciones de movimiento.",
   },
   {
     icon: "spine",
     title: "Dolor lumbar",
+    href: "/fisioterapia/dolor-lumbar",
     text: "Tratamiento y educación para dolor lumbar, sobrecargas y episodios recurrentes.",
   },
   {
     icon: "dumbbell",
     title: "Lesiones deportivas",
+    href: "/fisioterapia/lesiones-deportivas",
     text: "Recuperación y progresión funcional para volver a entrenar con más seguridad.",
   },
   {
     icon: "activity",
     title: "Tendinopatías",
+    href: "/fisioterapia/tendinopatias",
     text: "Planificación de carga, tratamiento manual cuando procede y ejercicio terapéutico.",
   },
   {
     icon: "hand",
     title: "Contracturas y sobrecargas",
+    href: "/fisioterapia/contracturas",
     text: "Trabajo específico sobre molestias musculares, movilidad y hábitos que influyen en el dolor.",
   },
   {
     icon: "footprints",
     title: "Esguinces",
+    href: "/fisioterapia/esguinces",
     text: "Recuperación de movilidad, fuerza, estabilidad y confianza tras lesión ligamentosa.",
   },
   {
     icon: "route",
     title: "Fascitis plantar",
+    href: "/fisioterapia/fascitis-plantar",
     text: "Valoración del apoyo, carga y tejido para mejorar dolor y tolerancia al movimiento.",
   },
 ] as const;
