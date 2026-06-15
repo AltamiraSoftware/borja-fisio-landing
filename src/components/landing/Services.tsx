@@ -51,10 +51,10 @@ export function Services() {
                   {service.text}
                 </p>
                 <a
-                  href="#contacto"
+                  href={service.href}
                   className="mt-6 inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#0F5366] transition group-hover:text-[#0b8f91]"
                 >
-                  Consultar tratamiento
+                  Ver tratamiento
                   <ArrowUpRight className="size-4" aria-hidden="true" />
                 </a>
               </GlassCard>

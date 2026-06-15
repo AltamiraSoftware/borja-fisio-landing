@@ -1,4 +1,5 @@
 import { Menu, MessageCircle, Stethoscope } from "lucide-react";
+import Link from "next/link";
 import { navLinks } from "@/data/landing";
 import { buildWhatsappHref } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
@@ -9,8 +10,8 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 py-3">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/18 bg-[#052E3A]/72 px-4 py-3 shadow-[0_18px_50px_rgba(5,46,58,0.18)] backdrop-blur-2xl md:px-5">
-        <a
-          href="#inicio"
+        <Link
+          href="/#inicio"
           className="inline-flex items-center gap-3 text-white"
           aria-label="Ir al inicio"
         >
@@ -25,7 +26,7 @@ export function Header() {
               Fisioterapia en Madrid
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav
           className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 md:flex"
