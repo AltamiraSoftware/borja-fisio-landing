@@ -10,12 +10,19 @@ export function Footer() {
         <div>
           <p className="text-xl font-semibold">{siteConfig.fullName}</p>
           <p className="mt-2 text-sm text-white/62">
-            Fisioterapeuta en Madrid.
+            Fisioterapeuta colegiado en Madrid.
           </p>
           <p className="mt-6 max-w-xl text-sm leading-7 text-white/54">
             La información de esta web es orientativa y no sustituye una
-            valoración sanitaria individualizada.
+            valoración sanitaria individualizada. Para diagnósticos o
+            tratamientos, consulta siempre con un profesional sanitario
+            colegiado.
           </p>
+          {process.env.NEXT_PUBLIC_NIF && (
+            <p className="mt-3 text-xs text-white/40">
+              NIF: {process.env.NEXT_PUBLIC_NIF}
+            </p>
+          )}
         </div>
 
         <div>
@@ -31,13 +38,23 @@ export function Footer() {
               <MessageCircle className="size-4" aria-hidden="true" />
               WhatsApp
             </a>
-            <span className="inline-flex items-center gap-3">
-              <Mail className="size-4" aria-hidden="true" />
-              {contactConfig.email || "Email pendiente de confirmar"}
-            </span>
+            {contactConfig.email ? (
+              <a
+                href={`mailto:${contactConfig.email}`}
+                className="inline-flex items-center gap-3 transition hover:text-white"
+              >
+                <Mail className="size-4" aria-hidden="true" />
+                {contactConfig.email}
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-3 transition hover:text-white">
+                <Mail className="size-4" aria-hidden="true" />
+                estarellas11088@gmail.com
+              </span>
+            )}
             <span className="inline-flex items-center gap-3">
               <MapPin className="size-4" aria-hidden="true" />
-              Zona de atención: Madrid
+              Madrid, España
             </span>
           </div>
         </div>
@@ -58,6 +75,17 @@ export function Footer() {
             ))}
           </nav>
         </div>
+      </div>
+
+      <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/40">
+        <p>
+          © {new Date().getFullYear()} {siteConfig.fullName}. Todos los
+          derechos reservados.
+        </p>
+        <p className="mt-1">
+          Fisioterapeuta en Madrid - Servicio de fisioterapia a domicilio y
+          gabinete.
+        </p>
       </div>
     </footer>
   );

@@ -26,7 +26,7 @@ const icons = {
 
 export function Services() {
   return (
-    <section id="servicios" className="px-4 py-20">
+    <section id="servicios" className="px-4 pt-0 pb-0">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           align="center"

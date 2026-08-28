@@ -38,14 +38,14 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="premium-hero-bg relative isolate overflow-hidden px-4 pb-20 pt-32 text-white md:pb-24 md:pt-40"
+      className="premium-hero-bg relative isolate overflow-hidden px-4 pb-12 pt-28 text-white md:pb-16 md:pt-32"
     >
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#F7FAF8] via-[#F7FAF8]/70 to-transparent" />
       <div className="absolute inset-y-0 right-0 -z-10 w-1/2 bg-[linear-gradient(135deg,transparent_0%,rgba(255,255,255,0.10)_100%)]" />
 
-      <div className="relative mx-auto grid min-h-[calc(100vh-8rem)] max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
-        <div className="max-w-3xl">
-          <p className="mb-5 inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold text-[#b7f7f2] backdrop-blur-xl">
+      <div className="relative mx-auto grid min-h-[calc(100vh-12rem)] max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]" >
+        <div className="max-w-3xl  lg:pt-0 -mt-40">
+          <p className=" mb-5 inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold text-[#b7f7f2] backdrop-blur-xl">
             Fisioterapia a domicilio en Madrid
           </p>
 
@@ -94,7 +94,6 @@ export function Hero() {
             hover={false}
           >
             <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.20)_0%,rgba(255,255,255,0.03)_100%)]" />
-            <div className="relative overflow-hidden rounded-[24px] border border-white/14 bg-[linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.04))] p-5">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[linear-gradient(155deg,#eef5f3_0%,#d7ebe5_46%,#7bbbc0_100%)]">
                 <Image
                   src="/borja.png"
@@ -119,29 +118,10 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-            </div>
+            
           </GlassCard>
 
-          <div className="mx-auto mt-5 grid max-w-[34rem] grid-cols-2 gap-3">
-            {floatingCards.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <GlassCard
-                  key={item.title}
-                  variant="dark"
-                  className="flex min-h-28 flex-col items-center justify-center gap-3 px-3 py-4 text-center"
-                >
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#2EC4C6]/18 text-[#9bf5f2]">
-                    <Icon className="size-5" aria-hidden="true" />
-                  </span>
-                  <span className="text-sm font-semibold leading-snug text-white/90">
-                    {item.title}
-                  </span>
-                </GlassCard>
-              );
-            })}
-          </div>
+         
         </div>
       </div>
     </section>

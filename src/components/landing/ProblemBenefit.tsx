@@ -7,13 +7,15 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function ProblemBenefit() {
   return (
-    <section className="px-4 py-20">
+    <section className="px-4 py-20 ">
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
-        <SectionHeader
-          eyebrow="Sin desplazarte"
-          title="Fisioterapia para tratar el dolor sin desplazarte de casa"
-          description="Cuando aparece dolor, una lesión o una limitación de movimiento, desplazarse hasta una consulta no siempre es fácil. La fisioterapia a domicilio permite empezar el tratamiento en un entorno cómodo, con una valoración completa y un plan adaptado a tu situación real."
-        />
+        <div className="fade-up">
+          <SectionHeader
+            eyebrow="Sin desplazarte"
+            title="Fisioterapia para tratar el dolor sin desplazarte de casa"
+            description="Cuando aparece dolor, una lesión o una limitación de movimiento, desplazarse hasta una consulta no siempre es fácil. La fisioterapia a domicilio permite empezar el tratamiento en un entorno cómodo, con una valoración completa y un plan adaptado a tu situación real."
+          />
+        </div>
 
         <GlassCard className="relative overflow-hidden p-7 md:p-8">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(46,196,198,0.14)_0%,rgba(255,255,255,0)_64%)]" />
@@ -49,7 +51,7 @@ export function ProblemBenefit() {
             <div className="mt-7">
               <Button
                 href={buildWhatsappHref(
-                  "Hola Borja, tengo dolor o una lesión y quiero saber si la fisioterapia a domicilio puede ayudarme.",
+                  "Hola Borja, tengo dolor o una lesion y quiero saber si la fisioterapia a domicilio puede ayudarme.",
                 )}
                 variant="dark"
                 icon={<ArrowRight className="size-4" aria-hidden="true" />}

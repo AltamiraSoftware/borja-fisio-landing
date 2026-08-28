@@ -16,6 +16,7 @@ export function getLandingJsonLd(): JsonLdObject[] {
       "@id": personId,
       name: siteConfig.fullName,
       jobTitle: "Fisioterapeuta",
+      url: siteConfig.url,
       worksFor: {
         "@id": businessId,
       },
@@ -24,6 +25,11 @@ export function getLandingJsonLd(): JsonLdObject[] {
         "Fisioterapia deportiva",
         "Terapia manual",
         "Ejercicio terapéutico",
+        "Dolor lumbar",
+        "Dolor cervical",
+        "Tendinopatías",
+        "Esguinces",
+        "Fascitis plantar",
       ],
     },
     {
@@ -34,14 +40,44 @@ export function getLandingJsonLd(): JsonLdObject[] {
       url: siteConfig.url,
       description:
         "Fisioterapia a domicilio en Madrid para dolor, lesiones deportivas y recuperación funcional.",
+      image: `${siteConfig.url}/borja.png`,
       areaServed: {
         "@type": "City",
         name: "Madrid",
+        sameAs: "https://en.wikipedia.org/wiki/Madrid",
+      },
+      serviceArea: {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: "40.4168",
+          longitude: "-3.7038",
+        },
+        geoRadius: "25000",
       },
       medicalSpecialty: "Physiotherapy",
       priceRange: `Desde ${siteConfig.priceFrom}`,
       ...(telephone ? { telephone } : {}),
       ...(contactConfig.email ? { email: contactConfig.email } : {}),
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Madrid",
+        addressRegion: "Madrid",
+        addressCountry: "ES",
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "08:00",
+        closes: "21:00",
+      },
+      sameAs: [],
     },
     {
       "@context": "https://schema.org",
@@ -61,6 +97,7 @@ export function getLandingJsonLd(): JsonLdObject[] {
         price: "50",
         priceCurrency: "EUR",
         description: "Primera sesión de fisioterapia a domicilio desde 50 €.",
+        url: `${siteConfig.url}/#precio`,
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -86,6 +123,53 @@ export function getLandingJsonLd(): JsonLdObject[] {
           text: item.answer,
         },
       })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: siteConfig.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Servicios",
+          item: `${siteConfig.url}/#servicios`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Precio",
+          item: `${siteConfig.url}/#precio`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Contacto",
+          item: `${siteConfig.url}/#contacto`,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": siteConfig.url,
+      url: siteConfig.url,
+      name: `Fisioterapia a domicilio en Madrid | ${siteConfig.fullName}`,
+      description:
+        "Fisioterapia a domicilio en Madrid para dolor, lesiones deportivas y recuperación funcional. Tratamiento personalizado con Borja Estarellas desde 50 €.",
+      isPartOf: {
+        "@id": siteConfig.url,
+      },
+      about: {
+        "@id": businessId,
+      },
+      inLanguage: "es",
+      availableLanguage: "es",
     },
   ];
 }
