@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 
 type BadgeVariant = "dark" | "light" | "cyan" | "sage";
+type BadgeSize = "sm" | "md";
 
 const variants: Record<BadgeVariant, string> = {
   dark: "border-white/18 bg-white/10 text-white",
@@ -10,16 +11,23 @@ const variants: Record<BadgeVariant, string> = {
   sage: "border-[#A4BE7B]/45 bg-[#A4BE7B]/18 text-[#073B4C]",
 };
 
-type BadgeProps = ComponentPropsWithoutRef<"span"> & {
-  variant?: BadgeVariant;
+const sizes: Record<BadgeSize, string> = {
+  sm: "px-2.5 py-0.5 text-[11px]",
+  md: "px-3 py-1 text-xs",
 };
 
-export function Badge({ className, variant = "light", ...props }: BadgeProps) {
+type BadgeProps = ComponentPropsWithoutRef<"span"> & {
+  variant?: BadgeVariant;
+  size?: BadgeSize;
+};
+
+export function Badge({ className, variant = "light", size = "md", ...props }: BadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold",
+        "inline-flex items-center rounded-full border font-semibold",
         variants[variant],
+        sizes[size],
         className,
       )}
       {...props}
