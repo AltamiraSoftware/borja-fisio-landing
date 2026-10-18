@@ -1,0 +1,145 @@
+Plan de Diseño de Marca — Fisio Estarellas
+Oct 17, 2026 · @Jorge Roldán
+
+Objetivo: convertir una landing correcta pero genérica en una marca de fisioterapia reconocible en Madrid. Antes del diseño hay que arreglar dos fallos técnicos que hoy cuestan pacientes (sección 1).
+
+0. Regla de nombre (decisión previa)
+El dominio dice "Fisio Estarellas" y la web dice "Borja Estarellas". Hay que elegir uno, y la elección depende de si Borja quiere crecer con más fisios o seguir solo.
+
+Opción	Nombre de marca	Cuándo elegirla
+A. Marca de apellido (recomendada)	Estarellas Fisioterapia (corto: "Estarellas")	Si en 1-2 años quiere sumar fisios o abrir gabinete. "Estarellas" es un apellido poco común: memorable y registrable. Encaja con el dominio actual.
+B. Marca personal pura	Borja Estarellas · Fisioterapeuta	Si va a ser siempre él en persona. Más cercana, pero no escala: el paciente quiere a Borja, no a otro fisio.
+En ambos casos:
+
+Nombre legal-profesional: Borja Estarellas Botín · Fisioterapeuta · Col. nº [pendiente], en pie de web, facturas e informes.
+Dominio de referencia: fisioestarellas.es. Email profesional en el dominio (hoy usa un Gmail).
+Mismo nombre en web, Google Business Profile, Instagram, WhatsApp Business y Doctoralia si lo usa.
+1. Punto de partida (por qué diseñamos esto)
+La web tiene buena estructura y buen perfil profesional, pero hoy pierde pacientes por dos fallos técnicos y no se distingue de cualquier fisio a domicilio de Madrid.
+
+1.1 Fallos críticos (arreglar esta semana, antes de la marca)
+Fallo	Impacto	Arreglo
+Los botones de WhatsApp no llevan número. Todos los enlaces son wa.me/?text=… sin teléfono.	El usuario abre WhatsApp y tiene que elegir un contacto: el CTA principal no convierte.	Usar wa.me/34XXXXXXXXX?text=… en todos los botones.
+El canonical apunta a borja-fisio-landing.vercel.app, no a fisioestarellas.es.	Google puede indexar el dominio de Vercel en lugar del suyo; el SEO local trabaja para la URL equivocada.	Canonical, og:url e imágenes OG a https://www.fisioestarellas.es. Redirigir el subdominio de Vercel.
+Sin número de colegiado visible (solo "colegiado en Madrid").	Resta confianza y probablemente incumple lo exigible en publicidad sanitaria.	Añadir nº de colegiado en hero y pie.
+Email de contacto en Gmail.	Imagen poco profesional.	Email en el dominio.
+1.2 Lo que ya hay (según la web, oct. 2026)
+Borja Estarellas Botín, fisioterapeuta en Madrid. Grado (Nebrija), Máster en Fisioterapia Manual Avanzada y Ejercicio Terapéutico (UCM), Máster en ecografía y anatomía palpatoria (UCM), punción seca, ATM, drenaje linfático.
+Modalidad principal: domicilio en Madrid; gabinete o sala alquilada bajo disponibilidad.
+8 tratamientos al mismo nivel: cervical, lumbar, deportivas, tendinopatías, contracturas, esguinces, fascitis plantar, domicilio.
+Primera sesión desde 50 €. CTA por WhatsApp y formulario.
+4 testimonios con nombre e inicial (Marta G., Carlos R., Laura M., David P.).
+Mensaje de fondo ya bueno: "fisioterapia seria, no un masaje genérico", educación del paciente, evidencia.
+1.3 Diagnóstico de marca
+Titular genérico. "Recupera movimiento, reduce dolor y vuelve a tu rutina" vale para cualquier clínica.
+El diferencial está escondido. Domicilio + perfil deportivo + máster en ecografía es una combinación rara, y aparece como etiquetas pequeñas.
+Nombre doble (sección 0).
+Testimonios sin verificación: sin fuente (Google, Doctoralia), parecen de plantilla aunque sean reales (ver sección 3).
+Sin sistema visual: no hay logo, solo nombre en texto.
+2. Estrategia de marca (brief antes del diseño)
+La marca es potente cuando alguien completa la frase "Estarellas es el fisio que…". Hoy la respuesta sería "viene a casa", y eso lo ofrecen decenas en Madrid.
+
+2.1 Posicionamiento (decisión principal)
+Ordenado por impacto esperado:
+
+Opción	Frase de marca	A favor	En contra
+A. Fisioterapia deportiva a domicilio con criterio clínico (recomendada)	"La consulta de fisio deportiva, en tu casa."	Usa su formación real (deportiva, manual avanzada, ecografía). Público con capacidad de pago y recurrencia: corredores, pádel, gimnasio. Justifica subir precio.	Si no tiene ecógrafo portátil, el argumento pierde fuerza. Deja en segundo plano al paciente mayor.
+B. Domicilio para mayores y movilidad reducida	"Fisioterapia en casa para recuperar autonomía."	Demanda alta y procesos largos. Paga la familia. Menos competencia en creatividad.	No aprovecha su perfil deportivo ni la ecografía. Tono y estética muy distintos.
+C. Generalista a domicilio	"Fisio a domicilio en Madrid."	No cierra puertas.	Es lo que hay hoy. Compite por precio y por cercanía, no por marca.
+Recomendación: A como marca, B y C como servicios. La web sigue tratando lumbar, cervical y mayores, pero titular, creatividades y contenido lideran con deporte y valoración rigurosa. Pregunta clave para Borja: ¿tiene o comprará un ecógrafo portátil? Si es que sí, es el diferencial más fuerte de todo el plan.
+
+Nota de precio: con posicionamiento premium, "desde 50 €" como gancho principal resta. Valorar precio por sesión según la tarifa real de mercado y comunicar valor (valoración + tratamiento + plan) antes que precio.
+
+2.2 Propuesta de valor (una frase)
+"Valoración completa, tratamiento y plan de ejercicio en tu casa, con el criterio de una consulta especializada." (ajustar con Borja; sin prometer plazos de recuperación)
+
+2.3 Personalidad de marca (3 adjetivos)
+Rigurosa: valoración antes que técnica, evidencia, "no es un masaje". Ya está en su discurso; hay que convertirlo en marca.
+Activa: movimiento, ejercicio, vuelta al deporte. La camilla no es el protagonista.
+Directa: explica qué pasa y qué hacer, sin tecnicismos ni promesas.
+2.4 Lo que NO queremos transmitir
+Clichés del sector: esqueletos, columnas vertebrales en 3D, manos sobre espalda con aceite, iconos de cruz médica.
+Estética de spa o masajes: velas, piedras, tonos lavanda. Choca con "fisioterapia seria".
+Fotos de stock de deportistas de élite que no son pacientes reales.
+Azul hospital + blanco clínico genérico.
+2.5 Referentes visuales (punto de partida)
+Whoop / Oura: datos de rendimiento y recuperación presentados con sobriedad.
+Nike Training Club: energía y movimiento sin estridencias, tipografía con fuerza.
+Clínicas de fisio deportiva de referencia en España: mirarlas para no parecerse; la mayoría usa azul y fotos de camilla.
+Lo que NO: plantillas de clínicas de fisio con iconos de huesos y stock de "paciente sonriendo en camilla".
+3. Marco legal y de plataformas (condiciona la marca y los anuncios)
+La fisioterapia es publicidad sanitaria: los mismos límites que en psicología, con dos riesgos propios en esta web (testimonios y modalidad a domicilio).
+
+Ámbito	Qué implica	Acción
+Testimonios de la web	Frases como "en 3 sesiones ya estaba mucho mejor" son promesas de resultado en publicidad sanitaria. Si alguna reseña no es real, la normativa de consumo prohíbe las reseñas falsas.	Confirmar con Borja que los 4 son pacientes reales. Sustituir por reseñas verificables de Google Business Profile (embebidas o enlazadas). Quitar plazos y resultados concretos.
+Publicidad sanitaria en Madrid	La publicidad de centros sanitarios debe incluir el número de registro sanitario (Comunidad de Madrid). Hay un nuevo decreto en tramitación que regula también la atención a distancia y endurece el control de la publicidad (Comunidad de Madrid).	Verificar con el Colegio de Fisioterapeutas de Madrid qué registro aplica a un fisio que trabaja a domicilio y en sala alquilada, y mostrarlo junto al nº de colegiado.
+Política de atributos personales de Meta	Meta rechaza copys que insinúan que el lector tiene una condición de salud, también en pregunta (Jon Loomer).	❌ "¿Te duele la espalda?" / "¿Tienes una lesión?" ✅ "Fisioterapia deportiva a domicilio en Madrid: valoración, tratamiento y plan de ejercicio."
+Claims técnicos	"Basado en evidencia", "ecografía" o "punción seca" deben ser ciertos en cada sesión anunciada.	Anunciar ecografía solo si la lleva a domicilio.
+No es asesoramiento legal: Borja debe validar los dos primeros puntos con su colegio antes de relanzar la web.
+
+4. Sistema visual a definir con Claude
+El sistema tiene que transmitir movimiento y criterio clínico a la vez. La imagen protagonista es Borja trabajando en contexto real (casa del paciente, ejercicio, valoración), no la camilla.
+
+4.1 Logotipo
+Principal: wordmark "Estarellas" + descriptor "Fisioterapia" (o "Borja Estarellas · Fisioterapeuta" si se elige la opción B de la sección 0).
+Monograma "E" (o "BE") para avatar, favicon, WhatsApp Business y Google Business Profile. Debe leerse a 32 px.
+Explorar en SVG con Claude 3-5 direcciones: sans geométrica con peso, sans condensada deportiva, y una con un detalle sutil de movimiento (corte o inclinación en una letra). Sin huesos ni siluetas humanas.
+4.2 Paleta de color
+Estructura: 1 primario + 1 acento (CTA) + neutros. Contraste AA en claro y oscuro. Tres direcciones, ordenadas por recomendación:
+
+Dirección	Idea	Primario (aprox.)	Acento (aprox.)	Por qué
+1. Grafito + verde eléctrico	Rendimiento, recuperación	Grafito / casi negro	Verde lima o verde menta saturado	Se aleja del azul clínico; encaja con deporte y wearables.
+2. Azul petróleo + naranja	Clínico pero con energía	Azul petróleo oscuro	Naranja quemado	Más seguro para público mixto (deporte + mayores).
+3. Arena + terracota	Cercanía, domicilio	Arena / piedra	Terracota	Cálido y diferenciado, pero menos deportivo.
+4.3 Tipografía
+Titulares: sans con carácter y peso, admite condensada (candidatas: Archivo, Barlow Condensed, Space Grotesk).
+Cuerpo: sans legible y variable (candidatas: Inter Tight, Figtree, DM Sans).
+Probar en creatividades de Meta 4:5 y 9:16 a tamaño móvil.
+4.4 Fotografía e imagen
+Sesión de fotos profesional: Borja valorando, guiando ejercicio y tratando en una casa real; detalles de manos, material portátil y ecógrafo si lo hay.
+Vídeo corto vertical como formato nativo: ejercicios explicados, "cómo es una sesión en casa".
+Iconografía lineal para: "a domicilio", "valoración", "plan de ejercicio", "vuelta al deporte".
+4.5 Tono de voz
+Directo, técnico cuando aporta, sin promesas. Tutea.
+
+✅ "Primero valoramos qué limita tu movimiento. Después tratamos y te llevas un plan de ejercicio."
+✅ "Fisioterapia, no un masaje: valoración, tratamiento y ejercicio en tu casa."
+❌ "Elimina tu dolor de espalda en 3 sesiones."
+❌ "Tu bienestar en las mejores manos."
+5. Plan de trabajo con Claude (paso a paso)
+Primero lo que hoy pierde pacientes, después posicionamiento, después diseño.
+
+Arreglos técnicos (esta semana): número en los enlaces de WhatsApp, canonical a fisioestarellas.es, nº de colegiado, email en el dominio (sección 1.1).
+Validación con Borja (30 min): nombre de marca (sección 0), posicionamiento (2.1), ecógrafo portátil sí/no y estrategia de precio.
+Checklist legal: testimonios reales y verificables, registro sanitario aplicable (sección 3).
+Sesión de brief con Claude: pegar secciones 0-4 y pedirle que las cuestione antes de generar nada visual.
+Logotipo: 3-5 wordmarks + monograma en SVG (artifact).
+Paleta + tipografía: las 3 direcciones de 4.2 en fondo claro, oscuro y botón CTA, con 2-3 combinaciones tipográficas.
+Mockups: hero de la web con el nuevo titular, 2 creatividades de Meta (4:5 y 9:16), ficha de Google Business Profile y 3 posts de Instagram.
+Sesión de fotos y vídeo con la dirección elegida.
+Cierre: Borja elige dirección; vectorización final y documentación en la sección 6.
+6. Decisiones finales (rellenar al cerrar cada apartado)
+Apartado	Decisión
+Nombre de marca (A o B)	
+Posicionamiento elegido	
+Frase de marca	
+Ecógrafo portátil (sí/no)	
+Precio de sesión y forma de comunicarlo	
+Logotipo y monograma	
+Paleta final (HEX)	
+Tipografías finales	
+Tono de voz: 3 reglas fijas	
+Nº de colegiado y registro sanitario a mostrar	
+7. Aplicaciones a actualizar una vez cerrada la marca
+Ordenadas por impacto en captación:
+
+Web fisioestarellas.es: arreglos técnicos, titular, hero, pie legal
+Google Business Profile (crear o reclamar): clave para "fisio a domicilio + zona" y para reseñas verificables
+Plantillas de creatividades de Meta Ads (copy compatible con atributos personales)
+Instagram: avatar con monograma, bio, destacados, plantillas de reels
+WhatsApp Business: foto, descripción, catálogo de servicios, respuestas rápidas
+Doctoralia u otro directorio, si se usa
+Plantillas de factura, consentimiento informado y hoja de ejercicios para casa
+Material para derivación: clubes deportivos, gimnasios, entrenadores (si se elige la opción A)
+O
+

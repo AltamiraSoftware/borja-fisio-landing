@@ -1,0 +1,176 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 602848,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0h3-49t17ats5.js",
+      ".next-container/static/chunks/0b_zmr8n.dwr..js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/tratamientos",
+    "firstLoadUncompressedJsBytes": 602447,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/10e9pw-h2ef89.js",
+      ".next-container/static/chunks/0b_zmr8n.dwr..js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/tratamientos/[slug]",
+    "firstLoadUncompressedJsBytes": 602447,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/10e9pw-h2ef89.js",
+      ".next-container/static/chunks/0mbh367hyaoay.js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/fisioterapia-arganzuela",
+    "firstLoadUncompressedJsBytes": 590123,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0cn532n~ypu9u.js",
+      ".next-container/static/chunks/0b_zmr8n.dwr..js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/politica-de-privacidad",
+    "firstLoadUncompressedJsBytes": 590123,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0cn532n~ypu9u.js",
+      ".next-container/static/chunks/0b_zmr8n.dwr..js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/preguntas-frecuentes",
+    "firstLoadUncompressedJsBytes": 590123,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0cn532n~ypu9u.js",
+      ".next-container/static/chunks/0b_zmr8n.dwr..js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/rehabilitacion-a-domicilio-madrid",
+    "firstLoadUncompressedJsBytes": 590123,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0cn532n~ypu9u.js",
+      ".next-container/static/chunks/0mbh367hyaoay.js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/sobre-borja",
+    "firstLoadUncompressedJsBytes": 590123,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0icx814i7lr09.js",
+      ".next-container/static/chunks/05zl2fzsyfo8n.js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/tarifas",
+    "firstLoadUncompressedJsBytes": 590123,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0cn532n~ypu9u.js",
+      ".next-container/static/chunks/0b_zmr8n.dwr..js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/contacto",
+    "firstLoadUncompressedJsBytes": 588092,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/13nau9y~ft18g.js",
+      ".next-container/static/chunks/0b_zmr8n.dwr..js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 515482,
+    "firstLoadChunkPaths": [
+      ".next-container/static/chunks/06k6o5~7u5tj3.js",
+      ".next-container/static/chunks/14xdthwga5u9i.js",
+      ".next-container/static/chunks/0ofe59_hetppt.js",
+      ".next-container/static/chunks/0s~gjjqtmxt56.js",
+      ".next-container/static/chunks/0x1mobvioqs2v.js",
+      ".next-container/static/chunks/0c7p8h1v76zvk.js",
+      ".next-container/static/chunks/07ci~eud6qd35.js",
+      ".next-container/static/chunks/turbopack-05u7fiiyoyt3b.js"
+    ]
+  }
+]
