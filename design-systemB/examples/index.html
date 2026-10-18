@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniela López · Psicóloga infantojuvenil en Chamartín</title>
+<meta name="description" content="Psicóloga de niños, adolescentes y familias en Chamartín y online. También ansiedad y momentos de crisis.">
+<script>document.documentElement.classList.add('js-motion')</script>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=Figtree:wght@400..700&display=swap">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../motion/motion.css">
+<script src="../motion/motion.js" defer></script>
+</head>
+<body>
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="logo" href="#" data-intro data-reveal-delay="600" aria-label="Daniela López, psicóloga — inicio">
+      <span class="logo__name">daniela lópez</span><span class="logo__dot" aria-hidden="true"></span><span class="logo__desc">psicóloga</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Niños y adolescentes</a><a href="#servicios">Ansiedad</a><a href="#servicios">Crisis</a><a href="#precios">Precios</a>
+    </nav>
+    <a class="btn btn--primary" href="#cita">Pedir cita</a>
+  </div>
+</header>
+
+<main>
+  <section class="container hero">
+    <div class="hero__copy">
+      <span class="eyebrow" data-reveal="fade" data-reveal-delay="80">Chamartín · online</span>
+      <h1 class="display" data-reveal="lines" data-reveal-delay="140">Psicóloga de niños, adolescentes <em>y familias.</em></h1>
+      <p class="lead" data-reveal data-reveal-delay="420">Trabajo con tu hijo y te oriento a ti en el mismo proceso, con reglas claras sobre qué se comparte. También atiendo ansiedad y momentos de crisis.</p>
+      <div class="cluster" data-reveal data-reveal-delay="520">
+        <a class="btn btn--primary" href="#cita">Pedir primera sesión · 40 €</a>
+        <a class="btn btn--secondary" href="https://wa.me/34XXXXXXXXX">WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero__media" data-reveal="mask">
+      <img class="sd-parallax" src="../assets/daniela-recorte.png" alt="Daniela López, psicóloga" width="1066" height="1600" fetchpriority="high">
+    </div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="container split">
+      <div class="stack" style="--stack-gap:8px"><span class="eyebrow" data-reveal>Servicios</span><h2 data-reveal="lines">En qué te puedo ayudar</h2></div>
+      <div class="stack" style="--stack-gap:24px">
+        <div class="grid-auto" data-reveal-group>
+          <a class="card card--inverse" href="#" data-reveal><span class="card__kicker">Principal</span><span class="card__title">Terapia infantojuvenil</span><span class="card__body">Niños, adolescentes y orientación a padres dentro del mismo proceso.</span></a>
+          <a class="card card--muted" href="#" data-reveal><span class="card__kicker">Adolescentes y adultos</span><span class="card__title">Ansiedad</span><span class="card__body">Entender qué la mantiene y aprender a manejarla en el día a día.</span></a>
+          <a class="card card--muted" href="#" data-reveal><span class="card__kicker">Con cita</span><span class="card__title">Momentos de crisis</span><span class="card__body">Atención en momentos difíciles, con cita. No es servicio de urgencias.</span></a>
+        </div>
+        <p class="meta" data-reveal>También atiendo: pareja, duelo, trauma y autoestima.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container split">
+      <div class="stack" style="--stack-gap:8px"><span class="eyebrow" data-reveal>Primera sesión</span><h2 data-reveal="lines">Cómo <em>empezamos</em></h2></div>
+      <div class="stack">
+        <p class="quote" data-reveal>La primera sesión sirve para ordenar qué está pasando en casa y decidir cómo empezar.</p>
+        <p data-reveal style="max-width:var(--measure)">Dura 50 minutos y puede ser presencial en Chamartín u online.</p>
+        <a class="btn btn--link" href="#cita" data-reveal>Pedir primera sesión <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="precios">
+    <div class="container split">
+      <div class="stack" style="--stack-gap:8px"><span class="eyebrow">Precios</span><h2>Tarifas</h2></div>
+      <ul class="price-list" style="max-width:520px">
+        <li><span>Primera sesión</span><strong>40 €</strong></li>
+        <li><span>Online</span><strong>55 €</strong></li>
+        <li><span>Presencial</span><strong>60 €</strong></li>
+        <li><span>Pareja / familia</span><strong>75 €</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="cita">
+    <div class="container">
+      <aside class="crisis-note" role="note">Esta consulta no es un servicio de urgencias. Si hay riesgo inmediato, llama al <a href="tel:112">112</a>. Línea de atención a la conducta suicida: <a href="tel:024">024</a>.</aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container stack" style="--stack-gap:8px">
+    <strong>Daniela López Meléndez</strong>
+    <span>Psicóloga General Sanitaria · Col. M-41829 · <!-- TODO: nº registro sanitario -->Nº registro sanitario: pendiente</span>
+    <span>C. de Marcenado 14, despacho 2 · Chamartín, Madrid</span>
+  </div>
+</footer>
+</body>
+</html>

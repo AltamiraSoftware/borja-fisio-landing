@@ -1,25 +1,37 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/constants";
+import { AnalyticsEvents } from "@/components/analytics/AnalyticsEvents";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  applicationName: "Borja Estarellas Fisioterapia",
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: { capable: true, title: "Borja Fisio", statusBarStyle: "black-translucent" },
   title: {
-    default: "Fisioterapia a domicilio en Madrid | Borja Estarellas",
+    default: "Fisioterapia en Arganzuela y Madrid | Borja Estarellas",
     template: "%s | Borja Estarellas",
   },
   description:
-    "Fisioterapia a domicilio en Madrid para dolor, lesiones deportivas y recuperación funcional. Tratamiento personalizado con Borja Estarellas desde 50 €. Valoración, terapia manual y ejercicio terapéutico en tu casa.",
+    "Fisioterapia con Borja Estarellas en Madrid. Consulta en Palos de la Frontera, Arganzuela, y atención a domicilio. Valoración, tratamiento y ejercicio terapéutico.",
   keywords: [
     "fisioterapia a domicilio",
     "fisioterapeuta Madrid",
     "fisioterapia a domicilio Madrid",
+    "fisioterapia Arganzuela",
+    "fisioterapeuta Palos de la Frontera",
+    "fisioterapia Delicias Madrid",
     "dolor lumbar",
     "dolor cervical",
     "lesiones deportivas",
     "tendinopatía",
     "esguince",
     "fascitis plantar",
+    "ecografía musculoesquelética",
     "terapia manual",
     "ejercicio terapéutico",
     "Borja Estarellas",
@@ -28,27 +40,27 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Fisioterapia a domicilio en Madrid | Borja Estarellas",
+    title: "Fisioterapia en Arganzuela y Madrid | Borja Estarellas",
     description:
-      "Fisioterapia a domicilio en Madrid para dolor, lesiones deportivas y recuperación funcional. Tratamiento personalizado con Borja Estarellas desde 50 €.",
+      "Consulta de fisioterapia en Arganzuela y atención a domicilio en Madrid con Borja Estarellas.",
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "es_ES",
     type: "website",
     images: [
       {
-        url: `${siteConfig.url}/og-image.png`,
+        url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Fisioterapia a domicilio en Madrid - Borja Estarellas",
+        alt: "Fisioterapia en Arganzuela y Madrid - Borja Estarellas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fisioterapia a domicilio en Madrid | Borja Estarellas",
+    title: "Fisioterapia en Arganzuela y Madrid | Borja Estarellas",
     description:
-      "Fisioterapia a domicilio en Madrid. Tratamiento personalizado desde 50 €.",
+      "Consulta en Arganzuela y fisioterapia a domicilio en Madrid.",
   },
   robots: {
     index: true,
@@ -63,6 +75,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = { themeColor: "#073b4c" };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,22 +86,25 @@ export default function RootLayout({
 
   return (
     <html lang="es" className="h-full scroll-smooth">
-      {gaId && (
-        <head>
-          {/* GA4 - only loads when NEXT_PUBLIC_GA_MEASUREMENT_ID is set */}
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaId}');`,
-            }}
-          />
-        </head>
-      )}
+      <head>
+        {gaId && (
+          <>
+            {/* GA4 - only loads when NEXT_PUBLIC_GA_MEASUREMENT_ID is set */}
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaId}');`,
+              }}
+            />
+          </>
+        )}
+      </head>
       <body className="min-h-full bg-[var(--color-off-white)] text-[var(--color-text)] antialiased">
         {children}
+        <AnalyticsEvents />
       </body>
     </html>
   );

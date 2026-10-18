@@ -1,14 +1,16 @@
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 import { navLinks } from "@/data/landing";
-import { contactConfig, siteConfig } from "@/lib/constants";
+import { contactConfig, locationConfig, siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function Footer() {
   return (
     <footer className="bg-[#052E3A] px-4 py-12 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div>
-          <p className="text-xl font-semibold">{siteConfig.fullName}</p>
+          <Image src="/logo.svg" alt={siteConfig.fullName} width={240} height={45} className="h-auto w-60 max-w-full" />
           <p className="mt-2 text-sm text-white/62">
             Fisioterapeuta colegiado en Madrid.
           </p>
@@ -32,10 +34,10 @@ export function Footer() {
           <div className="mt-5 grid gap-3 text-sm text-white/68">
             <a
               href={buildWhatsappHref()}
-              className="inline-flex items-center gap-3 transition hover:text-white"
+              className="btn btn--whatsapp min-h-10 w-fit justify-self-start px-4 text-sm"
               aria-label="Contactar por WhatsApp"
             >
-              <MessageCircle className="size-4" aria-hidden="true" />
+              <WhatsAppIcon className="size-4" />
               WhatsApp
             </a>
             {contactConfig.email ? (
@@ -52,10 +54,10 @@ export function Footer() {
                 estarellas11088@gmail.com
               </span>
             )}
-            <span className="inline-flex items-center gap-3">
-              <MapPin className="size-4" aria-hidden="true" />
-              Madrid, España
-            </span>
+            <a href="/fisioterapia-arganzuela" className="inline-flex items-start gap-3 transition hover:text-white">
+              <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+              <span><strong className="block font-semibold text-white">Consulta independiente · Meraki</strong>Coworking sanitario<br />{locationConfig.address}<br />{locationConfig.postalCode} Madrid · Arganzuela</span>
+            </a>
           </div>
         </div>
 
@@ -63,7 +65,7 @@ export function Footer() {
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#8cf3ef]">
             Navegación
           </p>
-          <nav className="mt-5 grid grid-cols-2 gap-3 text-sm text-white/68">
+          <nav className="mt-5 grid gap-3 text-sm text-white/68">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -74,6 +76,7 @@ export function Footer() {
               </a>
             ))}
           </nav>
+          <a href="/preguntas-frecuentes" className="mt-3 inline-block text-sm text-white/68 transition hover:text-white">Preguntas frecuentes</a>
         </div>
       </div>
 
@@ -83,9 +86,9 @@ export function Footer() {
           derechos reservados.
         </p>
         <p className="mt-1">
-          Fisioterapeuta en Madrid - Servicio de fisioterapia a domicilio y
-          gabinete.
+          Fisioterapia en Madrid · Consulta en Arganzuela · Atención a domicilio.
         </p>
+        <a href="/politica-de-privacidad" className="mt-3 inline-block transition hover:text-white">Política de privacidad</a>
       </div>
     </footer>
   );

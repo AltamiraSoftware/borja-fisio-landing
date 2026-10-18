@@ -1,4 +1,3 @@
-import { MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { buildWhatsappHref } from "@/lib/utils";
 
@@ -35,11 +34,10 @@ export function CtaBanner({
             <p className="mt-4 max-w-2xl mx-auto text-pretty text-base leading-7 text-white/72 md:text-lg">
               {description}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row justify-center">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button
                 href={whatsappHref}
                 size="lg"
-                icon={<MessageCircle className="size-5" aria-hidden="true" />}
                 aria-label={ctaText}
               >
                 {ctaText}
@@ -49,8 +47,6 @@ export function CtaBanner({
                   href={secondaryHref}
                   size="lg"
                   variant="secondary"
-                  icon={<ArrowRight className="size-5" aria-hidden="true" />}
-                  iconPosition="right"
                 >
                   {secondaryText}
                 </Button>

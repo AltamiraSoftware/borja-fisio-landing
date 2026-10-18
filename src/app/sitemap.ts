@@ -1,13 +1,22 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/constants";
+import { getAllTreatments, getTreatmentPath } from "@/content/treatments";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const staticPaths = ["", "/fisioterapia-arganzuela", "/rehabilitacion-a-domicilio-madrid", "/tratamientos", "/sobre-borja", "/tarifas", "/preguntas-frecuentes", "/contacto", "/politica-de-privacidad"];
+
   return [
-    {
-      url: siteConfig.url,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+    ...staticPaths.map((path, index) => ({
+      url: `${siteConfig.url}${path}`,
+      lastModified: new Date("2026-10-18"),
+      changeFrequency: "monthly" as const,
+      priority: index === 0 ? 1 : path === "/tratamientos" || path === "/fisioterapia-arganzuela" ? 0.9 : 0.7,
+    })),
+    ...getAllTreatments().map((treatment) => ({
+      url: `${siteConfig.url}${getTreatmentPath(treatment.slug)}`,
+      lastModified: new Date(treatment.updatedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
   ];
 }

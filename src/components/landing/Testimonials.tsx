@@ -52,7 +52,7 @@ export function Testimonials() {
               key={t.author}
               className="flex flex-col p-7 md:p-8"
             >
-              <div className="flex gap-1">
+              <div className="flex justify-center gap-1">
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star
                     key={i}
@@ -61,11 +61,11 @@ export function Testimonials() {
                   />
                 ))}
               </div>
-              <Quote className="mt-4 size-6 text-[#2EC4C6]/30" aria-hidden="true" />
+              <Quote className="mx-auto mt-4 size-6 text-[#2EC4C6]/30" aria-hidden="true" />
               <p className="mt-2 flex-1 text-pretty text-base leading-7 text-[#102A33]">
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="mt-6 flex items-center gap-3 border-t border-[#d9e8e4] pt-4">
+              <div className="mt-6 flex items-center justify-center gap-3 border-t border-[#d9e8e4] pt-4">
                 <div className="grid size-10 shrink-0 place-items-center rounded-full bg-[#2EC4C6]/12 text-[#073B4C] font-bold">
                   {t.author[0]}
                 </div>

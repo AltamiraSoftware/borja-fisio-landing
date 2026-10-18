@@ -1,10 +1,12 @@
+import { importedTreatments, treatmentCatalogSlugs } from "@/content/importedTreatments";
+
 export const navLinks = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Modalidades", href: "#modalidades" },
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Precio", href: "#precio" },
-  { label: "Contacto", href: "#contacto" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Tratamientos", href: "/tratamientos" },
+  { label: "Consulta en Arganzuela", href: "/fisioterapia-arganzuela" },
+  { label: "A domicilio", href: "/rehabilitacion-a-domicilio-madrid" },
+  { label: "Sobre Borja", href: "/sobre-borja" },
+  { label: "Tarifas", href: "/tarifas" },
+  { label: "Contacto", href: "/contacto" },
 ] as const;
 
 export const trustItems = [
@@ -25,8 +27,8 @@ export const trustItems = [
   },
   {
     icon: "map",
-    title: "Domicilio o gabinete",
-    text: "Atención principal a domicilio en Madrid, con opción de gabinete bajo cita previa.",
+    title: "Consulta y domicilio",
+    text: "Consulta en Arganzuela y atención a domicilio en Madrid.",
   },
 ] as const;
 
@@ -41,48 +43,27 @@ export const problemChecklist = [
   "Recuperación funcional.",
 ] as const;
 
-export const services = [
-  {
-    icon: "home",
-    title: "Fisioterapia a domicilio",
-    text: "Sesiones completas en tu casa, con valoración, tratamiento y pautas adaptadas a tu entorno.",
-  },
-  {
-    icon: "neck",
-    title: "Dolor cervical",
-    text: "Abordaje de rigidez, molestias cervicales, tensión y limitaciones de movimiento.",
-  },
-  {
-    icon: "spine",
-    title: "Dolor lumbar",
-    text: "Tratamiento y educación para dolor lumbar, sobrecargas y episodios recurrentes.",
-  },
-  {
-    icon: "dumbbell",
-    title: "Lesiones deportivas",
-    text: "Recuperación y progresión funcional para volver a entrenar con más seguridad.",
-  },
-  {
-    icon: "activity",
-    title: "Tendinopatías",
-    text: "Planificación de carga, tratamiento manual cuando procede y ejercicio terapéutico.",
-  },
-  {
-    icon: "hand",
-    title: "Contracturas y sobrecargas",
-    text: "Trabajo específico sobre molestias musculares, movilidad y hábitos que influyen en el dolor.",
-  },
-  {
-    icon: "footprints",
-    title: "Esguinces",
-    text: "Recuperación de movilidad, fuerza, estabilidad y confianza tras lesión ligamentosa.",
-  },
-  {
-    icon: "route",
-    title: "Fascitis plantar",
-    text: "Valoración del apoyo, carga y tejido para mejorar dolor y tolerancia al movimiento.",
-  },
-] as const;
+const serviceIcons: Record<(typeof treatmentCatalogSlugs)[number], "dumbbell" | "scan" | "neck" | "spine" | "activity" | "hand" | "footprints" | "route" | "home"> = {
+  "lesiones-deportivas": "dumbbell",
+  "ecografia-musculoesqueletica": "scan",
+  "dolor-cervical": "neck",
+  "dolor-lumbar": "spine",
+  "tendinopatias": "activity",
+  "contracturas": "hand",
+  "esguinces": "footprints",
+  "fascitis-plantar": "route",
+  "fisioterapia-domicilio": "home",
+};
+
+export const services = treatmentCatalogSlugs.map((slug) => {
+  const treatment = importedTreatments[slug];
+  return {
+    icon: serviceIcons[slug],
+    title: treatment.navLabel,
+    text: treatment.cardDescription,
+    href: treatment.path,
+  };
+});
 
 export const whoIsFor = [
   "Personas con dolor lumbar, cervical o articular.",
@@ -95,20 +76,20 @@ export const whoIsFor = [
 
 export const processSteps = [
   {
-    title: "Me cuentas tu caso",
-    text: "Compartes qué te ocurre, tu zona de Madrid y la modalidad que prefieres.",
+    title: "Valoración funcional",
+    text: "Primero escucho qué te ocurre y reviso movilidad, fuerza, síntomas y objetivos para entender qué limita tu actividad.",
   },
   {
-    title: "Valoración inicial",
-    text: "Se revisa dolor, movilidad, fuerza, contexto y objetivos antes de intervenir.",
+    title: "Plan de tratamiento",
+    text: "Con la valoración, selecciono las técnicas indicadas para tu caso y te explico el objetivo de cada paso del tratamiento.",
   },
   {
-    title: "Tratamiento personalizado",
-    text: "Terapia manual, ejercicio terapéutico y educación según lo que necesites.",
+    title: "Ejercicio terapéutico",
+    text: "Trabajamos movimiento, fuerza y control con ejercicios ajustados a tu capacidad para recuperar función de forma progresiva.",
   },
   {
-    title: "Seguimiento",
-    text: "Te llevas pautas claras y una orientación honesta sobre próximos pasos.",
+    title: "Seguimiento y prevención",
+    text: "Te llevas pautas para casa y revisamos tu evolución para ajustar el plan y reducir el riesgo de que vuelvan las molestias.",
   },
 ] as const;
 
@@ -144,12 +125,12 @@ export const faqItems = [
   {
     question: "¿Atiendes a domicilio?",
     answer:
-      "Sí. La fisioterapia a domicilio en Madrid es la modalidad principal. Borja se desplaza para realizar la sesión en un espacio cómodo y seguro.",
+      "Sí. Borja también ofrece fisioterapia a domicilio en Madrid. Confirma tu zona y disponibilidad antes de reservar.",
   },
   {
     question: "¿También tienes consulta o gabinete?",
     answer:
-      "Puede valorarse la atención en gabinete o sala alquilada bajo cita previa, siempre según disponibilidad, zona y necesidades del caso.",
+      "Sí. Borja atiende en el espacio Meraki de la calle de Rafael de Riego, 11, en Arganzuela. También ofrece atención a domicilio en Madrid; confirma disponibilidad antes de reservar.",
   },
   {
     question: "¿Qué necesito preparar para la sesión en casa?",
@@ -164,7 +145,7 @@ export const faqItems = [
   {
     question: "¿Cuánto cuesta una sesión?",
     answer:
-      "La primera sesión de fisioterapia a domicilio en Madrid parte desde 50 €. La zona, disponibilidad y modalidad se pueden confirmar antes de reservar.",
+      "La primera sesión en consulta cuesta 50 € y a domicilio 60 €. Confirma disponibilidad y zona de desplazamiento antes de reservar.",
   },
   {
     question: "¿Cómo reservo cita?",

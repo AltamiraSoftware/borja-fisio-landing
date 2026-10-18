@@ -22,15 +22,27 @@ export function AboutBorja() {
               </Badge>
             ))}
           </div>
+
+          <GlassCard variant="dark" className="premium-dark-bg mt-8 p-7 md:p-8">
+            <Quote className="mx-auto size-8 text-[#8cf3ef]" aria-hidden="true" />
+            <p className="mt-5 text-pretty text-xl font-medium leading-9 text-white">
+              “Un tratamiento serio no empieza por aplicar técnicas al azar,
+              sino por entender qué limita tu movimiento y qué necesita tu
+              cuerpo para volver a funcionar mejor.”
+            </p>
+            <p className="mt-5 text-sm font-semibold text-white/80">
+              {siteConfig.fullName}
+            </p>
+          </GlassCard>
         </div>
 
-        <div className="grid gap-6">
-          <GlassCard className="p-7 md:p-8">
-            <div className="flex items-center gap-4">
-              <div className="grid size-12 place-items-center rounded-2xl bg-[#073B4C] text-white">
-                <GraduationCap className="size-6" aria-hidden="true" />
+        <div>
+          <GlassCard className="group p-7 md:p-8">
+            <div className="text-center">
+              <div className="card-icon">
+                <GraduationCap aria-hidden="true" />
               </div>
-              <div>
+              <div className="mt-5">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0F5366]">
                   Formación
                 </p>
@@ -44,7 +56,7 @@ export function AboutBorja() {
               {educationItems.map((item) => (
                 <li
                   key={item}
-                  className="rounded-[20px] border border-[#d9e8e4] bg-white/62 px-4 py-4 text-sm leading-7 text-[var(--color-muted)]"
+                  className="rounded-[20px] border border-[#5f9eb5] bg-[#f2f9fb] px-4 py-4 text-sm font-medium leading-7 text-[#173f50] shadow-[0_4px_14px_rgba(15,83,102,0.08)]"
                 >
                   {item}
                 </li>
@@ -52,17 +64,6 @@ export function AboutBorja() {
             </ul>
           </GlassCard>
 
-          <GlassCard variant="dark" className="premium-dark-bg p-7 md:p-8">
-            <Quote className="size-8 text-[#8cf3ef]" aria-hidden="true" />
-            <p className="mt-5 text-pretty text-xl font-medium leading-9 text-white">
-              “Un tratamiento serio no empieza por aplicar técnicas al azar,
-              sino por entender qué limita tu movimiento y qué necesita tu
-              cuerpo para volver a funcionar mejor.”
-            </p>
-            <p className="mt-5 text-sm font-semibold text-white/62">
-              {siteConfig.fullName}
-            </p>
-          </GlassCard>
         </div>
       </div>
     </section>

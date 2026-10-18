@@ -4,18 +4,17 @@ import type {
   ReactNode,
 } from "react";
 import { cn } from "@/lib/utils";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "dark";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "dark" | "whatsapp";
 type ButtonSize = "sm" | "md" | "lg";
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "border-transparent bg-[#2EC4C6] text-[#052E3A] shadow-[0_18px_40px_rgba(46,196,198,0.26)] hover:bg-[#86eff0]",
-  secondary:
-    "border-white/25 bg-white/10 text-white backdrop-blur-xl hover:border-[#2EC4C6]/55 hover:bg-white/15",
-  ghost:
-    "border-[#d3e4df] bg-white/65 text-[#073B4C] hover:border-[#2EC4C6]/55 hover:bg-white",
-  dark: "border-transparent bg-[#073B4C] text-white shadow-[0_18px_42px_rgba(5,46,58,0.22)] hover:bg-[#0F5366]",
+  primary: "btn--primary",
+  secondary: "btn--secondary",
+  ghost: "btn--ghost",
+  dark: "btn--primary",
+  whatsapp: "btn--whatsapp",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -61,23 +60,26 @@ export function Button({
   children,
   ...props
 }: LinkButtonProps | NativeButtonProps) {
+  const isWhatsapp = variant === "whatsapp" || ("href" in props && typeof props.href === "string" && /^(https?:\/\/)?(wa\.me|api\.whatsapp\.com)\//.test(props.href));
+  const resolvedVariant = isWhatsapp ? "whatsapp" : variant;
+  const resolvedIcon = isWhatsapp ? <WhatsAppIcon className="size-5" /> : icon;
 
   const content = (
     <>
-      {icon && iconPosition === "left" ? (
-        <span className="grid size-4 place-items-center">{icon}</span>
+      {resolvedIcon && iconPosition === "left" ? (
+        <span className="grid size-5 shrink-0 place-items-center">{resolvedIcon}</span>
       ) : null}
       <span>{children}</span>
-      {icon && iconPosition === "right" ? (
-        <span className="grid size-4 place-items-center">{icon}</span>
+      {resolvedIcon && iconPosition === "right" ? (
+        <span className="grid size-5 shrink-0 place-items-center">{resolvedIcon}</span>
       ) : null}
     </>
   );
 
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full border font-semibold leading-none transition duration-250 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2EC4C6]",
+    "btn",
     sizeStyles[size],
-    variantStyles[variant],
+    variantStyles[resolvedVariant],
     className,
   );
 

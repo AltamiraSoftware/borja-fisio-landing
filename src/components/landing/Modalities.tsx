@@ -1,100 +1,33 @@
-import { CheckCircle2, MapPinned, Stethoscope } from "lucide-react";
+import { CheckCircle2, Home, MapPinned } from "lucide-react";
 import { buildWhatsappHref } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-const homePoints = [
-  "Evitas desplazamientos.",
-  "Ideal si tienes dolor, lesión o poca disponibilidad.",
-  "Tratamiento adaptado a tu entorno real.",
-  "Material básico incluido si es necesario.",
-] as const;
-
-const clinicPoints = [
-  "Sujeto a disponibilidad.",
-  "Útil si prefieres un entorno clínico.",
-  "Se confirma antes de reservar.",
-  "Modalidad flexible según tu caso.",
-] as const;
-
 export function Modalities() {
   return (
     <section id="modalidades" className="px-4 py-20">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader
-          align="center"
-          eyebrow="Modalidades"
-          title="Domicilio en Madrid y opción de gabinete"
-          description="La modalidad principal es la fisioterapia a domicilio. En algunos casos, también puede valorarse una cita en gabinete o sala alquilada."
-        />
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <GlassCard className="relative overflow-hidden p-8 md:p-10">
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(46,196,198,0.16)_0%,rgba(255,255,255,0)_64%)]" />
-            <div className="relative">
-              <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-[#073B4C] text-white">
-                <MapPinned className="size-6" aria-hidden="true" />
-              </div>
-              <h3 className="text-3xl font-semibold text-[#073B4C]">
-                Fisioterapia a domicilio
-              </h3>
-              <p className="mt-5 text-pretty text-base leading-8 text-[var(--color-muted)]">
-                La modalidad principal. Borja se desplaza a tu domicilio en
-                Madrid para realizar una sesión completa de valoración,
-                tratamiento y pautas. Solo necesitas un espacio cómodo para
-                trabajar con seguridad.
-              </p>
-
-              <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                {homePoints.map((point) => (
-                  <div key={point} className="flex gap-3">
-                    <CheckCircle2
-                      className="mt-0.5 size-5 shrink-0 text-[#2b9b9d]"
-                      aria-hidden="true"
-                    />
-                    <span className="text-sm font-medium leading-7">
-                      {point}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <Button
-                href={buildWhatsappHref(
-                  "Hola Borja, me interesa una sesión de fisioterapia a domicilio en Madrid.",
-                )}
-                className="mt-8"
-                variant="dark"
-              >
-                Pedir cita por WhatsApp
-              </Button>
-            </div>
+        <SectionHeader align="center" eyebrow="Modalidades" title="Elige cómo quieres empezar" description="Consulta en Arganzuela y atención a domicilio en Madrid. Cuéntame tu caso y revisamos la opción disponible que mejor encaje contigo." />
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <GlassCard variant="solid" className="group relative flex flex-col overflow-hidden p-8 md:p-10">
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#073B4C] to-[#2EC4C6]" />
+            <div className="card-icon"><MapPinned aria-hidden="true" /></div>
+            <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-[#0F5366]">Palos de la Frontera · Arganzuela</p>
+            <h3 className="mt-3 flex min-h-[4.5rem] items-center justify-center text-3xl font-semibold text-[#073B4C]">Consulta en Arganzuela</h3>
+            <p className="mt-5 leading-8 text-[var(--color-muted)]">Borja atiende en una consulta independiente dentro de Meraki, coworking sanitario, en la calle de Rafael de Riego, 11. Solicita cita antes de acudir para confirmar horario y disponibilidad.</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3 text-sm font-medium text-[#073B4C]"><span className="rounded-full bg-[#eef5f3] px-4 py-2">Cerca de Delicias</span><span className="rounded-full bg-[#eef5f3] px-4 py-2">Valoración personalizada</span></div>
+            <div className="mt-auto flex justify-center pt-8"><Button href="/fisioterapia-arganzuela">Ver la consulta</Button></div>
           </GlassCard>
-
-          <GlassCard className="p-8 md:p-10">
-            <div className="mb-6 grid size-14 place-items-center rounded-2xl bg-[#2EC4C6]/14 text-[#0F5366]">
-              <Stethoscope className="size-6" aria-hidden="true" />
-            </div>
-            <h3 className="text-2xl font-semibold text-[#073B4C]">
-              Atención en gabinete bajo cita
-            </h3>
-            <p className="mt-5 text-pretty text-base leading-8 text-[var(--color-muted)]">
-              Cuando el caso, la zona o la disponibilidad lo aconsejen, también
-              puede valorarse la atención en gabinete o sala alquilada bajo cita
-              previa.
-            </p>
-            <div className="mt-7 grid gap-3">
-              {clinicPoints.map((point) => (
-                <div key={point} className="flex gap-3">
-                  <CheckCircle2
-                    className="mt-0.5 size-5 shrink-0 text-[#2b9b9d]"
-                    aria-hidden="true"
-                  />
-                  <span className="text-sm font-medium leading-7">{point}</span>
-                </div>
-              ))}
-            </div>
+          <GlassCard variant="solid" className="group flex flex-col p-8 md:p-10">
+            <div className="card-icon"><Home aria-hidden="true" /></div>
+            <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-[#0F5366]">Disponible según zona</p>
+            <h3 className="mt-3 flex min-h-[4.5rem] items-center justify-center text-3xl font-semibold text-[#073B4C]">Fisioterapia a domicilio</h3>
+            <p className="mt-5 leading-8 text-[var(--color-muted)]">Si desplazarte es difícil o prefieres recibir la sesión en casa, Borja puede atenderte a domicilio en Madrid. Confirmaremos la zona y disponibilidad antes de reservar.</p>
+            <ul className="mt-7 grid gap-3 text-sm font-medium text-[#073B4C]">
+              {["Valoración en tu entorno", "Tratamiento y ejercicio adaptados", "Pautas para seguir avanzando"].map((point) => <li key={point} className="flex items-center justify-center gap-3"><CheckCircle2 className="size-5 shrink-0 text-[#2b9b9d]" aria-hidden="true" />{point}</li>)}
+            </ul>
+            <div className="mt-auto flex justify-center pt-8"><Button href={buildWhatsappHref("Hola Borja, me interesa una sesión de fisioterapia a domicilio en Madrid.")}>Consultar disponibilidad</Button></div>
           </GlassCard>
         </div>
       </div>

@@ -1,0 +1,18 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/contacto/page": "/contacto",
+  "/favicon.ico/route": "/favicon.ico",
+  "/fisioterapia-arganzuela/page": "/fisioterapia-arganzuela",
+  "/opengraph-image/route": "/opengraph-image",
+  "/page": "/",
+  "/politica-de-privacidad/page": "/politica-de-privacidad",
+  "/preguntas-frecuentes/page": "/preguntas-frecuentes",
+  "/rehabilitacion-a-domicilio-madrid/page": "/rehabilitacion-a-domicilio-madrid",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/sobre-borja/page": "/sobre-borja",
+  "/tarifas/page": "/tarifas",
+  "/tratamientos/[slug]/page": "/tratamientos/[slug]",
+  "/tratamientos/page": "/tratamientos"
+}

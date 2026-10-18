@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { problemChecklist } from "@/data/landing";
 import { buildWhatsappHref } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
@@ -20,7 +20,7 @@ export function ProblemBenefit() {
         <GlassCard className="relative overflow-hidden p-7 md:p-8">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(46,196,198,0.14)_0%,rgba(255,255,255,0)_64%)]" />
           <div className="relative">
-            <div className="mb-6 flex items-center justify-between gap-4">
+            <div className="mb-6 flex items-center justify-center gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0F5366]">
                   Casos frecuentes
@@ -35,7 +35,7 @@ export function ProblemBenefit() {
               {problemChecklist.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 rounded-2xl border border-[#d9e8e4] bg-white/62 px-4 py-3"
+                  className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-[#d9e8e4] bg-white/62 px-4 py-3 text-center"
                 >
                   <CheckCircle2
                     className="size-5 shrink-0 text-[#2b9b9d]"
@@ -48,14 +48,12 @@ export function ProblemBenefit() {
               ))}
             </div>
 
-            <div className="mt-7">
+            <div className="mt-7 flex justify-center">
               <Button
                 href={buildWhatsappHref(
                   "Hola Borja, tengo dolor o una lesion y quiero saber si la fisioterapia a domicilio puede ayudarme.",
                 )}
                 variant="dark"
-                icon={<ArrowRight className="size-4" aria-hidden="true" />}
-                iconPosition="right"
               >
                 Consultar disponibilidad
               </Button>

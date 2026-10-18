@@ -11,19 +11,19 @@ export function FAQ() {
           align="center"
           eyebrow="FAQ"
           title="Preguntas frecuentes"
-          description="Dudas habituales antes de reservar una sesión de fisioterapia a domicilio en Madrid."
+          description="Dudas habituales sobre la consulta en Arganzuela y las sesiones a domicilio en Madrid."
         />
 
         <div className="mt-10 grid gap-4">
           {faqItems.map((item, index) => (
-            <GlassCard key={item.question} className="overflow-hidden" hover={false}>
+            <GlassCard key={item.question} className="overflow-hidden">
               <details className="group" open={index === 0}>
-                <summary className="flex cursor-pointer items-center justify-between gap-5 px-6 py-5 text-left">
+                <summary className="relative flex cursor-pointer items-center justify-center px-12 py-5 text-center">
                   <span className="text-base font-semibold text-[#073B4C]">
                     {item.question}
                   </span>
                   <ChevronDown
-                    className="size-5 shrink-0 text-[#0F5366] transition group-open:rotate-180"
+                    className="absolute right-5 size-5 shrink-0 text-[#0F5366] transition group-open:rotate-180"
                     aria-hidden="true"
                   />
                 </summary>

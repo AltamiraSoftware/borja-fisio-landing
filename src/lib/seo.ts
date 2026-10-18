@@ -1,12 +1,14 @@
-import { contactConfig, siteConfig } from "@/lib/constants";
+import { contactConfig, locationConfig, siteConfig } from "@/lib/constants";
 import { faqItems, services } from "@/data/landing";
+import type { Treatment } from "@/types/content";
+import { getTreatmentPath } from "@/content/treatments";
 
 type JsonLdObject = Record<string, unknown>;
 
 export function getLandingJsonLd(): JsonLdObject[] {
   const personId = `${siteConfig.url}/#borja-estarellas`;
-  const businessId = `${siteConfig.url}/#fisioterapia`;
-  const serviceId = `${siteConfig.url}/#servicio-domicilio`;
+  const businessId = `${siteConfig.url}/#organization`;
+  const serviceId = `${siteConfig.url}/#fisioterapia-madrid`;
   const telephone = contactConfig.whatsappNumber.replace(/[^\d+]/g, "");
 
   return [
@@ -30,6 +32,7 @@ export function getLandingJsonLd(): JsonLdObject[] {
         "Tendinopatías",
         "Esguinces",
         "Fascitis plantar",
+        "Ecografía musculoesquelética",
       ],
     },
     {
@@ -39,66 +42,43 @@ export function getLandingJsonLd(): JsonLdObject[] {
       name: siteConfig.fullName,
       url: siteConfig.url,
       description:
-        "Fisioterapia a domicilio en Madrid para dolor, lesiones deportivas y recuperación funcional.",
+        "Fisioterapia en Madrid para dolor, lesiones deportivas y recuperación funcional. Consulta en Arganzuela y atención a domicilio.",
       image: `${siteConfig.url}/borja.png`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: locationConfig.address,
+        addressLocality: locationConfig.city,
+        addressRegion: "Madrid",
+        postalCode: locationConfig.postalCode,
+        addressCountry: "ES",
+      },
+      hasMap: locationConfig.mapsUrl,
       areaServed: {
         "@type": "City",
         name: "Madrid",
         sameAs: "https://en.wikipedia.org/wiki/Madrid",
       },
-      serviceArea: {
-        "@type": "GeoCircle",
-        geoMidpoint: {
-          "@type": "GeoCoordinates",
-          latitude: "40.4168",
-          longitude: "-3.7038",
-        },
-        geoRadius: "25000",
-      },
-      medicalSpecialty: "Physiotherapy",
-      priceRange: `Desde ${siteConfig.priceFrom}`,
       ...(telephone ? { telephone } : {}),
       ...(contactConfig.email ? { email: contactConfig.email } : {}),
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Madrid",
-        addressRegion: "Madrid",
-        addressCountry: "ES",
-      },
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-        ],
-        opens: "08:00",
-        closes: "21:00",
-      },
       sameAs: [],
     },
     {
       "@context": "https://schema.org",
       "@type": "Service",
       "@id": serviceId,
-      name: "Fisioterapia a domicilio en Madrid",
+      name: "Fisioterapia en Madrid",
       serviceType: "Fisioterapia",
       provider: {
         "@id": businessId,
       },
-      areaServed: {
-        "@type": "City",
-        name: "Madrid",
-      },
-      offers: {
-        "@type": "Offer",
-        price: "50",
-        priceCurrency: "EUR",
-        description: "Primera sesión de fisioterapia a domicilio desde 50 €.",
-        url: `${siteConfig.url}/#precio`,
-      },
+      areaServed: [
+        { "@type": "City", name: "Madrid" },
+        { "@type": "Place", name: `${locationConfig.neighborhood}, ${locationConfig.district}` },
+      ],
+      offers: [
+        { "@type": "Offer", name: "Primera sesión en consulta", price: "50", priceCurrency: "EUR", url: `${siteConfig.url}/tarifas` },
+        { "@type": "Offer", name: "Primera sesión a domicilio", price: "60", priceCurrency: "EUR", url: `${siteConfig.url}/tarifas` },
+      ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Tratamientos de fisioterapia",
@@ -159,9 +139,9 @@ export function getLandingJsonLd(): JsonLdObject[] {
       "@type": "WebPage",
       "@id": siteConfig.url,
       url: siteConfig.url,
-      name: `Fisioterapia a domicilio en Madrid | ${siteConfig.fullName}`,
+      name: `Fisioterapia en Arganzuela y Madrid | ${siteConfig.fullName}`,
       description:
-        "Fisioterapia a domicilio en Madrid para dolor, lesiones deportivas y recuperación funcional. Tratamiento personalizado con Borja Estarellas desde 50 €.",
+        "Consulta de fisioterapia en Arganzuela y atención a domicilio en Madrid con Borja Estarellas.",
       isPartOf: {
         "@id": siteConfig.url,
       },
@@ -172,4 +152,43 @@ export function getLandingJsonLd(): JsonLdObject[] {
       availableLanguage: "es",
     },
   ];
+}
+
+export function getTreatmentJsonLd(treatment: Treatment): JsonLdObject {
+  const path = getTreatmentPath(treatment.slug);
+  const url = `${siteConfig.url}${path}`;
+  const providerId = `${siteConfig.url}/#organization`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${url}/#service`,
+        name: treatment.hero.h1,
+        description: treatment.seo.description,
+        serviceType: "Fisioterapia",
+        areaServed: { "@type": "City", name: "Madrid" },
+        provider: { "@id": providerId },
+        url,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: siteConfig.url },
+          { "@type": "ListItem", position: 2, name: "Tratamientos", item: `${siteConfig.url}/tratamientos` },
+          { "@type": "ListItem", position: 3, name: treatment.name, item: url },
+        ],
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${url}/#webpage`,
+        url,
+        name: treatment.seo.title,
+        description: treatment.seo.description,
+        inLanguage: "es",
+        about: { "@id": `${url}/#service` },
+      },
+    ],
+  };
 }

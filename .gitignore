@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.pnpm-store
 /.pnp
 .pnp.*
 .yarn/*
@@ -15,6 +16,7 @@
 
 # next.js
 /.next/
+/.next*/          # incl. .next.stale-* backups — Tailwind v4 scans unignored dirs and chokes on binary caches
 /out/
 
 # production
