@@ -1,9 +1,7 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnpm-store
-/.pnp
+# dependencias
+node_modules/
+.pnpm-store/
+.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -11,33 +9,59 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# next.js: build y cachés (.next, y las variantes .next-host / .next-container)
+.next/
+.next*/
+out/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# testing / producción
 /coverage
-
-# next.js
-/.next/
-/.next*/          # incl. .next.stale-* backups — Tailwind v4 scans unignored dirs and chokes on binary caches
-/out/
-
-# production
 /build
+/dist
 
-# misc
-.DS_Store
-*.pem
+# entorno
+.env
+.env*
+!.env.example
 
-# debug
+# despliegue
+.vercel/
+
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# sistema / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# material de trabajo y herramientas de IA (no forma parte del sitio)
+design-systemB/
+fisioterapia/
+Tratamientos_Borja_Arganzuela/
+fisiomarca.txt
+logo-preview.png
+.codex/
+.hermes/
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.continue/
+AGENTS.md
+CLAUDE.md
+.copilot-instructions.md
+.github/copilot-instructions.md
+prompts/
+notes/
+scratch/
+*.prompt.md
+*.bak
