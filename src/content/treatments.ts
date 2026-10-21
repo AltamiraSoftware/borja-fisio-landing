@@ -100,7 +100,7 @@ const imported = treatmentCatalogSlugs.map((slug): Treatment => {
     assessment: item.approach[0].description,
     plan: item.approach.map((step) => ({ title: step.title, body: step.description })),
     homeTreatment: item.slug === "fisioterapia-domicilio" ? item.modality.presencial : "Podemos adaptar la valoración y el ejercicio a tu domicilio en Madrid cuando tu caso lo permita. Confirma cobertura y disponibilidad antes de reservar.",
-    clinicTreatment: item.slug === "fisioterapia-domicilio" ? "También puedes acudir a la consulta independiente de Borja en Meraki Salud Chamberí, Chamberí, con cita previa." : item.modality.presencial,
+    clinicTreatment: item.slug === "fisioterapia-domicilio" ? "También puedes acudir a la consulta independiente de Borja en Meraki Salud Chamberí, en Almagro, con cita previa." : item.modality.presencial,
     clinicOnly: item.slug === "ecografia-musculoesqueletica",
     faq: item.faqs,
     relatedSlugs: item.relatedTreatments.map(({ href }) => href.split("/").pop() ?? ""),

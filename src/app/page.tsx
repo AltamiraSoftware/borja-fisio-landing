@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AboutBorja } from "@/components/landing/AboutBorja";
 import { CtaBanner } from "@/components/landing/CtaBanner";
 import { ContactSection } from "@/components/landing/ContactSection";
@@ -14,6 +15,18 @@ import { ScrollAnimations } from "@/components/landing/ScrollAnimations";
 import { Services } from "@/components/landing/Services";
 import { WhoIsFor } from "@/components/landing/WhoIsFor";
 import { getLandingJsonLd } from "@/lib/seo";
+import { siteConfig } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: { absolute: "Borja Estarellas | Fisioterapeuta en Madrid" },
+  description: "Fisioterapia individual con Borja Estarellas. Tratamiento musculoesquelético y deportivo, ejercicio terapéutico y atención en consulta o a domicilio en Madrid.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Borja Estarellas | Fisioterapeuta en Madrid",
+    description: "Conoce el enfoque de Borja Estarellas y sus modalidades de fisioterapia en Madrid.",
+    url: siteConfig.url,
+  },
+};
 
 export default function Home() {
   const jsonLd = getLandingJsonLd();
@@ -29,8 +42,10 @@ export default function Home() {
       <ScrollAnimations />
       <Header />
       <main className="page-flow-bg">
-        <Hero />
-        <ContactSection />
+        <div className="home-intro-bg">
+          <Hero />
+          <ContactSection />
+        </div>
         <Modalities />
         <Services />
         <WhoIsFor />

@@ -1,4 +1,4 @@
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import { navLinks } from "@/data/landing";
 import { contactConfig, locationConfig, siteConfig } from "@/lib/constants";
@@ -12,7 +12,7 @@ export function Footer() {
         <div>
           <Image src="/logo.svg" alt={siteConfig.fullName} width={240} height={45} className="h-auto w-60 max-w-full" />
           <p className="mt-2 text-sm text-white/62">
-            Fisioterapeuta colegiado en Madrid.
+            Fisioterapeuta colegiado en Madrid · n.º {siteConfig.registrationNumber}.
           </p>
           <p className="mt-6 max-w-xl text-sm leading-7 text-white/54">
             La información de esta web es orientativa y no sustituye una
@@ -40,20 +40,14 @@ export function Footer() {
               <WhatsAppIcon className="size-4" />
               WhatsApp
             </a>
-            {contactConfig.email ? (
-              <a
-                href={`mailto:${contactConfig.email}`}
-                className="inline-flex items-center gap-3 transition hover:text-white"
-              >
-                <Mail className="size-4" aria-hidden="true" />
-                {contactConfig.email}
-              </a>
-            ) : (
-              <span className="inline-flex items-center gap-3 transition hover:text-white">
-                <Mail className="size-4" aria-hidden="true" />
-                estarellas11088@gmail.com
-              </span>
-            )}
+            <a href={`tel:${contactConfig.phoneE164}`} className="inline-flex items-center gap-3 transition hover:text-white">
+              <Phone className="size-4" aria-hidden="true" />
+              {contactConfig.phone}
+            </a>
+            <a href={`mailto:${contactConfig.email}`} className="inline-flex items-center gap-3 transition hover:text-white">
+              <Mail className="size-4" aria-hidden="true" />
+              {contactConfig.email}
+            </a>
             <a href="/fisioterapia-chamberi" className="inline-flex items-start gap-3 transition hover:text-white">
               <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
               <span><strong className="block font-semibold text-white">Consulta en Meraki Salud Chamberí</strong>Coworking sanitario<br />{locationConfig.address}<br />{locationConfig.postalCode} Madrid · Chamberí</span>

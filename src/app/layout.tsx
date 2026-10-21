@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  applicationName: "Borja Estarellas Fisioterapia",
+  applicationName: siteConfig.name,
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Borja Fisio", statusBarStyle: "black-translucent" },
   title: {
-    default: "Fisioterapia en Chamberí y Madrid | Borja Estarellas",
+    default: "Borja Estarellas | Fisioterapeuta en Madrid",
     template: "%s | Borja Estarellas",
   },
   description:
@@ -36,14 +36,7 @@ export const metadata: Metadata = {
     "ejercicio terapéutico",
     "Borja Estarellas",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
-    title: "Fisioterapia en Chamberí y Madrid | Borja Estarellas",
-    description:
-      "Consulta de fisioterapia en Chamberí y atención a domicilio en Madrid con Borja Estarellas.",
-    url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "es_ES",
     type: "website",
@@ -52,15 +45,12 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Fisioterapia en Chamberí y Madrid - Borja Estarellas",
+        alt: "Fisio Estarellas - Borja Estarellas, fisioterapeuta en Madrid",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fisioterapia en Chamberí y Madrid | Borja Estarellas",
-    description:
-      "Consulta en Chamberí y fisioterapia a domicilio en Madrid.",
   },
   robots: {
     index: true,

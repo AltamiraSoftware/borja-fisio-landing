@@ -3,6 +3,8 @@ import Link from "next/link";
 import { CheckCircle2, Home, MapPinned } from "lucide-react";
 import { StandardPage } from "@/components/common/StandardPage";
 import { CtaBanner } from "@/components/landing/CtaBanner";
+import { ContactSection } from "@/components/landing/ContactSection";
+import { FAQ } from "@/components/landing/FAQ";
 import { LocationSection } from "@/components/landing/LocationSection";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -11,9 +13,14 @@ import { siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Rehabilitación a domicilio en Madrid | Fisioterapia en casa",
-  description: "Recupera movilidad y función con un plan de rehabilitación personalizado en tu domicilio en Madrid. Valoración, ejercicio y seguimiento profesional.",
+  title: { absolute: "Rehabilitación a domicilio en Madrid | Borja Estarellas" },
+  description: "Rehabilitación funcional en casa tras una operación o pérdida de movilidad. Borja Estarellas adapta el plan a tu domicilio en Madrid, según tu caso y zona.",
   alternates: { canonical: "/rehabilitacion-a-domicilio-madrid" },
+  openGraph: {
+    title: "Rehabilitación a domicilio en Madrid | Borja Estarellas",
+    description: "Recuperación funcional en casa según tu situación, zona y disponibilidad en Madrid.",
+    url: `${siteConfig.url}/rehabilitacion-a-domicilio-madrid`,
+  },
 };
 
 const cases = [
@@ -32,15 +39,19 @@ export default function RehabilitationPage() {
       title="Rehabilitación a domicilio en Madrid"
       intro="Recupera movilidad, fuerza y función con un plan personalizado en tu propia casa, sin añadir el esfuerzo de desplazarte."
       featureHero
+      afterContent={<ContactSection topic="rehabilitación a domicilio" />}
+      followingContent={<><LocationSection /><FAQ /></>}
+      finalContent={<CtaBanner title="Cuéntame qué necesitas recuperar" description="Valoramos tu caso, tu zona y la modalidad más adecuada antes de reservar." ctaText="Consultar por WhatsApp" whatsappMsg="Hola Borja, quiero consultar una sesión de rehabilitación en Madrid." />}
       heroActions={
         <>
-          <Button href={buildWhatsappHref("Hola Borja, quiero consultar un proceso de rehabilitación a domicilio en Madrid.")} size="lg">Consultar mi caso</Button>
+          <Button href="#contacto" size="lg">Consultar mi caso</Button>
           <Button href="#ubicacion" size="lg" variant="secondary">Ver la consulta</Button>
         </>
       }
     >
       <section>
         <SectionHeader align="center" eyebrow="Cuándo puede ayudarte" title="Un tratamiento pensado para tu situación" description="Si una lesión, una intervención o una limitación funcional hace difícil acudir a consulta, podemos valorar la rehabilitación en tu entorno y adaptar el plan a lo que necesitas volver a hacer." />
+        <p className="mx-auto mt-6 max-w-3xl text-center leading-8 text-[var(--color-muted)]">Esta modalidad se centra en recuperar funciones cotidianas tras una intervención o una pérdida de movilidad. Si buscas tratamiento de dolor o lesiones sin un proceso de rehabilitación específico, conoce la <Link href="/tratamientos/fisioterapia-domicilio" className="font-semibold text-[#0F5366] underline underline-offset-4">fisioterapia general a domicilio</Link>.</p>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {cases.map((item) => (
             <GlassCard key={item} variant="solid" className="group flex flex-col items-center p-7 text-center">
@@ -87,8 +98,6 @@ export default function RehabilitationPage() {
         </div>
       </section>
 
-      <LocationSection />
-      <CtaBanner title="Cuéntame qué necesitas recuperar" description="Valoramos tu caso, tu zona y la modalidad más adecuada antes de reservar." ctaText="Consultar por WhatsApp" whatsappMsg="Hola Borja, quiero consultar una sesión de rehabilitación en Madrid." />
     </StandardPage>
   );
 }

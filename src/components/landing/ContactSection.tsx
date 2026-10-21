@@ -16,7 +16,7 @@ function track(event: string, params: Record<string, string> = {}) {
   window.dataLayer.push({ event, event_category: "form", location: "contact_form", page_path: window.location.pathname, ...params });
 }
 
-export function ContactSection({ topic }: { topic?: string }) {
+export function ContactSection({ topic, headingLevel = 2 }: { topic?: string; headingLevel?: 1 | 2 }) {
   const [status, setStatus] = useState<"idle" | "error" | "ready">("idle");
   const [whatsappUrl, setWhatsappUrl] = useState("");
   const [contactPreference, setContactPreference] = useState("whatsapp");
@@ -61,7 +61,7 @@ export function ContactSection({ topic }: { topic?: string }) {
     <section id="contacto" className="premium-dark-bg relative scroll-mt-24 overflow-hidden px-4 py-20 text-white">
       <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <SectionHeader inverse eyebrow="Primer paso" title="Reserva o consulta una primera sesión" description="No necesitas tenerlo todo claro para escribir. Cuéntame brevemente qué ocurre y te orientaré sobre la consulta en Chamberí o la atención a domicilio." />
+          <SectionHeader inverse headingLevel={headingLevel} eyebrow="Primer paso" title="Reserva o consulta una primera sesión" description="No necesitas tenerlo todo claro para escribir. Cuéntame brevemente qué ocurre y te orientaré sobre la consulta en Chamberí o la atención a domicilio." />
           <div className="mt-9 grid gap-4">
             {[
               { title: "Primer contacto", text: "Escríbeme por WhatsApp o deja tus datos en el formulario.", icon: MessageCircle },

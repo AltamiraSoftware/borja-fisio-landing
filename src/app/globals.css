@@ -137,6 +137,15 @@ summary::-webkit-details-marker {
   );
 }
 
+.home-intro-bg {
+  background: linear-gradient(155deg, #052e3a 0%, #073b4c 56%, #0f5366 100%);
+}
+
+.home-intro-bg > .premium-hero-bg,
+.home-intro-bg > .premium-dark-bg {
+  background: transparent;
+}
+
 .text-gradient-cyan {
   background: linear-gradient(135deg, #ffffff 0%, #b7f7f2 42%, #2ec4c6 100%);
   -webkit-background-clip: text;

@@ -11,11 +11,17 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { getCatalogTreatments, getTreatmentPath } from "@/content/treatments";
 import { buildWhatsappHref } from "@/lib/utils";
+import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Tratamientos de fisioterapia en Madrid",
   description: "Explora los tratamientos de fisioterapia con Borja Estarellas en Madrid. Consulta en Chamberí y sesiones a domicilio según disponibilidad.",
   alternates: { canonical: "/tratamientos" },
+  openGraph: {
+    title: "Tratamientos de fisioterapia en Madrid | Borja Estarellas",
+    description: "Conoce los tratamientos de Borja Estarellas y elige entre consulta en Chamberí o atención a domicilio, según tu caso.",
+    url: `${siteConfig.url}/tratamientos`,
+  },
 };
 
 export default function TreatmentsPage() {

@@ -9,12 +9,15 @@ type StandardPageProps = {
   title: string;
   intro: string;
   children: ReactNode;
+  afterContent?: ReactNode;
+  followingContent?: ReactNode;
+  finalContent?: ReactNode;
   featureHero?: boolean;
   heroActions?: ReactNode;
   heroStrip?: ReactNode;
 };
 
-export function StandardPage({ eyebrow, title, intro, children, featureHero = false, heroActions, heroStrip }: StandardPageProps) {
+export function StandardPage({ eyebrow, title, intro, children, afterContent, followingContent, finalContent, featureHero = false, heroActions, heroStrip }: StandardPageProps) {
   return (
     <>
       <Header />
@@ -34,6 +37,13 @@ export function StandardPage({ eyebrow, title, intro, children, featureHero = fa
         <div className="page-flow-bg px-4 py-20">
           <div className="mx-auto max-w-7xl">{children}</div>
         </div>
+        {afterContent}
+        {followingContent && (
+          <div className="page-flow-bg px-4">
+            <div className="mx-auto max-w-7xl">{followingContent}</div>
+          </div>
+        )}
+        {finalContent && <div className="page-flow-bg">{finalContent}</div>}
       </main>
       <Footer />
       <FloatingWhatsApp />

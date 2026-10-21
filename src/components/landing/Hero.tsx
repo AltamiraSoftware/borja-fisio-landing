@@ -10,7 +10,6 @@ export function Hero() {
 
   return (
     <section id="inicio" className="premium-hero-bg relative isolate scroll-mt-24 overflow-hidden px-4 pb-12 pt-32 text-white sm:pt-36 md:pb-16 lg:pt-28">
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#052E3A] via-[#052E3A]/55 to-transparent" />
       <div className="absolute inset-y-0 right-0 -z-10 hidden w-1/2 bg-[linear-gradient(135deg,transparent_0%,rgba(255,255,255,0.10)_100%)] lg:block" />
       <div className="relative mx-auto grid min-h-[calc(100svh-14rem)] max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
         <div className="max-w-3xl">

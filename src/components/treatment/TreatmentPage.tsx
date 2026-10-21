@@ -15,6 +15,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
 import { TreatmentHeroStrip } from "@/components/treatment/TreatmentHeroStrip";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export function TreatmentPage({ treatment }: { treatment: Treatment }) {
   const whatsappHref = buildWhatsappHref(`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`);
@@ -44,6 +45,9 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
         />
 
         <div className="page-flow-bg">
+          <div className="mx-auto max-w-7xl px-4 pt-8">
+            <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Tratamientos", href: "/tratamientos" }, { label: treatment.name }]} />
+          </div>
           <section className="px-4 py-20">
             <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
@@ -106,6 +110,11 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
                   <Button className="mt-6 self-center" href={whatsappHref}>Consultar zona</Button>
                 </GlassCard>}
               </div>
+              {treatment.slug === "fisioterapia-domicilio" && (
+                <p className="mx-auto mt-7 max-w-3xl text-center leading-7 text-[var(--color-muted)]">
+                  Si necesitas recuperar movilidad o autonomía después de una intervención, consulta también la <Link href="/rehabilitacion-a-domicilio-madrid" className="font-semibold text-[#0F5366] underline underline-offset-4">rehabilitación a domicilio en Madrid</Link>.
+                </p>
+              )}
               {treatment.importedDetail && <p className="mx-auto mt-7 max-w-3xl text-center leading-7 text-[var(--color-muted)]">{treatment.importedDetail.onlineFollowup}</p>}
             </div>
           </section>

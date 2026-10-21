@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/constants";
 import { getAllTreatments, getTreatmentPath } from "@/content/treatments";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ["", "/fisioterapia-chamberi", "/rehabilitacion-a-domicilio-madrid", "/tratamientos", "/sobre-borja", "/tarifas", "/preguntas-frecuentes", "/contacto", "/politica-de-privacidad"];
+  const staticPaths = ["", "/fisioterapia-chamberi", "/rehabilitacion-a-domicilio-madrid", "/tratamientos", "/sobre-borja", "/tarifas", "/preguntas-frecuentes", "/contacto"];
 
   return [
     ...staticPaths.map((path, index) => ({
