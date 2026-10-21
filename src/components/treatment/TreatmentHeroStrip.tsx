@@ -3,7 +3,7 @@ import { Home, MapPinned, ShieldCheck, Stethoscope } from "lucide-react";
 export function TreatmentHeroStrip() {
   const items = [
     { icon: ShieldCheck, label: "Fisioterapeuta titulado" },
-    { icon: MapPinned, label: "Consulta en Arganzuela" },
+    { icon: MapPinned, label: "Consulta en Chamberí" },
     { icon: Home, label: "Atención a domicilio" },
     { icon: Stethoscope, label: "Valoración personalizada" },
   ];

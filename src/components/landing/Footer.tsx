@@ -54,9 +54,9 @@ export function Footer() {
                 estarellas11088@gmail.com
               </span>
             )}
-            <a href="/fisioterapia-arganzuela" className="inline-flex items-start gap-3 transition hover:text-white">
+            <a href="/fisioterapia-chamberi" className="inline-flex items-start gap-3 transition hover:text-white">
               <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-              <span><strong className="block font-semibold text-white">Consulta independiente · Meraki</strong>Coworking sanitario<br />{locationConfig.address}<br />{locationConfig.postalCode} Madrid · Arganzuela</span>
+              <span><strong className="block font-semibold text-white">Consulta en Meraki Salud Chamberí</strong>Coworking sanitario<br />{locationConfig.address}<br />{locationConfig.postalCode} Madrid · Chamberí</span>
             </a>
           </div>
         </div>
@@ -86,7 +86,7 @@ export function Footer() {
           derechos reservados.
         </p>
         <p className="mt-1">
-          Fisioterapia en Madrid · Consulta en Arganzuela · Atención a domicilio.
+          Fisioterapia en Madrid · Consulta en Chamberí · Atención a domicilio.
         </p>
         <a href="/politica-de-privacidad" className="mt-3 inline-block transition hover:text-white">Política de privacidad</a>
       </div>

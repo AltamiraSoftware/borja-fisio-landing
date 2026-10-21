@@ -14,7 +14,7 @@ import { buildWhatsappHref } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Tratamientos de fisioterapia en Madrid",
-  description: "Explora los tratamientos de fisioterapia con Borja Estarellas en Madrid. Consulta en Arganzuela y sesiones a domicilio según disponibilidad.",
+  description: "Explora los tratamientos de fisioterapia con Borja Estarellas en Madrid. Consulta en Chamberí y sesiones a domicilio según disponibilidad.",
   alternates: { canonical: "/tratamientos" },
 };
 
@@ -34,7 +34,7 @@ export default function TreatmentsPage() {
       }
     >
       <section id="tratamientos" className="scroll-mt-28">
-        <SectionHeader align="center" eyebrow="Tratamientos" title="Encuentra el cuidado que necesitas" description="Cada sesión parte de una valoración individual. Puedes acudir a la consulta de Arganzuela o preguntar por la atención a domicilio según tu caso y disponibilidad." />
+        <SectionHeader align="center" eyebrow="Tratamientos" title="Encuentra el cuidado que necesitas" description="Cada sesión parte de una valoración individual. Puedes acudir a la consulta de Chamberí o preguntar por la atención a domicilio según tu caso y disponibilidad." />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {getCatalogTreatments().map((treatment) => (
             <GlassCard key={treatment.slug} variant="solid" className="group flex min-h-72 flex-col p-7">

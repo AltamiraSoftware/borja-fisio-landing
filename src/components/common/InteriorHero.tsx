@@ -45,7 +45,7 @@ export function InteriorHero({ eyebrow, title, intro, actions, badges, strip }: 
                       <p className="truncate text-[15px] font-semibold leading-tight">{siteConfig.fullName}</p>
                       <p className="mt-0.5 flex items-center gap-1.5 text-[11px] font-medium text-[#5B6B73]">
                         <span className="size-1.5 shrink-0 rounded-full bg-[#2EC4C6]" aria-hidden="true" />
-                        Fisioterapeuta · Arganzuela
+                        Fisioterapeuta · Chamberí
                       </p>
                     </div>
                   </div>

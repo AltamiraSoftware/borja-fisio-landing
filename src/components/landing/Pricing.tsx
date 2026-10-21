@@ -10,15 +10,15 @@ export function Pricing() {
   return (
     <section id="precio" className="px-4 py-20">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader align="center" eyebrow="Tarifas" title="Dos modalidades, precios claros" description="Elige la consulta de Arganzuela o una sesión a domicilio en Madrid. Confirma la disponibilidad y la zona de desplazamiento antes de reservar." />
+        <SectionHeader align="center" eyebrow="Tarifas" title="Dos modalidades, precios claros" description="Elige la consulta de Chamberí o una sesión a domicilio en Madrid. Confirma la disponibilidad y la zona de desplazamiento antes de reservar." />
         <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_1fr_1.1fr]">
           <GlassCard variant="solid" className="group flex flex-col items-center p-7 text-center md:p-8">
             <div className="card-icon"><MapPinned aria-hidden="true" /></div>
             <h3 className="mt-5 text-2xl font-semibold text-[#073B4C]">En consulta</h3>
-            <p className="mt-2 flex min-h-[4.5rem] items-center justify-center text-sm leading-6 text-[var(--color-muted)]">Consulta independiente en Meraki, coworking sanitario · Rafael de Riego, 11</p>
+            <p className="mt-2 flex min-h-[4.5rem] items-center justify-center text-sm leading-6 text-[var(--color-muted)]">Consulta independiente en Meraki Salud Chamberí, coworking sanitario · Caracas, 6, bajo izquierda</p>
             <p className="mt-6 text-5xl font-semibold tracking-tight text-[#073B4C]">{siteConfig.priceClinic}</p>
             <p className="mt-2 text-sm text-[var(--color-muted)]">Primera sesión</p>
-            <div className="mt-auto pt-8"><Button href={buildWhatsappHref("Hola Borja, quiero reservar una sesión presencial en la consulta de Arganzuela.")}>Consultar cita</Button></div>
+            <div className="mt-auto pt-8"><Button href={buildWhatsappHref("Hola Borja, quiero reservar una sesión presencial en la consulta de Chamberí.")}>Consultar cita</Button></div>
           </GlassCard>
           <GlassCard variant="solid" className="group flex flex-col items-center p-7 text-center md:p-8">
             <div className="card-icon"><Home aria-hidden="true" /></div>

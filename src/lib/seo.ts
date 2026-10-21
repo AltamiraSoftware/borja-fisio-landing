@@ -42,7 +42,7 @@ export function getLandingJsonLd(): JsonLdObject[] {
       name: siteConfig.fullName,
       url: siteConfig.url,
       description:
-        "Fisioterapia en Madrid para dolor, lesiones deportivas y recuperación funcional. Consulta en Arganzuela y atención a domicilio.",
+        "Fisioterapia en Madrid para dolor, lesiones deportivas y recuperación funcional. Consulta en Chamberí y atención a domicilio.",
       image: `${siteConfig.url}/borja.png`,
       address: {
         "@type": "PostalAddress",
@@ -139,9 +139,9 @@ export function getLandingJsonLd(): JsonLdObject[] {
       "@type": "WebPage",
       "@id": siteConfig.url,
       url: siteConfig.url,
-      name: `Fisioterapia en Arganzuela y Madrid | ${siteConfig.fullName}`,
+      name: `Fisioterapia en Chamberí y Madrid | ${siteConfig.fullName}`,
       description:
-        "Consulta de fisioterapia en Arganzuela y atención a domicilio en Madrid con Borja Estarellas.",
+        "Consulta de fisioterapia en Chamberí y atención a domicilio en Madrid con Borja Estarellas.",
       isPartOf: {
         "@id": siteConfig.url,
       },

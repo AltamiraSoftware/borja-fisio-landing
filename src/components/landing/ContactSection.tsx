@@ -41,7 +41,7 @@ export function ContactSection({ topic }: { topic?: string }) {
     const reason = String(form.get("reason") ?? "").trim();
     const selectedContactPreference = String(form.get("contactPreference") ?? "whatsapp");
     const modality = String(form.get("modality") ?? "me_da_igual");
-    const modalityLabel = { domicilio: "a domicilio", gabinete: "consulta en Arganzuela", me_da_igual: "me da igual" }[modality] ?? modality;
+    const modalityLabel = { domicilio: "a domicilio", gabinete: "consulta en Chamberí", me_da_igual: "me da igual" }[modality] ?? modality;
     const message = [
       `Hola Borja, soy ${name}. Quiero consultar una sesión de fisioterapia${topic ? ` sobre ${topic.toLowerCase()}` : ""}.`,
       `Mi teléfono: ${phone}.${email ? ` Mi email: ${email}.` : ""}`,
@@ -61,7 +61,7 @@ export function ContactSection({ topic }: { topic?: string }) {
     <section id="contacto" className="premium-dark-bg relative scroll-mt-24 overflow-hidden px-4 py-20 text-white">
       <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <SectionHeader inverse eyebrow="Primer paso" title="Reserva o consulta una primera sesión" description="No necesitas tenerlo todo claro para escribir. Cuéntame brevemente qué ocurre y te orientaré sobre la consulta en Arganzuela o la atención a domicilio." />
+          <SectionHeader inverse eyebrow="Primer paso" title="Reserva o consulta una primera sesión" description="No necesitas tenerlo todo claro para escribir. Cuéntame brevemente qué ocurre y te orientaré sobre la consulta en Chamberí o la atención a domicilio." />
           <div className="mt-9 grid gap-4">
             {[
               { title: "Primer contacto", text: "Escríbeme por WhatsApp o deja tus datos en el formulario.", icon: MessageCircle },

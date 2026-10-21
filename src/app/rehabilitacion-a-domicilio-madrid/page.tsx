@@ -52,7 +52,7 @@ export default function RehabilitationPage() {
       </section>
 
       <section className="py-20">
-        <SectionHeader align="center" eyebrow="Modalidades" title="En casa o en la consulta de Arganzuela" description="La atención a domicilio se confirma según zona y disponibilidad. Si prefieres acudir en persona, Borja también atiende en una consulta independiente dentro de Meraki, coworking sanitario." />
+        <SectionHeader align="center" eyebrow="Modalidades" title="En casa o en la consulta de Chamberí" description="La atención a domicilio se confirma según zona y disponibilidad. Si prefieres acudir en persona, Borja también atiende en una consulta independiente dentro de Meraki Salud Chamberí, coworking sanitario." />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <GlassCard variant="solid" className="group flex flex-col p-8 md:p-10">
             <div className="card-icon"><Home aria-hidden="true" /></div>
@@ -63,10 +63,10 @@ export default function RehabilitationPage() {
           </GlassCard>
           <GlassCard variant="solid" className="group flex flex-col p-8 md:p-10">
             <div className="card-icon"><MapPinned aria-hidden="true" /></div>
-            <h3 className="mt-6 text-center text-2xl font-semibold text-[#073B4C]">Consulta en Arganzuela</h3>
-            <p className="mt-4 flex-1 text-center leading-8 text-[var(--color-muted)]">Una alternativa presencial en la calle de Rafael de Riego, 11, en Palos de la Frontera. Atención siempre con cita previa.</p>
+            <h3 className="mt-6 text-center text-2xl font-semibold text-[#073B4C]">Consulta en Chamberí</h3>
+            <p className="mt-4 flex-1 text-center leading-8 text-[var(--color-muted)]">Una alternativa presencial en la calle de Caracas, 6, bajo izquierda, en Almagro. Atención siempre con cita previa.</p>
             <p className="mt-5 text-center text-lg font-semibold text-[#073B4C]">Desde {siteConfig.priceClinic}</p>
-            <Button className="mt-6 self-center" href="/fisioterapia-arganzuela">Conocer la consulta</Button>
+            <Button className="mt-6 self-center" href="/fisioterapia-chamberi">Conocer la consulta</Button>
           </GlassCard>
         </div>
       </section>

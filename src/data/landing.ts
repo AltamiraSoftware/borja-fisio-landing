@@ -2,7 +2,7 @@ import { importedTreatments, treatmentCatalogSlugs } from "@/content/importedTre
 
 export const navLinks = [
   { label: "Tratamientos", href: "/tratamientos" },
-  { label: "Consulta en Arganzuela", href: "/fisioterapia-arganzuela" },
+  { label: "Consulta en Chamberí", href: "/fisioterapia-chamberi" },
   { label: "A domicilio", href: "/rehabilitacion-a-domicilio-madrid" },
   { label: "Sobre Borja", href: "/sobre-borja" },
   { label: "Tarifas", href: "/tarifas" },
@@ -28,7 +28,7 @@ export const trustItems = [
   {
     icon: "map",
     title: "Consulta y domicilio",
-    text: "Consulta en Arganzuela y atención a domicilio en Madrid.",
+    text: "Consulta en Chamberí y atención a domicilio en Madrid.",
   },
 ] as const;
 
@@ -130,7 +130,7 @@ export const faqItems = [
   {
     question: "¿También tienes consulta o gabinete?",
     answer:
-      "Sí. Borja atiende en el espacio Meraki de la calle de Rafael de Riego, 11, en Arganzuela. También ofrece atención a domicilio en Madrid; confirma disponibilidad antes de reservar.",
+      "Sí. Borja atiende en el espacio Meraki Salud Chamberí de la calle de Caracas, 6, bajo izquierda, en Chamberí. También ofrece atención a domicilio en Madrid; confirma disponibilidad antes de reservar.",
   },
   {
     question: "¿Qué necesito preparar para la sesión en casa?",

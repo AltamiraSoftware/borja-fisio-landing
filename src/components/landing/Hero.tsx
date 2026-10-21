@@ -14,7 +14,7 @@ export function Hero() {
       <div className="absolute inset-y-0 right-0 -z-10 hidden w-1/2 bg-[linear-gradient(135deg,transparent_0%,rgba(255,255,255,0.10)_100%)] lg:block" />
       <div className="relative mx-auto grid min-h-[calc(100svh-14rem)] max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
         <div className="max-w-3xl">
-          <p className="mb-5 inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold tracking-[0.08em] text-[#b7f7f2] backdrop-blur-xl">FISIOTERAPIA EN ARGANZUELA · MADRID</p>
+          <p className="mb-5 inline-flex rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold tracking-[0.08em] text-[#b7f7f2] backdrop-blur-xl">FISIOTERAPIA EN CHAMBERÍ · MADRID</p>
 
           <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.02em] sm:text-5xl sm:leading-[1.02] md:text-6xl lg:text-7xl">
             Recupera tu <span className="text-gradient-cyan">movilidad</span>. Vuelve a hacer lo que te gusta.
@@ -45,7 +45,7 @@ export function Hero() {
           <p className="mt-5 inline-flex max-w-2xl items-start gap-2 rounded-2xl border border-white/14 bg-[#052E3A]/55 px-3.5 py-2.5 text-sm font-medium leading-6 text-white backdrop-blur-sm">
             <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[#2EC4C6]" aria-hidden="true" />
             <span>
-              Consulta en Arganzuela desde {siteConfig.priceClinic} y atención a domicilio desde {siteConfig.priceHome}, según disponibilidad.
+              Consulta en Chamberí desde {siteConfig.priceClinic} y atención a domicilio desde {siteConfig.priceHome}, según disponibilidad.
             </span>
           </p>
         </div>
@@ -65,7 +65,7 @@ export function Hero() {
                     <p className="truncate text-[15px] font-semibold leading-tight">{siteConfig.fullName}</p>
                     <p className="mt-0.5 flex items-center gap-1.5 text-[11px] font-medium text-[#5B6B73]">
                       <span className="size-1.5 shrink-0 rounded-full bg-[#2EC4C6]" aria-hidden="true" />
-                      Fisioterapeuta · Arganzuela, Madrid
+                      Fisioterapeuta · Chamberí, Madrid
                     </p>
                   </div>
                 </div>

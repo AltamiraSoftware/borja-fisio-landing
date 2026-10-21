@@ -13,18 +13,18 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Borja Fisio", statusBarStyle: "black-translucent" },
   title: {
-    default: "Fisioterapia en Arganzuela y Madrid | Borja Estarellas",
+    default: "Fisioterapia en Chamberí y Madrid | Borja Estarellas",
     template: "%s | Borja Estarellas",
   },
   description:
-    "Fisioterapia con Borja Estarellas en Madrid. Consulta en Palos de la Frontera, Arganzuela, y atención a domicilio. Valoración, tratamiento y ejercicio terapéutico.",
+    "Fisioterapia con Borja Estarellas en Madrid. Consulta en Almagro, Chamberí, y atención a domicilio. Valoración, tratamiento y ejercicio terapéutico.",
   keywords: [
     "fisioterapia a domicilio",
     "fisioterapeuta Madrid",
     "fisioterapia a domicilio Madrid",
-    "fisioterapia Arganzuela",
-    "fisioterapeuta Palos de la Frontera",
-    "fisioterapia Delicias Madrid",
+    "fisioterapia Chamberí",
+    "fisioterapeuta Almagro",
+    "fisioterapia Almagro Madrid",
     "dolor lumbar",
     "dolor cervical",
     "lesiones deportivas",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Fisioterapia en Arganzuela y Madrid | Borja Estarellas",
+    title: "Fisioterapia en Chamberí y Madrid | Borja Estarellas",
     description:
-      "Consulta de fisioterapia en Arganzuela y atención a domicilio en Madrid con Borja Estarellas.",
+      "Consulta de fisioterapia en Chamberí y atención a domicilio en Madrid con Borja Estarellas.",
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "es_ES",
@@ -52,15 +52,15 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Fisioterapia en Arganzuela y Madrid - Borja Estarellas",
+        alt: "Fisioterapia en Chamberí y Madrid - Borja Estarellas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fisioterapia en Arganzuela y Madrid | Borja Estarellas",
+    title: "Fisioterapia en Chamberí y Madrid | Borja Estarellas",
     description:
-      "Consulta en Arganzuela y fisioterapia a domicilio en Madrid.",
+      "Consulta en Chamberí y fisioterapia a domicilio en Madrid.",
   },
   robots: {
     index: true,

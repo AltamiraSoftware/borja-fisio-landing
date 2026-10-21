@@ -32,7 +32,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           strip={<TreatmentHeroStrip />}
           badges={treatment.importedDetail?.heroBadges.map((badge) => (
             <span key={badge} className="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold text-white/90">
-              {!homeFocused && badge === "Domicilio en Madrid" ? "Consulta en Arganzuela" : badge}
+              {!homeFocused && badge === "Domicilio en Madrid" ? "Consulta en Chamberí" : badge}
             </span>
           ))}
           actions={
@@ -89,14 +89,14 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
           <section className="px-4 py-20">
             <div className="mx-auto max-w-7xl">
-              <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? "Ecografía en la consulta de Arganzuela" : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? "El ecógrafo está disponible en la consulta independiente de Borja dentro de Meraki, coworking sanitario, en Arganzuela." : "Borja atiende en una consulta independiente dentro de Meraki, coworking sanitario, en Arganzuela. También puedes preguntar por las sesiones a domicilio en Madrid."} />
+              <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? "Ecografía en la consulta de Chamberí" : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? "El ecógrafo está disponible en la consulta independiente de Borja dentro de Meraki Salud Chamberí, coworking sanitario, en Chamberí." : "Borja atiende en una consulta independiente dentro de Meraki Salud Chamberí, coworking sanitario, en Chamberí. También puedes preguntar por las sesiones a domicilio en Madrid."} />
               <div className={`mt-12 grid gap-6 ${treatment.clinicOnly ? "mx-auto max-w-2xl" : "md:grid-cols-2"}`}>
                 <GlassCard variant="solid" className="group flex flex-col p-8 text-center md:p-10">
                   <div className="card-icon"><MapPinned aria-hidden="true" /></div>
-                  <h3 className="mt-6 text-2xl font-semibold text-[#073B4C]">Consulta en Arganzuela</h3>
-                  <p className="mt-4 flex-1 leading-8 text-[var(--color-muted)]">{treatment.clinicTreatment ?? "Atención presencial en Rafael de Riego, 11, Palos de la Frontera. Confirma disponibilidad antes de acudir."}</p>
+                  <h3 className="mt-6 text-2xl font-semibold text-[#073B4C]">Consulta en Chamberí</h3>
+                  <p className="mt-4 flex-1 leading-8 text-[var(--color-muted)]">{treatment.clinicTreatment ?? "Atención presencial en Caracas, 6, bajo izquierda, Almagro. Confirma disponibilidad antes de acudir."}</p>
                   {!treatment.clinicOnly && <p className="mt-5 text-lg font-semibold text-[#073B4C]">Desde {siteConfig.priceClinic}</p>}
-                  <Button className="mt-6 self-center" href="/fisioterapia-arganzuela">Ver la consulta</Button>
+                  <Button className="mt-6 self-center" href="/fisioterapia-chamberi">Ver la consulta</Button>
                 </GlassCard>
                 {!treatment.clinicOnly && <GlassCard variant="solid" className="group flex flex-col p-8 text-center md:p-10">
                   <div className="card-icon"><Home aria-hidden="true" /></div>

@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Borja Estarellas Fisioterapia",
     short_name: "Borja Fisio",
-    description: "Fisioterapia en Arganzuela y a domicilio en Madrid.",
+    description: "Fisioterapia en Chamberí y a domicilio en Madrid.",
     start_url: "/",
     display: "standalone",
     background_color: "#f7faf8",

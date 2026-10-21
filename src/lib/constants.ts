@@ -11,13 +11,14 @@ export const siteConfig = {
 };
 
 export const locationConfig = {
-  address: "Calle de Rafael de Riego, 11",
-  postalCode: "28045",
-  neighborhood: "Palos de la Frontera",
-  district: "Arganzuela",
+  venueName: "Meraki Salud Chamberí",
+  address: "Calle de Caracas, 6, bajo izquierda",
+  postalCode: "28010",
+  neighborhood: "Almagro",
+  district: "Chamberí",
   city: "Madrid",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Calle+de+Rafael+de+Riego+11%2C+28045+Madrid",
-  embedUrl: "https://www.google.com/maps?q=Calle+de+Rafael+de+Riego+11%2C+28045+Madrid&output=embed",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Meraki+Salud+Chamber%C3%AD%2C+Calle+de+Caracas+6%2C+28010+Madrid",
+  embedUrl: "https://www.google.com/maps?q=Meraki+Salud+Chamber%C3%AD%2C+Calle+de+Caracas+6%2C+28010+Madrid&output=embed",
 } as const;
 
 export const contactConfig = {

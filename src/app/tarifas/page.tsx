@@ -9,20 +9,20 @@ import { buildWhatsappHref } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Tarifas de fisioterapia en Madrid",
-  description: "Primera sesión de fisioterapia con Borja Estarellas: 50 € en consulta en Arganzuela y 60 € a domicilio en Madrid.",
+  description: "Primera sesión de fisioterapia con Borja Estarellas: 50 € en consulta en Chamberí y 60 € a domicilio en Madrid.",
   alternates: { canonical: "/tarifas" },
 };
 
 export default function PricesPage() {
   return (
-    <StandardPage eyebrow="Información clara" title="Tarifas de fisioterapia" intro="Primera sesión presencial en Arganzuela por 50 € o a domicilio en Madrid por 60 €. Confirma zona y disponibilidad antes de reservar.">
+    <StandardPage eyebrow="Información clara" title="Tarifas de fisioterapia" intro="Primera sesión presencial en Chamberí por 50 € o a domicilio en Madrid por 60 €. Confirma zona y disponibilidad antes de reservar.">
       <div className="grid gap-6 md:grid-cols-2">
         <GlassCard variant="solid" className="flex flex-col items-center p-8 md:p-10" hover={false}>
           <MapPinned className="size-8 text-[#0F5366]" aria-hidden="true" />
-          <h2 className="mt-5 text-2xl font-semibold text-[#073B4C]">En consulta · Arganzuela</h2>
+          <h2 className="mt-5 text-2xl font-semibold text-[#073B4C]">En consulta · Chamberí</h2>
           <p className="mt-3 text-5xl font-semibold tracking-tight text-[#073B4C]">{siteConfig.priceClinic}</p>
-          <p className="mt-5 flex-1 leading-7 text-[var(--color-muted)]">Consulta independiente en Meraki, coworking sanitario · Calle de Rafael de Riego, 11. Atención con cita previa.</p>
-          <div className="mt-auto flex justify-center pt-8"><Button href={buildWhatsappHref("Hola Borja, quiero pedir una cita presencial en Arganzuela.")}>Pedir cita en consulta</Button></div>
+          <p className="mt-5 flex-1 leading-7 text-[var(--color-muted)]">Consulta independiente en Meraki Salud Chamberí, coworking sanitario · Calle de Caracas, 6, bajo izquierda. Atención con cita previa.</p>
+          <div className="mt-auto flex justify-center pt-8"><Button href={buildWhatsappHref("Hola Borja, quiero pedir una cita presencial en Chamberí.")}>Pedir cita en consulta</Button></div>
         </GlassCard>
         <GlassCard variant="solid" className="flex flex-col items-center p-8 md:p-10" hover={false}>
           <Home className="size-8 text-[#0F5366]" aria-hidden="true" />

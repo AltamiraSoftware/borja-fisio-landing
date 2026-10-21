@@ -11,7 +11,7 @@ export function FAQ() {
           align="center"
           eyebrow="FAQ"
           title="Preguntas frecuentes"
-          description="Dudas habituales sobre la consulta en Arganzuela y las sesiones a domicilio en Madrid."
+          description="Dudas habituales sobre la consulta en Chamberí y las sesiones a domicilio en Madrid."
         />
 
         <div className="mt-10 grid gap-4">
