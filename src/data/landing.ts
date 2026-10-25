@@ -3,7 +3,7 @@ import { importedTreatments, treatmentCatalogSlugs } from "@/content/importedTre
 export const navLinks = [
   { label: "Tratamientos", href: "/tratamientos" },
   { label: "Consulta en Chamberí", href: "/fisioterapia-chamberi" },
-  { label: "A domicilio", href: "/rehabilitacion-a-domicilio-madrid" },
+  { label: "A domicilio", href: "/tratamientos/fisioterapia-domicilio" },
   { label: "Sobre Borja", href: "/sobre-borja" },
   { label: "Tarifas", href: "/tarifas" },
   { label: "Contacto", href: "/contacto" },
@@ -55,7 +55,7 @@ const serviceIcons: Record<(typeof treatmentCatalogSlugs)[number], "dumbbell" | 
   "fisioterapia-domicilio": "home",
 };
 
-export const services = treatmentCatalogSlugs.map((slug) => {
+export const services = treatmentCatalogSlugs.filter((slug) => slug !== "fisioterapia-domicilio").map((slug) => {
   const treatment = importedTreatments[slug];
   return {
     icon: serviceIcons[slug],
@@ -63,6 +63,11 @@ export const services = treatmentCatalogSlugs.map((slug) => {
     text: treatment.cardDescription,
     href: treatment.path,
   };
+}).concat({
+  icon: "home",
+  title: "Rehabilitación a domicilio",
+  text: "Recuperación de movilidad, fuerza y autonomía en casa tras una operación o una pérdida de movilidad.",
+  href: "/rehabilitacion-a-domicilio-madrid",
 });
 
 export const whoIsFor = [
@@ -130,7 +135,7 @@ export const faqItems = [
   {
     question: "¿También tienes consulta o gabinete?",
     answer:
-      "Sí. Borja atiende en el espacio Meraki Salud Chamberí de la calle de Caracas, 6, bajo izquierda, en Chamberí. También ofrece atención a domicilio en Madrid; confirma disponibilidad antes de reservar.",
+      "Sí. Borja atiende en una consulta independiente dentro del centro Meraki Salud Chamberí, en la calle de Caracas, 6, bajo izquierda. También ofrece atención a domicilio en Madrid; confirma disponibilidad antes de reservar.",
   },
   {
     question: "¿Qué necesito preparar para la sesión en casa?",

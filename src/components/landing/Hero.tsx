@@ -44,7 +44,7 @@ export function Hero() {
           <p className="mt-5 inline-flex max-w-2xl items-start gap-2 rounded-2xl border border-white/14 bg-[#052E3A]/55 px-3.5 py-2.5 text-sm font-medium leading-6 text-white backdrop-blur-sm">
             <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[#2EC4C6]" aria-hidden="true" />
             <span>
-              Consulta en Chamberí desde {siteConfig.priceClinic} y atención a domicilio desde {siteConfig.priceHome}, según disponibilidad.
+              Consulta independiente dentro del centro Meraki Salud Chamberí desde {siteConfig.priceClinic} y atención a domicilio desde {siteConfig.priceHome}, según disponibilidad.
             </span>
           </p>
         </div>

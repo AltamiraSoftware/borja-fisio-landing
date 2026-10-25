@@ -15,7 +15,7 @@ export function Modalities() {
             <div className="card-icon"><MapPinned aria-hidden="true" /></div>
             <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-[#0F5366]">Almagro · Chamberí</p>
             <h3 className="mt-3 flex min-h-[4.5rem] items-center justify-center text-3xl font-semibold text-[#073B4C]">Consulta en Chamberí</h3>
-            <p className="mt-5 leading-8 text-[var(--color-muted)]">Borja atiende en una consulta independiente dentro de Meraki Salud Chamberí, coworking sanitario, en la calle de Caracas, 6, bajo izquierda. Solicita cita antes de acudir para confirmar horario y disponibilidad.</p>
+            <p className="mt-5 leading-8 text-[var(--color-muted)]">Borja atiende en una consulta independiente dentro del centro Meraki Salud Chamberí, en la calle de Caracas, 6, bajo izquierda. Solicita cita antes de acudir para confirmar horario y disponibilidad.</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3 text-sm font-medium text-[#073B4C]"><span className="rounded-full bg-[#eef5f3] px-4 py-2">En Almagro, Chamberí</span><span className="rounded-full bg-[#eef5f3] px-4 py-2">Valoración personalizada</span></div>
             <div className="mt-auto flex justify-center pt-8"><Button href="/fisioterapia-chamberi">Ver la consulta</Button></div>
           </GlassCard>

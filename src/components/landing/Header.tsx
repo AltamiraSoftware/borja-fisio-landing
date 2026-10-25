@@ -81,7 +81,8 @@ export function Header() {
           aria-label="Ir al inicio"
           onClick={handleNavClick}
         >
-          <Image src="/logo.svg" alt="" width={215} height={40} className="h-auto w-[clamp(160px,54vw,215px)]" priority />
+          <Image src="/logo.png" alt="" width={52} height={52} className="size-11 rounded-full object-cover sm:size-13" priority />
+          <span className="whitespace-nowrap text-sm font-semibold tracking-wide sm:text-base">Borja Estarellas</span>
         </Link>
 
         <nav

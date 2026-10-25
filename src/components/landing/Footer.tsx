@@ -10,7 +10,10 @@ export function Footer() {
     <footer className="bg-[#052E3A] px-4 py-12 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div>
-          <Image src="/logo.svg" alt={siteConfig.fullName} width={240} height={45} className="h-auto w-60 max-w-full" />
+          <div className="flex items-center gap-3">
+            <Image src="/logo.png" alt="" width={64} height={64} className="size-16 rounded-full object-cover" />
+            <span className="font-semibold leading-tight">{siteConfig.fullName}<span className="mt-1 block text-sm font-medium text-white/70">Fisioterapia en Madrid</span></span>
+          </div>
           <p className="mt-2 text-sm text-white/62">
             Fisioterapeuta colegiado en Madrid · n.º {siteConfig.registrationNumber}.
           </p>
@@ -50,7 +53,7 @@ export function Footer() {
             </a>
             <a href="/fisioterapia-chamberi" className="inline-flex items-start gap-3 transition hover:text-white">
               <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-              <span><strong className="block font-semibold text-white">Consulta en Meraki Salud Chamberí</strong>Coworking sanitario<br />{locationConfig.address}<br />{locationConfig.postalCode} Madrid · Chamberí</span>
+              <span><strong className="block font-semibold text-white">Consulta independiente de Borja</strong>Dentro del centro Meraki Salud Chamberí<br />{locationConfig.address}<br />{locationConfig.postalCode} Madrid · Chamberí</span>
             </a>
           </div>
         </div>

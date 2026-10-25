@@ -16,12 +16,14 @@ import { Services } from "@/components/landing/Services";
 import { WhoIsFor } from "@/components/landing/WhoIsFor";
 import { getLandingJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/constants";
+import { sharedOpenGraph } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: { absolute: "Borja Estarellas | Fisioterapeuta en Madrid" },
   description: "Fisioterapia individual con Borja Estarellas. Tratamiento musculoesquelético y deportivo, ejercicio terapéutico y atención en consulta o a domicilio en Madrid.",
   alternates: { canonical: "/" },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Borja Estarellas | Fisioterapeuta en Madrid",
     description: "Conoce el enfoque de Borja Estarellas y sus modalidades de fisioterapia en Madrid.",
     url: siteConfig.url,

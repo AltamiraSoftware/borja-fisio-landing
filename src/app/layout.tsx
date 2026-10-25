@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/constants";
+import { sharedOpenGraph } from "@/lib/metadata";
 import { AnalyticsEvents } from "@/components/analytics/AnalyticsEvents";
 import "./globals.css";
 
@@ -7,8 +8,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    icon: [
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "192x192", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Borja Fisio", statusBarStyle: "black-translucent" },
@@ -17,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Borja Estarellas",
   },
   description:
-    "Fisioterapia con Borja Estarellas en Madrid. Consulta en Almagro, Chamberí, y atención a domicilio. Valoración, tratamiento y ejercicio terapéutico.",
+    "Fisioterapia con Borja Estarellas en Madrid. Consulta independiente dentro del centro Meraki Salud Chamberí, en Almagro, y atención a domicilio.",
   keywords: [
     "fisioterapia a domicilio",
     "fisioterapeuta Madrid",
@@ -36,19 +41,7 @@ export const metadata: Metadata = {
     "ejercicio terapéutico",
     "Borja Estarellas",
   ],
-  openGraph: {
-    siteName: siteConfig.name,
-    locale: "es_ES",
-    type: "website",
-    images: [
-      {
-        url: `${siteConfig.url}/opengraph-image`,
-        width: 1200,
-        height: 630,
-        alt: "Fisio Estarellas - Borja Estarellas, fisioterapeuta en Madrid",
-      },
-    ],
-  },
+  openGraph: sharedOpenGraph,
   twitter: {
     card: "summary_large_image",
   },

@@ -275,3 +275,30 @@ summary::-webkit-details-marker {
 .prose-content h2 { margin-top: 2rem; color: var(--color-petrol); font-size: 1.5rem; font-weight: 600; }
 .prose-content h2:first-child { margin-top: 0; }
 .prose-content p { margin-top: .75rem; color: var(--color-muted); line-height: 1.8; }
+
+.treatment-card-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.treatment-card-row > * {
+  flex: 0 0 100%;
+}
+
+@media (min-width: 48rem) {
+  .treatment-card-row > * {
+    flex-basis: calc((100% - 1.25rem) / 2);
+  }
+
+  .treatment-card-row--three-at-md > * {
+    flex-basis: calc((100% - 2.5rem) / 3);
+  }
+}
+
+@media (min-width: 64rem) {
+  .treatment-card-row > * {
+    flex-basis: calc((100% - 2.5rem) / 3);
+  }
+}

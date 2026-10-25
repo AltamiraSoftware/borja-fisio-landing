@@ -36,7 +36,7 @@ export function Services() {
           description="Sesiones orientadas a reducir dolor, recuperar función y ayudarte a volver a tu actividad con una progresión clara."
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="treatment-card-row mt-12">
           {services.map((service) => {
             const Icon = icons[service.icon];
 

@@ -15,7 +15,7 @@ export function Pricing() {
           <GlassCard variant="solid" className="group flex flex-col items-center p-7 text-center md:p-8">
             <div className="card-icon"><MapPinned aria-hidden="true" /></div>
             <h3 className="mt-5 text-2xl font-semibold text-[#073B4C]">En consulta</h3>
-            <p className="mt-2 flex min-h-[4.5rem] items-center justify-center text-sm leading-6 text-[var(--color-muted)]">Consulta independiente en Meraki Salud Chamberí, coworking sanitario · Caracas, 6, bajo izquierda</p>
+            <p className="mt-2 flex min-h-[4.5rem] items-center justify-center text-sm leading-6 text-[var(--color-muted)]">Consulta independiente dentro del centro Meraki Salud Chamberí · Calle de Caracas, 6, bajo izquierda</p>
             <p className="mt-6 text-5xl font-semibold tracking-tight text-[#073B4C]">{siteConfig.priceClinic}</p>
             <p className="mt-2 text-sm text-[var(--color-muted)]">Primera sesión</p>
             <div className="mt-auto pt-8"><Button href={buildWhatsappHref("Hola Borja, quiero reservar una sesión presencial en la consulta de Chamberí.")}>Consultar cita</Button></div>

@@ -2,11 +2,11 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/constants";
 
 export default function robots(): MetadataRoute.Robots {
-  const isProduction = process.env.VERCEL_ENV ? process.env.VERCEL_ENV === "production" : true;
+  const isProduction = process.env.NODE_ENV === "production" && (!process.env.VERCEL_ENV || process.env.VERCEL_ENV === "production");
   return {
     rules: isProduction
       ? { userAgent: "*", allow: "/" }
       : { userAgent: "*", disallow: "/" },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    ...(isProduction ? { sitemap: `${siteConfig.url}/sitemap.xml` } : {}),
   };
 }

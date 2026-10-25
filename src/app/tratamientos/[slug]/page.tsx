@@ -5,6 +5,7 @@ import { TreatmentPage } from "@/components/treatment/TreatmentPage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getTreatmentJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/constants";
+import { sharedOpenGraph } from "@/lib/metadata";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: treatment.seo.description,
     alternates: { canonical: path },
     openGraph: {
+      ...sharedOpenGraph,
       title: `${treatment.seo.title} | Borja Estarellas`,
       description: treatment.seo.description,
       url: `${siteConfig.url}${path}`,

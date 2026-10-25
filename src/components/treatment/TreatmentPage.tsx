@@ -93,7 +93,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
           <section className="px-4 py-20">
             <div className="mx-auto max-w-7xl">
-              <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? "Ecografía en la consulta de Chamberí" : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? "El ecógrafo está disponible en la consulta independiente de Borja dentro de Meraki Salud Chamberí, coworking sanitario, en Chamberí." : "Borja atiende en una consulta independiente dentro de Meraki Salud Chamberí, coworking sanitario, en Chamberí. También puedes preguntar por las sesiones a domicilio en Madrid."} />
+              <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? "Ecografía en la consulta de Chamberí" : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? "El ecógrafo está disponible en la consulta independiente de Borja dentro del centro Meraki Salud Chamberí." : "Borja atiende en una consulta independiente dentro del centro Meraki Salud Chamberí. También puedes preguntar por las sesiones a domicilio en Madrid."} />
               <div className={`mt-12 grid gap-6 ${treatment.clinicOnly ? "mx-auto max-w-2xl" : "md:grid-cols-2"}`}>
                 <GlassCard variant="solid" className="group flex flex-col p-8 text-center md:p-10">
                   <div className="card-icon"><MapPinned aria-hidden="true" /></div>
@@ -159,7 +159,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             <section className="px-4 py-20">
               <div className="mx-auto max-w-7xl">
                 <SectionHeader align="center" eyebrow="Sigue explorando" title="Tratamientos relacionados" />
-                <div className="mt-10 grid gap-5 md:grid-cols-3">
+                <div className="treatment-card-row treatment-card-row--three-at-md mt-10">
                   {related.map((item) => (
                     <GlassCard key={item.slug} variant="solid" className="flex flex-col p-7 text-center">
                       <h3 className="flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">{item.name}</h3>

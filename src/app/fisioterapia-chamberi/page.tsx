@@ -11,15 +11,17 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/constants";
+import { sharedOpenGraph } from "@/lib/metadata";
 import { getLocalJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: { absolute: "Fisioterapia en Chamberí, Almagro | Borja Estarellas" },
-  description: "Fisioterapia con Borja Estarellas en Almagro, Chamberí. Consulta independiente en Meraki Salud Chamberí, Calle de Caracas, 6. Cita previa y atención individual.",
+  description: "Fisioterapia con Borja Estarellas en Almagro, Chamberí. Consulta independiente dentro del centro Meraki Salud Chamberí, Calle de Caracas, 6. Cita previa.",
   alternates: { canonical: "/fisioterapia-chamberi" },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Fisioterapia en Chamberí, Almagro | Borja Estarellas",
-    description: "Consulta independiente de fisioterapia en Calle de Caracas, 6, dentro de Meraki Salud Chamberí. Atención con cita previa.",
+    description: "Consulta independiente de fisioterapia dentro del centro Meraki Salud Chamberí, en Calle de Caracas, 6. Atención con cita previa.",
     url: `${siteConfig.url}/fisioterapia-chamberi`,
   },
 };
@@ -31,7 +33,7 @@ export default function ChamberiPage() {
     <StandardPage
       eyebrow="Consulta presencial · Chamberí"
       title="Fisioterapia en Chamberí"
-      intro="Borja Estarellas te atiende con cita previa en su consulta independiente dentro de Meraki Salud Chamberí, en el barrio de Almagro."
+      intro="Borja Estarellas te atiende con cita previa en una consulta independiente dentro del centro Meraki Salud Chamberí, en el barrio de Almagro."
       featureHero
       afterContent={<ContactSection topic="fisioterapia en Chamberí" />}
       followingContent={
@@ -45,7 +47,7 @@ export default function ChamberiPage() {
             </div>
             <div className="mt-10 grid gap-4">
               {[
-                { question: "¿La consulta es de Meraki Salud?", answer: <>La atención de fisioterapia la presta Borja Estarellas de forma independiente. Meraki Salud Chamberí es el coworking sanitario donde se encuentra la consulta.</> },
+                { question: "¿La consulta es de Meraki Salud?", answer: <>La atención de fisioterapia la presta Borja Estarellas en su consulta independiente, situada dentro del centro Meraki Salud Chamberí.</> },
                 { question: "¿Puedo acudir sin cita?", answer: <>No. Consulta primero con Borja la disponibilidad y las indicaciones de acceso a Calle de Caracas, 6, bajo izquierda.</> },
                 { question: "¿También hay atención a domicilio?", answer: <>Sí, según zona y disponibilidad en Madrid. <Link className="font-semibold text-[#0F5366] underline underline-offset-4" href="/tratamientos/fisioterapia-domicilio">Consulta cómo funciona la fisioterapia a domicilio</Link>.</> },
               ].map((item, index) => (

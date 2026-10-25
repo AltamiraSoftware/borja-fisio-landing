@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteConfig } from "@/lib/constants";
+import { sharedOpenGraph } from "@/lib/metadata";
 import { buildWhatsappHref } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
   description: "Rehabilitación funcional en casa tras una operación o pérdida de movilidad. Borja Estarellas adapta el plan a tu domicilio en Madrid, según tu caso y zona.",
   alternates: { canonical: "/rehabilitacion-a-domicilio-madrid" },
   openGraph: {
+    ...sharedOpenGraph,
     title: "Rehabilitación a domicilio en Madrid | Borja Estarellas",
     description: "Recuperación funcional en casa según tu situación, zona y disponibilidad en Madrid.",
     url: `${siteConfig.url}/rehabilitacion-a-domicilio-madrid`,
@@ -63,7 +65,7 @@ export default function RehabilitationPage() {
       </section>
 
       <section className="py-20">
-        <SectionHeader align="center" eyebrow="Modalidades" title="En casa o en la consulta de Chamberí" description="La atención a domicilio se confirma según zona y disponibilidad. Si prefieres acudir en persona, Borja también atiende en una consulta independiente dentro de Meraki Salud Chamberí, coworking sanitario." />
+        <SectionHeader align="center" eyebrow="Modalidades" title="En casa o en la consulta de Chamberí" description="La atención a domicilio se confirma según zona y disponibilidad. Si prefieres acudir en persona, Borja también atiende en una consulta independiente dentro del centro Meraki Salud Chamberí." />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <GlassCard variant="solid" className="group flex flex-col p-8 md:p-10">
             <div className="card-icon"><Home aria-hidden="true" /></div>
