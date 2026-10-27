@@ -4,6 +4,7 @@ import { navLinks } from "@/data/landing";
 import { contactConfig, locationConfig, siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { DoctoraliaLogo } from "@/components/ui/BrandIcons";
 
 export function Footer() {
   return (
@@ -43,6 +44,16 @@ export function Footer() {
               <WhatsAppIcon className="size-4" />
               WhatsApp
             </a>
+            <a
+              href={siteConfig.doctoraliaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 transition hover:text-white"
+              aria-label="Ver el perfil de Doctoralia de Borja Estarellas"
+            >
+              <DoctoraliaLogo className="size-4" />
+              Doctoralia
+            </a>
             <a href={`tel:${contactConfig.phoneE164}`} className="inline-flex items-center gap-3 transition hover:text-white">
               <Phone className="size-4" aria-hidden="true" />
               {contactConfig.phone}
@@ -51,9 +62,19 @@ export function Footer() {
               <Mail className="size-4" aria-hidden="true" />
               {contactConfig.email}
             </a>
-            <a href="/fisioterapia-chamberi" className="inline-flex items-start gap-3 transition hover:text-white">
+            <a
+              href="/fisioterapia-chamberi"
+              className="inline-flex items-start gap-3 text-white/78 transition hover:text-white"
+            >
               <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-              <span><strong className="block font-semibold text-white">Consulta independiente de Borja</strong>Dentro del centro Meraki Salud Chamberí<br />{locationConfig.address}<br />{locationConfig.postalCode} Madrid · Chamberí</span>
+              <span className="leading-6">
+                <strong className="block font-semibold text-white">Consulta independiente</strong>
+                Dentro del centro Meraki Salud Chamberí
+                <br />
+                {locationConfig.address}
+                <br />
+                {locationConfig.postalCode} Madrid · Chamberí
+              </span>
             </a>
           </div>
         </div>

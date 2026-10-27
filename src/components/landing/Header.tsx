@@ -2,8 +2,10 @@
 
 import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
+import { DoctoraliaLogo } from "@/components/ui/BrandIcons";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { navLinks, services } from "@/data/landing";
+import { siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -109,7 +111,16 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <a
+            href={siteConfig.doctoraliaUrl}
+            className="btn btn--secondary btn--icon"
+            aria-label="Ver el perfil de Doctoralia de Borja Estarellas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <DoctoraliaLogo className="size-6" />
+          </a>
           <a
             href={whatsappHref}
             className="btn btn--whatsapp btn--icon"
@@ -166,6 +177,16 @@ export function Header() {
                 >
                   <WhatsAppIcon className="size-5 text-white" />
                   Contactar por WhatsApp
+                </a>
+                <a
+                  href={siteConfig.doctoraliaUrl}
+                  className="btn btn--secondary mt-2 min-h-12 w-full px-5 py-3 text-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ver el perfil de Doctoralia de Borja Estarellas"
+                >
+                  <DoctoraliaLogo className="size-5" />
+                  Doctoralia
                 </a>
               </nav>
             </div>

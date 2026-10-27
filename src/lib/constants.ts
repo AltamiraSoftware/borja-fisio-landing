@@ -4,6 +4,8 @@ export const siteConfig = {
   profession: "Fisioterapeuta en Madrid",
   registrationNumber: "15388",
   url: "https://fisioestarellas.es",
+  doctoraliaUrl:
+    "https://www.doctoralia.es/borja-estarellas-botin/fisioterapeuta/madrid",
   areaServed: "Madrid",
   priceClinic: "50 €",
   priceHome: "60 €",

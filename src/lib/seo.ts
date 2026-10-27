@@ -36,6 +36,7 @@ export function getLandingJsonLd(): JsonLdObject {
         identifier: { "@type": "PropertyValue", propertyID: "Número de colegiado", value: siteConfig.registrationNumber },
         url: `${siteConfig.url}/sobre-borja`,
         affiliation: { "@id": businessId },
+        sameAs: [siteConfig.doctoraliaUrl],
       },
       {
         "@type": "MedicalBusiness",
@@ -49,6 +50,7 @@ export function getLandingJsonLd(): JsonLdObject {
         areaServed: { "@type": "City", name: "Madrid" },
         telephone: contactConfig.phoneE164,
         email: contactConfig.email,
+        sameAs: [siteConfig.doctoraliaUrl],
       },
       {
         "@type": "Service",
