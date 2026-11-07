@@ -66,3 +66,4 @@ notes/
 scratch/
 *.prompt.md
 *.bak
+.env.local
