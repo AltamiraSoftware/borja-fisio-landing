@@ -1,20 +1,18 @@
+import { Suspense } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
 import { navLinks } from "@/data/landing";
 import { contactConfig, locationConfig, siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { DoctoraliaLogo } from "@/components/ui/BrandIcons";
+import { AdminLoginModal } from "@/components/admin/AdminLoginModal";
 
 export function Footer() {
   return (
     <footer className="bg-[#052E3A] px-4 py-12 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="" width={64} height={64} className="size-16 rounded-full object-cover" />
-            <span className="font-semibold leading-tight">{siteConfig.fullName}<span className="mt-1 block text-sm font-medium text-white/70">Fisioterapia en Madrid</span></span>
-          </div>
+          <Suspense><AdminLoginModal /></Suspense>
           <p className="mt-2 text-sm text-white/62">
             Fisioterapeuta colegiado en Madrid · n.º {siteConfig.registrationNumber}.
           </p>

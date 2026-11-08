@@ -14,11 +14,18 @@ export async function signInAdmin(_: AuthState, formData: FormData): Promise<Aut
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error || !data.user) return { error: "El correo o la contraseña no son correctos." };
-    const { data: admin } = await supabase.from("blog_admins").select("activo").eq("user_id", data.user.id).maybeSingle();
+
+    const { data: admin } = await supabase
+      .from("blog_admins")
+      .select("activo")
+      .eq("user_id", data.user.id)
+      .maybeSingle();
+
     if (!admin?.activo) {
       await supabase.auth.signOut();
       return { error: "Esta cuenta no está autorizada para acceder al panel." };
     }
+
     return { notice: "ok" };
   } catch {
     return { error: "La configuración de Supabase no está disponible todavía." };
@@ -28,6 +35,7 @@ export async function signInAdmin(_: AuthState, formData: FormData): Promise<Aut
 export async function requestPasswordReset(_: AuthState, formData: FormData): Promise<AuthState> {
   const email = String(formData.get("email") ?? "").trim();
   if (!email) return { error: "Indica tu correo electrónico." };
+
   try {
     const supabase = await createClient();
     const origin = (await headers()).get("origin") ?? "http://localhost:3000";
@@ -41,6 +49,7 @@ export async function requestPasswordReset(_: AuthState, formData: FormData): Pr
 export async function updatePassword(_: AuthState, formData: FormData): Promise<AuthState> {
   const password = String(formData.get("password") ?? "");
   if (password.length < 8) return { error: "La contraseña debe tener al menos 8 caracteres." };
+
   try {
     const supabase = await createClient();
     const { error } = await supabase.auth.updateUser({ password });
