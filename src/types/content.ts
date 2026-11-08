@@ -25,6 +25,16 @@ export type Treatment = {
   };
   recognition: string;
   whatIs?: string;
+  // Secciones editoriales propias de servicios complejos: evitan fichas genéricas o repetidas.
+  patientSections?: Array<{
+    title: string;
+    description: string;
+    points?: string[];
+  }>;
+  // Aviso de orientación clínica, nunca un diagnóstico ni una indicación automática de tratamiento.
+  clinicalAdvisory?: { title: string; description: string };
+  // Fuentes públicas utilizadas en el contenido, diferenciadas de la revisión profesional.
+  evidenceSources?: Array<{ title: string; url: string }>;
   whenUsed?: string;
   limitations?: string;
   symptoms: string[];
