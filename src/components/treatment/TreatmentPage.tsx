@@ -98,6 +98,47 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </section>
           )}
 
+
+          {treatment.patientSections && treatment.patientSections.length > 0 && (
+            <section className="px-4 py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeader
+                  align="center"
+                  eyebrow="Información útil para decidir"
+                  title="Dolor mandibular y ATM: qué conviene distinguir"
+                  description="Las molestias de mandíbula pueden tener causas distintas. Estas situaciones ayudan a entender cuándo buscar una valoración y qué preguntas plantear en consulta."
+                />
+                <div className="mt-12 grid gap-6 md:grid-cols-2">
+                  {treatment.patientSections.map((section) => (
+                    <GlassCard key={section.title} variant="solid" hover={false} className="flex flex-col p-7 text-left md:p-9">
+                      <h3 className="text-xl font-semibold text-[#073B4C]">{section.title}</h3>
+                      <p className="mt-4 leading-8 text-[var(--color-muted)]">{section.description}</p>
+                      {section.points && section.points.length > 0 && (
+                        <ul className="mt-5 grid gap-3">
+                          {section.points.map((point) => (
+                            <li key={point} className="flex items-start gap-3 leading-7 text-[#173f50]">
+                              <CheckCircle2 className="mt-1 size-5 shrink-0 text-[#14718b]" aria-hidden="true" />
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </GlassCard>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {treatment.clinicalAdvisory && (
+            <section className="px-4 py-12" aria-labelledby="clinical-advisory-title">
+              <div className="mx-auto max-w-5xl rounded-[30px] border border-[#8eb9ca] bg-white p-7 shadow-[0_14px_38px_rgba(15,83,102,0.10)] md:p-10">
+                <h2 id="clinical-advisory-title" className="text-balance text-2xl font-semibold text-[#073B4C] md:text-3xl">{treatment.clinicalAdvisory.title}</h2>
+                <p className="mt-5 leading-8 text-[var(--color-muted)]">{treatment.clinicalAdvisory.description}</p>
+              </div>
+            </section>
+          )}
+
           {categoryTechniques.length > 0 && (
             <section className="px-4 py-20">
               <div className="mx-auto max-w-7xl">
@@ -189,6 +230,25 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
               </div>
             </div>
           </section>
+
+
+          {treatment.evidenceSources && treatment.evidenceSources.length > 0 && (
+            <section className="px-4 pb-20" aria-labelledby="evidence-sources-title">
+              <div className="mx-auto max-w-4xl">
+                <h2 id="evidence-sources-title" className="text-2xl font-semibold text-[#073B4C]">Fuentes clínicas consultadas</h2>
+                <p className="mt-3 leading-7 text-[var(--color-muted)]">Información sanitaria general para contextualizar los tratamientos. No sustituye una valoración individual.</p>
+                <ul className="mt-5 grid gap-3">
+                  {treatment.evidenceSources.map((source) => (
+                    <li key={source.url}>
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-medium leading-7 text-[#0F5366] underline underline-offset-4 hover:text-[#14718b] focus-visible:outline-offset-4">
+                        {source.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
 
           {(related.length > 0 || relatedPathologies.length > 0 || category) && (
             <section className="px-4 py-20">
