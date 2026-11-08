@@ -11,6 +11,8 @@ type CatalogInput = {
   eyebrow: string;
   intro: string;
   whatIs: string;
+  patientSectionsHeading?: string;
+  patientSectionsIntro?: string;
   patientSections?: Treatment["patientSections"];
   clinicalAdvisory?: Treatment["clinicalAdvisory"];
   evidenceSources?: Treatment["evidenceSources"];
@@ -93,6 +95,8 @@ function catalogTreatment(input: CatalogInput): Treatment {
     hero: { eyebrow: input.eyebrow, h1: input.title, intro: input.intro },
     recognition: input.whatIs,
     whatIs: input.whatIs,
+    patientSectionsHeading: input.patientSectionsHeading,
+    patientSectionsIntro: input.patientSectionsIntro,
     patientSections: input.patientSections,
     clinicalAdvisory: input.clinicalAdvisory,
     evidenceSources: input.evidenceSources,
@@ -179,6 +183,8 @@ export const newTechniqueTreatments: Treatment[] = [
       "Chasquidos dolorosos o sensación de bloqueo mandibular",
       "Tensión de los músculos de la masticación que limita actividades cotidianas",
     ],
+    patientSectionsHeading: "Dolor mandibular y ATM: qué conviene distinguir",
+    patientSectionsIntro: "Las molestias de mandíbula pueden tener causas distintas. Estas situaciones ayudan a entender cuándo buscar una valoración y qué preguntas plantear en consulta.",
     patientSections: [
       {
         title: "Dolor al masticar o abrir la boca",
