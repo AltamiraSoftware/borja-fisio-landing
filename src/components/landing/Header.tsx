@@ -1,10 +1,11 @@
 "use client";
 
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { DoctoraliaLogo } from "@/components/ui/BrandIcons";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { navLinks, services } from "@/data/landing";
+import { navLinks } from "@/data/landing";
+import { treatmentNavigation } from "@/data/treatmentNavigation";
 import { siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
@@ -12,6 +13,8 @@ import Link from "next/link";
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [treatmentsOpen, setTreatmentsOpen] = useState(false);
+  const [activeTreatmentGroup, setActiveTreatmentGroup] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -58,6 +61,26 @@ export function Header() {
   // Close menu on link click (mobile)
   const handleNavClick = () => {
     setMenuOpen(false);
+    setTreatmentsOpen(false);
+    setActiveTreatmentGroup(null);
+  };
+
+  const closeTreatments = () => {
+    setTreatmentsOpen(false);
+    setActiveTreatmentGroup(null);
+  };
+
+  const openTreatments = () => {
+    setTreatmentsOpen(true);
+  };
+
+  const toggleTreatments = () => {
+    if (treatmentsOpen) {
+      closeTreatments();
+      return;
+    }
+
+    openTreatments();
   };
 
   const whatsappHref = buildWhatsappHref();
@@ -91,15 +114,77 @@ export function Header() {
           className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 lg:flex"
           aria-label="Navegación principal"
         >
-          <details className="group relative">
-            <summary className="flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white">
-              Tratamientos <ChevronDown className="size-4 transition group-open:rotate-180" aria-hidden="true" />
-            </summary>
-            <div className="absolute left-0 top-[calc(100%+12px)] z-50 grid max-h-[calc(100dvh-6rem)] w-72 gap-1 overflow-y-auto rounded-2xl border border-white/16 bg-[#052E3A] p-2 shadow-[0_24px_70px_rgba(5,46,58,0.32)]">
-              <Link href="/tratamientos" className="rounded-xl px-3 py-2 text-sm font-semibold text-[#b7f7f2] hover:bg-white/10">Ver todos los tratamientos</Link>
-              {services.map((service) => <Link key={service.href} href={service.href} className="rounded-xl px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">{service.title}</Link>)}
-            </div>
-          </details>
+          <div
+            className="relative"
+            onMouseEnter={openTreatments}
+            onMouseLeave={closeTreatments}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.preventDefault();
+                closeTreatments();
+              }
+            }}
+          >
+            <button
+              type="button"
+              className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white"
+              aria-haspopup="menu"
+              aria-expanded={treatmentsOpen}
+              onClick={toggleTreatments}
+              onFocus={openTreatments}
+            >
+              Tratamientos <ChevronDown className={`size-4 transition ${treatmentsOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+            </button>
+
+            {treatmentsOpen && (
+              <div className="absolute left-0 top-full z-50 flex items-start gap-2 pt-3">
+                <div className="grid max-h-[calc(100dvh-6rem)] w-72 gap-1 overflow-y-auto rounded-2xl border border-white/16 bg-[#052E3A] p-2 shadow-[0_24px_70px_rgba(5,46,58,0.32)]" role="menu" aria-label="Categorías de tratamientos">
+                  {treatmentNavigation.map((item, index) => {
+                    const isActive = activeTreatmentGroup === item.href;
+
+                    return (
+                      <div
+                        key={item.href}
+                        onMouseEnter={() => setActiveTreatmentGroup(item.children ? item.href : null)}
+                        onFocusCapture={() => setActiveTreatmentGroup(item.children ? item.href : null)}
+                      >
+                        <Link
+                          href={item.href}
+                          role="menuitem"
+                          onClick={handleNavClick}
+                          className={`flex items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm transition hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white ${index === 0 ? "font-semibold text-[#b7f7f2]" : "text-white/80"} ${isActive ? "bg-white/10 text-white" : ""}`}
+                          aria-haspopup={item.children ? "menu" : undefined}
+                          aria-expanded={item.children ? isActive : undefined}
+                        >
+                          <span>{item.label}</span>
+                          {item.children && <ChevronRight className="size-4 shrink-0" aria-hidden="true" />}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {activeTreatmentGroup && treatmentNavigation.find((item) => item.href === activeTreatmentGroup)?.children && (
+                  <div className="max-h-[calc(100dvh-6rem)] w-72 overflow-y-auto rounded-2xl border border-white/16 bg-[#052E3A] p-2 shadow-[0_24px_70px_rgba(5,46,58,0.32)]" role="menu" aria-label="Técnicas de tratamiento">
+                    <p className="px-3 pb-2 pt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#b7f7f2]">
+                      {treatmentNavigation.find((item) => item.href === activeTreatmentGroup)?.label}
+                    </p>
+                    {treatmentNavigation.find((item) => item.href === activeTreatmentGroup)?.children?.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        role="menuitem"
+                        onClick={handleNavClick}
+                        className="block rounded-xl px-3 py-2 text-sm text-white/80 transition hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
           {navLinks.slice(1).map((link) => (
             <a
               key={link.href}
@@ -153,9 +238,24 @@ export function Header() {
               <nav className="grid gap-1" aria-label="Navegación móvil">
                 <details className="group rounded-2xl text-white/78">
                   <summary className="flex cursor-pointer list-none items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium hover:bg-white/10">Tratamientos <ChevronDown className="size-4 transition group-open:rotate-180" aria-hidden="true" /></summary>
-                  <div className="grid gap-1 pl-3 pb-2">
-                    <Link href="/tratamientos" onClick={handleNavClick} className="rounded-xl px-4 py-2 text-sm font-semibold text-[#b7f7f2] hover:bg-white/10">Ver todos</Link>
-                    {services.map((service) => <Link key={service.href} href={service.href} onClick={handleNavClick} className="rounded-xl px-4 py-2 text-sm text-white/78 hover:bg-white/10">{service.title}</Link>)}
+                  <div className="grid gap-1 pb-2 pl-3">
+                    {treatmentNavigation.map((item, index) => item.children ? (
+                      <details key={item.href} className="group rounded-xl">
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-4 py-2 text-sm text-white/78 hover:bg-white/10 hover:text-white">
+                          {item.label} <ChevronDown className="size-4 shrink-0 transition group-open:rotate-180" aria-hidden="true" />
+                        </summary>
+                        <div className="grid gap-1 border-l border-white/15 py-1 pl-3">
+                          <Link href={item.href} onClick={handleNavClick} className="rounded-lg px-3 py-2 text-sm font-semibold text-[#b7f7f2] hover:bg-white/10">
+                            Ver {item.label.toLocaleLowerCase("es-ES")}
+                          </Link>
+                          {item.children.map((child) => (
+                            <Link key={child.href} href={child.href} onClick={handleNavClick} className="rounded-lg px-3 py-2 text-sm text-white/72 hover:bg-white/10 hover:text-white">
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
+                    ) : <Link key={item.href} href={item.href} onClick={handleNavClick} className={`rounded-xl px-4 py-2 text-sm hover:bg-white/10 ${index === 0 ? "font-semibold text-[#b7f7f2]" : "text-white/78"}`}>{item.label}</Link>)}
                   </div>
                 </details>
                 {navLinks.slice(1).map((link) => (

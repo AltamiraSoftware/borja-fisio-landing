@@ -16,7 +16,7 @@ function track(event: string, params: Record<string, string> = {}) {
   window.dataLayer.push({ event, event_category: "form", location: "contact_form", page_path: window.location.pathname, ...params });
 }
 
-export function ContactSection({ topic, headingLevel = 2 }: { topic?: string; headingLevel?: 1 | 2 }) {
+export function ContactSection({ topic, headingLevel = 2, messageIntro }: { topic?: string; headingLevel?: 1 | 2; messageIntro?: string }) {
   const [status, setStatus] = useState<"idle" | "error" | "ready">("idle");
   const [whatsappUrl, setWhatsappUrl] = useState("");
   const [contactPreference, setContactPreference] = useState("whatsapp");
@@ -43,7 +43,7 @@ export function ContactSection({ topic, headingLevel = 2 }: { topic?: string; he
     const modality = String(form.get("modality") ?? "me_da_igual");
     const modalityLabel = { domicilio: "a domicilio", gabinete: "consulta en Chamberí", me_da_igual: "me da igual" }[modality] ?? modality;
     const message = [
-      `Hola Borja, soy ${name}. Quiero consultar una sesión de fisioterapia${topic ? ` sobre ${topic.toLowerCase()}` : ""}.`,
+      `Hola Borja, soy ${name}. ${messageIntro ?? `Quiero consultar una sesión de fisioterapia${topic ? ` sobre ${topic.toLowerCase()}` : ""}.`}`,
       `Mi teléfono: ${phone}.${email ? ` Mi email: ${email}.` : ""}`,
       area && `Mi zona de Madrid: ${area}.`,
       `Prefiero que me contactes por ${selectedContactPreference}. Modalidad: ${modalityLabel}.`,

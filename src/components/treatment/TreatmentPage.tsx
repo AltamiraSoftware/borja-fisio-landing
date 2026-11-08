@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2, Home, MapPinned } from "lucide-react";
 import type { Treatment } from "@/types/content";
-import { getTreatment, getTreatmentPath } from "@/content/treatments";
+import { getCategoryTechniques, getTreatment, getTreatmentCategory, getTreatmentPath } from "@/content/treatments";
 import { InteriorHero } from "@/components/common/InteriorHero";
 import { CtaBanner } from "@/components/landing/CtaBanner";
 import { ContactSection } from "@/components/landing/ContactSection";
@@ -20,6 +20,9 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 export function TreatmentPage({ treatment }: { treatment: Treatment }) {
   const whatsappHref = buildWhatsappHref(`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`);
   const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => Boolean(item));
+  const category = getTreatmentCategory(treatment.categorySlug);
+  const categoryTechniques = treatment.kind === "category" ? getCategoryTechniques(treatment.slug) : [];
+  const relatedPathologies = (treatment.relatedPathologySlugs ?? []).map(getTreatment).filter((item): item is Treatment => Boolean(item));
   const homeFocused = ["fisioterapia-domicilio", "rehabilitacion-postoperatoria", "fisioterapia-mayores"].includes(treatment.slug);
 
   return (
@@ -46,7 +49,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
         <div className="page-flow-bg">
           <div className="mx-auto max-w-7xl px-4 pt-8">
-            <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Tratamientos", href: "/tratamientos" }, { label: treatment.name }]} />
+            <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Tratamientos", href: "/tratamientos" }, ...(category ? [{ label: category.name, href: getTreatmentPath(category.slug) }] : []), { label: treatment.name }]} />
           </div>
           <section className="px-4 py-20">
             <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -74,7 +77,27 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </div>
           </section>
 
-          <ContactSection topic={treatment.name} />
+          {treatment.whatIs && (
+            <section className="px-4 py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeader align="center" eyebrow={treatment.kind === "category" ? "Enfoque de tratamiento" : "Información para pacientes"} title="Una decisión basada en valoración, no en una técnica aislada" description={treatment.whatIs} />
+                <div className="mt-12 grid gap-5 md:grid-cols-3">
+                  {[{ title: "¿Cuándo puede utilizarse?", body: treatment.whenUsed }, { title: "Cómo se integra", body: treatment.assessment }, { title: "Límites y precauciones", body: treatment.limitations }].map((item) => <GlassCard key={item.title} variant="solid" hover={false} className="flex min-h-56 flex-col p-7 text-left"><span className="card-icon !mx-0"><CheckCircle2 aria-hidden="true" /></span><h3 className="mt-6 text-xl font-semibold text-[#073B4C]">{item.title}</h3><p className="mt-3 leading-7 text-[var(--color-muted)]">{item.body}</p></GlassCard>)}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {categoryTechniques.length > 0 && (
+            <section className="px-4 py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeader align="center" eyebrow="Técnicas y programas" title={`Opciones dentro de ${treatment.name.toLowerCase()}`} description="Cada herramienta se valora según tu situación. Conoce en qué consiste cada enfoque antes de solicitar una valoración." />
+                <div className="treatment-card-row mt-12">
+                  {categoryTechniques.map((item) => <GlassCard key={item.slug} variant="solid" className="group flex min-h-72 flex-col p-7 text-center"><h3 className="flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">{item.name}</h3><p className="mt-4 flex-1 text-sm leading-7 text-[var(--color-muted)]">{item.cardDescription}</p><Link href={getTreatmentPath(item.slug)} className="btn btn--primary mt-6 min-h-10 self-center px-4 text-sm">Conocer la técnica</Link></GlassCard>)}
+                </div>
+              </div>
+            </section>
+          )}
 
           <section id="como-trabajaremos" className="scroll-mt-28 px-4 py-20">
             <div className="mx-auto max-w-7xl">
@@ -119,6 +142,8 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </div>
           </section>
 
+          <ContactSection topic={treatment.name} messageIntro={treatment.contactMessage} />
+
           <LocationSection />
 
           <section className="px-4 py-20">
@@ -155,12 +180,12 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </div>
           </section>
 
-          {related.length > 0 && (
+          {(related.length > 0 || relatedPathologies.length > 0 || category) && (
             <section className="px-4 py-20">
               <div className="mx-auto max-w-7xl">
-                <SectionHeader align="center" eyebrow="Sigue explorando" title="Tratamientos relacionados" />
+                <SectionHeader align="center" eyebrow="Sigue explorando" title="Tratamientos y motivos de consulta relacionados" />
                 <div className="treatment-card-row treatment-card-row--three-at-md mt-10">
-                  {related.map((item) => (
+                  {[...(category && treatment.kind === "technique" ? [category] : []), ...related, ...relatedPathologies].filter((item, index, collection) => collection.findIndex((candidate) => candidate.slug === item.slug) === index).slice(0, 6).map((item) => (
                     <GlassCard key={item.slug} variant="solid" className="flex flex-col p-7 text-center">
                       <h3 className="flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">{item.name}</h3>
                       <p className="mt-3 flex-1 text-sm leading-7 text-[var(--color-muted)]">{item.hero.intro}</p>

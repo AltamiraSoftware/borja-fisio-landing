@@ -1,6 +1,6 @@
 import { contactConfig, locationConfig, siteConfig } from "@/lib/constants";
 import type { Treatment } from "@/types/content";
-import { getTreatmentPath } from "@/content/treatments";
+import { getTreatmentCategory, getTreatmentPath } from "@/content/treatments";
 
 type JsonLdObject = Record<string, unknown>;
 
@@ -100,6 +100,13 @@ export function getLocalJsonLd(): JsonLdObject {
 
 export function getTreatmentJsonLd(treatment: Treatment): JsonLdObject {
   const url = `${siteConfig.url}${getTreatmentPath(treatment.slug)}`;
+  const category = getTreatmentCategory(treatment.categorySlug);
+  const breadcrumbItems = [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Tratamientos", item: `${siteConfig.url}/tratamientos` },
+    ...(category ? [{ "@type": "ListItem", position: 3, name: category.name, item: `${siteConfig.url}${getTreatmentPath(category.slug)}` }] : []),
+    { "@type": "ListItem", position: category ? 4 : 3, name: treatment.name, item: url },
+  ];
 
   return {
     "@context": "https://schema.org",
@@ -116,11 +123,7 @@ export function getTreatmentJsonLd(treatment: Treatment): JsonLdObject {
       },
       {
         "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: siteConfig.url },
-          { "@type": "ListItem", position: 2, name: "Tratamientos", item: `${siteConfig.url}/tratamientos` },
-          { "@type": "ListItem", position: 3, name: treatment.name, item: url },
-        ],
+        itemListElement: breadcrumbItems,
       },
       {
         "@type": "WebPage",

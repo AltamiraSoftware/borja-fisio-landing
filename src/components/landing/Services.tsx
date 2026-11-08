@@ -1,28 +1,15 @@
-import {
-  Activity,
-  Dumbbell,
-  Footprints,
-  HandHeart,
-  Home,
-  MoveVertical,
-  Route,
-  ScanLine,
-} from "lucide-react";
-import { services } from "@/data/landing";
+import { Dumbbell, HandHeart, ScanLine } from "lucide-react";
+import Link from "next/link";
+import { treatmentCategories } from "@/content/treatmentCategories";
+import { getTreatmentPath } from "@/content/treatments";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 
-const icons = {
-  home: Home,
-  scan: ScanLine,
-  neck: MoveVertical,
-  spine: ScanLine,
-  dumbbell: Dumbbell,
-  activity: Activity,
-  hand: HandHeart,
-  footprints: Footprints,
-  route: Route,
+const categoryIcons = {
+  "terapia-manual": HandHeart,
+  "ejercicio-terapeutico": Dumbbell,
+  "fisioterapia-invasiva-ecoguiada": ScanLine,
 } as const;
 
 export function Services() {
@@ -32,32 +19,34 @@ export function Services() {
         <SectionHeader
           align="center"
           eyebrow="Tratamientos"
-          title="Tratamientos de fisioterapia en Madrid"
-          description="Sesiones orientadas a reducir dolor, recuperar función y ayudarte a volver a tu actividad con una progresión clara."
+          title="Un plan de fisioterapia para tu situación"
+          description="Puedes llegar con dolor, una lesión o una duda. La valoración orienta el enfoque y las herramientas que pueden ayudarte."
         />
 
         <div className="treatment-card-row mt-12">
-          {services.map((service) => {
-            const Icon = icons[service.icon];
+          {treatmentCategories.map((category) => {
+            const Icon = categoryIcons[category.slug as keyof typeof categoryIcons];
 
             return (
-              <GlassCard key={service.title} variant="solid" className="group flex min-h-72 flex-col items-center p-7 text-center">
+              <GlassCard key={category.slug} variant="solid" className="group flex min-h-72 flex-col items-center p-7 text-center">
                 <div className="card-icon">
                   <Icon aria-hidden="true" />
                 </div>
                 <h3 className="mt-6 flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">
-                  {service.title}
+                  {category.name}
                 </h3>
                 <p className="mt-3 flex-1 text-sm leading-7 text-[var(--color-muted)]">
-                  {service.text}
+                  {category.cardDescription}
                 </p>
-                <Button href={service.href} size="sm" className="mt-6 self-center">
-                  Consultar tratamiento
+                <Button href={getTreatmentPath(category.slug)} size="sm" className="mt-6 self-center">
+                  Conocer el enfoque
                 </Button>
               </GlassCard>
             );
           })}
         </div>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-[var(--color-muted)]">¿Buscas información sobre <Link href="/tratamientos/dolor-cervical" className="font-semibold text-[#0F5366] underline underline-offset-4">dolor cervical</Link>, <Link href="/tratamientos/dolor-lumbar" className="font-semibold text-[#0F5366] underline underline-offset-4">dolor lumbar</Link> o <Link href="/tratamientos/lesiones-deportivas" className="font-semibold text-[#0F5366] underline underline-offset-4">lesiones deportivas</Link>? Explora todos los motivos de consulta.</p>
+        <div className="mt-6 flex justify-center"><Button href="/tratamientos" variant="ghost" size="sm">Ver todos los tratamientos</Button></div>
       </div>
     </section>
   );

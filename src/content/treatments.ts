@@ -1,5 +1,6 @@
 import type { Treatment } from "@/types/content";
 import { importedTreatments, treatmentCatalogSlugs } from "@/content/importedTreatments";
+import { newTechniqueTreatments, treatmentCategories } from "@/content/treatmentCategories";
 
 const sharedFaq = {
   prepare: {
@@ -82,6 +83,9 @@ const imported = treatmentCatalogSlugs.map((slug): Treatment => {
   return {
     slug: item.slug,
     name: item.cardTitle,
+    kind: item.slug === "ecografia-musculoesqueletica" ? "technique" : "pathology",
+    categorySlug: item.slug === "ecografia-musculoesqueletica" ? "fisioterapia-invasiva-ecoguiada" : undefined,
+    indexable: true,
     cardDescription: item.cardDescription,
     updatedAt: "2026-10-18",
     seo: {
@@ -125,9 +129,28 @@ const additionalTreatments = originalTreatments.map((item) => ({
   relatedSlugs: item.relatedSlugs.map((slug) => legacySlugMap[slug] ?? slug),
 }));
 
+const contextualRelationships: Record<string, string[]> = {
+  "dolor-cervical": ["terapia-manual", "ejercicios-control-motor", "ejercicios-movilidad"],
+  "dolor-lumbar": ["ejercicio-terapeutico", "ejercicios-control-motor", "ejercicios-carga-progresiva"],
+  contracturas: ["masoterapia", "presion-isquemica", "puncion-seca"],
+  tendinopatias: ["ejercicios-carga-progresiva", "ecografia-musculoesqueletica", "fisioterapia-invasiva-ecoguiada"],
+  "lesiones-deportivas": ["ejercicios-propiocepcion", "ejercicios-carga-progresiva", "vendaje-funcional"],
+  esguinces: ["vendaje-funcional", "ejercicios-movilidad", "ejercicios-propiocepcion"],
+  "fascitis-plantar": ["ejercicios-carga-progresiva", "ejercicios-movilidad"],
+  "rehabilitacion-postoperatoria": ["ejercicio-terapeutico", "ejercicios-movilidad"],
+  "fisioterapia-mayores": ["ejercicio-terapeutico", "ejercicios-movilidad"],
+};
+
+function withContextualRelationships(treatment: Treatment): Treatment {
+  const additions = contextualRelationships[treatment.slug] ?? [];
+  return { ...treatment, relatedSlugs: [...new Set([...treatment.relatedSlugs, ...additions])] };
+}
+
 export const treatments: Treatment[] = [
-  ...imported,
-  ...additionalTreatments,
+  ...imported.map(withContextualRelationships),
+  ...additionalTreatments.map(withContextualRelationships),
+  ...treatmentCategories,
+  ...newTechniqueTreatments,
 ];
 
 export const legacyTreatmentSlugs = legacySlugMap;
@@ -138,6 +161,18 @@ export function getAllTreatments() {
 
 export function getCatalogTreatments() {
   return imported;
+}
+
+export function getTreatmentCategory(slug?: string) {
+  return treatmentCategories.find((category) => category.slug === slug);
+}
+
+export function getCategoryTechniques(categorySlug: string) {
+  return treatments.filter((treatment) => treatment.kind === "technique" && treatment.categorySlug === categorySlug);
+}
+
+export function getPathologyTreatments() {
+  return treatments.filter((treatment) => treatment.kind !== "category" && treatment.kind !== "technique");
 }
 
 export function getTreatment(slug: string) {

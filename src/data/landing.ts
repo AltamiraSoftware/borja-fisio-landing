@@ -1,11 +1,10 @@
-import { importedTreatments, treatmentCatalogSlugs } from "@/content/importedTreatments";
-
 export const navLinks = [
   { label: "Tratamientos", href: "/tratamientos" },
   { label: "Consulta en Chamberí", href: "/fisioterapia-chamberi" },
   { label: "A domicilio", href: "/tratamientos/fisioterapia-domicilio" },
   { label: "Sobre Borja", href: "/sobre-borja" },
   { label: "Tarifas", href: "/tarifas" },
+  { label: "Blog", href: "/blog" },
   { label: "Contacto", href: "/contacto" },
 ] as const;
 
@@ -42,33 +41,6 @@ export const problemChecklist = [
   "Fascitis plantar.",
   "Recuperación funcional.",
 ] as const;
-
-const serviceIcons: Record<(typeof treatmentCatalogSlugs)[number], "dumbbell" | "scan" | "neck" | "spine" | "activity" | "hand" | "footprints" | "route" | "home"> = {
-  "lesiones-deportivas": "dumbbell",
-  "ecografia-musculoesqueletica": "scan",
-  "dolor-cervical": "neck",
-  "dolor-lumbar": "spine",
-  "tendinopatias": "activity",
-  "contracturas": "hand",
-  "esguinces": "footprints",
-  "fascitis-plantar": "route",
-  "fisioterapia-domicilio": "home",
-};
-
-export const services = treatmentCatalogSlugs.filter((slug) => slug !== "fisioterapia-domicilio").map((slug) => {
-  const treatment = importedTreatments[slug];
-  return {
-    icon: serviceIcons[slug],
-    title: treatment.navLabel,
-    text: treatment.cardDescription,
-    href: treatment.path,
-  };
-}).concat({
-  icon: "home",
-  title: "Rehabilitación a domicilio",
-  text: "Recuperación de movilidad, fuerza y autonomía en casa tras una operación o una pérdida de movilidad.",
-  href: "/rehabilitacion-a-domicilio-madrid",
-});
 
 export const whoIsFor = [
   "Personas con dolor lumbar, cervical o articular.",

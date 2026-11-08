@@ -6,6 +6,10 @@ export type FaqItem = {
 export type Treatment = {
   slug: string;
   name: string;
+  kind?: "pathology" | "category" | "technique";
+  categorySlug?: string;
+  indexable?: boolean;
+  clinicalReviewPending?: boolean;
   cardDescription?: string;
   updatedAt: string;
   seo: {
@@ -20,6 +24,9 @@ export type Treatment = {
     intro: string;
   };
   recognition: string;
+  whatIs?: string;
+  whenUsed?: string;
+  limitations?: string;
   symptoms: string[];
   assessment: string;
   plan: Array<{ title: string; body: string }>;
@@ -28,6 +35,9 @@ export type Treatment = {
   clinicOnly?: boolean;
   faq: FaqItem[];
   relatedSlugs: string[];
+  relatedPathologySlugs?: string[];
+  techniqueSlugs?: string[];
+  contactMessage?: string;
   importedDetail?: {
     introTitle: string;
     introPoints: string[];

@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: `${treatment.seo.title} | Borja Estarellas` },
     description: treatment.seo.description,
     alternates: { canonical: path },
+    robots: treatment.indexable === false ? { index: false, follow: true } : undefined,
     openGraph: {
       ...sharedOpenGraph,
       title: `${treatment.seo.title} | Borja Estarellas`,
