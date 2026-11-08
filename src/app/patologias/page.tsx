@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Activity, ArrowDown, Dumbbell, HandHeart, MessageCircle, ScanLine } from "lucide-react";
 import { StandardPage } from "@/components/common/StandardPage";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { getPathologiesJsonLd } from "@/lib/seo";
 import { CtaBanner } from "@/components/landing/CtaBanner";
 import { LocationSection } from "@/components/landing/LocationSection";
 import { Modalities } from "@/components/landing/Modalities";
@@ -24,9 +26,11 @@ export const metadata: Metadata = {
 };
 
 export default function PathologiesPage() {
-  const pathologies = getPathologyTreatments().filter((treatment) => treatment.slug !== "fisioterapia-domicilio");
+  const pathologies = getPathologyTreatments();
 
   return (
+    <>
+    <JsonLd data={getPathologiesJsonLd(pathologies)} />
     <StandardPage
       eyebrow="Patologías y motivos de consulta · Madrid"
       title="Patologías que tratamos en fisioterapia en Madrid"
@@ -50,5 +54,6 @@ export default function PathologiesPage() {
         </div>
       </section>
     </StandardPage>
+    </>
   );
 }
