@@ -105,8 +105,8 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
                 <SectionHeader
                   align="center"
                   eyebrow="Información útil para decidir"
-                  title="Dolor mandibular y ATM: qué conviene distinguir"
-                  description="Las molestias de mandíbula pueden tener causas distintas. Estas situaciones ayudan a entender cuándo buscar una valoración y qué preguntas plantear en consulta."
+                  title={treatment.patientSectionsHeading ?? `Información útil sobre ${treatment.name.toLocaleLowerCase("es-ES")}`}
+                  description={treatment.patientSectionsIntro ?? "Aspectos prácticos que ayudan a comprender la valoración y las opciones de tratamiento."}
                 />
                 <div className="mt-12 grid gap-6 md:grid-cols-2">
                   {treatment.patientSections.map((section) => (
