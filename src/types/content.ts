@@ -11,6 +11,7 @@ export type Treatment = {
   indexable?: boolean;
   clinicalReviewPending?: boolean;
   cardDescription?: string;
+  introSectionTitle?: string;
   updatedAt: string;
   seo: {
     title: string;
