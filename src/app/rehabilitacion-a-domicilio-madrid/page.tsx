@@ -87,8 +87,8 @@ export default function RehabilitationPage() {
         <SectionHeader align="center" eyebrow="Tratamientos relacionados" title="Un plan progresivo para volver a moverte" />
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[
-            { href: "/tratamientos/rehabilitacion-postoperatoria", title: "Rehabilitación postoperatoria", text: "Trabajo progresivo después de una intervención, coordinado con las indicaciones de tu equipo médico." },
-            { href: "/tratamientos/fisioterapia-mayores", title: "Fisioterapia para mayores", text: "Movilidad, equilibrio, fuerza y autonomía trabajados según los objetivos de cada persona." },
+            { href: "/patologias/rehabilitacion-postoperatoria", title: "Rehabilitación postoperatoria", text: "Trabajo progresivo después de una intervención, coordinado con las indicaciones de tu equipo médico." },
+            { href: "/patologias/fisioterapia-mayores", title: "Fisioterapia para mayores", text: "Movilidad, equilibrio, fuerza y autonomía trabajados según los objetivos de cada persona." },
           ].map((item) => (
             <GlassCard key={item.href} variant="solid" className="flex flex-col p-8">
               <h3 className="flex min-h-16 items-center justify-center text-center text-2xl font-semibold text-[#073B4C]">{item.title}</h3>
