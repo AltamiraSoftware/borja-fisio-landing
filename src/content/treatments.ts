@@ -83,7 +83,7 @@ const imported = treatmentCatalogSlugs.map((slug): Treatment => {
   return {
     slug: item.slug,
     name: item.cardTitle,
-    kind: item.slug === "ecografia-musculoesqueletica" ? "technique" : "pathology",
+    kind: ["ecografia-musculoesqueletica", "fisioterapia-domicilio"].includes(item.slug) ? "technique" : "pathology",
     categorySlug: item.slug === "ecografia-musculoesqueletica" ? "fisioterapia-invasiva-ecoguiada" : undefined,
     indexable: true,
     cardDescription: item.cardDescription,
@@ -126,19 +126,21 @@ const legacySlugMap: Record<string, string> = {
 
 const additionalTreatments = originalTreatments.map((item) => ({
   ...item,
+  kind: "pathology" as const,
   relatedSlugs: item.relatedSlugs.map((slug) => legacySlugMap[slug] ?? slug),
 }));
 
 const contextualRelationships: Record<string, string[]> = {
-  "dolor-cervical": ["terapia-manual", "ejercicios-control-motor", "ejercicios-movilidad"],
-  "dolor-lumbar": ["ejercicio-terapeutico", "ejercicios-control-motor", "ejercicios-carga-progresiva"],
-  contracturas: ["masoterapia", "presion-isquemica", "puncion-seca"],
-  tendinopatias: ["ejercicios-carga-progresiva", "ecografia-musculoesqueletica", "fisioterapia-invasiva-ecoguiada"],
-  "lesiones-deportivas": ["ejercicios-propiocepcion", "ejercicios-carga-progresiva", "vendaje-funcional"],
-  esguinces: ["vendaje-funcional", "ejercicios-movilidad", "ejercicios-propiocepcion"],
-  "fascitis-plantar": ["ejercicios-carga-progresiva", "ejercicios-movilidad"],
-  "rehabilitacion-postoperatoria": ["ejercicio-terapeutico", "ejercicios-movilidad"],
-  "fisioterapia-mayores": ["ejercicio-terapeutico", "ejercicios-movilidad"],
+  "dolor-cervical": ["terapia-manual", "ejercicio-terapeutico", "fisioterapia-atm"],
+  "dolor-lumbar": ["ejercicio-terapeutico", "terapia-manual"],
+  contracturas: ["terapia-manual", "puncion-seca"],
+  tendinopatias: ["ejercicio-terapeutico", "ecografia-musculoesqueletica", "fisioterapia-invasiva-ecoguiada", "electrolisis-percutanea-ecoguiada"],
+  "lesiones-deportivas": ["ejercicio-terapeutico", "terapia-manual", "fisioterapia-invasiva-ecoguiada"],
+  esguinces: ["terapia-manual", "ejercicio-terapeutico"],
+  "fascitis-plantar": ["ejercicio-terapeutico"],
+  "rehabilitacion-postoperatoria": ["ejercicio-terapeutico", "drenaje-linfatico-manual"],
+  "fisioterapia-mayores": ["ejercicio-terapeutico"],
+  "ecografia-musculoesqueletica": ["fisioterapia-invasiva-ecoguiada", "electrolisis-percutanea-ecoguiada", "neuromodulacion-percutanea-ecoguiada", "puncion-seca"],
 };
 
 function withContextualRelationships(treatment: Treatment): Treatment {
@@ -154,6 +156,32 @@ export const treatments: Treatment[] = [
 ];
 
 export const legacyTreatmentSlugs = legacySlugMap;
+
+// Las fichas microtécnicas se conservan como datos para resúmenes, pero sus
+// URLs antiguas redirigen de forma permanente a la landing consolidada.
+// ATM y drenaje linfático mantienen sus propias landings por intención de búsqueda.
+export const consolidatedTechniqueDestinations: Record<string, string> = {
+  masoterapia: "terapia-manual",
+  "estiramientos-asistidos": "terapia-manual",
+  "movilizaciones-articulares": "terapia-manual",
+  kinesiotape: "terapia-manual",
+  "vendaje-funcional": "terapia-manual",
+  "presion-isquemica": "terapia-manual",
+  "vendaje-multicapa": "terapia-manual",
+  "ejercicios-estiramiento": "ejercicio-terapeutico",
+  "ejercicios-control-motor": "ejercicio-terapeutico",
+  "ejercicios-propiocepcion": "ejercicio-terapeutico",
+  "ejercicios-carga-progresiva": "ejercicio-terapeutico",
+  "ejercicios-movilidad": "ejercicio-terapeutico",
+};
+
+export function getConsolidatedTarget(slug: string) {
+  return consolidatedTechniqueDestinations[slug];
+}
+
+export function isConsolidatedTreatment(slug: string) {
+  return Boolean(getConsolidatedTarget(slug));
+}
 
 export function getAllTreatments() {
   return treatments;
@@ -180,6 +208,11 @@ export function getTreatment(slug: string) {
 }
 
 export function getTreatmentPath(slug: string) {
+  const consolidated = getConsolidatedTarget(slug);
+  if (consolidated) return `/tratamientos/${consolidated}`;
+
+  const treatment = getTreatment(slug);
+  if (treatment?.kind === "pathology") return `/patologias/${slug}`;
   return `/tratamientos/${slug}`;
 }
 

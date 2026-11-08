@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2, Home, MapPinned } from "lucide-react";
 import type { Treatment } from "@/types/content";
-import { getCategoryTechniques, getTreatment, getTreatmentCategory, getTreatmentPath } from "@/content/treatments";
+import { getCategoryTechniques, getTreatment, getTreatmentCategory, getTreatmentPath, isConsolidatedTreatment } from "@/content/treatments";
 import { InteriorHero } from "@/components/common/InteriorHero";
 import { CtaBanner } from "@/components/landing/CtaBanner";
 import { ContactSection } from "@/components/landing/ContactSection";
@@ -19,11 +19,33 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export function TreatmentPage({ treatment }: { treatment: Treatment }) {
   const whatsappHref = buildWhatsappHref(`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`);
-  const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => Boolean(item));
+  const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => item !== undefined && !isConsolidatedTreatment(item.slug));
   const category = getTreatmentCategory(treatment.categorySlug);
-  const categoryTechniques = treatment.kind === "category" ? getCategoryTechniques(treatment.slug) : [];
+  const compactCategory = treatment.slug === "terapia-manual" || treatment.slug === "ejercicio-terapeutico";
+  const categoryTechniques = treatment.kind === "category"
+    ? getCategoryTechniques(treatment.slug).filter((item) => treatment.slug !== "terapia-manual" || !isConsolidatedTreatment(item.slug))
+    : [];
   const relatedPathologies = (treatment.relatedPathologySlugs ?? []).map(getTreatment).filter((item): item is Treatment => Boolean(item));
   const homeFocused = ["fisioterapia-domicilio", "rehabilitacion-postoperatoria", "fisioterapia-mayores"].includes(treatment.slug);
+  const informationalPage = treatment.kind === "technique" || treatment.kind === "category";
+  const invasiveEducation = treatment.slug === "fisioterapia-invasiva-ecoguiada" || treatment.categorySlug === "fisioterapia-invasiva-ecoguiada";
+  const openingTitle = treatment.kind === "category"
+    ? `Qué incluye ${treatment.name.toLocaleLowerCase("es-ES")}`
+    : treatment.kind === "technique"
+      ? `En qué consiste ${treatment.name.toLocaleLowerCase("es-ES")}`
+      : "Entender lo que te limita es el primer paso";
+  const symptomsHeading = informationalPage ? "Situaciones en las que puede valorarse" : "Síntomas";
+  const compressionTreatment = treatment.slug === "drenaje-linfatico-manual" || treatment.slug === "vendaje-multicapa";
+  const consultationTitle = treatment.slug === "ecografia-musculoesqueletica"
+    ? "Ecografía en la consulta de Chamberí"
+    : compressionTreatment
+      ? "Tratamiento de edema y compresión en Chamberí"
+      : "Valoración y atención presencial en Chamberí";
+  const consultationDescription = compressionTreatment
+    ? "Borja realiza estas técnicas en su consulta de Chamberí, tras valorar la causa del edema y las precauciones necesarias. La indicación y las condiciones de la sesión se individualizan."
+    : invasiveEducation
+      ? "Borja dispone de ecógrafo y formación en técnicas invasivas ecoguiadas. Estos procedimientos se realizan en consulta, tras valorar la indicación, las alternativas, las precauciones y el consentimiento."
+      : "La indicación, las precauciones y la disponibilidad se revisan antes de realizar cualquier procedimiento presencial.";
 
   return (
     <>
@@ -46,15 +68,37 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </>
           }
         />
+        <ContactSection topic={treatment.name} messageIntro={treatment.contactMessage} />
 
         <div className="page-flow-bg">
           <div className="mx-auto max-w-7xl px-4 pt-8">
-            <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Tratamientos", href: "/tratamientos" }, ...(category ? [{ label: category.name, href: getTreatmentPath(category.slug) }] : []), { label: treatment.name }]} />
+            <Breadcrumbs items={[
+              { label: "Inicio", href: "/" },
+              ...(treatment.kind === "pathology" ? [{ label: "Patologías", href: "/patologias" }] : []),
+              ...(category ? [{ label: category.name, href: getTreatmentPath(category.slug) }] : []),
+              { label: treatment.name },
+            ]} />
+            {invasiveEducation && (
+              <nav aria-label="Secciones de este tratamiento" className="mt-7 flex gap-2 overflow-x-auto rounded-2xl border border-[#a8cbd7]/80 bg-white/75 p-3 shadow-[0_8px_24px_rgba(15,83,102,0.06)]">
+                {[
+                  { label: "Qué es", href: "#que-es" },
+                  ...(treatment.benefitHighlights?.length ? [{ label: "Objetivos", href: "#beneficios" }] : []),
+                  ...(treatment.patientSections?.length ? [{ label: "Cómo funciona", href: "#procedimiento" }] : []),
+                  ...(treatment.clinicalAdvisory ? [{ label: "Seguridad", href: "#seguridad" }] : []),
+                  { label: "Preguntas", href: "#preguntas-frecuentes" },
+                  { label: "Solicitar valoración", href: "#contacto" },
+                ].map((item) => (
+                  <Link key={item.href} href={item.href} className="shrink-0 rounded-full border border-[#a8cbd7] px-4 py-2 text-sm font-semibold text-[#0F5366] transition hover:border-[#0F5366] hover:bg-[#e6f5f7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F5366]">
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            )}
           </div>
           <section className="px-4 py-20">
             <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
-                <SectionHeader eyebrow="¿Te pasa algo parecido?" title={treatment.importedDetail?.introTitle ?? "Entender lo que te limita es el primer paso"} description={treatment.recognition} />
+                <SectionHeader eyebrow={informationalPage ? "Tu caso y la valoración" : "¿Te pasa algo parecido?"} title={treatment.importedDetail?.introTitle ?? treatment.introSectionTitle ?? openingTitle} description={treatment.recognition} />
                 {treatment.importedDetail && (
                   <ul className="mt-7 grid gap-4">
                     {treatment.importedDetail.introPoints.map((point) => (
@@ -64,7 +108,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
                 )}
               </div>
               <GlassCard variant="solid" hover={false} className="p-7 text-left md:p-9">
-                <h3 className="text-center text-2xl font-semibold text-[#073B4C]">Síntomas</h3>
+                <h3 className="text-center text-2xl font-semibold text-[#073B4C]">{symptomsHeading}</h3>
                 <ul className="mt-6 divide-y divide-[#d5e6eb]">
                   {treatment.symptoms.map((symptom) => (
                     <li key={symptom} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
@@ -78,9 +122,9 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           </section>
 
           {treatment.whatIs && (
-            <section className="px-4 py-20">
+            <section id="que-es" className="scroll-mt-28 px-4 py-20">
               <div className="mx-auto max-w-7xl">
-                <SectionHeader align="center" eyebrow={treatment.kind === "category" ? "Enfoque de tratamiento" : "Información para pacientes"} title="Una decisión basada en valoración, no en una técnica aislada" description={treatment.whatIs} />
+                <SectionHeader align="center" eyebrow={treatment.kind === "category" ? "Enfoque de tratamiento" : "Información para pacientes"} title={treatment.kind === "category" ? `Conoce ${treatment.name.toLocaleLowerCase("es-ES")}` : `Qué debes saber sobre ${treatment.name.toLocaleLowerCase("es-ES")}`} description={treatment.whatIs} />
                 <div className="mt-12 grid gap-5 md:grid-cols-3">
                   {[{ title: "¿Cuándo puede utilizarse?", body: treatment.whenUsed }, { title: "Cómo se integra", body: treatment.assessment }, { title: "Límites y precauciones", body: treatment.limitations }].map((item) => <GlassCard key={item.title} variant="solid" hover={false} className="flex min-h-56 flex-col p-7 text-left"><span className="card-icon !mx-0"><CheckCircle2 aria-hidden="true" /></span><h3 className="mt-6 text-xl font-semibold text-[#073B4C]">{item.title}</h3><p className="mt-3 leading-7 text-[var(--color-muted)]">{item.body}</p></GlassCard>)}
                 </div>
@@ -88,12 +132,113 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </section>
           )}
 
+
+          {treatment.benefitHighlights && treatment.benefitHighlights.length > 0 && (
+            <section id="beneficios" className="scroll-mt-28 px-4 py-16" aria-label="Objetivos potenciales del tratamiento">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeader
+                  align="center"
+                  eyebrow="Objetivos del abordaje"
+                  title={treatment.benefitsHeading ?? "Qué se busca con este tratamiento"}
+                  description={treatment.benefitsIntro ?? "Los resultados dependen de la indicación, de las características del paciente y del conjunto del tratamiento."}
+                />
+                <div className="mt-10 grid gap-5 md:grid-cols-3">
+                  {treatment.benefitHighlights.map((benefit) => (
+                    <GlassCard key={benefit.title} variant="solid" hover={false} className="flex flex-col p-7 text-left">
+                      <span className="card-icon !mx-0"><CheckCircle2 aria-hidden="true" /></span>
+                      <h3 className="mt-5 text-xl font-semibold text-[#073B4C]">{benefit.title}</h3>
+                      <p className="mt-3 flex-1 leading-7 text-[var(--color-muted)]">{benefit.description}</p>
+                    </GlassCard>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {treatment.patientSections && treatment.patientSections.length > 0 && (
+            <section id="procedimiento" className="scroll-mt-28 px-4 py-20">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeader
+                  align="center"
+                  eyebrow="Información útil para decidir"
+                  title={treatment.patientSectionsHeading ?? `Información útil sobre ${treatment.name.toLocaleLowerCase("es-ES")}`}
+                  description={treatment.patientSectionsIntro ?? "Aspectos prácticos que ayudan a comprender la valoración y las opciones de tratamiento."}
+                />
+                <div className="mt-12 grid gap-6 md:grid-cols-2">
+                  {treatment.patientSections.map((section) => (
+                    <GlassCard key={section.title} variant="solid" hover={false} className="flex flex-col p-7 text-left md:p-9">
+                      <h3 className="text-xl font-semibold text-[#073B4C]">{section.title}</h3>
+                      <p className="mt-4 leading-8 text-[var(--color-muted)]">{section.description}</p>
+                      {section.points && section.points.length > 0 && (
+                        <ul className="mt-5 grid gap-3">
+                          {section.points.map((point) => (
+                            <li key={point} className="flex items-start gap-3 leading-7 text-[#173f50]">
+                              <CheckCircle2 className="mt-1 size-5 shrink-0 text-[#14718b]" aria-hidden="true" />
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </GlassCard>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {treatment.patientSections && treatment.patientSections.length >= 4 && (
+            <div className="mx-auto flex max-w-5xl flex-col items-center gap-5 px-4 py-3 sm:flex-row sm:justify-between">
+              <p className="max-w-2xl text-center text-base leading-7 text-[#173f50] sm:text-left">
+                <strong className="font-semibold text-[#073B4C]">¿Tienes dudas sobre tu caso?</strong>{" "}
+                La valoración individual permite elegir el siguiente paso sin tener que decidir una técnica por tu cuenta.
+              </p>
+              <Button href="#contacto" size="sm" className="shrink-0">Solicitar valoración</Button>
+            </div>
+          )}
+
+          {treatment.clinicalAdvisory && (
+            <section id="seguridad" className="scroll-mt-28 px-4 py-12" aria-labelledby="clinical-advisory-title">
+              <div className="mx-auto max-w-5xl rounded-[30px] border border-[#8eb9ca] bg-white p-7 shadow-[0_14px_38px_rgba(15,83,102,0.10)] md:p-10">
+                <h2 id="clinical-advisory-title" className="text-balance text-2xl font-semibold text-[#073B4C] md:text-3xl">{treatment.clinicalAdvisory.title}</h2>
+                <p className="mt-5 leading-8 text-[var(--color-muted)]">{treatment.clinicalAdvisory.description}</p>
+              </div>
+            </section>
+          )}
+
+          {treatment.evidenceSnapshot && (
+            <section className="px-4 py-14" aria-label="Evidencia clínica y límites">
+              <div className="mx-auto max-w-5xl rounded-[30px] border border-[#8eb9ca] bg-white/85 p-7 shadow-[0_14px_38px_rgba(15,83,102,0.10)] md:p-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#0F5366]">Evidencia científica</p>
+                <h2 className="mt-3 text-balance text-2xl font-semibold text-[#073B4C] md:text-3xl">{treatment.evidenceSnapshot.title}</h2>
+                <p className="mt-5 leading-8 text-[#173f50]">{treatment.evidenceSnapshot.summary}</p>
+                <p className="mt-4 leading-7 text-[var(--color-muted)]">{treatment.evidenceSnapshot.limitations}</p>
+              </div>
+            </section>
+          )}
+
           {categoryTechniques.length > 0 && (
             <section className="px-4 py-20">
               <div className="mx-auto max-w-7xl">
-                <SectionHeader align="center" eyebrow="Técnicas y programas" title={`Opciones dentro de ${treatment.name.toLowerCase()}`} description="Cada herramienta se valora según tu situación. Conoce en qué consiste cada enfoque antes de solicitar una valoración." />
-                <div className="treatment-card-row mt-12">
-                  {categoryTechniques.map((item) => <GlassCard key={item.slug} variant="solid" className="group flex min-h-72 flex-col p-7 text-center"><h3 className="flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">{item.name}</h3><p className="mt-4 flex-1 text-sm leading-7 text-[var(--color-muted)]">{item.cardDescription}</p><Link href={getTreatmentPath(item.slug)} className="btn btn--primary mt-6 min-h-10 self-center px-4 text-sm">Conocer la técnica</Link></GlassCard>)}
+                <SectionHeader
+                  align="center"
+                  eyebrow={compactCategory ? "Técnicas incluidas" : "Tratamientos específicos"}
+                  title={treatment.slug === "ejercicio-terapeutico" ? "Ejercicios y programas de rehabilitación" : `Opciones dentro de ${treatment.name.toLowerCase()}`}
+                  description={compactCategory
+                    ? "Estas técnicas se integran dentro de un plan individual. Consulta los servicios especializados que sí disponen de su propia página."
+                    : "La ecografía y cada procedimiento invasivo tienen indicaciones y precauciones propias. Conócelos antes de solicitar una valoración."}
+                />
+                <div className={compactCategory ? "mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" : "treatment-card-row mt-12"}>
+                  {categoryTechniques.map((item) => (
+                    <GlassCard key={item.slug} variant="solid" hover={false} className={compactCategory ? "flex flex-col p-6 text-left" : "group flex min-h-72 flex-col p-7 text-center"}>
+                      <h3 className={compactCategory ? "text-lg font-semibold text-[#073B4C]" : "flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]"}>{item.name}</h3>
+                      <p className="mt-3 flex-1 text-sm leading-7 text-[var(--color-muted)]">{item.whatIs ?? item.cardDescription}</p>
+                      {!isConsolidatedTreatment(item.slug) && (
+                        <Link href={getTreatmentPath(item.slug)} className="btn btn--primary mt-5 min-h-10 self-start px-4 text-sm">
+                          Ver servicio especializado
+                        </Link>
+                      )}
+                    </GlassCard>
+                  ))}
                 </div>
               </div>
             </section>
@@ -101,7 +246,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
           <section id="como-trabajaremos" className="scroll-mt-28 px-4 py-20">
             <div className="mx-auto max-w-7xl">
-              <SectionHeader align="center" eyebrow="Valoración antes de tratar" title="Un plan basado en tu situación y tus objetivos" description={treatment.assessment} />
+              <SectionHeader align="center" eyebrow="Valoración antes de tratar" title="Del primer examen al plan de tratamiento" description={informationalPage ? treatment.whenUsed : treatment.assessment} />
               <div className="mt-12 grid gap-5 md:grid-cols-3">
                 {treatment.plan.map((step, index) => (
                   <GlassCard key={step.title} variant="solid" className="p-7 text-center">
@@ -116,7 +261,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
           <section className="px-4 py-20">
             <div className="mx-auto max-w-7xl">
-              <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? "Ecografía en la consulta de Chamberí" : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? "El ecógrafo está disponible en la consulta independiente de Borja dentro del centro Meraki Salud Chamberí." : "Borja atiende en una consulta independiente dentro del centro Meraki Salud Chamberí. También puedes preguntar por las sesiones a domicilio en Madrid."} />
+              <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? consultationTitle : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? consultationDescription : "Borja atiende en una consulta independiente dentro del centro Meraki Salud Chamberí. También puedes preguntar por las sesiones a domicilio en Madrid."} />
               <div className={`mt-12 grid gap-6 ${treatment.clinicOnly ? "mx-auto max-w-2xl" : "md:grid-cols-2"}`}>
                 <GlassCard variant="solid" className="group flex flex-col p-8 text-center md:p-10">
                   <div className="card-icon"><MapPinned aria-hidden="true" /></div>
@@ -142,8 +287,6 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </div>
           </section>
 
-          <ContactSection topic={treatment.name} messageIntro={treatment.contactMessage} />
-
           <LocationSection />
 
           <section className="px-4 py-20">
@@ -157,14 +300,14 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
               </GlassCard>
               <GlassCard variant="solid" className="flex flex-col p-8 md:p-10">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0F5366]">Tarifas</p>
-                <h2 className="mt-3 flex items-center justify-center text-center text-3xl font-semibold text-[#073B4C] lg:min-h-[5.5rem]">{treatment.clinicOnly ? "Consulta las condiciones de la valoración ecográfica" : `Consulta ${siteConfig.priceClinic} · Domicilio ${siteConfig.priceHome}`}</h2>
-                <p className="mt-5 flex-1 leading-8 text-[var(--color-muted)]">{treatment.clinicOnly ? "La ecografía se realiza en consulta cuando aporta información útil al caso. Indica tu interés al reservar para confirmar indicación, disponibilidad y precio." : "La primera sesión incluye valoración funcional, tratamiento cuando esté indicado, ejercicio terapéutico y pautas. Confirma disponibilidad y zona de desplazamiento antes de reservar."}</p>
+                <h2 className="mt-3 flex items-center justify-center text-center text-3xl font-semibold text-[#073B4C] lg:min-h-[5.5rem]">{treatment.clinicOnly ? "Consulta las condiciones de la atención presencial" : `Consulta ${siteConfig.priceClinic} · Domicilio ${siteConfig.priceHome}`}</h2>
+                <p className="mt-5 flex-1 leading-8 text-[var(--color-muted)]">{treatment.clinicOnly ? (compressionTreatment ? "El drenaje linfático y el vendaje multicapa se realizan en consulta cuando están indicados. Confirma las condiciones y el precio de tu cita antes de reservar." : "La ecografía y las técnicas invasivas requieren indicación individual. Consulta las condiciones, la disponibilidad y el precio antes de reservar.") : "La primera sesión incluye valoración funcional, tratamiento cuando esté indicado, ejercicio terapéutico y pautas. Confirma disponibilidad y zona de desplazamiento antes de reservar."}</p>
                 <Link href="/tarifas" className="btn btn--primary mt-7 self-center px-5 py-3 text-sm">Consultar tarifas</Link>
               </GlassCard>
             </div>
           </section>
 
-          <section className="px-4 py-20">
+          <section id="preguntas-frecuentes" className="scroll-mt-28 px-4 py-20">
             <div className="mx-auto max-w-4xl">
               <SectionHeader align="center" eyebrow="Dudas habituales" title="Preguntas frecuentes" />
               <div className="mt-10 grid gap-4">
@@ -179,6 +322,25 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
               </div>
             </div>
           </section>
+
+
+          {treatment.evidenceSources && treatment.evidenceSources.length > 0 && (
+            <section className="px-4 pb-20" aria-labelledby="evidence-sources-title">
+              <div className="mx-auto max-w-4xl">
+                <h2 id="evidence-sources-title" className="text-2xl font-semibold text-[#073B4C]">Fuentes clínicas consultadas</h2>
+                <p className="mt-3 leading-7 text-[var(--color-muted)]">Información sanitaria general para contextualizar los tratamientos. No sustituye una valoración individual.</p>
+                <ul className="mt-5 grid gap-3">
+                  {treatment.evidenceSources.map((source) => (
+                    <li key={source.url}>
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-medium leading-7 text-[#0F5366] underline underline-offset-4 hover:text-[#14718b] focus-visible:outline-offset-4">
+                        {source.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
 
           {(related.length > 0 || relatedPathologies.length > 0 || category) && (
             <section className="px-4 py-20">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
-import { getAllTreatments, getTreatment, getTreatmentPath, legacyTreatmentSlugs } from "@/content/treatments";
+import { getAllTreatments, getTreatment, getTreatmentPath, getConsolidatedTarget, legacyTreatmentSlugs } from "@/content/treatments";
 import { TreatmentPage } from "@/components/treatment/TreatmentPage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getTreatmentJsonLd } from "@/lib/seo";
@@ -15,7 +15,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const treatment = getTreatment((await params).slug);
-  if (!treatment) return {};
+  if (!treatment || treatment.kind === "pathology" || getConsolidatedTarget(treatment.slug)) return {};
   const path = getTreatmentPath(treatment.slug);
 
   return {
@@ -39,6 +39,7 @@ export default async function TreatmentRoute({ params }: Props) {
   if (legacyTreatmentSlugs[slug]) permanentRedirect(getTreatmentPath(legacyTreatmentSlugs[slug]));
   const treatment = getTreatment(slug);
   if (!treatment) notFound();
+  if (treatment.kind === "pathology" || getConsolidatedTarget(slug)) permanentRedirect(getTreatmentPath(slug));
 
   return <><JsonLd data={getTreatmentJsonLd(treatment)} /><TreatmentPage treatment={treatment} /></>;
 }

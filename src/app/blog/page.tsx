@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowDown, BookOpenCheck, Stethoscope } from "lucide-react";
 import { Footer } from "@/components/landing/Footer";
 import { Header } from "@/components/landing/Header";
+import { ContactSection } from "@/components/landing/ContactSection";
 import { BlogSearch } from "@/components/blog/BlogSearch";
 import { TreatmentHeroStrip } from "@/components/treatment/TreatmentHeroStrip";
 import { getCategories, getPublishedPosts } from "@/lib/blog-queries";
@@ -36,6 +37,7 @@ export default async function BlogPage() {
             <a href="#articulos" className="mt-12 inline-flex items-center gap-2 text-sm font-bold text-[#b8faf5] transition hover:text-white">Explorar artículos <ArrowDown className="size-4" /></a>
           </div>
         </section>
+        <ContactSection topic="artículos de fisioterapia" />
 
         <section id="articulos" className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-28">
           <BlogSearch posts={posts} categories={categories} />

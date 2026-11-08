@@ -120,16 +120,16 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
       },
     ],
     relatedTreatments: [
-      { label: "Cervicalgia y dolor de cuello", href: "/tratamientos/dolor-cervical" },
-      { label: "Lumbalgia y ciática", href: "/tratamientos/dolor-lumbar" },
-      { label: "Esguinces", href: "/tratamientos/esguinces" },
-      { label: "Fascitis plantar", href: "/tratamientos/fascitis-plantar" },
+      { label: "Cervicalgia y dolor de cuello", href: "/patologias/dolor-cervical" },
+      { label: "Lumbalgia y ciática", href: "/patologias/dolor-lumbar" },
+      { label: "Esguinces", href: "/patologias/esguinces" },
+      { label: "Fascitis plantar", href: "/patologias/fascitis-plantar" },
       { label: "Ecografía en consulta", href: "/tratamientos/ecografia-musculoesqueletica" },
     ],
   },
   "dolor-cervical": {
     slug: "dolor-cervical",
-    path: "/tratamientos/dolor-cervical",
+    path: "/patologias/dolor-cervical",
     navLabel: "Cervicalgia",
     cardTitle: "Cervicalgia y dolor de cuello",
     cardDescription:
@@ -202,14 +202,14 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
       sessionsFaq,
     ],
     relatedTreatments: [
-      { label: "Dolor miofascial y contracturas", href: "/tratamientos/contracturas" },
-      { label: "Lumbalgia y ciática", href: "/tratamientos/dolor-lumbar" },
-      { label: "Fisioterapia deportiva", href: "/tratamientos/lesiones-deportivas" },
+      { label: "Dolor miofascial y contracturas", href: "/patologias/contracturas" },
+      { label: "Lumbalgia y ciática", href: "/patologias/dolor-lumbar" },
+      { label: "Fisioterapia deportiva", href: "/patologias/lesiones-deportivas" },
     ],
   },
   "dolor-lumbar": {
     slug: "dolor-lumbar",
-    path: "/tratamientos/dolor-lumbar",
+    path: "/patologias/dolor-lumbar",
     navLabel: "Lumbalgia y ciática",
     cardTitle: "Lumbalgia, dolor lumbar y ciática",
     cardDescription:
@@ -282,14 +282,14 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
       sessionsFaq,
     ],
     relatedTreatments: [
-      { label: "Dolor miofascial y contracturas", href: "/tratamientos/contracturas" },
-      { label: "Fisioterapia deportiva y readaptación", href: "/tratamientos/lesiones-deportivas" },
+      { label: "Dolor miofascial y contracturas", href: "/patologias/contracturas" },
+      { label: "Fisioterapia deportiva y readaptación", href: "/patologias/lesiones-deportivas" },
       { label: "Fisioterapia a domicilio", href: "/tratamientos/fisioterapia-domicilio" },
     ],
   },
   tendinopatias: {
     slug: "tendinopatias",
-    path: "/tratamientos/tendinopatias",
+    path: "/patologias/tendinopatias",
     navLabel: "Tendinopatías",
     cardTitle: "Tendinopatías y tendinitis",
     cardDescription:
@@ -367,13 +367,13 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
     ],
     relatedTreatments: [
       { label: "Ecografía musculoesquelética", href: "/tratamientos/ecografia-musculoesqueletica" },
-      { label: "Fisioterapia deportiva y readaptación", href: "/tratamientos/lesiones-deportivas" },
-      { label: "Fasciopatía plantar y dolor de talón", href: "/tratamientos/fascitis-plantar" },
+      { label: "Fisioterapia deportiva y readaptación", href: "/patologias/lesiones-deportivas" },
+      { label: "Fasciopatía plantar y dolor de talón", href: "/patologias/fascitis-plantar" },
     ],
   },
   contracturas: {
     slug: "contracturas",
-    path: "/tratamientos/contracturas",
+    path: "/patologias/contracturas",
     navLabel: "Contracturas",
     cardTitle: "Dolor miofascial y contracturas musculares",
     cardDescription:
@@ -446,14 +446,14 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
       sessionsFaq,
     ],
     relatedTreatments: [
-      { label: "Cervicalgia y dolor de cuello", href: "/tratamientos/dolor-cervical" },
-      { label: "Lumbalgia y ciática", href: "/tratamientos/dolor-lumbar" },
-      { label: "Fisioterapia deportiva", href: "/tratamientos/lesiones-deportivas" },
+      { label: "Cervicalgia y dolor de cuello", href: "/patologias/dolor-cervical" },
+      { label: "Lumbalgia y ciática", href: "/patologias/dolor-lumbar" },
+      { label: "Fisioterapia deportiva", href: "/patologias/lesiones-deportivas" },
     ],
   },
   esguinces: {
     slug: "esguinces",
-    path: "/tratamientos/esguinces",
+    path: "/patologias/esguinces",
     navLabel: "Esguinces",
     cardTitle: "Esguinces y lesiones ligamentosas",
     cardDescription:
@@ -526,14 +526,14 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
       sessionsFaq,
     ],
     relatedTreatments: [
-      { label: "Fisioterapia deportiva y readaptación", href: "/tratamientos/lesiones-deportivas" },
+      { label: "Fisioterapia deportiva y readaptación", href: "/patologias/lesiones-deportivas" },
       { label: "Ecografía musculoesquelética", href: "/tratamientos/ecografia-musculoesqueletica" },
       { label: "Fisioterapia a domicilio", href: "/tratamientos/fisioterapia-domicilio" },
     ],
   },
   "lesiones-deportivas": {
     slug: "lesiones-deportivas",
-    path: "/tratamientos/lesiones-deportivas",
+    path: "/patologias/lesiones-deportivas",
     navLabel: "Fisioterapia deportiva",
     cardTitle: "Fisioterapia deportiva y readaptación",
     cardDescription:
@@ -610,15 +610,15 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
       consultationFaq,
     ],
     relatedTreatments: [
-      { label: "Tendinopatías y tendinitis", href: "/tratamientos/tendinopatias" },
-      { label: "Esguinces y lesiones ligamentosas", href: "/tratamientos/esguinces" },
+      { label: "Tendinopatías y tendinitis", href: "/patologias/tendinopatias" },
+      { label: "Esguinces y lesiones ligamentosas", href: "/patologias/esguinces" },
       { label: "Ecografía musculoesquelética", href: "/tratamientos/ecografia-musculoesqueletica" },
-      { label: "Fascitis plantar", href: "/tratamientos/fascitis-plantar" },
+      { label: "Fascitis plantar", href: "/patologias/fascitis-plantar" },
     ],
   },
   "fascitis-plantar": {
     slug: "fascitis-plantar",
-    path: "/tratamientos/fascitis-plantar",
+    path: "/patologias/fascitis-plantar",
     navLabel: "Fascitis plantar",
     cardTitle: "Fasciopatía plantar y dolor de talón",
     cardDescription:
@@ -696,8 +696,8 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
     ],
     relatedTreatments: [
       { label: "Ecografía musculoesquelética", href: "/tratamientos/ecografia-musculoesqueletica" },
-      { label: "Tendinopatías y tendinitis", href: "/tratamientos/tendinopatias" },
-      { label: "Fisioterapia deportiva", href: "/tratamientos/lesiones-deportivas" },
+      { label: "Tendinopatías y tendinitis", href: "/patologias/tendinopatias" },
+      { label: "Fisioterapia deportiva", href: "/patologias/lesiones-deportivas" },
     ],
   },
   "ecografia-musculoesqueletica": {
@@ -793,10 +793,10 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
       consultationFaq,
     ],
     relatedTreatments: [
-      { label: "Tendinopatías y tendinitis", href: "/tratamientos/tendinopatias" },
-      { label: "Fisioterapia deportiva y readaptación", href: "/tratamientos/lesiones-deportivas" },
-      { label: "Esguinces y lesiones ligamentosas", href: "/tratamientos/esguinces" },
-      { label: "Fascitis plantar y dolor de talón", href: "/tratamientos/fascitis-plantar" },
+      { label: "Tendinopatías y tendinitis", href: "/patologias/tendinopatias" },
+      { label: "Fisioterapia deportiva y readaptación", href: "/patologias/lesiones-deportivas" },
+      { label: "Esguinces y lesiones ligamentosas", href: "/patologias/esguinces" },
+      { label: "Fascitis plantar y dolor de talón", href: "/patologias/fascitis-plantar" },
     ],
   },
 };

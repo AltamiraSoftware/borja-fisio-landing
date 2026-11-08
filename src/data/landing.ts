@@ -1,5 +1,5 @@
 export const navLinks = [
-  { label: "Tratamientos", href: "/tratamientos" },
+  { label: "Patologías", href: "/patologias" },
   { label: "Consulta en Chamberí", href: "/fisioterapia-chamberi" },
   { label: "A domicilio", href: "/tratamientos/fisioterapia-domicilio" },
   { label: "Sobre Borja", href: "/sobre-borja" },

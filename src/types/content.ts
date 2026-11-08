@@ -11,6 +11,7 @@ export type Treatment = {
   indexable?: boolean;
   clinicalReviewPending?: boolean;
   cardDescription?: string;
+  introSectionTitle?: string;
   updatedAt: string;
   seo: {
     title: string;
@@ -25,6 +26,24 @@ export type Treatment = {
   };
   recognition: string;
   whatIs?: string;
+  // Secciones editoriales propias de servicios complejos: evitan fichas genéricas o repetidas.
+  patientSectionsHeading?: string;
+  patientSectionsIntro?: string;
+  patientSections?: Array<{
+    title: string;
+    description: string;
+    points?: string[];
+  }>;
+  // Beneficios potenciales diferenciados de los resultados clínicos garantizados.
+  benefitsHeading?: string;
+  benefitsIntro?: string;
+  benefitHighlights?: Array<{ title: string; description: string }>;
+  // Lectura contextualizada de la investigación, sin promesas de eficacia.
+  evidenceSnapshot?: { title: string; summary: string; limitations: string };
+  // Aviso de orientación clínica, nunca un diagnóstico ni una indicación automática de tratamiento.
+  clinicalAdvisory?: { title: string; description: string };
+  // Fuentes públicas utilizadas en el contenido, diferenciadas de la revisión profesional.
+  evidenceSources?: Array<{ title: string; url: string }>;
   whenUsed?: string;
   limitations?: string;
   symptoms: string[];

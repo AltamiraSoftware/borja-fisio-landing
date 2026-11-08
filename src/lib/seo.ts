@@ -103,9 +103,18 @@ export function getTreatmentJsonLd(treatment: Treatment): JsonLdObject {
   const category = getTreatmentCategory(treatment.categorySlug);
   const breadcrumbItems = [
     { "@type": "ListItem", position: 1, name: "Inicio", item: siteConfig.url },
-    { "@type": "ListItem", position: 2, name: "Tratamientos", item: `${siteConfig.url}/tratamientos` },
-    ...(category ? [{ "@type": "ListItem", position: 3, name: category.name, item: `${siteConfig.url}${getTreatmentPath(category.slug)}` }] : []),
-    { "@type": "ListItem", position: category ? 4 : 3, name: treatment.name, item: url },
+    ...(treatment.kind === "pathology"
+      ? [{ "@type": "ListItem", position: 2, name: "Patologías", item: `${siteConfig.url}/patologias` }]
+      : []),
+    ...(category
+      ? [{ "@type": "ListItem", position: 2, name: category.name, item: `${siteConfig.url}${getTreatmentPath(category.slug)}` }]
+      : []),
+    {
+      "@type": "ListItem",
+      position: treatment.kind === "pathology" || category ? 3 : 2,
+      name: treatment.name,
+      item: url,
+    },
   ];
 
   return {
@@ -134,6 +143,41 @@ export function getTreatmentJsonLd(treatment: Treatment): JsonLdObject {
         isPartOf: { "@id": websiteId },
         inLanguage: "es",
         about: { "@id": `${url}/#service` },
+      },
+    ],
+  };
+}
+
+/** Índice de problemas y motivos de consulta, no un catálogo indiscriminado de técnicas. */
+export function getPathologiesJsonLd(pathologies: Treatment[]): JsonLdObject {
+  const url = `${siteConfig.url}/patologias`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${url}/#webpage`,
+        url,
+        name: "Patologías y motivos de consulta en fisioterapia",
+        isPartOf: { "@id": websiteId },
+        about: { "@id": businessId },
+        inLanguage: "es",
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: pathologies.map((treatment, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: treatment.name,
+            url: `${siteConfig.url}${getTreatmentPath(treatment.slug)}`,
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: siteConfig.url },
+          { "@type": "ListItem", position: 2, name: "Patologías", item: url },
+        ],
       },
     ],
   };
