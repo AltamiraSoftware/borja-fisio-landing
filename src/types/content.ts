@@ -34,6 +34,12 @@ export type Treatment = {
     description: string;
     points?: string[];
   }>;
+  // Beneficios potenciales diferenciados de los resultados clínicos garantizados.
+  benefitsHeading?: string;
+  benefitsIntro?: string;
+  benefitHighlights?: Array<{ title: string; description: string }>;
+  // Lectura contextualizada de la investigación, sin promesas de eficacia.
+  evidenceSnapshot?: { title: string; summary: string; limitations: string };
   // Aviso de orientación clínica, nunca un diagnóstico ni una indicación automática de tratamiento.
   clinicalAdvisory?: { title: string; description: string };
   // Fuentes públicas utilizadas en el contenido, diferenciadas de la revisión profesional.
