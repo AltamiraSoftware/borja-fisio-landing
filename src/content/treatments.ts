@@ -83,7 +83,7 @@ const imported = treatmentCatalogSlugs.map((slug): Treatment => {
   return {
     slug: item.slug,
     name: item.cardTitle,
-    kind: item.slug === "ecografia-musculoesqueletica" ? "technique" : "pathology",
+    kind: ["ecografia-musculoesqueletica", "fisioterapia-domicilio"].includes(item.slug) ? "technique" : "pathology",
     categorySlug: item.slug === "ecografia-musculoesqueletica" ? "fisioterapia-invasiva-ecoguiada" : undefined,
     indexable: true,
     cardDescription: item.cardDescription,
@@ -156,6 +156,32 @@ export const treatments: Treatment[] = [
 
 export const legacyTreatmentSlugs = legacySlugMap;
 
+// Las fichas microtécnicas se conservan como datos para resúmenes, pero sus
+// URLs antiguas redirigen de forma permanente a la landing consolidada.
+// ATM y drenaje linfático mantienen sus propias landings por intención de búsqueda.
+export const consolidatedTechniqueDestinations: Record<string, string> = {
+  masoterapia: "terapia-manual",
+  "estiramientos-asistidos": "terapia-manual",
+  "movilizaciones-articulares": "terapia-manual",
+  kinesiotape: "terapia-manual",
+  "vendaje-funcional": "terapia-manual",
+  "presion-isquemica": "terapia-manual",
+  "vendaje-multicapa": "terapia-manual",
+  "ejercicios-estiramiento": "ejercicio-terapeutico",
+  "ejercicios-control-motor": "ejercicio-terapeutico",
+  "ejercicios-propiocepcion": "ejercicio-terapeutico",
+  "ejercicios-carga-progresiva": "ejercicio-terapeutico",
+  "ejercicios-movilidad": "ejercicio-terapeutico",
+};
+
+export function getConsolidatedTarget(slug: string) {
+  return consolidatedTechniqueDestinations[slug];
+}
+
+export function isConsolidatedTreatment(slug: string) {
+  return Boolean(getConsolidatedTarget(slug));
+}
+
 export function getAllTreatments() {
   return treatments;
 }
@@ -181,6 +207,11 @@ export function getTreatment(slug: string) {
 }
 
 export function getTreatmentPath(slug: string) {
+  const consolidated = getConsolidatedTarget(slug);
+  if (consolidated) return `/tratamientos/${consolidated}`;
+
+  const treatment = getTreatment(slug);
+  if (treatment?.kind === "pathology") return `/patologias/${slug}`;
   return `/tratamientos/${slug}`;
 }
 
