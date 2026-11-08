@@ -8,7 +8,14 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const indexablePaths = ["", "/fisioterapia-chamberi", "/rehabilitacion-a-domicilio-madrid", "/tratamientos", "/sobre-borja", "/tarifas", "/blog", "/preguntas-frecuentes", "/contacto"];
 
-  const posts = await getPublishedPosts();
+  // El catálogo estático debe seguir disponible aunque el CMS del blog falle.
+  // No bloquear la generación de sitemap.xml por una incidencia temporal en Supabase.
+  let posts: Awaited<ReturnType<typeof getPublishedPosts>> = [];
+  try {
+    posts = await getPublishedPosts();
+  } catch (error) {
+    console.error("No se pudieron cargar las publicaciones para sitemap.xml", error);
+  }
 
   return [
     ...indexablePaths.map((path) => ({
