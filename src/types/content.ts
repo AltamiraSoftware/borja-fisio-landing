@@ -10,8 +10,6 @@ export type Treatment = {
   categorySlug?: string;
   indexable?: boolean;
   clinicalReviewPending?: boolean;
-  // No anunciar modalidad o tarifa hasta confirmar que el servicio se presta.
-  availabilityUnconfirmed?: boolean;
   cardDescription?: string;
   introSectionTitle?: string;
   updatedAt: string;
