@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/constants";
 import { sharedOpenGraph } from "@/lib/metadata";
 import { AnalyticsEvents } from "@/components/analytics/AnalyticsEvents";
 import { Archivo, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const archivo = Archivo({ subsets: ["latin"], display: "swap", variable: "--font-archivo" });
@@ -69,27 +70,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
   return (
     <html lang="es" className={`${archivo.variable} ${dmSans.variable} h-full scroll-smooth`}>
       <head>
-        {gaId && (
-          <>
-            {/* GA4 - only loads when NEXT_PUBLIC_GA_MEASUREMENT_ID is set */}
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaId}');`,
-              }}
-            />
-          </>
-        )}
+        <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-52W38P2G');`}
+        </Script>
       </head>
       <body className="min-h-full bg-[var(--color-off-white)] text-[var(--color-text)] antialiased">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-52W38P2G"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         {children}
         <AnalyticsEvents />
       </body>
