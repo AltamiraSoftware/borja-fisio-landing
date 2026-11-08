@@ -45,8 +45,8 @@ export function Services() {
             );
           })}
         </div>
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-[var(--color-muted)]">¿Buscas información sobre <Link href="/tratamientos/dolor-cervical" className="font-semibold text-[#0F5366] underline underline-offset-4">dolor cervical</Link>, <Link href="/tratamientos/dolor-lumbar" className="font-semibold text-[#0F5366] underline underline-offset-4">dolor lumbar</Link> o <Link href="/tratamientos/lesiones-deportivas" className="font-semibold text-[#0F5366] underline underline-offset-4">lesiones deportivas</Link>? Explora todos los motivos de consulta.</p>
-        <div className="mt-6 flex justify-center"><Button href="/tratamientos" variant="ghost" size="sm">Ver todos los tratamientos</Button></div>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-[var(--color-muted)]">¿Buscas información sobre <Link href="/patologias/dolor-cervical" className="font-semibold text-[#0F5366] underline underline-offset-4">dolor cervical</Link>, <Link href="/patologias/dolor-lumbar" className="font-semibold text-[#0F5366] underline underline-offset-4">dolor lumbar</Link> o <Link href="/patologias/lesiones-deportivas" className="font-semibold text-[#0F5366] underline underline-offset-4">lesiones deportivas</Link>? Explora todos los motivos de consulta.</p>
+        <div className="mt-6 flex justify-center"><Button href="/patologias" variant="ghost" size="sm">Ver todas las patologías</Button></div>
       </div>
     </section>
   );
