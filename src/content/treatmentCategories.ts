@@ -132,14 +132,147 @@ export const treatmentCategories: Treatment[] = [
     relatedSlugs: ["ejercicio-terapeutico", "dolor-cervical", "dolor-lumbar"], relatedPathologySlugs: ["dolor-cervical", "dolor-lumbar", "contracturas", "esguinces", "tendinopatias"], techniqueSlugs: manualTechniques,
   }),
   catalogTreatment({
-    slug: "ejercicio-terapeutico", name: "Ejercicio terapéutico", title: "Ejercicio terapéutico en Madrid", description: "Programas de ejercicio individualizados para recuperar movilidad, fuerza, control y confianza al moverte.", eyebrow: "Ejercicio terapéutico · Madrid", intro: "Un enfoque activo y progresivo para recuperar capacidad en las actividades que te importan.",
-    whatIs: "El ejercicio terapéutico utiliza movimiento dosificado y adaptado para mejorar capacidades como movilidad, fuerza, control motor, equilibrio o tolerancia a la carga.",
-    whenUsed: "Puede formar parte de la recuperación de dolor lumbar o cervical, lesiones deportivas, tendinopatías, esguinces y procesos de readaptación funcional.",
-    limitations: "No hay una rutina universal. La selección de ejercicios, la carga y la progresión se ajustan a tu punto de partida, respuesta y objetivos.",
-    symptoms: ["Pérdida de fuerza o confianza al moverte", "Dolor al cargar, entrenar o caminar", "Dificultad para recuperar una actividad", "Necesidad de una progresión guiada"],
-    plan: [{ title: "Medir tu punto de partida", body: "Valoración funcional de movilidad, fuerza, control y tareas relevantes." }, { title: "Programar", body: "Ejercicios con dosis y objetivos comprensibles para tu situación." }, { title: "Progresar", body: "Revisión de la respuesta y ajuste gradual hacia tus actividades." }],
-    faq: [{ question: "¿Tengo que estar en forma para empezar?", answer: "No. El punto de partida se adapta a tu capacidad y a tus objetivos actuales." }, { question: "¿Me llevaré ejercicios para casa?", answer: "Cuando sea útil, recibirás pautas concretas y realistas para continuar entre sesiones." }, { question: "¿El ejercicio sustituye al tratamiento manual?", answer: "Son herramientas diferentes. Se combinan cuando cada una aporta algo al plan." }],
-    relatedSlugs: ["terapia-manual", "lesiones-deportivas", "tendinopatias"], relatedPathologySlugs: ["dolor-lumbar", "dolor-cervical", "tendinopatias", "lesiones-deportivas", "esguinces"], techniqueSlugs: exerciseTechniques,
+    slug: "ejercicio-terapeutico",
+    name: "Ejercicio terapéutico",
+    title: "Ejercicio terapéutico en Madrid",
+    description: "Ejercicio terapéutico en Chamberí, Madrid: valoración funcional, fuerza, movilidad y readaptación tras lesiones. Consulta tu caso con Borja Estarellas.",
+    eyebrow: "Ejercicio terapéutico · Chamberí, Madrid",
+    intro: "Recupera movimiento y capacidad con un programa adaptado a tu lesión, dolor o actividad. Valoramos qué te cuesta hacer, seleccionamos ejercicios y ajustamos el trabajo según tu evolución.",
+    clinicalReviewPending: true,
+    whatIs: "El ejercicio terapéutico es una intervención de fisioterapia que utiliza movimientos, ejercicios y cargas seleccionados con un objetivo clínico o funcional. No es una tabla genérica ni exige empezar en buena forma: el punto de partida y la dificultad se adaptan a la valoración, el problema y las actividades que quieres recuperar.",
+    whenUsed: "Puede formar parte de la recuperación tras un esguince, una lesión deportiva o una cirugía; también del tratamiento conservador de algunas tendinopatías, del dolor lumbar o cervical y de la pérdida de fuerza, equilibrio o confianza al moverse. La elección depende del diagnóstico, la exploración y la fase de recuperación.",
+    limitations: "No existe una rutina universal ni una progresión que sirva para todas las lesiones. Una molestia puntual durante el ejercicio no siempre obliga a detenerlo, pero tampoco debe ignorarse un empeoramiento significativo o mantenido. La dosificación, las precauciones y la necesidad de derivación se revisan individualmente; el ejercicio no reemplaza una valoración sanitaria cuando corresponde.",
+    symptoms: [
+      "Dolor lumbar o cervical que dificulta actividades habituales",
+      "Recuperación de fuerza y movilidad después de una lesión",
+      "Tendinopatías y molestias relacionadas con el esfuerzo",
+      "Inseguridad al apoyar el pie después de un esguince",
+      "Dificultad para volver a caminar, entrenar o practicar deporte",
+      "Pérdida de capacidad física tras un periodo de inactividad",
+    ],
+    patientSectionsHeading: "Movilidad, fuerza y readaptación: un programa, distintas herramientas",
+    patientSectionsIntro: "Los ejercicios de movilidad, los estiramientos, el control motor, la propiocepción y la fuerza no son tratamientos intercambiables. Se combinan según la función que necesites recuperar.",
+    patientSections: [
+      {
+        title: "Ejercicios de movilidad y estiramientos",
+        description: "La movilidad activa ayuda a utilizar un recorrido articular que necesitas para una tarea. Los estiramientos pueden incorporarse cuando existe una limitación relevante, pero no son imprescindibles para todas las lesiones ni sustituyen el trabajo de fuerza.",
+        points: [
+          "Por ejemplo: recuperar el movimiento de tobillo necesario para bajar escaleras o realizar una sentadilla.",
+          "La progresión busca un movimiento útil y tolerable, no una amplitud ideal igual para todo el mundo.",
+        ],
+      },
+      {
+        title: "Control motor y coordinación",
+        description: "Se entrenan tareas en las que importa coordinar y adaptar el movimiento. Puede ser útil trabajar un gesto concreto antes de aumentar su velocidad, complejidad o carga. No consiste en imponer una postura perfecta ni en mantener siempre los músculos contraídos.",
+        points: [
+          "Por ejemplo: recuperar confianza al agacharse, levantar un objeto o mover el cuello.",
+          "Los ejercicios evolucionan hacia actividades reales, sin depender indefinidamente de movimientos básicos.",
+        ],
+      },
+      {
+        title: "Propiocepción, equilibrio y estabilidad",
+        description: "Se trabajan la percepción de la posición corporal y la respuesta ante cambios de apoyo o dirección. Tras un esguince, el objetivo no es únicamente mantener el equilibrio sobre una superficie inestable, sino recuperar seguridad para caminar, girar o practicar deporte.",
+        points: [
+          "El nivel de dificultad parte de cómo te encuentras y de lo que exige tu actividad.",
+          "Los cambios de dirección, los apoyos y los gestos deportivos se incorporan cuando la evolución lo permite.",
+        ],
+      },
+      {
+        title: "Fuerza y carga progresiva",
+        description: "La readaptación puede necesitar recuperar la capacidad de tolerar peso, repeticiones, velocidad o esfuerzo. La carga se ajusta a la lesión, el nivel de partida y la respuesta en las horas y días siguientes, en lugar de aumentar automáticamente cada semana.",
+        points: [
+          "Por ejemplo: avanzar desde tareas básicas hasta subir escaleras, correr o entrenar, según el objetivo.",
+          "En determinadas tendinopatías, el ejercicio con carga constituye una intervención de primera línea; el protocolo concreto depende del tendón y del diagnóstico.",
+        ],
+      },
+    ],
+    clinicalAdvisory: {
+      title: "¿Se puede empezar a hacer ejercicios sin valoración?",
+      description: "Mantener una actividad física adaptada suele ser positivo, pero una lesión aguda importante, una cirugía reciente o síntomas que empeoran necesitan un plan individual. Si hay pérdida progresiva de fuerza o sensibilidad, fiebre asociada al dolor, dolor intenso tras un traumatismo u otras señales de alarma, solicita una valoración médica. La página no sustituye una exploración ni proporciona una rutina universal.",
+    },
+    plan: [
+      {
+        title: "Valoración funcional",
+        body: "Identificamos qué actividades te cuestan y exploramos movilidad, fuerza, equilibrio y tolerancia al esfuerzo según el caso. Definimos objetivos concretos que puedas reconocer en tu día a día.",
+      },
+      {
+        title: "Programa y dosis adaptados",
+        body: "Seleccionamos los movimientos adecuados y explicamos cómo ajustar su dificultad, frecuencia y recuperación. El ejercicio en consulta puede complementarse con pautas para casa cuando aporten valor.",
+      },
+      {
+        title: "Progresión y vuelta a tu actividad",
+        body: "Revisamos tu respuesta, las actividades que vas recuperando y las cargas que puedes tolerar. El plan evoluciona hacia el trabajo, la vida cotidiana o el deporte, sin fijar plazos universales.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Qué es el ejercicio terapéutico en fisioterapia?",
+        answer: "Es ejercicio seleccionado y adaptado con un objetivo de recuperación o mejora funcional. La elección, la intensidad y la progresión dependen de la valoración y de las actividades que quieres volver a realizar.",
+      },
+      {
+        question: "¿Es lo mismo que ir al gimnasio o hacer una tabla de internet?",
+        answer: "No necesariamente. Un programa terapéutico responde a una valoración, unos objetivos funcionales y una evolución clínica. Puede utilizar ejercicios conocidos del gimnasio, pero su dosis y progresión se individualizan.",
+      },
+      {
+        question: "¿Puedo hacer ejercicio si tengo dolor lumbar?",
+        answer: "En muchos cuadros de dolor lumbar se recomienda mantenerse activo y valorar un programa de ejercicios adaptado. No todos los tipos de dolor tienen la misma indicación, por lo que primero se revisan los síntomas y posibles señales de alarma.",
+      },
+      {
+        question: "¿El ejercicio terapéutico sirve para tendinopatías?",
+        answer: "Puede ser una parte fundamental del tratamiento. En algunas tendinopatías, como la porción media del tendón de Aquiles, existen guías que recomiendan el ejercicio con carga como primera opción, siempre ajustado a la respuesta y al contexto clínico.",
+      },
+      {
+        question: "¿Qué diferencia hay entre ejercicios de movilidad y estiramientos?",
+        answer: "La movilidad se centra en utilizar de forma activa un recorrido útil; los estiramientos buscan modificar la tolerancia o el recorrido en posiciones específicas. Se escogen según el objetivo, no por rutina.",
+      },
+      {
+        question: "¿Qué es la propiocepción y cuándo se trabaja?",
+        answer: "Es la capacidad de percibir y responder a la posición y movimiento corporal. Su entrenamiento puede integrarse, por ejemplo, en la recuperación funcional tras un esguince, junto a fuerza y exposición progresiva a las actividades.",
+      },
+      {
+        question: "¿Hay que hacer ejercicios con dolor?",
+        answer: "Depende de la lesión y de la respuesta. En determinados procesos puede aceptarse alguna molestia controlada, pero no significa que haya que forzar ni ignorar un empeoramiento persistente. Borja ajustará la actividad en función de la valoración.",
+      },
+      {
+        question: "¿Me darán ejercicios para hacer en casa?",
+        answer: "Cuando tengan sentido, se pueden indicar tareas sencillas para practicar entre sesiones. La frecuencia y la dificultad deben adaptarse a tu situación; no se entrega una tabla idéntica a todo el mundo.",
+      },
+      {
+        question: "¿Se puede hacer ejercicio terapéutico a domicilio en Madrid?",
+        answer: "Depende del objetivo, el espacio, el material necesario y la zona de cobertura. Puedes consultar si el trabajo indicado para tu caso se puede realizar en casa o requiere acudir a la consulta de Chamberí.",
+      },
+      {
+        question: "¿Cuántas sesiones de rehabilitación o readaptación necesito?",
+        answer: "Depende del punto de partida, la lesión, las exigencias de la actividad y cómo evoluciones. La valoración permite definir objetivos y revisar el progreso sin garantizar plazos fijos.",
+      },
+    ],
+    evidenceSources: [
+      {
+        title: "NICE NG59 — Dolor lumbar y ciática: recomendaciones de actividad y ejercicio",
+        url: "https://www.nice.org.uk/guidance/ng59/chapter/recommendations",
+      },
+      {
+        title: "JOSPT (2024) — Guía clínica de tendinopatía de la porción media del Aquiles",
+        url: "https://doi.org/10.2519/jospt.2024.0302",
+      },
+    ],
+    relatedSlugs: [
+      "ejercicios-carga-progresiva",
+      "ejercicios-propiocepcion",
+      "ejercicios-control-motor",
+      "tendinopatias",
+      "lesiones-deportivas",
+    ],
+    relatedPathologySlugs: [
+      "dolor-lumbar",
+      "dolor-cervical",
+      "tendinopatias",
+      "lesiones-deportivas",
+      "esguinces",
+      "rehabilitacion-postoperatoria",
+    ],
+    techniqueSlugs: exerciseTechniques,
+    contactMessage: "Quiero solicitar una valoración sobre ejercicio terapéutico o readaptación. Me gustaría saber qué modalidad encaja mejor con mi caso.",
   }),
   catalogTreatment({
     slug: "fisioterapia-invasiva-ecoguiada", name: "Ecografía y técnicas invasivas", title: "Fisioterapia invasiva ecoguiada en Madrid", description: "Valoración presencial de ecografía musculoesquelética y técnicas invasivas cuando pueden estar indicadas.", eyebrow: "Ecografía y técnicas invasivas", intro: "Exploración y procedimientos que requieren valoración previa, indicación individual y atención presencial.",
