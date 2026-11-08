@@ -42,7 +42,7 @@ const keywordTargets: Record<string, { primary: string; secondary: string[] }> =
   "vendaje-funcional": { primary: "vendaje funcional Madrid", secondary: ["vendaje funcional tobillo","vendaje deportivo fisioterapia"] },
   "presion-isquemica": { primary: "presión isquémica puntos gatillo", secondary: ["tratamiento puntos gatillo musculares","presión isquémica fisioterapia"] },
   "drenaje-linfatico-manual": { primary: "drenaje linfático manual Madrid", secondary: ["drenaje linfático Chamberí", "fisioterapia drenaje linfático Madrid", "drenaje linfático y linfedema", "edema y fisioterapia Chamberí", "terapia descongestiva compleja"] },
-  "vendaje-multicapa": { primary: "vendaje multicapa fisioterapia", secondary: ["vendaje compresivo multicapa","compresión para edema"] },
+  "vendaje-multicapa": { primary: "vendaje multicapa fisioterapia", secondary: ["vendaje multicapa Madrid", "vendaje compresivo linfedema", "vendaje compresivo multicapa", "terapia compresiva edema", "compresión para linfedema Madrid"] },
   "fisioterapia-atm": { primary: "fisioterapia ATM Madrid", secondary: ["fisioterapia dolor mandibular","articulación temporomandibular Chamberí"] },
   "ejercicios-estiramiento": { primary: "ejercicios de estiramiento terapéutico", secondary: ["estiramientos activos fisioterapia","ejercicios de flexibilidad"] },
   "ejercicios-control-motor": { primary: "ejercicios de control motor fisioterapia", secondary: ["control motor lumbar","control de movimiento fisioterapia"] },
@@ -591,7 +591,134 @@ export const newTechniqueTreatments: Treatment[] = [
     relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"],
     contactMessage: "Quería consultar si en mi caso, con un edema o una recomendación previa de drenaje linfático, procede valoración de fisioterapia y si este servicio está disponible.",
   }),
-  catalogTreatment({ slug: "vendaje-multicapa", indexable: false, clinicalReviewPending: true, name: "Vendaje multicapa", categorySlug: "terapia-manual", title: "Vendaje multicapa en Madrid", description: "Terapia compresiva que requiere valoración profesional, indicación y seguimiento individual.", eyebrow: "Terapia manual · Madrid", intro: "Vendaje multicapa y terapia compresiva dentro de un abordaje valorado de forma individual.", whatIs: "El vendaje multicapa utiliza capas de material compresivo con objetivos concretos dentro del manejo de determinados edemas o situaciones vasculares valoradas.", whenUsed: "Solo puede considerarse tras explorar la indicación, el estado de la piel, antecedentes y contraindicaciones.", limitations: "No es un vendaje deportivo ni debe aplicarse sin valoración específica. Puede requerir coordinación médica.", symptoms: ["Necesidad de valorar terapia compresiva", "Edema con indicación profesional", "Seguimiento de piel y tolerancia", "Dudas sobre vendaje multicapa"], plan: [{ title: "Indicar", body: "Confirmamos si la compresión es apropiada y segura." }, { title: "Aplicar", body: "Vendaje individualizado con explicaciones de cuidado." }, { title: "Controlar", body: "Seguimiento de respuesta y revisión de señales de alerta." }], faq: [{ question: "¿Es igual que un vendaje funcional?", answer: "No. Tiene objetivos, materiales y precauciones distintos." }, { question: "¿Se puede usar en cualquier edema?", answer: "No. La causa del edema y las contraindicaciones deben revisarse primero." }, { question: "¿Puedo retirarlo si molesta?", answer: "Recibirás indicaciones precisas sobre cuidado y qué hacer ante molestias." }], relatedSlugs: ["drenaje-linfatico-manual", "rehabilitacion-postoperatoria", "fisioterapia-mayores"], relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"] }),
+  catalogTreatment({
+    slug: "vendaje-multicapa",
+    name: "Vendaje multicapa",
+    categorySlug: "terapia-manual",
+    indexable: false,
+    clinicalReviewPending: true,
+    title: "Vendaje compresivo multicapa para linfedema en Madrid",
+    description: "Vendaje multicapa en Madrid: compresión para determinados edemas o linfedema, indicaciones, precauciones y valoración antes del tratamiento.",
+    eyebrow: "Vendaje multicapa · Compresión terapéutica",
+    intro: "El vendaje multicapa es una técnica de compresión que puede formar parte del abordaje especializado de ciertos edemas y linfedemas. No es un vendaje deportivo y requiere valoración y medidas de seguridad.",
+    introSectionTitle: "¿Qué es el vendaje compresivo multicapa?",
+    recognition: "La hinchazón persistente no significa que deba aplicarse compresión. Antes de utilizar un vendaje multicapa es necesario conocer el origen del edema, la circulación, el estado de la piel y las posibles contraindicaciones.",
+    whatIs: "El vendaje multicapa combina distintas capas de materiales compresivos adaptados a una extremidad. En determinados programas de terapia descongestiva del linfedema se usa durante la fase intensiva, junto con ejercicio, cuidados cutáneos y, cuando está indicado, drenaje linfático manual. No equivale al vendaje funcional de tobillo ni al vendaje neuromuscular.",
+    whenUsed: "Puede considerarse dentro del manejo especializado de ciertos linfedemas o edemas crónicos diagnosticados. La compresión y su modalidad se eligen tras valorar la circulación, las precauciones, el objetivo terapéutico y la tolerancia; en mantenimiento pueden utilizarse prendas compresivas adaptadas.",
+    limitations: "No debe aplicarse por rutina a piernas hinchadas ni a edemas sin diagnóstico. La enfermedad arterial periférica grave y la insuficiencia cardíaca descompensada pueden contraindicar determinadas formas de compresión. El tipo de material, la presión, el seguimiento y la formación del profesional deben verificarse antes de realizar el procedimiento.",
+    symptoms: [
+      "Edema de una extremidad con diagnóstico y seguimiento establecidos",
+      "Linfedema que requiere orientación sobre medidas de compresión",
+      "Dudas entre vendaje multicapa y prendas compresivas",
+      "Necesidad de comprender su relación con drenaje, ejercicio y cuidados de la piel",
+    ],
+    patientSectionsHeading: "Vendaje multicapa: indicaciones, diferencias y seguridad",
+    patientSectionsIntro: "La compresión terapéutica debe responder a una indicación clínica, no a la apariencia de la hinchazón. Estas cuestiones ayudan a comprender por qué necesita valoración y seguimiento.",
+    patientSections: [
+      {
+        title: "Vendaje multicapa y terapia descongestiva",
+        description: "En determinados casos de linfedema, el vendaje multicapa puede utilizarse en la fase intensiva de un programa que incorpora ejercicio, cuidados de la piel y educación. El tratamiento se ajusta a la situación clínica.",
+        points: [
+          "La compresión suele ser un componente fundamental en el manejo del linfedema.",
+          "Tras reducir el edema pueden indicarse prendas compresivas adaptadas para el mantenimiento.",
+        ],
+      },
+      {
+        title: "Drenaje linfático y compresión no son lo mismo",
+        description: "El drenaje linfático manual utiliza maniobras específicas y suaves; el vendaje ejerce presión externa controlada. Pueden emplearse dentro del mismo plan, pero ninguna de las dos intervenciones se prescribe automáticamente.",
+        points: [
+          "El drenaje manual no reemplaza una compresión indicada por un equipo especializado.",
+          "La utilidad de cada medida depende del diagnóstico y la respuesta funcional.",
+        ],
+      },
+      {
+        title: "Precauciones vasculares y circulatorias",
+        description: "Antes de aplicar compresión puede ser necesario comprobar el estado arterial, la sensibilidad de la extremidad, la piel y las enfermedades cardíacas. Según el caso, un profesional puede valorar pruebas como el índice tobillo-brazo.",
+        points: [
+          "Determinadas formas de compresión están contraindicadas ante insuficiencia arterial grave o insuficiencia cardíaca descompensada.",
+          "La presión excesiva puede causar dolor, alteraciones de sensibilidad o problemas circulatorios.",
+        ],
+      },
+      {
+        title: "Diferencias con vendaje funcional y kinesiotape",
+        description: "El vendaje funcional busca un soporte temporal para algunas lesiones musculoesqueléticas y el kinesiotape utiliza cintas elásticas con otros objetivos. El vendaje multicapa se utiliza con criterios específicos de compresión terapéutica y no es intercambiable con ellos.",
+        points: [
+          "La selección del material depende de la indicación, no del nombre genérico «vendaje».",
+          "Los cuidados y el tiempo de uso deben explicarse individualmente.",
+        ],
+      },
+    ],
+    clinicalAdvisory: {
+      title: "No utilices compresión multicapa sin indicación profesional",
+      description: "Una hinchazón súbita y dolorosa, con calor o enrojecimiento, requiere valoración médica urgente antes de aplicar compresión o masaje. La enfermedad arterial grave y determinadas enfermedades cardíacas pueden contraindicar el vendaje. Si un vendaje colocado provoca dolor intenso, entumecimiento, dedos fríos o cambios de color, solicita atención sanitaria inmediata siguiendo las instrucciones de retirada recibidas.",
+    },
+    plan: [
+      {
+        title: "Confirmar el diagnóstico",
+        body: "Revisar la causa del edema, los antecedentes y las recomendaciones médicas; valorar la necesidad de exploración vascular antes de comprimir.",
+      },
+      {
+        title: "Establecer una compresión adecuada",
+        body: "Un profesional formado decide si procede vendaje, qué materiales utilizar y qué seguimiento de tolerancia, piel y circulación es necesario.",
+      },
+      {
+        title: "Revisar y mantener resultados",
+        body: "El plan puede incorporar movimiento, autocuidado, revisión del volumen y prendas compresivas de mantenimiento si están indicadas.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Para qué sirve un vendaje multicapa?",
+        answer: "Es una técnica de compresión que puede utilizarse durante la fase intensiva de determinados tratamientos de linfedema. La indicación depende del diagnóstico y de una valoración de seguridad.",
+      },
+      {
+        question: "¿Es lo mismo que un vendaje funcional?",
+        answer: "No. El vendaje funcional suele utilizarse para soporte de determinadas lesiones; el multicapa aplica compresión con objetivos específicos en algunos trastornos relacionados con edema.",
+      },
+      {
+        question: "¿Se coloca siempre después del drenaje linfático?",
+        answer: "No necesariamente. Puede integrar un programa descongestivo combinado, pero el tratamiento concreto depende de la valoración, la tolerancia y las contraindicaciones.",
+      },
+      {
+        question: "¿Puedo utilizarlo si tengo problemas de circulación?",
+        answer: "Debes consultar antes. La insuficiencia arterial puede contraindicar la compresión o exigir una valoración vascular especializada. No la apliques por tu cuenta.",
+      },
+      {
+        question: "¿Qué diferencia hay entre vendaje multicapa y medias compresivas?",
+        answer: "El vendaje multicapa puede utilizarse durante una fase intensiva de tratamiento; las prendas compresivas se emplean con frecuencia durante el mantenimiento. La selección requiere indicación.",
+      },
+      {
+        question: "¿Cuánto tiempo debo llevar el vendaje?",
+        answer: "No existe una duración universal. Depende del material, la presión y el plan establecido por el profesional responsable, que debe indicar también cómo vigilar la tolerancia.",
+      },
+      {
+        question: "¿Qué hago si noto dolor o los dedos fríos?",
+        answer: "El dolor intenso, los cambios de color o la pérdida de sensibilidad pueden indicar problemas con la compresión. Solicita valoración inmediata y sigue las instrucciones de seguridad proporcionadas por tu profesional.",
+      },
+      {
+        question: "¿Se ofrece vendaje multicapa en la consulta de Chamberí?",
+        answer: "La disponibilidad y las condiciones de esta intervención especializada deben confirmarse previamente. No se garantiza sin comprobar la indicación, la formación y el material necesario.",
+      },
+    ],
+    evidenceSources: [
+      {
+        title: "NHS — Tratamiento del linfedema",
+        url: "https://www.nhs.uk/conditions/lymphoedema/treatment/",
+      },
+      {
+        title: "Hospital 12 de Octubre — Rehabilitación del linfedema",
+        url: "https://www.comunidad.madrid/hospital/12octubre/profesionales/servicios-centrales/rehabilitacion-linfedema",
+      },
+      {
+        title: "Consenso internacional — Riesgos y contraindicaciones de la compresión médica",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7383414/",
+      },
+    ],
+    relatedSlugs: ["drenaje-linfatico-manual", "ejercicio-terapeutico", "vendaje-funcional", "terapia-manual"],
+    relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"],
+    clinicOnly: true,
+    contactMessage: "Querría consultar si está disponible la valoración para tratamiento compresivo multicapa y qué condiciones deben cumplirse antes de reservar.",
+  }),
   catalogTreatment({
     slug: "fisioterapia-atm",
     name: "Fisioterapia ATM",
