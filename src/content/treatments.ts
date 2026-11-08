@@ -126,6 +126,7 @@ const legacySlugMap: Record<string, string> = {
 
 const additionalTreatments = originalTreatments.map((item) => ({
   ...item,
+  kind: "pathology" as const,
   relatedSlugs: item.relatedSlugs.map((slug) => legacySlugMap[slug] ?? slug),
 }));
 
