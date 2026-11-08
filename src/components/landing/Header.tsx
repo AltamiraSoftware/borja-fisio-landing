@@ -111,9 +111,16 @@ export function Header() {
         </Link>
 
         <nav
-          className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 lg:flex"
+          className="hidden items-center gap-7 lg:flex"
           aria-label="Navegación principal"
         >
+          <Link
+            href="/"
+            className="rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white"
+            onClick={handleNavClick}
+          >
+            Inicio
+          </Link>
           <Link
             href="/patologias"
             className="rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white"
@@ -134,18 +141,18 @@ export function Header() {
           >
             <button
               type="button"
-              className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white"
+              className="nav-link flex items-center gap-1 text-sm font-medium text-white/82 hover:text-white focus-visible:text-white"
               aria-haspopup="menu"
               aria-expanded={treatmentsOpen}
               onClick={toggleTreatments}
               onFocus={openTreatments}
             >
-              Técnicas <ChevronDown className={`size-4 transition ${treatmentsOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+              Tratamientos <ChevronDown className={`size-4 transition ${treatmentsOpen ? "rotate-180" : ""}`} aria-hidden="true" />
             </button>
 
             {treatmentsOpen && (
               <div className="absolute left-0 top-full z-50 flex items-start gap-2 pt-3">
-                <div className="grid max-h-[calc(100dvh-6rem)] w-72 gap-1 overflow-y-auto rounded-2xl border border-white/16 bg-[#052E3A] p-2 shadow-[0_24px_70px_rgba(5,46,58,0.32)]" role="menu" aria-label="Categorías de técnicas">
+                <div className="grid max-h-[calc(100dvh-6rem)] w-72 gap-1 overflow-y-auto rounded-2xl border border-white/16 bg-[#052E3A] p-2 shadow-[0_24px_70px_rgba(5,46,58,0.32)]" role="menu" aria-label="Categorías de tratamientos">
                   {treatmentNavigation.map((item, index) => {
                     const isActive = activeTreatmentGroup === item.href;
 
@@ -172,7 +179,7 @@ export function Header() {
                 </div>
 
                 {activeTreatmentGroup && treatmentNavigation.find((item) => item.href === activeTreatmentGroup)?.children && (
-                  <div className="max-h-[calc(100dvh-6rem)] w-72 overflow-y-auto rounded-2xl border border-white/16 bg-[#052E3A] p-2 shadow-[0_24px_70px_rgba(5,46,58,0.32)]" role="menu" aria-label="Técnicas de tratamiento">
+                  <div className="max-h-[calc(100dvh-6rem)] w-72 overflow-y-auto rounded-2xl border border-white/16 bg-[#052E3A] p-2 shadow-[0_24px_70px_rgba(5,46,58,0.32)]" role="menu" aria-label="Tratamientos especializados">
                     <p className="px-3 pb-2 pt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#b7f7f2]">
                       {treatmentNavigation.find((item) => item.href === activeTreatmentGroup)?.label}
                     </p>
@@ -196,7 +203,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white"
+              className="nav-link text-sm font-medium text-white/82 hover:text-white"
             >
               {link.label}
             </a>
@@ -244,6 +251,13 @@ export function Header() {
             <div className="mobile-menu-enter open absolute right-0 top-12 max-h-[calc(100dvh-6rem)] w-[min(82vw,22rem)] overflow-y-auto rounded-[24px] border border-white/16 bg-[#052E3A]/95 p-3 shadow-[0_24px_70px_rgba(5,46,58,0.32)] backdrop-blur-2xl">
               <nav className="grid gap-1" aria-label="Navegación móvil">
                 <Link
+                  href="/"
+                  onClick={handleNavClick}
+                  className="rounded-2xl px-4 py-3 text-sm font-medium text-white/78 transition hover:bg-white/10 hover:text-white"
+                >
+                  Inicio
+                </Link>
+                <Link
                   href="/patologias"
                   onClick={handleNavClick}
                   className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#b7f7f2] hover:bg-white/10"
@@ -251,7 +265,7 @@ export function Header() {
                   Patologías
                 </Link>
                 <details className="group rounded-2xl text-white/78">
-                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium hover:bg-white/10">Técnicas <ChevronDown className="size-4 transition group-open:rotate-180" aria-hidden="true" /></summary>
+                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium hover:bg-white/10">Tratamientos <ChevronDown className="size-4 transition group-open:rotate-180" aria-hidden="true" /></summary>
                   <div className="grid gap-1 pb-2 pl-3">
                     {treatmentNavigation.map((item, index) => item.children ? (
                       <details key={item.href} className="group rounded-xl">

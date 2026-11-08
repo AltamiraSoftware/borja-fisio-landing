@@ -9,6 +9,9 @@ import { Footer } from "@/components/landing/Footer";
 import { FloatingWhatsApp } from "@/components/landing/FloatingWhatsApp";
 import { Header } from "@/components/landing/Header";
 import { LocationSection } from "@/components/landing/LocationSection";
+import { Services } from "@/components/landing/Services";
+import { AboutBorja } from "@/components/landing/AboutBorja";
+import { Pricing } from "@/components/landing/Pricing";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -289,23 +292,12 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
           <LocationSection />
 
-          <section className="px-4 py-20">
-            <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
-              <GlassCard variant="solid" className="flex flex-col p-8 md:p-10">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0F5366]">Tu fisioterapeuta</p>
-                <h2 className="mt-3 flex items-center justify-center text-3xl font-semibold text-[#073B4C] lg:min-h-[5.5rem]">Borja Estarellas Botín</h2>
-                <p className="mt-5 flex-1 leading-8 text-[var(--color-muted)]">{treatment.importedDetail?.professionalBlurb ?? "La valoración, el tratamiento y el seguimiento los realiza el mismo profesional, con un plan adaptado a cada persona."}</p>
-                {treatment.importedDetail?.professionalHighlights && <ul className="mt-4 grid gap-2 leading-7 text-[var(--color-muted)]">{treatment.importedDetail.professionalHighlights.map((item) => <li key={item}>{item}</li>)}</ul>}
-                <Link href="/sobre-borja" className="btn btn--primary mt-7 self-center px-5 py-3 text-sm">Conocer formación y enfoque</Link>
-              </GlassCard>
-              <GlassCard variant="solid" className="flex flex-col p-8 md:p-10">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0F5366]">Tarifas</p>
-                <h2 className="mt-3 flex items-center justify-center text-center text-3xl font-semibold text-[#073B4C] lg:min-h-[5.5rem]">{treatment.clinicOnly ? "Consulta las condiciones de la atención presencial" : `Consulta ${siteConfig.priceClinic} · Domicilio ${siteConfig.priceHome}`}</h2>
-                <p className="mt-5 flex-1 leading-8 text-[var(--color-muted)]">{treatment.clinicOnly ? (compressionTreatment ? "El drenaje linfático y el vendaje multicapa se realizan en consulta cuando están indicados. Confirma las condiciones y el precio de tu cita antes de reservar." : "La ecografía y las técnicas invasivas requieren indicación individual. Consulta las condiciones, la disponibilidad y el precio antes de reservar.") : "La primera sesión incluye valoración funcional, tratamiento cuando esté indicado, ejercicio terapéutico y pautas. Confirma disponibilidad y zona de desplazamiento antes de reservar."}</p>
-                <Link href="/tarifas" className="btn btn--primary mt-7 self-center px-5 py-3 text-sm">Consultar tarifas</Link>
-              </GlassCard>
-            </div>
-          </section>
+          {treatment.slug === "fisioterapia-domicilio" && (
+            <Services />
+          )}
+
+          <AboutBorja />
+          <Pricing />
 
           <section id="preguntas-frecuentes" className="scroll-mt-28 px-4 py-20">
             <div className="mx-auto max-w-4xl">

@@ -63,7 +63,6 @@ export function AboutBorja() {
               ))}
             </ul>
           </GlassCard>
-
         </div>
       </div>
     </section>

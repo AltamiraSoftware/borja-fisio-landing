@@ -1,6 +1,6 @@
 import { processSteps } from "@/data/landing";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StepsProgress } from "@/components/ui/StepsProgress";
 
 export function Process() {
   return (
@@ -13,26 +13,11 @@ export function Process() {
           description="Una metodología individual: entender tu caso, elegir el tratamiento indicado, trabajar el movimiento y revisar la evolución."
         />
 
-        <div className="relative mt-14 grid gap-5 lg:grid-cols-4">
-          <div className="absolute left-1/2 top-14 hidden h-0.5 w-[75%] -translate-x-1/2 bg-gradient-to-r from-[#073B4C] via-[#2a829d] to-[#073B4C] lg:block" />
-
+        <StepsProgress className="mt-20 mx-auto max-w-3xl md:mt-24 lg:translate-x-[90px]">
           {processSteps.map((step, index) => (
-            <GlassCard
-              key={step.title}
-              className="relative p-6 text-center lg:min-h-64"
-            >
-              <div className="mx-auto grid size-16 place-items-center rounded-full border-2 border-[#073B4C] bg-[#eaf6f8] text-lg font-bold text-[#073B4C] shadow-[0_12px_28px_rgba(7,59,76,0.2)]">
-                {String(index + 1).padStart(2, "0")}
-              </div>
-              <h3 className="mt-6 flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                {step.text}
-              </p>
-            </GlassCard>
+            <li key={step.title}><p className="text-sm font-semibold text-[#0F5366]">{String(index + 1).padStart(2, "0")}</p><h3 className="mt-2 text-2xl font-semibold text-[#073B4C]">{step.title}</h3><p className="mt-3 max-w-[60ch] leading-7 text-[var(--color-muted)]">{step.text}</p></li>
           ))}
-        </div>
+        </StepsProgress>
       </div>
     </section>
   );

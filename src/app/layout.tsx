@@ -2,7 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/constants";
 import { sharedOpenGraph } from "@/lib/metadata";
 import { AnalyticsEvents } from "@/components/analytics/AnalyticsEvents";
+import { Archivo, DM_Sans } from "next/font/google";
 import "./globals.css";
+
+const archivo = Archivo({ subsets: ["latin"], display: "swap", variable: "--font-archivo" });
+const dmSans = DM_Sans({ subsets: ["latin"], display: "swap", variable: "--font-dm-sans" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -68,7 +72,7 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   return (
-    <html lang="es" className="h-full scroll-smooth">
+    <html lang="es" className={`${archivo.variable} ${dmSans.variable} h-full scroll-smooth`}>
       <head>
         {gaId && (
           <>

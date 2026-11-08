@@ -1,8 +1,9 @@
 import { Home, MapPinned, ShieldCheck, Stethoscope } from "lucide-react";
+import { siteConfig } from "@/lib/constants";
 
 export function TreatmentHeroStrip() {
   const items = [
-    { icon: ShieldCheck, label: "Fisioterapeuta titulado" },
+    { icon: ShieldCheck, label: `Fisioterapeuta colegiado · n.º ${siteConfig.registrationNumber}` },
     { icon: MapPinned, label: "Consulta en Chamberí" },
     { icon: Home, label: "Atención a domicilio" },
     { icon: Stethoscope, label: "Valoración personalizada" },

@@ -66,4 +66,7 @@ notes/
 scratch/
 *.prompt.md
 *.bak
+# Entregables de exploración visual de Claude; se conservan localmente, no se publican.
+estarellas-v2-archivos.zip
+estarellas-v2.patch
 .env.local

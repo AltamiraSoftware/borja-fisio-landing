@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Activity, Dumbbell, HandHeart, ScanLine } from "lucide-react";
+import { Activity, Dumbbell, HandHeart, ScanLine, Stethoscope } from "lucide-react";
 import { StandardPage } from "@/components/common/StandardPage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CtaBanner } from "@/components/landing/CtaBanner";
@@ -137,7 +137,8 @@ export default function PathologiesPage() {
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {highlightedServices.map((service) => (
               <GlassCard key={service.href} variant="solid" className="flex flex-col p-8 text-center">
-                <h3 className="text-xl font-semibold text-[#073B4C]">{service.title}</h3>
+                <div className="card-icon"><Stethoscope aria-hidden="true" /></div>
+                <h3 className="mt-6 text-xl font-semibold text-[#073B4C]">{service.title}</h3>
                 <p className="mt-4 flex-1 leading-7 text-[var(--color-muted)]">{service.description}</p>
                 <Button href={service.href} size="sm" className="mt-6 self-center">
                   Ver servicio especializado

@@ -6,7 +6,7 @@ import type {
 import { cn } from "@/lib/utils";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "dark" | "whatsapp";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "dark" | "whatsapp" | "accent";
 type ButtonSize = "sm" | "md" | "lg";
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -15,6 +15,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   ghost: "btn--ghost",
   dark: "btn--primary",
   whatsapp: "btn--whatsapp",
+  accent: "btn--accent",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

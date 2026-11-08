@@ -24,17 +24,17 @@ export function CtaBanner({
 
   return (
     <section className="px-4 py-16">
-      <div className="mx-auto max-w-4xl">
-        <div className="premium-dark-bg relative overflow-hidden rounded-[32px] p-8 md:p-12">
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(46,196,198,0.08)_0%,rgba(255,255,255,0)_64%)]" />
-          <div className="relative text-center">
-            <h2 className="text-3xl font-semibold leading-tight text-white md:text-4xl">
+      <div className="mx-auto max-w-7xl">
+        <div className="premium-dark-bg relative overflow-hidden rounded-[2rem] p-8 md:p-16">
+          <div className="absolute -right-20 -top-20 size-72 rounded-full border border-[#2EC4C6]/30" aria-hidden="true" />
+          <div className="relative max-w-3xl">
+            <h2 className="text-[clamp(2rem,3.6vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-white">
               {title}
             </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-pretty text-base leading-7 text-white/72 md:text-lg">
+            <p className="mt-5 max-w-2xl text-pretty text-base leading-8 text-white/80 md:text-lg">
               {description}
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button
                 href={whatsappHref}
                 size="lg"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, Home, MapPinned } from "lucide-react";
+import { Activity, CheckCircle2, Home, MapPinned } from "lucide-react";
 import { StandardPage } from "@/components/common/StandardPage";
 import { CtaBanner } from "@/components/landing/CtaBanner";
 import { FAQ } from "@/components/landing/FAQ";
@@ -91,7 +91,8 @@ export default function RehabilitationPage() {
             { href: "/patologias/fisioterapia-mayores", title: "Fisioterapia para mayores", text: "Movilidad, equilibrio, fuerza y autonomía trabajados según los objetivos de cada persona." },
           ].map((item) => (
             <GlassCard key={item.href} variant="solid" className="flex flex-col p-8">
-              <h3 className="flex min-h-16 items-center justify-center text-center text-2xl font-semibold text-[#073B4C]">{item.title}</h3>
+              <div className="card-icon"><Activity aria-hidden="true" /></div>
+              <h3 className="mt-6 flex min-h-16 items-center justify-center text-center text-2xl font-semibold text-[#073B4C]">{item.title}</h3>
               <p className="mt-4 flex-1 text-center leading-7 text-[var(--color-muted)]">{item.text}</p>
               <Link href={item.href} className="btn btn--primary mt-6 min-h-11 self-center px-5 text-sm">Ver tratamiento</Link>
             </GlassCard>
