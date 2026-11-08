@@ -141,6 +141,16 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </section>
           )}
 
+          {treatment.patientSections && treatment.patientSections.length >= 4 && (
+            <div className="mx-auto flex max-w-5xl flex-col items-center gap-5 px-4 py-3 sm:flex-row sm:justify-between">
+              <p className="max-w-2xl text-center text-base leading-7 text-[#173f50] sm:text-left">
+                <strong className="font-semibold text-[#073B4C]">¿Tienes dudas sobre tu caso?</strong>{" "}
+                La valoración individual permite elegir el siguiente paso sin tener que decidir una técnica por tu cuenta.
+              </p>
+              <Button href="#contacto" size="sm" className="shrink-0">Solicitar valoración</Button>
+            </div>
+          )}
+
           {treatment.clinicalAdvisory && (
             <section className="px-4 py-12" aria-labelledby="clinical-advisory-title">
               <div className="mx-auto max-w-5xl rounded-[30px] border border-[#8eb9ca] bg-white p-7 shadow-[0_14px_38px_rgba(15,83,102,0.10)] md:p-10">
