@@ -561,7 +561,7 @@ export const newTechniqueTreatments: Treatment[] = [
       },
       {
         question: "¿Dónde realiza Borja el drenaje linfático manual?",
-        answer: "Borja realiza drenaje linfático manual en su consulta de la calle de Caracas, 6, Chamberí (Madrid). Se valora la indicación clínica antes de comenzar. No se anuncia automáticamente la modalidad a domicilio para esta técnica.",
+        answer: "Borja realiza drenaje linfático manual en su consulta de la calle de Caracas, 6, Chamberí (Madrid). Se valora la indicación clínica antes de comenzar. Si necesitas atención a domicilio, puedes consultar qué modalidad resulta adecuada para tu caso.",
       },
       {
         question: "¿Cuándo debería ir al médico por una extremidad hinchada?",
