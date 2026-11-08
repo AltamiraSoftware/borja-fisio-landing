@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Activity, ArrowDown, Dumbbell, HandHeart, MessageCircle, ScanLine } from "lucide-react";
+import { Activity, Dumbbell, HandHeart, ScanLine } from "lucide-react";
 import { StandardPage } from "@/components/common/StandardPage";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { getPathologiesJsonLd } from "@/lib/seo";
 import { CtaBanner } from "@/components/landing/CtaBanner";
 import { LocationSection } from "@/components/landing/LocationSection";
 import { Modalities } from "@/components/landing/Modalities";
@@ -14,15 +13,38 @@ import { getPathologyTreatments, getTreatmentPath } from "@/content/treatments";
 import { treatmentCategories } from "@/content/treatmentCategories";
 import { siteConfig } from "@/lib/constants";
 import { sharedOpenGraph } from "@/lib/metadata";
+import { getPathologiesJsonLd } from "@/lib/seo";
 import { buildWhatsappHref } from "@/lib/utils";
 
-const categoryIcons = { "terapia-manual": HandHeart, "ejercicio-terapeutico": Dumbbell, "fisioterapia-invasiva-ecoguiada": ScanLine } as const;
+const categoryIcons = {
+  "terapia-manual": HandHeart,
+  "ejercicio-terapeutico": Dumbbell,
+  "fisioterapia-invasiva-ecoguiada": ScanLine,
+} as const;
+
+const highlightedServices = [
+  {
+    title: "Drenaje linfático manual",
+    description: "Tratamiento manual especializado para determinados edemas y linfedemas, tras valoración clínica.",
+    href: "/tratamientos/drenaje-linfatico-manual",
+  },
+  {
+    title: "Fisioterapia de ATM",
+    description: "Valoración del dolor mandibular, dificultades de apertura y función temporomandibular.",
+    href: "/tratamientos/fisioterapia-atm",
+  },
+];
 
 export const metadata: Metadata = {
-  title: "Patologías y motivos de consulta de fisioterapia en Madrid",
-  description: "Conoce las patologías y motivos de consulta que trata Borja Estarellas en Chamberí: dolor cervical, lumbar, tendinopatías, lesiones deportivas y más.",
+  title: "Patologías y motivos de consulta en fisioterapia en Madrid",
+  description: "Conoce las patologías y motivos de consulta que trata Borja Estarellas en Chamberí: dolor cervical, lumbar, tendinopatías y lesiones deportivas.",
   alternates: { canonical: "/patologias" },
-  openGraph: { ...sharedOpenGraph, title: "Patologías que tratamos en Madrid | Borja Estarellas", description: "Conoce los problemas y lesiones que valoramos en fisioterapia y los enfoques profesionales de Borja Estarellas.", url: `${siteConfig.url}/patologias` },
+  openGraph: {
+    ...sharedOpenGraph,
+    title: "Patologías que tratamos en Madrid | Borja Estarellas",
+    description: "Explora los motivos de consulta y los enfoques de fisioterapia de Borja Estarellas en Chamberí.",
+    url: `${siteConfig.url}/patologias`,
+  },
 };
 
 export default function PathologiesPage() {
@@ -30,30 +52,101 @@ export default function PathologiesPage() {
 
   return (
     <>
-    <JsonLd data={getPathologiesJsonLd(pathologies)} />
-    <StandardPage
-      eyebrow="Patologías y motivos de consulta · Madrid"
-      title="Patologías que tratamos en fisioterapia en Madrid"
-      intro="Explora las molestias, lesiones y problemas funcionales que valora Borja Estarellas en Madrid. Después de conocer tu caso se decide qué técnica o enfoque tiene sentido."
-      featureHero
-      heroStrip={<TreatmentHeroStrip />}
-      heroActions={<><Button href={buildWhatsappHref("Hola Borja, quiero consultar qué tratamiento de fisioterapia encaja con mi caso.")} size="lg">Consultar mi caso</Button><Button href="#contacto" size="lg" variant="secondary">Solicitar orientación</Button></>}
-      afterContent={<><section className="page-flow-bg px-4 pb-20 pt-2 sm:pb-24"><div className="mx-auto max-w-5xl"><div className="mx-auto flex w-fit items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-[var(--color-steel)]"><span className="h-px w-10 bg-[#9bcfc6]" />El siguiente paso<span className="h-px w-10 bg-[#9bcfc6]" /></div><div className="mt-7 overflow-hidden rounded-[32px] border border-[#8eb9ca] bg-white shadow-[0_18px_44px_rgba(15,83,102,.14),0_2px_8px_rgba(15,83,102,.07)]"><div className="grid items-center gap-7 p-7 sm:p-10 lg:grid-cols-[1fr_auto]"><div><p className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-steel)]"><MessageCircle className="size-4" />Orientación inicial</p><h2 className="mt-3 text-balance text-3xl font-semibold leading-tight text-[var(--color-night)]">¿No tienes claro qué tratamiento encaja contigo?</h2><p className="mt-4 max-w-2xl leading-7 text-[var(--color-muted)]">No hace falta decidirlo ahora. Cuéntame brevemente qué ocurre y te orientaré sobre la modalidad y el siguiente paso.</p></div><Button href="#contacto" size="lg" className="w-full lg:w-auto"><ArrowDown className="size-5" />Solicitar orientación</Button></div></div></div></section><div className="page-flow-bg"><Modalities /><LocationSection /><CtaBanner title="¿No sabes qué tratamiento elegir?" description="Cuéntame qué te ocurre y te orientaré sobre el siguiente paso y la disponibilidad." ctaText="Consultar mi caso por WhatsApp" /></div></>}
-    >
-      <section id="patologias" className="scroll-mt-28">
-        <SectionHeader align="center" eyebrow="¿Qué necesitas tratar?" title="Empieza por lo que te está limitando" description="Estas páginas te ayudan a entender motivos de consulta frecuentes. No necesitas identificar una técnica antes de pedir orientación." />
-        <div className="treatment-card-row mt-12">
-          {pathologies.map((treatment) => <GlassCard key={treatment.slug} variant="solid" className="group flex min-h-72 flex-col p-7"><div className="card-icon"><Activity aria-hidden="true" /></div><h2 className="mt-6 flex min-h-[4.5rem] items-center justify-center text-center text-xl font-semibold text-[#073B4C]">{treatment.name}</h2><p className="mt-4 flex-1 text-center text-sm leading-7 text-[var(--color-muted)]">{treatment.cardDescription ?? treatment.hero.intro}</p><Button href={getTreatmentPath(treatment.slug)} size="sm" className="mt-6 self-center">Ver información</Button></GlassCard>)}
-        </div>
-      </section>
+      <JsonLd data={getPathologiesJsonLd(pathologies)} />
+      <StandardPage
+        eyebrow="Patologías y motivos de consulta · Madrid"
+        title="Patologías que tratamos en fisioterapia"
+        intro="Dolor cervical, lumbar, lesiones deportivas y otros problemas que limitan tu día a día. Conoce cada motivo de consulta y solicita una valoración para elegir el enfoque adecuado."
+        featureHero
+        heroStrip={<TreatmentHeroStrip />}
+        contactTopic="patologías y motivos de consulta"
+        heroActions={
+          <>
+            <Button href={buildWhatsappHref("Hola Borja, quiero consultar una valoración por una lesión o problema musculoesquelético.")} size="lg">
+              Consultar mi caso
+            </Button>
+            <Button href="#contacto" size="lg" variant="secondary">Solicitar valoración</Button>
+          </>
+        }
+        afterContent={
+          <div className="page-flow-bg">
+            <Modalities />
+            <LocationSection />
+            <CtaBanner
+              title="¿No sabes qué tratamiento necesitas?"
+              description="Cuéntame qué te ocurre. La valoración determina qué técnicas pueden ayudarte y cuál es la siguiente opción."
+              ctaText="Consultar por WhatsApp"
+            />
+          </div>
+        }
+      >
+        <section id="patologias" className="scroll-mt-28">
+          <SectionHeader
+            align="center"
+            eyebrow="Qué podemos valorar"
+            title="Patologías, lesiones y problemas funcionales"
+            description="Cada caso tiene su propia página informativa con síntomas habituales, valoración, opciones de recuperación y enlaces a técnicas cuando corresponda."
+          />
+          <div className="treatment-card-row mt-12">
+            {pathologies.map((treatment) => (
+              <GlassCard key={treatment.slug} variant="solid" className="flex min-h-72 flex-col p-7">
+                <div className="card-icon"><Activity aria-hidden="true" /></div>
+                <h2 className="mt-6 text-center text-xl font-semibold text-[#073B4C]">{treatment.name}</h2>
+                <p className="mt-4 flex-1 text-center text-sm leading-7 text-[var(--color-muted)]">
+                  {treatment.cardDescription ?? treatment.hero.intro}
+                </p>
+                <Button href={getTreatmentPath(treatment.slug)} size="sm" className="mt-6 self-center">
+                  Conocer la patología
+                </Button>
+              </GlassCard>
+            ))}
+          </div>
+        </section>
 
-      <section id="enfoques" className="mt-24 scroll-mt-28 border-t border-[#cfe3dd] pt-20">
-        <SectionHeader align="center" eyebrow="¿Cómo podemos ayudarte?" title="Cómo abordamos cada patología" description="Terapia manual, ejercicio terapéutico y procedimientos ecoguiados cuando corresponda. Cada enfoque se adapta al diagnóstico y a la recuperación funcional." />
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {treatmentCategories.map((category) => { const Icon = categoryIcons[category.slug as keyof typeof categoryIcons]; return <GlassCard key={category.slug} variant="solid" className="group flex min-h-[25rem] flex-col p-8 text-center"><div className="card-icon"><Icon aria-hidden="true" /></div><h2 className="mt-6 text-2xl font-semibold text-[#073B4C]">{category.name}</h2><p className="mt-4 flex-1 leading-7 text-[var(--color-muted)]">{category.cardDescription}</p><Button href={getTreatmentPath(category.slug)} size="sm" className="mt-7 self-center">Explorar {category.name.toLowerCase()}</Button></GlassCard>; })}
-        </div>
-      </section>
-    </StandardPage>
+        <section id="tecnicas" className="mt-24 scroll-mt-28 border-t border-[#cfe3dd] pt-20">
+          <SectionHeader
+            align="center"
+            eyebrow="Cómo abordamos tu caso"
+            title="Tres enfoques de fisioterapia"
+            description="Terapia manual y ejercicio terapéutico agrupan sus técnicas en una página cada uno. Las intervenciones ecoguiadas disponen de información específica por procedimiento."
+          />
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {treatmentCategories.map((category) => {
+              const Icon = categoryIcons[category.slug as keyof typeof categoryIcons];
+              return (
+                <GlassCard key={category.slug} variant="solid" className="flex min-h-[22rem] flex-col p-8 text-center">
+                  <div className="card-icon"><Icon aria-hidden="true" /></div>
+                  <h2 className="mt-6 text-2xl font-semibold text-[#073B4C]">{category.name}</h2>
+                  <p className="mt-4 flex-1 leading-7 text-[var(--color-muted)]">{category.cardDescription}</p>
+                  <Button href={getTreatmentPath(category.slug)} size="sm" className="mt-7 self-center">
+                    Conocer el enfoque
+                  </Button>
+                </GlassCard>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="mt-24 border-t border-[#cfe3dd] pt-20" aria-label="Servicios especializados">
+          <SectionHeader
+            align="center"
+            eyebrow="Servicios con página propia"
+            title="Drenaje linfático y fisioterapia de ATM"
+            description="Se explican también dentro de terapia manual, pero disponen de contenido especializado por sus indicaciones y búsquedas específicas."
+          />
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {highlightedServices.map((service) => (
+              <GlassCard key={service.href} variant="solid" className="flex flex-col p-8 text-center">
+                <h3 className="text-xl font-semibold text-[#073B4C]">{service.title}</h3>
+                <p className="mt-4 flex-1 leading-7 text-[var(--color-muted)]">{service.description}</p>
+                <Button href={service.href} size="sm" className="mt-6 self-center">
+                  Ver servicio especializado
+                </Button>
+              </GlassCard>
+            ))}
+          </div>
+        </section>
+      </StandardPage>
     </>
   );
 }
