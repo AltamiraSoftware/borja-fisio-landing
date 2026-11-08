@@ -111,7 +111,7 @@ export function Header() {
         </Link>
 
         <nav
-          className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 lg:flex"
+          className="hidden items-center gap-7 lg:flex"
           aria-label="Navegación principal"
         >
           <div
@@ -127,7 +127,7 @@ export function Header() {
           >
             <button
               type="button"
-              className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white"
+              className="nav-link flex items-center gap-1 text-sm font-medium text-white/82 hover:text-white focus-visible:text-white"
               aria-haspopup="menu"
               aria-expanded={treatmentsOpen}
               onClick={toggleTreatments}
@@ -189,7 +189,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-2 text-sm font-medium text-white/74 transition hover:bg-white/10 hover:text-white"
+              className="nav-link text-sm font-medium text-white/82 hover:text-white"
             >
               {link.label}
             </a>

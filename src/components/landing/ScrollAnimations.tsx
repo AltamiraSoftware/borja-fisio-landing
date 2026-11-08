@@ -9,6 +9,13 @@ import { useEffect } from "react";
  */
 export function ScrollAnimations() {
   useEffect(() => {
+    const root = document.documentElement;
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal], .fade-up, .stagger-children");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("visible"));
+      return;
+    }
+    root.classList.add("is-enhanced");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -21,10 +28,9 @@ export function ScrollAnimations() {
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
-    const fadeEls = document.querySelectorAll(".fade-up, .stagger-children");
-    fadeEls.forEach((el) => observer.observe(el));
+    els.forEach((el) => { el.querySelectorAll<HTMLElement>(":scope > *").forEach((child, index) => child.style.setProperty("--i", String(Math.min(index, 3)))); observer.observe(el); });
 
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); root.classList.remove("is-enhanced"); };
   }, []);
 
   return null;

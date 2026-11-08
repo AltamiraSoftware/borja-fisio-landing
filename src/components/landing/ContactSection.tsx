@@ -1,15 +1,14 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { CheckCircle2, MessageCircle, PhoneCall, ShieldCheck } from "lucide-react";
+import { CheckCircle2, MessageCircle, ShieldCheck } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { buildWhatsappHref } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-const fieldClass = "mt-2 w-full rounded-2xl border border-white/16 bg-white/[0.10] px-4 py-3 text-sm text-white outline-none backdrop-blur-xl transition placeholder:text-white/38 focus:border-[#2EC4C6]/70 focus:bg-white/[0.14]";
-const optionClass = "flex min-h-11 items-center justify-center rounded-xl border border-white/16 bg-white/[0.10] px-2 py-2 text-center text-xs font-semibold text-white/75 transition peer-checked:border-[#2EC4C6] peer-checked:bg-[#2EC4C6]/20 peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-[#2EC4C6] sm:text-sm";
+const fieldClass = "mt-2 min-h-12 w-full rounded-[10px] border border-[#4a8aa0] bg-[#052E3A] px-4 py-3 text-base text-white outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-white/55 focus:border-[#2EC4C6] focus:shadow-[0_0_0_3px_rgba(46,196,198,0.28)]";
+const optionClass = "flex min-h-12 items-center justify-center rounded-[10px] border border-[#4a8aa0] bg-[#052E3A] px-2 py-2 text-center text-sm font-semibold text-white/82 transition-colors duration-150 peer-checked:border-[#2EC4C6] peer-checked:bg-[#2EC4C6] peer-checked:text-[#052E3A] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#2EC4C6]";
 
 function track(event: string, params: Record<string, string> = {}) {
   window.dataLayer = window.dataLayer || [];
@@ -62,22 +61,19 @@ export function ContactSection({ topic, headingLevel = 2, messageIntro }: { topi
       <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <SectionHeader inverse headingLevel={headingLevel} eyebrow="Primer paso" title="Reserva o consulta una primera sesión" description="No necesitas tenerlo todo claro para escribir. Cuéntame brevemente qué ocurre y te orientaré sobre la consulta en Chamberí o la atención a domicilio." />
-          <div className="mt-9 grid gap-4">
+          <ol className="steps steps--dark mt-10">
             {[
-              { title: "Primer contacto", text: "Escríbeme por WhatsApp o deja tus datos en el formulario.", icon: MessageCircle },
-              { title: "Orientación inicial", text: "Revisamos qué necesitas y resolvemos tus dudas antes de reservar.", icon: PhoneCall },
-              { title: "Primera sesión", text: "Acordamos la modalidad, la disponibilidad y el primer encuentro.", icon: CheckCircle2 },
-            ].map(({ title, text, icon: Icon }) => (
-              <div key={title} className="flex items-start gap-4 rounded-2xl border border-white/16 bg-white/[0.07] p-4">
-                <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-[#8cf3ef]/35 bg-[#8cf3ef]/10 text-[#8cf3ef]"><Icon aria-hidden="true" className="size-5" /></span>
-                <div><h3 className="font-semibold text-white">{title}</h3><p className="mt-1 text-sm leading-6 text-white/70">{text}</p></div>
-              </div>
+              { title: "Primer contacto", text: "Escríbeme por WhatsApp o deja tus datos en el formulario." },
+              { title: "Orientación inicial", text: "Revisamos qué necesitas y resolvemos tus dudas antes de reservar." },
+              { title: "Primera sesión", text: "Acordamos la modalidad, la disponibilidad y el primer encuentro." },
+            ].map(({ title, text }) => (
+              <li key={title}><h3 className="text-xl font-semibold text-white">{title}</h3><p className="mt-1 max-w-[44ch] leading-7 text-white/78">{text}</p></li>
             ))}
-          </div>
+          </ol>
           <Button href={buildWhatsappHref()} size="lg" className="mt-8" icon={<MessageCircle className="size-5" aria-hidden="true" />}>Escribir por WhatsApp</Button>
         </div>
 
-        <GlassCard variant="dark" className="p-6 md:p-8" hover={false}>
+        <div className="rounded-[16px] border border-[#2d6a7e] bg-[#073B4C] p-6 md:p-9">
           <form onSubmit={handleSubmit} className="grid gap-5 text-left" data-contact-form aria-label="Formulario de contacto" noValidate>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8cf3ef]">Primera orientación</p>
@@ -117,15 +113,15 @@ export function ContactSection({ topic, headingLevel = 2, messageIntro }: { topi
               <input type="checkbox" name="privacy" required className="mt-1 size-4 shrink-0 accent-[#2EC4C6]" aria-describedby={status === "error" ? "contact-form-status" : undefined} />
               <span>Acepto la <a href="/politica-de-privacidad" className="font-semibold text-white underline decoration-[#2EC4C6] underline-offset-4">política de privacidad</a> (obligatorio)</span>
             </label>
-            <Button type="submit" size="lg" className="w-full">Enviar solicitud de información</Button>
-            <p className="text-center text-xs leading-5 text-white/60">Se abrirá WhatsApp con tu solicitud. Pulsa enviar allí para hacérsela llegar a Borja.</p>
-            <p className="flex items-start gap-2 text-xs leading-5 text-white/60"><ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#8cf3ef]" aria-hidden="true" />No compartas información clínica especialmente sensible en este formulario. Podrás explicar mejor tu caso en la primera sesión.</p>
+            <Button type="submit" variant="accent" size="lg" className="w-full">Enviar solicitud de información</Button>
+            <p className="text-center text-sm leading-6 text-white/78">Se abrirá WhatsApp con tu solicitud. Pulsa enviar allí para hacérsela llegar a Borja.</p>
+            <p className="flex items-start gap-2 text-sm leading-6 text-white/78"><ShieldCheck className="mt-0.5 size-4 shrink-0 text-[#8cf3ef]" aria-hidden="true" />No compartas información clínica especialmente sensible en este formulario. Podrás explicar mejor tu caso en la primera sesión.</p>
             <div id="contact-form-status" aria-live="polite">
               {status === "error" && <p className="rounded-xl border border-red-300/30 bg-red-950/30 px-4 py-3 text-sm text-white">Rellena nombre y teléfono, añade tu email si prefieres ese contacto y acepta la política de privacidad.</p>}
               {status === "ready" && <p className="flex flex-wrap items-center gap-2 rounded-xl border border-[#2EC4C6]/30 bg-[#2EC4C6]/10 px-4 py-3 text-sm text-white"><CheckCircle2 className="size-4 text-[#8cf3ef]" aria-hidden="true" />Se ha abierto WhatsApp. Envía allí el mensaje para completar tu consulta. <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn--whatsapp min-h-9 px-3 text-xs"><WhatsAppIcon className="size-4" />Abrir WhatsApp</a></p>}
             </div>
           </form>
-        </GlassCard>
+        </div>
       </div>
     </section>
   );
