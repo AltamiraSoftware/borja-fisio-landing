@@ -131,15 +131,15 @@ const additionalTreatments = originalTreatments.map((item) => ({
 }));
 
 const contextualRelationships: Record<string, string[]> = {
-  "dolor-cervical": ["terapia-manual", "ejercicios-control-motor", "ejercicios-movilidad"],
-  "dolor-lumbar": ["ejercicio-terapeutico", "ejercicios-control-motor", "ejercicios-carga-progresiva"],
-  contracturas: ["masoterapia", "presion-isquemica", "puncion-seca"],
-  tendinopatias: ["ejercicios-carga-progresiva", "ecografia-musculoesqueletica", "fisioterapia-invasiva-ecoguiada", "electrolisis-percutanea-ecoguiada"],
-  "lesiones-deportivas": ["ejercicios-propiocepcion", "ejercicios-carga-progresiva", "vendaje-funcional", "fisioterapia-invasiva-ecoguiada"],
-  esguinces: ["vendaje-funcional", "ejercicios-movilidad", "ejercicios-propiocepcion"],
-  "fascitis-plantar": ["ejercicios-carga-progresiva", "ejercicios-movilidad"],
-  "rehabilitacion-postoperatoria": ["ejercicio-terapeutico", "ejercicios-movilidad"],
-  "fisioterapia-mayores": ["ejercicio-terapeutico", "ejercicios-movilidad"],
+  "dolor-cervical": ["terapia-manual", "ejercicio-terapeutico", "fisioterapia-atm"],
+  "dolor-lumbar": ["ejercicio-terapeutico", "terapia-manual"],
+  contracturas: ["terapia-manual", "puncion-seca"],
+  tendinopatias: ["ejercicio-terapeutico", "ecografia-musculoesqueletica", "fisioterapia-invasiva-ecoguiada", "electrolisis-percutanea-ecoguiada"],
+  "lesiones-deportivas": ["ejercicio-terapeutico", "terapia-manual", "fisioterapia-invasiva-ecoguiada"],
+  esguinces: ["terapia-manual", "ejercicio-terapeutico"],
+  "fascitis-plantar": ["ejercicio-terapeutico"],
+  "rehabilitacion-postoperatoria": ["ejercicio-terapeutico", "drenaje-linfatico-manual"],
+  "fisioterapia-mayores": ["ejercicio-terapeutico"],
   "ecografia-musculoesqueletica": ["fisioterapia-invasiva-ecoguiada", "electrolisis-percutanea-ecoguiada", "neuromodulacion-percutanea-ecoguiada", "puncion-seca"],
 };
 
