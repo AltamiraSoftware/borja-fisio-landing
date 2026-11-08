@@ -41,7 +41,7 @@ const keywordTargets: Record<string, { primary: string; secondary: string[] }> =
   "kinesiotape": { primary: "kinesiotape Madrid", secondary: ["vendaje neuromuscular Madrid","kinesiotaping fisioterapia"] },
   "vendaje-funcional": { primary: "vendaje funcional Madrid", secondary: ["vendaje funcional tobillo","vendaje deportivo fisioterapia"] },
   "presion-isquemica": { primary: "presión isquémica puntos gatillo", secondary: ["tratamiento puntos gatillo musculares","presión isquémica fisioterapia"] },
-  "drenaje-linfatico-manual": { primary: "drenaje linfático manual Madrid", secondary: ["drenaje linfático Chamberí","drenaje linfático fisioterapia"] },
+  "drenaje-linfatico-manual": { primary: "drenaje linfático manual Madrid", secondary: ["drenaje linfático Chamberí", "fisioterapia drenaje linfático Madrid", "drenaje linfático y linfedema", "edema y fisioterapia Chamberí", "terapia descongestiva compleja"] },
   "vendaje-multicapa": { primary: "vendaje multicapa fisioterapia", secondary: ["vendaje compresivo multicapa","compresión para edema"] },
   "fisioterapia-atm": { primary: "fisioterapia ATM Madrid", secondary: ["fisioterapia dolor mandibular","articulación temporomandibular Chamberí"] },
   "ejercicios-estiramiento": { primary: "ejercicios de estiramiento terapéutico", secondary: ["estiramientos activos fisioterapia","ejercicios de flexibilidad"] },
@@ -445,7 +445,152 @@ export const newTechniqueTreatments: Treatment[] = [
   catalogTreatment({ slug: "kinesiotape", name: "Kinesiotape", categorySlug: "terapia-manual", title: "Kinesiotape en Madrid", description: "Vendaje neuromuscular valorado como apoyo temporal dentro de un plan de fisioterapia.", eyebrow: "Terapia manual · Madrid", intro: "Vendaje neuromuscular como herramienta complementaria cuando encaja con tu valoración.", whatIs: "El kinesiotape o vendaje neuromuscular es una cinta elástica aplicada sobre la piel. Puede utilizarse como apoyo temporal en algunas situaciones de fisioterapia.", whenUsed: "Puede valorarse cuando se busca una pauta externa temporal que acompañe movimiento, actividad o percepción de una zona.", limitations: "No corrige por sí solo una lesión ni reemplaza la valoración, el ejercicio o la progresión de carga.", symptoms: ["Necesidad de apoyo temporal", "Molestias durante actividad", "Dudas sobre vendaje neuromuscular", "Plan de recuperación con pautas activas"], plan: [{ title: "Valorar", body: "Comprobamos si el vendaje aporta algo útil a tu caso." }, { title: "Aplicar", body: "Colocación con explicación de uso y cuidados." }, { title: "Revisar", body: "Se integra con el resto del plan, no como único tratamiento." }], faq: [{ question: "¿El kinesiotape cura una lesión?", answer: "No. Es una herramienta complementaria dentro de un plan individual." }, { question: "¿Puedo ducharme con él?", answer: "Recibirás indicaciones de cuidado según el tipo de aplicación." }, { question: "¿Se usa en cualquier lesión?", answer: "No. Se valora si tiene sentido en tu caso concreto." }], relatedSlugs: ["vendaje-funcional", "lesiones-deportivas", "esguinces"], relatedPathologySlugs: ["esguinces", "lesiones-deportivas", "tendinopatias"] }),
   catalogTreatment({ slug: "vendaje-funcional", name: "Vendaje funcional", categorySlug: "terapia-manual", title: "Vendaje funcional en Madrid", description: "Soporte funcional temporal para determinadas lesiones, siempre tras valoración de fisioterapia.", eyebrow: "Terapia manual · Madrid", intro: "Vendaje funcional orientado a proteger o acompañar la actividad sin perder de vista la recuperación activa.", whatIs: "El vendaje funcional busca aportar soporte temporal a una zona concreta sin inmovilizar completamente el movimiento cuando la situación lo permite.", whenUsed: "Puede considerarse en algunas lesiones ligamentosas, sobrecargas o al retomar actividad, tras explorar estabilidad, síntomas y objetivos.", limitations: "No sustituye el trabajo de movilidad, fuerza, propiocepción ni una valoración ante dolor intenso o traumatismo reciente.", symptoms: ["Sensación de inestabilidad", "Vuelta progresiva a actividad", "Esguince valorado", "Necesidad de soporte temporal"], plan: [{ title: "Examinar", body: "Valoramos lesión, estabilidad y actividad prevista." }, { title: "Proteger", body: "Vendaje adaptado al objetivo y a la piel." }, { title: "Recuperar", body: "Movilidad y ejercicio para no depender del soporte." }], faq: [{ question: "¿Puedo hacer deporte con vendaje funcional?", answer: "Depende de la lesión, fase y actividad. Se decide tras valoración." }, { question: "¿Inmoviliza por completo?", answer: "Busca soporte selectivo; el grado de restricción depende de la aplicación." }, { question: "¿Es igual que el kinesiotape?", answer: "No. Son materiales y objetivos distintos." }], relatedSlugs: ["kinesiotape", "ejercicios-propiocepcion", "esguinces"], relatedPathologySlugs: ["esguinces", "lesiones-deportivas"] }),
   catalogTreatment({ slug: "presion-isquemica", indexable: false, name: "Presión isquémica", categorySlug: "terapia-manual", title: "Presión isquémica para puntos gatillo en Madrid", description: "Técnica manual valorada para molestias musculares y puntos sensibles, integrada con ejercicio y movimiento.", eyebrow: "Terapia manual · Madrid", intro: "Trabajo manual sobre puntos sensibles musculares dentro de una valoración completa.", whatIs: "La presión isquémica aplica una presión mantenida y graduada sobre zonas musculares sensibles, a veces descritas como puntos gatillo.", whenUsed: "Puede valorarse ante dolor muscular localizado o sensibilidad que se relaciona con determinados movimientos o cargas.", limitations: "La presencia de un punto sensible no explica por sí sola un problema. Se revisan carga, movimiento, descanso y otros factores relevantes.", symptoms: ["Dolor muscular localizado", "Puntos sensibles", "Molestias al presionar una zona", "Tensión asociada a actividad"], plan: [{ title: "Explorar", body: "Relacionamos la sensibilidad con tu historia y movimiento." }, { title: "Dosificar", body: "Aplicación manual gradual y consensuada." }, { title: "Mover", body: "Pautas activas para recuperar confianza y capacidad." }], faq: [{ question: "¿Qué es un punto gatillo?", answer: "Es una zona muscular sensible; se interpreta dentro de la exploración completa." }, { question: "¿Tiene que ser doloroso?", answer: "La intensidad se regula y debe ser tolerable." }, { question: "¿Basta con tratar el punto?", answer: "Normalmente se combina con otras pautas según los objetivos." }], relatedSlugs: ["masoterapia", "puncion-seca", "contracturas"], relatedPathologySlugs: ["contracturas", "dolor-cervical", "dolor-lumbar"] }),
-  catalogTreatment({ slug: "drenaje-linfatico-manual", name: "Drenaje linfático manual", categorySlug: "terapia-manual", title: "Drenaje linfático manual en Madrid", description: "Tratamiento fisioterapéutico manual que requiere valoración para determinados edemas y procesos indicados.", eyebrow: "Terapia manual · Madrid", intro: "Drenaje linfático manual con valoración previa, objetivos claros y coordinación cuando sea necesaria.", whatIs: "El drenaje linfático manual utiliza maniobras suaves dirigidas a acompañar el manejo de determinados edemas cuando existe indicación clínica.", whenUsed: "Puede considerarse en situaciones concretas y tras valorar antecedentes, diagnóstico, evolución y posibles contraindicaciones.", limitations: "No es un masaje general ni está indicado para cualquier hinchazón. Puede requerir coordinación con el equipo médico.", symptoms: ["Edema que requiere valoración", "Sensación de pesadez", "Proceso con indicación profesional", "Necesidad de pautas de cuidado"], plan: [{ title: "Revisar", body: "Historia, diagnóstico y posibles precauciones antes de intervenir." }, { title: "Aplicar", body: "Técnica manual suave cuando está indicada." }, { title: "Acompañar", body: "Pautas y derivación si el caso requiere otros profesionales." }], faq: [{ question: "¿Sirve para cualquier retención de líquidos?", answer: "No. La hinchazón debe valorarse para conocer su origen y si esta técnica es adecuada." }, { question: "¿Es un masaje intenso?", answer: "No. Son maniobras suaves y específicas." }, { question: "¿Puede requerir indicación médica?", answer: "Sí. Según el contexto, es importante contar con diagnóstico o coordinación médica." }], relatedSlugs: ["vendaje-multicapa", "rehabilitacion-postoperatoria", "fisioterapia-mayores"], relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"] }),
+  catalogTreatment({
+    slug: "drenaje-linfatico-manual",
+    name: "Drenaje linfático manual",
+    categorySlug: "terapia-manual",
+    // No se publicita como intervención especializada confirmada hasta validar
+    // formación, disponibilidad y alcance asistencial con Borja.
+    indexable: false,
+    clinicalReviewPending: true,
+    title: "Drenaje linfático manual en Madrid",
+    description: "Drenaje linfático manual en Chamberí, Madrid. Información sobre edema, linfedema, valoración y compresión. Consulta indicación y disponibilidad con Borja.",
+    eyebrow: "Drenaje linfático · Fisioterapia en Chamberí",
+    intro: "¿Tienes hinchazón persistente o te han recomendado drenaje linfático? Conviene conocer primero el origen del edema: el drenaje manual puede formar parte de determinados tratamientos, pero no sirve para cualquier retención de líquidos.",
+    introSectionTitle: "¿Cuándo conviene valorar un drenaje linfático manual?",
+    recognition: "La hinchazón de un brazo o una pierna puede tener causas venosas, linfáticas, inflamatorias o sistémicas. La sensación de pesadez no basta para indicar drenaje. La historia clínica, el diagnóstico y las posibles precauciones determinan si procede fisioterapia, compresión u otra atención sanitaria.",
+    whatIs: "El drenaje linfático manual (DLM) es una técnica específica de movimientos suaves y controlados sobre la piel, diseñada para favorecer la movilización del líquido en determinados trastornos del sistema linfático. En el linfedema suele formar parte de una terapia descongestiva más amplia, junto con compresión, ejercicio, cuidados cutáneos y educación. No equivale a un masaje descontracturante ni a un tratamiento estético universal.",
+    whenUsed: "Puede estar indicado en determinados cuadros de edema o linfedema correctamente valorados, por ejemplo dentro de la rehabilitación tras algunos tratamientos oncológicos o intervenciones cuando existe una indicación clínica. La necesidad de drenaje, compresión y seguimiento especializado debe confirmarse individualmente y en coordinación médica cuando proceda.",
+    limitations: "El drenaje manual aislado no sustituye la compresión cuando está indicada ni cura el linfedema. La evidencia sobre su aportación adicional varía según el contexto clínico. Tampoco se recomienda asumir que toda hinchazón, pesadez o «retención de líquidos» se resuelve con DLM: primero es necesario identificar la causa.",
+    symptoms: [
+      "Hinchazón de una extremidad con causa ya estudiada o diagnóstico conocido",
+      "Sensación de pesadez o tirantez asociada a edema persistente",
+      "Consulta por cuidados de linfedema dentro de un plan establecido",
+      "Dudas sobre el papel de drenaje, compresión, ejercicio y cuidados de la piel",
+      "Necesidad de orientación o derivación tras una intervención, según indicación médica",
+    ],
+    patientSectionsHeading: "Drenaje linfático, edema y compresión: diferencias importantes",
+    patientSectionsIntro: "La eficacia y seguridad del tratamiento dependen de saber qué tipo de hinchazón existe y cómo debe abordarse. No todas las personas necesitan drenaje ni vendaje multicapa.",
+    patientSections: [
+      {
+        title: "Drenaje linfático manual frente a masaje convencional",
+        description: "El DLM utiliza maniobras específicas y generalmente suaves dirigidas al abordaje del edema linfático. No se aplica como masaje muscular intenso, descontracturante o procedimiento estético estandarizado.",
+        points: [
+          "La presión y el recorrido de las maniobras no se deciden por la sensación subjetiva de tensión muscular.",
+          "La técnica requiere conocimientos y formación adecuados para identificar cuándo está indicada y cuándo no.",
+        ],
+      },
+      {
+        title: "Linfedema y otras causas de hinchazón",
+        description: "El linfedema aparece cuando el drenaje linfático está alterado y se acumula líquido en los tejidos. También pueden producirse edemas por insuficiencia venosa, enfermedad cardíaca, tratamientos, infecciones u otras causas. El tratamiento cambia según el origen.",
+        points: [
+          "No debe diagnosticarse linfedema únicamente por la presencia de piernas o brazos hinchados.",
+          "Si una extremidad se hincha de manera súbita, es dolorosa o está caliente y enrojecida, se necesita valoración sanitaria antes de realizar maniobras.",
+        ],
+      },
+      {
+        title: "Terapia descongestiva compleja y vendaje multicapa",
+        description: "En determinados casos de linfedema se utiliza una estrategia combinada: compresión, cuidados de la piel, ejercicio, educación y, cuando procede, drenaje linfático manual. El vendaje multicapa puede formar parte de la fase intensiva, mientras que las prendas compresivas suelen emplearse en mantenimiento.",
+        points: [
+          "La compresión no es intercambiable con el drenaje: tiene indicaciones, técnicas y precauciones propias.",
+          "Antes de comprimir una extremidad puede ser necesario evaluar la circulación arterial y otras contraindicaciones.",
+        ],
+      },
+      {
+        title: "Drenaje linfático tras cirugía",
+        description: "Después de algunas intervenciones pueden aparecer cambios de volumen o edema. Sin embargo, el drenaje no está indicado automáticamente tras cualquier operación. Es importante conocer el procedimiento, el estado de la herida y las instrucciones del equipo médico.",
+        points: [
+          "La indicación se adapta al tipo de cirugía, la evolución y los riesgos relevantes.",
+          "En contextos oncológicos o de linfedema complejo puede ser necesaria atención especializada y coordinación entre profesionales.",
+        ],
+      },
+      {
+        title: "Ejercicio, autocuidado y seguimiento",
+        description: "El movimiento y los cuidados cutáneos son componentes relevantes de muchos planes de manejo del linfedema. El seguimiento puede incluir revisión de volumen, tolerancia a la compresión, función y necesidades de derivación.",
+        points: [
+          "Los ejercicios y la compresión deben adecuarse al diagnóstico y a las recomendaciones del equipo tratante.",
+          "El objetivo es mantener la función y el control de los síntomas, sin prometer una curación definitiva.",
+        ],
+      },
+    ],
+    clinicalAdvisory: {
+      title: "Señales de alarma antes de solicitar drenaje linfático",
+      description: "Si aparece hinchazón súbita de una pierna o brazo, especialmente con dolor, calor o enrojecimiento, solicita valoración médica urgente para descartar causas como trombosis o infección. Si se acompaña de dificultad respiratoria o dolor torácico, acude a urgencias. Tampoco debe iniciarse drenaje o compresión en un edema de causa desconocida sin una valoración adecuada. Informa siempre sobre antecedentes cardíacos, vasculares, oncológicos, infecciones y tratamientos recientes.",
+    },
+    plan: [
+      {
+        title: "Aclarar el diagnóstico y el motivo",
+        body: "Se revisan antecedentes, evolución de la hinchazón y recomendaciones médicas disponibles. Si la causa no está aclarada, se prioriza la evaluación sanitaria antes de plantear drenaje.",
+      },
+      {
+        title: "Valorar opciones y precauciones",
+        body: "Cuando existe indicación, se considera qué papel podrían tener las técnicas manuales, la compresión, el ejercicio y los cuidados cutáneos. La disponibilidad y formación especializada se confirman previamente.",
+      },
+      {
+        title: "Coordinar el seguimiento",
+        body: "Se revisan síntomas, función y posibles necesidades de cuidados prolongados o derivación a un servicio de linfedema. El enfoque se adapta al diagnóstico, no a un protocolo genérico.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Qué es el drenaje linfático manual?",
+        answer: "Es una técnica fisioterapéutica especializada de maniobras suaves sobre la piel, que puede formar parte del manejo del edema linfático. No es un masaje descontracturante ni está indicado para cualquier persona con hinchazón.",
+      },
+      {
+        question: "¿Sirve para la retención de líquidos o las piernas hinchadas?",
+        answer: "No puede recomendarse de forma automática. La hinchazón tiene causas diferentes y algunas requieren valoración médica. Es necesario conocer su origen antes de considerar drenaje o compresión.",
+      },
+      {
+        question: "¿El drenaje linfático sirve para el linfedema?",
+        answer: "Puede formar parte de la terapia descongestiva compleja, que habitualmente incluye compresión, ejercicio, cuidados de la piel y educación. No cura el linfedema y su beneficio adicional depende de la situación concreta.",
+      },
+      {
+        question: "¿En qué se diferencia de un masaje descontracturante?",
+        answer: "El drenaje linfático manual se orienta al abordaje de determinados edemas mediante maniobras específicas y suaves. El masaje descontracturante se dirige a molestias de tejidos blandos y tiene otros objetivos. No son intercambiables.",
+      },
+      {
+        question: "¿Se necesita vendaje multicapa después del drenaje?",
+        answer: "No siempre. En algunos programas de tratamiento intensivo del linfedema se utiliza compresión multicapa, pero su indicación depende del diagnóstico, la circulación, la piel y las contraindicaciones. No debe aplicarse de forma rutinaria sin valoración.",
+      },
+      {
+        question: "¿Puedo hacerme drenaje linfático después de una operación?",
+        answer: "Depende del tipo de cirugía, la evolución, el motivo del edema y las instrucciones médicas. No debe asumirse que sea necesario o seguro después de cualquier intervención.",
+      },
+      {
+        question: "¿El drenaje linfático tiene que doler?",
+        answer: "El drenaje manual suele utilizar maniobras suaves. El dolor intenso no es un objetivo del procedimiento. Si existe dolor importante, hinchazón repentina o signos inflamatorios, se debe aclarar la causa antes de tratar.",
+      },
+      {
+        question: "¿Se puede hacer drenaje linfático a domicilio en Madrid?",
+        answer: "La modalidad y la disponibilidad deben confirmarse. En cuadros complejos o que requieren compresión y seguimiento especializado puede ser preferible un servicio específico de linfedema.",
+      },
+      {
+        question: "¿Cuándo debería ir al médico por una extremidad hinchada?",
+        answer: "Ante una hinchazón nueva, persistente o sin causa conocida, conviene consultar. Si aparece de forma súbita con dolor, calor o enrojecimiento, se recomienda valoración urgente; si además hay dificultad para respirar o dolor torácico, acude a urgencias.",
+      },
+    ],
+    evidenceSources: [
+      {
+        title: "Hospital 12 de Octubre — Rehabilitación del linfedema",
+        url: "https://www.comunidad.madrid/hospital/12octubre/profesionales/servicios-centrales/rehabilitacion-linfedema",
+      },
+      {
+        title: "NHS — Tratamiento del linfedema y terapia descongestiva",
+        url: "https://www.nhs.uk/conditions/lymphoedema/treatment/",
+      },
+      {
+        title: "Sociedad Internacional de Linfología — Consenso sobre linfedema periférico (2023)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/39207406/",
+      },
+      {
+        title: "Cochrane — Drenaje manual tras tratamiento del cáncer de mama",
+        url: "https://www.cochrane.org/evidence/CD003475_manual-lymphatic-drainage-lymphedema-following-breast-cancer-treatment",
+      },
+    ],
+    relatedSlugs: ["vendaje-multicapa", "ejercicio-terapeutico", "terapia-manual", "rehabilitacion-postoperatoria"],
+    relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"],
+    contactMessage: "Quería consultar si en mi caso, con un edema o una recomendación previa de drenaje linfático, procede valoración de fisioterapia y si este servicio está disponible.",
+  }),
   catalogTreatment({ slug: "vendaje-multicapa", indexable: false, clinicalReviewPending: true, name: "Vendaje multicapa", categorySlug: "terapia-manual", title: "Vendaje multicapa en Madrid", description: "Terapia compresiva que requiere valoración profesional, indicación y seguimiento individual.", eyebrow: "Terapia manual · Madrid", intro: "Vendaje multicapa y terapia compresiva dentro de un abordaje valorado de forma individual.", whatIs: "El vendaje multicapa utiliza capas de material compresivo con objetivos concretos dentro del manejo de determinados edemas o situaciones vasculares valoradas.", whenUsed: "Solo puede considerarse tras explorar la indicación, el estado de la piel, antecedentes y contraindicaciones.", limitations: "No es un vendaje deportivo ni debe aplicarse sin valoración específica. Puede requerir coordinación médica.", symptoms: ["Necesidad de valorar terapia compresiva", "Edema con indicación profesional", "Seguimiento de piel y tolerancia", "Dudas sobre vendaje multicapa"], plan: [{ title: "Indicar", body: "Confirmamos si la compresión es apropiada y segura." }, { title: "Aplicar", body: "Vendaje individualizado con explicaciones de cuidado." }, { title: "Controlar", body: "Seguimiento de respuesta y revisión de señales de alerta." }], faq: [{ question: "¿Es igual que un vendaje funcional?", answer: "No. Tiene objetivos, materiales y precauciones distintos." }, { question: "¿Se puede usar en cualquier edema?", answer: "No. La causa del edema y las contraindicaciones deben revisarse primero." }, { question: "¿Puedo retirarlo si molesta?", answer: "Recibirás indicaciones precisas sobre cuidado y qué hacer ante molestias." }], relatedSlugs: ["drenaje-linfatico-manual", "rehabilitacion-postoperatoria", "fisioterapia-mayores"], relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"] }),
   catalogTreatment({
     slug: "fisioterapia-atm",
