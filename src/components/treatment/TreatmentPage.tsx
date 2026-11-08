@@ -175,6 +175,27 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
           <section className="px-4 py-20">
             <div className="mx-auto max-w-7xl">
+              {treatment.availabilityUnconfirmed ? (
+                <>
+                  <SectionHeader
+                    align="center"
+                    eyebrow="Orientación previa"
+                    title="Consulta la disponibilidad de este servicio"
+                    description="Este procedimiento especializado requiere confirmar previamente su disponibilidad, las competencias profesionales y la indicación clínica. No se anuncia como sesión reservable ni se asigna una tarifa sin validación."
+                  />
+                  <div className="mx-auto mt-12 max-w-2xl">
+                    <GlassCard variant="solid" hover={false} className="flex flex-col p-8 text-center md:p-10">
+                      <div className="card-icon"><MapPinned aria-hidden="true" /></div>
+                      <h3 className="mt-6 text-2xl font-semibold text-[#073B4C]">Orientación en Chamberí</h3>
+                      <p className="mt-4 leading-8 text-[var(--color-muted)]">
+                        Puedes consultar si la valoración o el tratamiento están disponibles en la consulta de Fisio Estarellas y si conviene acudir a un servicio especializado.
+                      </p>
+                      <Button className="mt-6 self-center" href="#contacto">Consultar disponibilidad</Button>
+                    </GlassCard>
+                  </div>
+                </>
+              ) : (
+                <>
               <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? consultationTitle : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? "La indicación, las precauciones y la disponibilidad se revisan antes de realizar cualquier procedimiento presencial." : "Borja atiende en una consulta independiente dentro del centro Meraki Salud Chamberí. También puedes preguntar por las sesiones a domicilio en Madrid."} />
               <div className={`mt-12 grid gap-6 ${treatment.clinicOnly ? "mx-auto max-w-2xl" : "md:grid-cols-2"}`}>
                 <GlassCard variant="solid" className="group flex flex-col p-8 text-center md:p-10">
@@ -198,6 +219,8 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
                 </p>
               )}
               {treatment.importedDetail && <p className="mx-auto mt-7 max-w-3xl text-center leading-7 text-[var(--color-muted)]">{treatment.importedDetail.onlineFollowup}</p>}
+                </>
+              )}
             </div>
           </section>
 
@@ -215,9 +238,9 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
                 <Link href="/sobre-borja" className="btn btn--primary mt-7 self-center px-5 py-3 text-sm">Conocer formación y enfoque</Link>
               </GlassCard>
               <GlassCard variant="solid" className="flex flex-col p-8 md:p-10">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0F5366]">Tarifas</p>
-                <h2 className="mt-3 flex items-center justify-center text-center text-3xl font-semibold text-[#073B4C] lg:min-h-[5.5rem]">{treatment.clinicOnly ? "Consulta las condiciones de la atención presencial" : `Consulta ${siteConfig.priceClinic} · Domicilio ${siteConfig.priceHome}`}</h2>
-                <p className="mt-5 flex-1 leading-8 text-[var(--color-muted)]">{treatment.clinicOnly ? "La ecografía y las técnicas invasivas requieren indicación individual. Consulta las condiciones, la disponibilidad y el precio antes de reservar." : "La primera sesión incluye valoración funcional, tratamiento cuando esté indicado, ejercicio terapéutico y pautas. Confirma disponibilidad y zona de desplazamiento antes de reservar."}</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0F5366]">{treatment.availabilityUnconfirmed ? "Disponibilidad" : "Tarifas"}</p>
+                <h2 className="mt-3 flex items-center justify-center text-center text-3xl font-semibold text-[#073B4C] lg:min-h-[5.5rem]">{treatment.availabilityUnconfirmed ? "Confirma si se ofrece este procedimiento" : treatment.clinicOnly ? "Consulta las condiciones de la atención presencial" : `Consulta ${siteConfig.priceClinic} · Domicilio ${siteConfig.priceHome}`}</h2>
+                <p className="mt-5 flex-1 leading-8 text-[var(--color-muted)]">{treatment.availabilityUnconfirmed ? "La prestación, la formación específica y las condiciones de este servicio deben validarse antes de reservar. El precio general de fisioterapia no implica que incluya esta técnica." : treatment.clinicOnly ? "La ecografía y las técnicas invasivas requieren indicación individual. Consulta las condiciones, la disponibilidad y el precio antes de reservar." : "La primera sesión incluye valoración funcional, tratamiento cuando esté indicado, ejercicio terapéutico y pautas. Confirma disponibilidad y zona de desplazamiento antes de reservar."}</p>
                 <Link href="/tarifas" className="btn btn--primary mt-7 self-center px-5 py-3 text-sm">Consultar tarifas</Link>
               </GlassCard>
             </div>
@@ -275,7 +298,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </section>
           )}
 
-          <CtaBanner title="¿Quieres saber si este tratamiento encaja contigo?" description="Explícame brevemente qué te ocurre y en qué zona de Madrid estás. Te orientaré antes de reservar." ctaText="Consultar mi caso por WhatsApp" whatsappMsg={`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`} />
+          <CtaBanner title={treatment.availabilityUnconfirmed ? "¿Necesitas confirmar la disponibilidad?" : "¿Quieres saber si este tratamiento encaja contigo?"} description={treatment.availabilityUnconfirmed ? "Consulta primero si este servicio se ofrece y si tu caso requiere una valoración médica o especializada." : "Explícame brevemente qué te ocurre y en qué zona de Madrid estás. Te orientaré antes de reservar."} ctaText={treatment.availabilityUnconfirmed ? "Consultar disponibilidad por WhatsApp" : "Consultar mi caso por WhatsApp"} whatsappMsg={`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`} />
         </div>
       </main>
       <Footer />
