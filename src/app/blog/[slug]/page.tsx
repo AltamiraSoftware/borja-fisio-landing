@@ -52,6 +52,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="mt-8 flex items-center gap-3 border-t border-[#cfe3dd] pt-6 text-sm text-[var(--color-muted)]"><span className="grid size-9 place-items-center rounded-full bg-[var(--color-petrol)] text-white"><Stethoscope className="size-4" /></span><span>Escrito por <strong className="font-semibold text-[var(--color-petrol)]">Borja Estarellas</strong></span></div>
           </div>
         </section>
+        <ContactSection topic={post.titulo} />
 
         {post.imagen_destacada_url && <section className="mx-auto max-w-6xl px-4"><img src={post.imagen_destacada_url} alt={post.imagen_alt || post.titulo} className="aspect-[16/8] w-full rounded-[2rem] border border-white/80 object-cover shadow-[0_26px_65px_rgba(5,46,58,.18)]" /></section>}
 
@@ -59,7 +60,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <article className="rounded-[2rem] border border-[#d6e8e4] bg-white px-6 py-8 shadow-[0_16px_45px_rgba(5,46,58,.08)] sm:px-10 sm:py-12"><BlogContent content={post.contenido} /></article>
           <div className="my-10"><BlogProfessionalCard topic={post.titulo} /></div>
         </section>
-        <ContactSection topic={post.titulo} />
       </main>
       <Footer />
     </>
