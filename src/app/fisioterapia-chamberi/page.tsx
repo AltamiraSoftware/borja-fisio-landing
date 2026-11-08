@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { StandardPage } from "@/components/common/StandardPage";
 import { CtaBanner } from "@/components/landing/CtaBanner";
-import { ContactSection } from "@/components/landing/ContactSection";
 import { LocationSection } from "@/components/landing/LocationSection";
 import { Services } from "@/components/landing/Services";
 import { Button } from "@/components/ui/Button";
@@ -35,7 +34,7 @@ export default function ChamberiPage() {
       title="Fisioterapia en Chamberí"
       intro="Borja Estarellas te atiende con cita previa en una consulta independiente dentro del centro Meraki Salud Chamberí, en el barrio de Almagro."
       featureHero
-      afterContent={<ContactSection topic="fisioterapia en Chamberí" />}
+      contactTopic="fisioterapia en Chamberí"
       followingContent={
         <>
           <LocationSection />
