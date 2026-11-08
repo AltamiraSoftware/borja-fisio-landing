@@ -10,6 +10,7 @@ type CatalogInput = {
   description: string;
   eyebrow: string;
   intro: string;
+  recognition?: string;
   whatIs: string;
   patientSectionsHeading?: string;
   patientSectionsIntro?: string;
@@ -93,7 +94,7 @@ function catalogTreatment(input: CatalogInput): Treatment {
       secondaryKeywords: keywordTargets[input.slug]?.secondary ?? [],
     },
     hero: { eyebrow: input.eyebrow, h1: input.title, intro: input.intro },
-    recognition: input.whatIs,
+    recognition: input.recognition ?? input.description,
     whatIs: input.whatIs,
     patientSectionsHeading: input.patientSectionsHeading,
     patientSectionsIntro: input.patientSectionsIntro,
@@ -138,6 +139,7 @@ export const treatmentCategories: Treatment[] = [
     description: "Ejercicio terapéutico en Chamberí, Madrid: valoración funcional, fuerza, movilidad y readaptación tras lesiones. Consulta tu caso con Borja Estarellas.",
     eyebrow: "Ejercicio terapéutico · Chamberí, Madrid",
     intro: "Recupera movimiento y capacidad con un programa adaptado a tu lesión, dolor o actividad. Valoramos qué te cuesta hacer, seleccionamos ejercicios y ajustamos el trabajo según tu evolución.",
+    recognition: "Cuando una lesión, el dolor o un periodo de inactividad hacen que evites movimientos o hayas perdido capacidad, el trabajo activo ayuda a recuperar tareas concretas. El objetivo no es repetir una tabla: es encontrar ejercicios que puedas realizar, medir los avances y progresar cuando estés preparado.",
     clinicalReviewPending: true,
     whatIs: "El ejercicio terapéutico es una intervención de fisioterapia que utiliza movimientos, ejercicios y cargas seleccionados con un objetivo clínico o funcional. No es una tabla genérica ni exige empezar en buena forma: el punto de partida y la dificultad se adaptan a la valoración, el problema y las actividades que quieres recuperar.",
     whenUsed: "Puede formar parte de la recuperación tras un esguince, una lesión deportiva o una cirugía; también del tratamiento conservador de algunas tendinopatías, del dolor lumbar o cervical y de la pérdida de fuerza, equilibrio o confianza al moverse. La elección depende del diagnóstico, la exploración y la fase de recuperación.",
@@ -306,6 +308,7 @@ export const newTechniqueTreatments: Treatment[] = [
     description: "Fisioterapia para dolor mandibular y ATM en Chamberí. Valoración del movimiento, dolor al masticar y ejercicios adaptados. Consulta con Borja Estarellas.",
     eyebrow: "Fisioterapia ATM · Chamberí, Madrid",
     intro: "¿Te duele la mandíbula al masticar, hablar o abrir la boca? Valoramos el movimiento mandibular, los músculos y los factores relacionados con tus molestias antes de elegir un tratamiento.",
+    recognition: "No todo dolor cerca del oído es un problema de la articulación temporomandibular. Los músculos de la masticación, la función articular y otros factores pueden influir en las molestias; por eso diferenciamos el dolor, los ruidos y los bloqueos antes de decidir qué medidas tienen sentido.",
     whatIs: "La articulación temporomandibular (ATM) conecta la mandíbula con el cráneo. Los trastornos temporomandibulares pueden afectar a la articulación, los músculos de la masticación y, en algunos casos, relacionarse con dolor de cabeza. La fisioterapia forma parte de las opciones conservadoras cuando la exploración lo indica: ejercicio mandibular supervisado, educación y técnicas manuales adaptadas al caso.",
     whenUsed: "Se puede valorar si existe dolor al masticar o bostezar, molestias delante del oído o en la sien, dificultad para abrir la boca, chasquidos acompañados de dolor o episodios de bloqueo. Un chasquido aislado sin dolor ni limitación suele ser frecuente y no exige tratamiento por sí solo.",
     limitations: "El dolor facial o mandibular no siempre se origina en la ATM. El bruxismo y los trastornos temporomandibulares son conceptos diferentes, aunque pueden coexistir. No se promete corregir la mordida ni curar el bruxismo; cuando hay sospecha de causas dentales, articulares u otras señales de alarma, se recomienda valoración médica u odontológica.",
