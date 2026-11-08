@@ -3,6 +3,7 @@ import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 import { FloatingWhatsApp } from "@/components/landing/FloatingWhatsApp";
 import { InteriorHero } from "@/components/common/InteriorHero";
+import { ContactSection } from "@/components/landing/ContactSection";
 
 type StandardPageProps = {
   eyebrow: string;
@@ -15,9 +16,11 @@ type StandardPageProps = {
   featureHero?: boolean;
   heroActions?: ReactNode;
   heroStrip?: ReactNode;
+  contactAfterHero?: boolean;
+  contactTopic?: string;
 };
 
-export function StandardPage({ eyebrow, title, intro, children, afterContent, followingContent, finalContent, featureHero = false, heroActions, heroStrip }: StandardPageProps) {
+export function StandardPage({ eyebrow, title, intro, children, afterContent, followingContent, finalContent, featureHero = false, heroActions, heroStrip, contactAfterHero = true, contactTopic }: StandardPageProps) {
   return (
     <>
       <Header />
@@ -34,6 +37,7 @@ export function StandardPage({ eyebrow, title, intro, children, afterContent, fo
             </div>
           </section>
         )}
+        {contactAfterHero && <ContactSection topic={contactTopic} />}
         <div className="page-flow-bg px-4 py-20">
           <div className="mx-auto max-w-7xl">{children}</div>
         </div>
