@@ -133,12 +133,13 @@ const contextualRelationships: Record<string, string[]> = {
   "dolor-cervical": ["terapia-manual", "ejercicios-control-motor", "ejercicios-movilidad"],
   "dolor-lumbar": ["ejercicio-terapeutico", "ejercicios-control-motor", "ejercicios-carga-progresiva"],
   contracturas: ["masoterapia", "presion-isquemica", "puncion-seca"],
-  tendinopatias: ["ejercicios-carga-progresiva", "ecografia-musculoesqueletica", "fisioterapia-invasiva-ecoguiada"],
-  "lesiones-deportivas": ["ejercicios-propiocepcion", "ejercicios-carga-progresiva", "vendaje-funcional"],
+  tendinopatias: ["ejercicios-carga-progresiva", "ecografia-musculoesqueletica", "fisioterapia-invasiva-ecoguiada", "electrolisis-percutanea-ecoguiada"],
+  "lesiones-deportivas": ["ejercicios-propiocepcion", "ejercicios-carga-progresiva", "vendaje-funcional", "fisioterapia-invasiva-ecoguiada"],
   esguinces: ["vendaje-funcional", "ejercicios-movilidad", "ejercicios-propiocepcion"],
   "fascitis-plantar": ["ejercicios-carga-progresiva", "ejercicios-movilidad"],
   "rehabilitacion-postoperatoria": ["ejercicio-terapeutico", "ejercicios-movilidad"],
   "fisioterapia-mayores": ["ejercicio-terapeutico", "ejercicios-movilidad"],
+  "ecografia-musculoesqueletica": ["fisioterapia-invasiva-ecoguiada", "electrolisis-percutanea-ecoguiada", "neuromodulacion-percutanea-ecoguiada", "puncion-seca"],
 };
 
 function withContextualRelationships(treatment: Treatment): Treatment {
