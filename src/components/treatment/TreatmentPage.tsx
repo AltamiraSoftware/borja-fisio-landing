@@ -45,7 +45,9 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
       : "Valoración y atención presencial en Chamberí";
   const consultationDescription = compressionTreatment
     ? "Borja realiza estas técnicas en su consulta de Chamberí, tras valorar la causa del edema y las precauciones necesarias. La indicación y las condiciones de la sesión se individualizan."
-    : "La indicación, las precauciones y la disponibilidad se revisan antes de realizar cualquier procedimiento presencial.";
+    : invasiveEducation
+      ? "Borja dispone de ecógrafo y formación en técnicas invasivas ecoguiadas. Estos procedimientos se realizan en consulta, tras valorar la indicación, las alternativas, las precauciones y el consentimiento."
+      : "La indicación, las precauciones y la disponibilidad se revisan antes de realizar cualquier procedimiento presencial.";
 
   return (
     <>
