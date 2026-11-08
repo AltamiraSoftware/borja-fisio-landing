@@ -16,6 +16,10 @@ type CatalogInput = {
   patientSectionsHeading?: string;
   patientSectionsIntro?: string;
   patientSections?: Treatment["patientSections"];
+  benefitsHeading?: string;
+  benefitsIntro?: string;
+  benefitHighlights?: Treatment["benefitHighlights"];
+  evidenceSnapshot?: Treatment["evidenceSnapshot"];
   clinicalAdvisory?: Treatment["clinicalAdvisory"];
   evidenceSources?: Treatment["evidenceSources"];
   whenUsed: string;
@@ -50,7 +54,7 @@ const keywordTargets: Record<string, { primary: string; secondary: string[] }> =
   "ejercicios-carga-progresiva": { primary: "carga progresiva fisioterapia", secondary: ["ejercicios para tendinopatías","readaptación de fuerza"] },
   "ejercicios-movilidad": { primary: "ejercicios de movilidad articular", secondary: ["movilidad activa fisioterapia","ejercicios de movilidad funcional"] },
   "puncion-seca": { primary: "punción seca Madrid", secondary: ["punción seca Chamberí", "punción seca puntos gatillo", "fisioterapia punción seca Madrid", "punción seca ecoguiada", "punción seca dolor muscular"] },
-  "electrolisis-percutanea-ecoguiada": { primary: "electrólisis percutánea ecoguiada Madrid", secondary: ["EPI fisioterapia Madrid","electrólisis tendinopatías"] },
+  "electrolisis-percutanea-ecoguiada": { primary: "electrólisis percutánea ecoguiada Madrid", secondary: ["EPI Madrid", "EPI ecoguiada Madrid", "electrólisis percutánea tendinopatías", "electrólisis tendón rotuliano", "electrólisis para tendón de Aquiles", "fisioterapia invasiva Chamberí"] },
   "neuromodulacion-percutanea-ecoguiada": { primary: "neuromodulación percutánea Madrid", secondary: ["neuromodulación ecoguiada Chamberí","neuromodulación invasiva fisioterapia"] },
 };
 
@@ -101,6 +105,10 @@ function catalogTreatment(input: CatalogInput): Treatment {
     patientSectionsHeading: input.patientSectionsHeading,
     patientSectionsIntro: input.patientSectionsIntro,
     patientSections: input.patientSections,
+    benefitsHeading: input.benefitsHeading,
+    benefitsIntro: input.benefitsIntro,
+    benefitHighlights: input.benefitHighlights,
+    evidenceSnapshot: input.evidenceSnapshot,
     clinicalAdvisory: input.clinicalAdvisory,
     evidenceSources: input.evidenceSources,
     whenUsed: input.whenUsed,
@@ -1013,6 +1021,198 @@ export const newTechniqueTreatments: Treatment[] = [
     relatedPathologySlugs: ["contracturas", "dolor-cervical", "lesiones-deportivas"],
     contactMessage: "Quiero consultar si la punción seca puede estar indicada en mi caso. Me gustaría solicitar una valoración en la consulta de Chamberí.",
   }),
-  catalogTreatment({ slug: "electrolisis-percutanea-ecoguiada", name: "Electrólisis percutánea ecoguiada", categorySlug: "fisioterapia-invasiva-ecoguiada", title: "Electrólisis percutánea ecoguiada en Madrid", description: "Información sobre electrólisis percutánea ecoguiada para valorar indicación, precauciones y alternativas en consulta.", eyebrow: "Técnicas invasivas · Madrid", intro: "Una opción que requiere valoración presencial, indicación individual y confirmación de disponibilidad antes de reservar.", indexable: false, clinicalReviewPending: true, clinicOnly: true, whatIs: "La electrólisis percutánea ecoguiada es un procedimiento invasivo que se puede valorar en determinadas situaciones musculoesqueléticas. EPI se utiliza como variante de búsqueda, sin que ello implique una marca o equipo concreto.", whenUsed: "La indicación depende de la exploración, el diagnóstico funcional, los objetivos y las alternativas disponibles. No se plantea como respuesta automática a una tendinopatía.", limitations: "Requiere confirmación clínica y de disponibilidad. No garantiza resultados ni sustituye un programa de ejercicio y progresión de carga.", symptoms: ["Consulta por tendón o tejido musculoesquelético", "Necesidad de valoración individual", "Dudas sobre procedimientos ecoguiados", "Atención presencial"], plan: [{ title: "Explorar", body: "Valoración clínica y revisión de objetivos antes de decidir." }, { title: "Informar", body: "Explicación de indicación, límites, alternativas y precauciones." }, { title: "Acompañar", body: "Plan activo y seguimiento funcional cuando el caso lo requiere." }], faq: [{ question: "¿Es lo mismo que EPI?", answer: "EPI es una denominación usada en búsquedas; la valoración debe centrarse en la indicación clínica, no en una marca." }, { question: "¿Es necesaria para toda tendinopatía?", answer: "No. Muchas tendinopatías se abordan con educación y carga progresiva, entre otras medidas." }, { question: "¿Está disponible siempre?", answer: "La disponibilidad y la indicación deben confirmarse antes de reservar." }], relatedSlugs: ["ecografia-musculoesqueletica", "ejercicios-carga-progresiva", "tendinopatias"], relatedPathologySlugs: ["tendinopatias", "lesiones-deportivas"] }),
+  catalogTreatment({
+    slug: "electrolisis-percutanea-ecoguiada",
+    name: "Electrólisis percutánea ecoguiada",
+    categorySlug: "fisioterapia-invasiva-ecoguiada",
+    indexable: true,
+    clinicalReviewPending: true,
+    clinicOnly: true,
+    title: "Electrólisis percutánea ecoguiada (EPI) en Madrid",
+    description: "Electrólisis percutánea ecoguiada (EPI) en Chamberí, Madrid. Técnica invasiva con ecógrafo para casos seleccionados. Valoración con Borja Estarellas.",
+    eyebrow: "EPI y electrólisis percutánea · Madrid",
+    intro: "Borja dispone de ecógrafo y formación en electrólisis percutánea. Esta técnica utiliza corriente galvánica a través de una aguja bajo guía ecográfica y puede valorarse como complemento en determinados problemas tendinosos, siempre dentro de un plan de rehabilitación.",
+    introSectionTitle: "¿Cuándo puede considerarse la electrólisis percutánea ecoguiada?",
+    recognition: "Si una tendinopatía limita caminar, entrenar, subir escaleras o cargar peso, conviene valorar cuánto tolera el tendón, qué actividades desencadenan los síntomas y cómo ha respondido al tratamiento conservador. La presencia de cambios en una ecografía no significa automáticamente que necesites EPI.",
+    whatIs: "La electrólisis percutánea es una técnica invasiva de fisioterapia que aplica corriente galvánica mediante una aguja introducida en una zona seleccionada. El ecógrafo permite visualizar estructuras anatómicas y orientar la colocación de la aguja en tiempo real. EPI es una denominación muy utilizada para buscar estas intervenciones, pero EPI® también identifica un sistema comercial concreto: la página no atribuye a Borja un dispositivo de marca específico. El procedimiento se valora según sus posibles beneficios, límites y alternativas.",
+    whenUsed: "Puede plantearse en determinados pacientes con tendinopatías persistentes y limitación funcional, como algunas tendinopatías de Aquiles, rotuliana o manguito rotador, cuando existe una indicación razonada. No está indicada automáticamente ante cualquier dolor de tendón ni en función exclusiva de una imagen ecográfica. El ejercicio terapéutico y la progresión de cargas siguen siendo elementos centrales del abordaje.",
+    limitations: "La evidencia todavía presenta incertidumbres importantes. Una revisión sistemática y metaanálisis de 2026 encontró evidencia de certeza muy baja de que añadir electrólisis al ejercicio no fuese superior a ejercicio solo o intervención simulada para dolor o función en tendinopatías. Otra revisión específica de manguito rotador mostró resultados potencialmente favorables, pero con heterogeneidad y certeza baja o moderada. No se puede garantizar regeneración del tejido, curación ni recuperación más rápida que con un buen programa activo.",
+    symptoms: [
+      "Dolor o limitación funcional asociados a tendinopatía previamente valorada",
+      "Molestias al subir escaleras, saltar o correr por tendón rotuliano o de Aquiles",
+      "Dolor de hombro que limita determinadas cargas o actividades",
+      "Síntomas tendinosos persistentes pese a un abordaje conservador adecuado",
+      "Dudas sobre si la ecografía y la electrólisis pueden aportar información o una opción adicional",
+    ],
+    benefitsHeading: "Qué puede aportar la electrólisis ecoguiada",
+    benefitsIntro: "Son objetivos potenciales en pacientes seleccionados, no beneficios garantizados. La indicación depende de la exploración, la evidencia y la evolución con el ejercicio.",
+    benefitHighlights: [
+      {
+        title: "Guía anatómica en tiempo real",
+        description: "El ecógrafo permite identificar tejidos y estructuras cercanas mientras se planifica la colocación de la aguja. Mejora la visualización, pero no elimina por completo los riesgos de una intervención invasiva.",
+      },
+      {
+        title: "Una opción complementaria",
+        description: "En algunos casos puede valorarse para el manejo del dolor tendinoso junto con otras medidas. La investigación no demuestra una ventaja universal frente al ejercicio correctamente prescrito.",
+      },
+      {
+        title: "Seguimiento de la función",
+        description: "La evolución se evalúa por lo que puedes hacer: caminar, subir escaleras, soportar cargas o volver a entrenar. La imagen ecográfica, por sí sola, no determina el éxito del tratamiento.",
+      },
+    ],
+    patientSectionsHeading: "EPI ecoguiada: procedimiento, indicaciones y recuperación",
+    patientSectionsIntro: "Entender qué diferencia esta técnica de la punción seca o del ejercicio te ayudará a valorar si merece la pena considerarla en tu situación.",
+    patientSections: [
+      {
+        title: "¿Qué papel tiene el ecógrafo durante la EPI?",
+        description: "La ecografía musculoesquelética muestra determinadas estructuras en tiempo real. Se usa para identificar la región objetivo y las estructuras vecinas durante el procedimiento, complementando la historia clínica y la exploración física.",
+        points: [
+          "El control ecográfico orienta la técnica; no sustituye un diagnóstico funcional.",
+          "Disponer de ecógrafo no significa que una alteración visible requiera intervención.",
+        ],
+      },
+      {
+        title: "Tendinopatías: Aquiles, rotuliano y hombro",
+        description: "La electrólisis se ha estudiado en diferentes tendinopatías. Su posible uso depende del tendón afectado, del diagnóstico y de las exigencias de la persona, no de aplicar un mismo protocolo a todas las lesiones.",
+        points: [
+          "El dolor tendinoso puede requerir ajustar el esfuerzo, la fuerza y la recuperación.",
+          "La respuesta al ejercicio y la limitación funcional orientan el plan y su seguimiento.",
+        ],
+      },
+      {
+        title: "Cómo es una sesión de electrólisis percutánea",
+        description: "Primero se revisan antecedentes, indicación, precauciones, opciones y consentimiento. Si se acuerda utilizar la técnica, se prepara la zona con medidas de antisepsia y material estéril, se controla la intervención mediante ecografía y se facilita un plan de seguimiento.",
+        points: [
+          "La localización, la corriente y los parámetros se deciden según el procedimiento y el profesional.",
+          "No se garantiza una duración o un número fijo de sesiones; dependen de la valoración.",
+        ],
+      },
+      {
+        title: "Diferencias entre EPI, punción seca y neuromodulación",
+        description: "La electrólisis introduce corriente galvánica sobre un tejido seleccionado; la punción seca no inyecta fármacos ni requiere utilizar esa corriente; la neuromodulación percutánea busca estimular eléctricamente estructuras nerviosas o puntos motores. Son procedimientos distintos, aunque empleen agujas.",
+        points: [
+          "Las técnicas no son intercambiables ni se indican por rutina.",
+          "La elección se realiza según síntomas, exploración, objetivos y seguridad.",
+        ],
+      },
+      {
+        title: "Sensaciones posteriores y posibles efectos adversos",
+        description: "Durante o después del procedimiento pueden aparecer molestias locales, sensibilidad transitoria, pequeños hematomas o sangrado. Como en otras intervenciones percutáneas, existen riesgos menos frecuentes, como infección o lesión de estructuras cercanas, que se explican antes de decidir.",
+        points: [
+          "El dolor intenso o persistente y los síntomas neurológicos nuevos requieren valoración.",
+          "Se revisan antecedentes, medicación y tolerancia individual antes del procedimiento.",
+        ],
+      },
+      {
+        title: "Ejercicio, carga progresiva y vuelta al deporte",
+        description: "Aunque se valore la electrólisis, la recuperación funcional suele necesitar un programa de ejercicio y carga progresiva. Se planifican objetivos y se ajusta la actividad según la respuesta, en lugar de atribuir cualquier mejoría únicamente a la aplicación de una aguja.",
+        points: [
+          "Se puede enlazar la progresión con carrera, fuerza, saltos o actividades laborales.",
+          "El seguimiento tiene en cuenta síntomas, tolerancia al esfuerzo y participación en la actividad.",
+        ],
+      },
+    ],
+    evidenceSnapshot: {
+      title: "¿Es la EPI mejor que el ejercicio terapéutico?",
+      summary: "Una revisión sistemática con metaanálisis publicada en septiembre de 2026 (13 ensayos en la síntesis; 12 en el metaanálisis) encontró evidencia de certeza muy baja de que añadir electrólisis percutánea al ejercicio no superaba de forma clara al ejercicio solo o a una intervención simulada en dolor y función de tendinopatías.",
+      limitations: "Los resultados no son uniformes: otra revisión de 2026 sobre tendinopatía del manguito rotador encontró posibles mejoras, con certeza baja o moderada y diferencias entre protocolos. La indicación debe individualizarse. Ninguna de estas revisiones permite afirmar que se regenere el tendón, que la técnica sea necesaria o que acelere siempre la recuperación.",
+    },
+    clinicalAdvisory: {
+      title: "Precauciones y seguridad de la electrólisis ecoguiada",
+      description: "Antes del procedimiento informa sobre marcapasos u otros dispositivos electrónicos implantados, tratamientos anticoagulantes, trastornos de coagulación, embarazo, infecciones, problemas de sensibilidad y antecedentes médicos relevantes. Algunas circunstancias pueden contraindicar la intervención o requerir adaptación. No se realiza sobre infección local ni sin valoración y consentimiento. Tras el tratamiento, sangrado importante, fiebre, alteraciones neurológicas nuevas o dolor intenso que empeora requieren atención sanitaria. El ecógrafo ayuda a localizar estructuras, pero no garantiza ausencia de complicaciones.",
+    },
+    plan: [
+      {
+        title: "Valorar el tendón y la función",
+        body: "Borja revisa los síntomas, la tolerancia a las cargas, las actividades que quieres recuperar y, cuando aporta información, utiliza el ecógrafo para complementar la exploración.",
+      },
+      {
+        title: "Explicar las opciones y decidir",
+        body: "Se comparan ejercicio, medidas conservadoras y posible electrólisis. Antes de cualquier técnica invasiva se explican riesgos, alternativas, beneficios esperados y consentimiento.",
+      },
+      {
+        title: "Integrar ejercicio y seguimiento",
+        body: "Se propone un plan de carga progresiva y se revisa la función. Si los resultados no justifican seguir con la técnica, el plan debe reconsiderarse.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Qué es la electrólisis percutánea ecoguiada o EPI?",
+        answer: "Es un procedimiento de fisioterapia que aplica corriente galvánica mediante una aguja guiada por ecografía sobre un tejido seleccionado. La palabra EPI se usa con frecuencia en búsquedas, aunque EPI® también es una denominación comercial específica.",
+      },
+      {
+        question: "¿Para qué lesiones se utiliza la EPI?",
+        answer: "Se ha estudiado en determinadas tendinopatías, como las de Aquiles, tendón rotuliano o manguito rotador. Su indicación depende de la exploración, de las alternativas y de la función; no es un tratamiento automático para todas ellas.",
+      },
+      {
+        question: "¿Es necesaria la ecografía para la electrólisis?",
+        answer: "En la electrólisis percutánea ecoguiada se utiliza el ecógrafo para visualizar la región objetivo y las estructuras próximas. La guía anatómica no sustituye la valoración clínica ni elimina todos los riesgos.",
+      },
+      {
+        question: "¿La electrólisis regenera el tendón?",
+        answer: "Se han propuesto mecanismos biológicos de acción, pero no es riguroso prometer una regeneración demostrada en cada paciente. La evolución clínica se valora por dolor, función y tolerancia a la actividad.",
+      },
+      {
+        question: "¿La EPI es mejor que hacer ejercicio?",
+        answer: "No se ha demostrado una superioridad general. Una revisión de 2026 encontró evidencia de muy baja certeza de ausencia de ventaja clara al añadir electrólisis al ejercicio frente a ejercicio solo o una intervención simulada, aunque algunos estudios muestran beneficios en subgrupos o contextos concretos.",
+      },
+      {
+        question: "¿La EPI duele o deja molestias?",
+        answer: "Puede producir sensaciones durante el tratamiento, dolor local temporal o un pequeño hematoma. La tolerancia varía; el procedimiento debe adaptarse y explicarse antes de comenzar.",
+      },
+      {
+        question: "¿Cuántas sesiones de electrólisis necesito?",
+        answer: "No existe un número fijo válido para todas las personas. La necesidad de repetirla depende del diagnóstico, la respuesta y de que siga aportando valor al plan de ejercicio y rehabilitación.",
+      },
+      {
+        question: "¿Qué diferencia hay entre EPI y punción seca?",
+        answer: "La electrólisis utiliza corriente galvánica y, en este servicio, guía ecográfica. La punción seca utiliza agujas sin administrar medicamentos y no es el mismo procedimiento ni tiene necesariamente las mismas indicaciones.",
+      },
+      {
+        question: "¿Se puede combinar con ejercicio terapéutico?",
+        answer: "Sí. El ejercicio y la progresión de carga continúan siendo centrales en muchos programas de recuperación de tendinopatías; la electrólisis puede valorarse como un complemento, no como sustituto.",
+      },
+      {
+        question: "¿Hay riesgos o contraindicaciones?",
+        answer: "Como técnica invasiva, requiere precauciones ante infecciones, medicamentos anticoagulantes, problemas de coagulación, dispositivos electrónicos implantados y otros antecedentes. Puede provocar hematoma o dolor local y existen complicaciones menos frecuentes que deben explicarse.",
+      },
+      {
+        question: "¿Dónde realiza Borja la electrólisis ecoguiada?",
+        answer: "En su consulta independiente de la calle de Caracas, 6, en Chamberí, Madrid. Dispone de ecógrafo y formación para realizar el procedimiento; la indicación se determina tras una valoración.",
+      },
+      {
+        question: "¿Cuál es el precio de la EPI ecoguiada en Madrid?",
+        answer: "Las condiciones y el precio se confirman antes de reservar según la valoración y el procedimiento. La tarifa general de fisioterapia no implica que todas las técnicas invasivas tengan el mismo coste.",
+      },
+    ],
+    evidenceSources: [
+      {
+        title: "Novaková y cols. (2026) — Metaanálisis sobre electrólisis percutánea en trastornos musculoesqueléticos",
+        url: "https://pubmed.ncbi.nlm.nih.gov/42806498/",
+      },
+      {
+        title: "De la Barra Ortiz y cols. (2026) — Metaanálisis sobre electrólisis y manguito rotador",
+        url: "https://pubmed.ncbi.nlm.nih.gov/42941504/",
+      },
+      {
+        title: "Silva y cols. (2024) — Metaanálisis de electrólisis en tendinopatías",
+        url: "https://pubmed.ncbi.nlm.nih.gov/39593657/",
+      },
+      {
+        title: "Revisión sistemática (2025) — Electrólisis percutánea en rehabilitación",
+        url: "https://pubmed.ncbi.nlm.nih.gov/40805826/",
+      },
+    ],
+    relatedSlugs: [
+      "fisioterapia-invasiva-ecoguiada",
+      "ecografia-musculoesqueletica",
+      "neuromodulacion-percutanea-ecoguiada",
+      "puncion-seca",
+      "ejercicios-carga-progresiva",
+      "tendinopatias",
+    ],
+    relatedPathologySlugs: ["tendinopatias", "lesiones-deportivas", "dolor-cervical"],
+    contactMessage: "Quiero solicitar valoración en Chamberí para saber si la electrólisis percutánea ecoguiada puede estar indicada en mi caso.",
+  }),
   catalogTreatment({ slug: "neuromodulacion-percutanea-ecoguiada", name: "Neuromodulación percutánea ecoguiada", categorySlug: "fisioterapia-invasiva-ecoguiada", title: "Neuromodulación percutánea ecoguiada en Madrid", description: "Información para valorar neuromodulación percutánea ecoguiada, sus precauciones y alternativas en consulta.", eyebrow: "Técnicas invasivas · Madrid", intro: "Procedimiento que requiere valoración presencial, indicación individual y confirmación previa de disponibilidad.", indexable: false, clinicalReviewPending: true, clinicOnly: true, whatIs: "La neuromodulación percutánea ecoguiada es un procedimiento invasivo que puede considerarse en contextos concretos tras exploración individual. La guía ecográfica, cuando procede, busca aportar precisión anatómica.", whenUsed: "No se indica por un diagnóstico aislado. Se valora junto a síntomas, exploración, objetivos funcionales y otras opciones de tratamiento.", limitations: "No garantiza alivio ni sustituye la valoración médica cuando es necesaria, el ejercicio terapéutico o la progresión funcional.", symptoms: ["Consulta por dolor o limitación musculoesquelética", "Necesidad de exploración presencial", "Dudas sobre opciones invasivas", "Plan individualizado"], plan: [{ title: "Analizar", body: "Historia, exploración y posibles precauciones." }, { title: "Decidir", body: "Información clara sobre utilidad potencial, alternativas y límites." }, { title: "Rehabilitar", body: "Trabajo funcional y ejercicio según el objetivo de recuperación." }], faq: [{ question: "¿Está indicada para cualquier dolor?", answer: "No. Se considera solo tras una valoración individual y cuando puede tener sentido clínico." }, { question: "¿Garantiza resultados?", answer: "No. La respuesta varía y se integra dentro de un plan más amplio." }, { question: "¿Se realiza en casa?", answer: "No. Se plantea únicamente en consulta presencial." }], relatedSlugs: ["ecografia-musculoesqueletica", "ejercicio-terapeutico", "dolor-cervical"], relatedPathologySlugs: ["dolor-cervical", "dolor-lumbar", "lesiones-deportivas"] }),
 ];
