@@ -6,6 +6,7 @@ type CatalogInput = {
   categorySlug?: string;
   indexable?: boolean;
   clinicalReviewPending?: boolean;
+  availabilityUnconfirmed?: boolean;
   title: string;
   description: string;
   eyebrow: string;
@@ -86,6 +87,7 @@ function catalogTreatment(input: CatalogInput): Treatment {
     categorySlug: input.categorySlug,
     indexable: input.indexable ?? true,
     clinicalReviewPending: input.clinicalReviewPending,
+    availabilityUnconfirmed: input.availabilityUnconfirmed,
     cardDescription: input.description,
     updatedAt: "2026-11-08",
     seo: {
@@ -453,6 +455,7 @@ export const newTechniqueTreatments: Treatment[] = [
     // formación, disponibilidad y alcance asistencial con Borja.
     indexable: false,
     clinicalReviewPending: true,
+    availabilityUnconfirmed: true,
     title: "Drenaje linfático manual en Madrid",
     description: "Drenaje linfático manual en Chamberí, Madrid. Información sobre edema, linfedema, valoración y compresión. Consulta indicación y disponibilidad con Borja.",
     eyebrow: "Drenaje linfático · Fisioterapia en Chamberí",
@@ -597,6 +600,7 @@ export const newTechniqueTreatments: Treatment[] = [
     categorySlug: "terapia-manual",
     indexable: false,
     clinicalReviewPending: true,
+    availabilityUnconfirmed: true,
     title: "Vendaje compresivo multicapa para linfedema en Madrid",
     description: "Vendaje multicapa en Madrid: compresión para determinados edemas o linfedema, indicaciones, precauciones y valoración antes del tratamiento.",
     eyebrow: "Vendaje multicapa · Compresión terapéutica",
