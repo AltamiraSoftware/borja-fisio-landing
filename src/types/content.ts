@@ -26,6 +26,8 @@ export type Treatment = {
   recognition: string;
   whatIs?: string;
   // Secciones editoriales propias de servicios complejos: evitan fichas genéricas o repetidas.
+  patientSectionsHeading?: string;
+  patientSectionsIntro?: string;
   patientSections?: Array<{
     title: string;
     description: string;
