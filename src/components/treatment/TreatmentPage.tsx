@@ -30,6 +30,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
   const relatedPathologies = (treatment.relatedPathologySlugs ?? []).map(getTreatment).filter((item): item is Treatment => Boolean(item));
   const homeFocused = ["fisioterapia-domicilio", "rehabilitacion-postoperatoria", "fisioterapia-mayores"].includes(treatment.slug);
   const informationalPage = treatment.kind === "technique" || treatment.kind === "category";
+  const invasiveEducation = treatment.slug === "fisioterapia-invasiva-ecoguiada" || treatment.categorySlug === "fisioterapia-invasiva-ecoguiada";
   const openingTitle = treatment.kind === "category"
     ? `Qué incluye ${treatment.name.toLocaleLowerCase("es-ES")}`
     : treatment.kind === "technique"
@@ -71,6 +72,22 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
         <div className="page-flow-bg">
           <div className="mx-auto max-w-7xl px-4 pt-8">
             <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Tratamientos", href: "/tratamientos" }, ...(category ? [{ label: category.name, href: getTreatmentPath(category.slug) }] : []), { label: treatment.name }]} />
+            {invasiveEducation && (
+              <nav aria-label="Secciones de este tratamiento" className="mt-7 flex gap-2 overflow-x-auto rounded-2xl border border-[#a8cbd7]/80 bg-white/75 p-3 shadow-[0_8px_24px_rgba(15,83,102,0.06)]">
+                {[
+                  { label: "Qué es", href: "#que-es" },
+                  ...(treatment.benefitHighlights?.length ? [{ label: "Objetivos", href: "#beneficios" }] : []),
+                  ...(treatment.patientSections?.length ? [{ label: "Cómo funciona", href: "#procedimiento" }] : []),
+                  ...(treatment.clinicalAdvisory ? [{ label: "Seguridad", href: "#seguridad" }] : []),
+                  { label: "Preguntas", href: "#preguntas-frecuentes" },
+                  { label: "Solicitar valoración", href: "#contacto" },
+                ].map((item) => (
+                  <Link key={item.href} href={item.href} className="shrink-0 rounded-full border border-[#a8cbd7] px-4 py-2 text-sm font-semibold text-[#0F5366] transition hover:border-[#0F5366] hover:bg-[#e6f5f7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F5366]">
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            )}
           </div>
           <section className="px-4 py-20">
             <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -99,7 +116,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           </section>
 
           {treatment.whatIs && (
-            <section className="px-4 py-20">
+            <section id="que-es" className="scroll-mt-28 px-4 py-20">
               <div className="mx-auto max-w-7xl">
                 <SectionHeader align="center" eyebrow={treatment.kind === "category" ? "Enfoque de tratamiento" : "Información para pacientes"} title={treatment.kind === "category" ? `Conoce ${treatment.name.toLocaleLowerCase("es-ES")}` : `Qué debes saber sobre ${treatment.name.toLocaleLowerCase("es-ES")}`} description={treatment.whatIs} />
                 <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -111,7 +128,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
 
 
           {treatment.benefitHighlights && treatment.benefitHighlights.length > 0 && (
-            <section className="px-4 py-16" aria-label="Objetivos potenciales del tratamiento">
+            <section id="beneficios" className="scroll-mt-28 px-4 py-16" aria-label="Objetivos potenciales del tratamiento">
               <div className="mx-auto max-w-7xl">
                 <SectionHeader
                   align="center"
@@ -133,7 +150,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           )}
 
           {treatment.patientSections && treatment.patientSections.length > 0 && (
-            <section className="px-4 py-20">
+            <section id="procedimiento" className="scroll-mt-28 px-4 py-20">
               <div className="mx-auto max-w-7xl">
                 <SectionHeader
                   align="center"
@@ -174,7 +191,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           )}
 
           {treatment.clinicalAdvisory && (
-            <section className="px-4 py-12" aria-labelledby="clinical-advisory-title">
+            <section id="seguridad" className="scroll-mt-28 px-4 py-12" aria-labelledby="clinical-advisory-title">
               <div className="mx-auto max-w-5xl rounded-[30px] border border-[#8eb9ca] bg-white p-7 shadow-[0_14px_38px_rgba(15,83,102,0.10)] md:p-10">
                 <h2 id="clinical-advisory-title" className="text-balance text-2xl font-semibold text-[#073B4C] md:text-3xl">{treatment.clinicalAdvisory.title}</h2>
                 <p className="mt-5 leading-8 text-[var(--color-muted)]">{treatment.clinicalAdvisory.description}</p>
@@ -272,7 +289,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </div>
           </section>
 
-          <section className="px-4 py-20">
+          <section id="preguntas-frecuentes" className="scroll-mt-28 px-4 py-20">
             <div className="mx-auto max-w-4xl">
               <SectionHeader align="center" eyebrow="Dudas habituales" title="Preguntas frecuentes" />
               <div className="mt-10 grid gap-4">
