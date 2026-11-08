@@ -32,7 +32,7 @@ type CatalogInput = {
 // Las variantes semánticas son hipótesis de contenido, no métricas de volumen de búsqueda.
 const keywordTargets: Record<string, { primary: string; secondary: string[] }> = {
   "terapia-manual": { primary: "terapia manual Madrid", secondary: ["terapia manual Chamberí","fisioterapia manual Almagro"] },
-  "ejercicio-terapeutico": { primary: "ejercicio terapéutico Madrid", secondary: ["ejercicio terapéutico Chamberí","rehabilitación activa Madrid"] },
+  "ejercicio-terapeutico": { primary: "ejercicio terapéutico Madrid", secondary: ["ejercicio terapéutico Chamberí", "rehabilitación activa Madrid", "readaptación de lesiones Madrid", "ejercicios de rehabilitación"] },
   "fisioterapia-invasiva-ecoguiada": { primary: "fisioterapia invasiva ecoguiada Madrid", secondary: ["técnicas ecoguiadas fisioterapia","fisioterapia invasiva Chamberí"] },
   "masoterapia": { primary: "masaje terapéutico Madrid", secondary: ["masoterapia Chamberí","masaje descontracturante fisioterapia"] },
   "estiramientos-asistidos": { primary: "estiramientos asistidos fisioterapia", secondary: ["estiramientos pasivos fisioterapeuta","estiramientos asistidos Madrid"] },
