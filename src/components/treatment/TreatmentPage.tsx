@@ -19,7 +19,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export function TreatmentPage({ treatment }: { treatment: Treatment }) {
   const whatsappHref = buildWhatsappHref(`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`);
-  const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => Boolean(item) && !isConsolidatedTreatment(item.slug));
+  const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => item !== undefined && !isConsolidatedTreatment(item.slug));
   const category = getTreatmentCategory(treatment.categorySlug);
   const compactCategory = treatment.slug === "terapia-manual" || treatment.slug === "ejercicio-terapeutico";
   const categoryTechniques = treatment.kind === "category"
