@@ -11,6 +11,9 @@ type CatalogInput = {
   eyebrow: string;
   intro: string;
   whatIs: string;
+  patientSections?: Treatment["patientSections"];
+  clinicalAdvisory?: Treatment["clinicalAdvisory"];
+  evidenceSources?: Treatment["evidenceSources"];
   whenUsed: string;
   limitations: string;
   symptoms: string[];
@@ -90,6 +93,9 @@ function catalogTreatment(input: CatalogInput): Treatment {
     hero: { eyebrow: input.eyebrow, h1: input.title, intro: input.intro },
     recognition: input.whatIs,
     whatIs: input.whatIs,
+    patientSections: input.patientSections,
+    clinicalAdvisory: input.clinicalAdvisory,
+    evidenceSources: input.evidenceSources,
     whenUsed: input.whenUsed,
     limitations: input.limitations,
     symptoms: input.symptoms,
@@ -153,7 +159,130 @@ export const newTechniqueTreatments: Treatment[] = [
   catalogTreatment({ slug: "presion-isquemica", indexable: false, name: "Presión isquémica", categorySlug: "terapia-manual", title: "Presión isquémica para puntos gatillo en Madrid", description: "Técnica manual valorada para molestias musculares y puntos sensibles, integrada con ejercicio y movimiento.", eyebrow: "Terapia manual · Madrid", intro: "Trabajo manual sobre puntos sensibles musculares dentro de una valoración completa.", whatIs: "La presión isquémica aplica una presión mantenida y graduada sobre zonas musculares sensibles, a veces descritas como puntos gatillo.", whenUsed: "Puede valorarse ante dolor muscular localizado o sensibilidad que se relaciona con determinados movimientos o cargas.", limitations: "La presencia de un punto sensible no explica por sí sola un problema. Se revisan carga, movimiento, descanso y otros factores relevantes.", symptoms: ["Dolor muscular localizado", "Puntos sensibles", "Molestias al presionar una zona", "Tensión asociada a actividad"], plan: [{ title: "Explorar", body: "Relacionamos la sensibilidad con tu historia y movimiento." }, { title: "Dosificar", body: "Aplicación manual gradual y consensuada." }, { title: "Mover", body: "Pautas activas para recuperar confianza y capacidad." }], faq: [{ question: "¿Qué es un punto gatillo?", answer: "Es una zona muscular sensible; se interpreta dentro de la exploración completa." }, { question: "¿Tiene que ser doloroso?", answer: "La intensidad se regula y debe ser tolerable." }, { question: "¿Basta con tratar el punto?", answer: "Normalmente se combina con otras pautas según los objetivos." }], relatedSlugs: ["masoterapia", "puncion-seca", "contracturas"], relatedPathologySlugs: ["contracturas", "dolor-cervical", "dolor-lumbar"] }),
   catalogTreatment({ slug: "drenaje-linfatico-manual", name: "Drenaje linfático manual", categorySlug: "terapia-manual", title: "Drenaje linfático manual en Madrid", description: "Tratamiento fisioterapéutico manual que requiere valoración para determinados edemas y procesos indicados.", eyebrow: "Terapia manual · Madrid", intro: "Drenaje linfático manual con valoración previa, objetivos claros y coordinación cuando sea necesaria.", whatIs: "El drenaje linfático manual utiliza maniobras suaves dirigidas a acompañar el manejo de determinados edemas cuando existe indicación clínica.", whenUsed: "Puede considerarse en situaciones concretas y tras valorar antecedentes, diagnóstico, evolución y posibles contraindicaciones.", limitations: "No es un masaje general ni está indicado para cualquier hinchazón. Puede requerir coordinación con el equipo médico.", symptoms: ["Edema que requiere valoración", "Sensación de pesadez", "Proceso con indicación profesional", "Necesidad de pautas de cuidado"], plan: [{ title: "Revisar", body: "Historia, diagnóstico y posibles precauciones antes de intervenir." }, { title: "Aplicar", body: "Técnica manual suave cuando está indicada." }, { title: "Acompañar", body: "Pautas y derivación si el caso requiere otros profesionales." }], faq: [{ question: "¿Sirve para cualquier retención de líquidos?", answer: "No. La hinchazón debe valorarse para conocer su origen y si esta técnica es adecuada." }, { question: "¿Es un masaje intenso?", answer: "No. Son maniobras suaves y específicas." }, { question: "¿Puede requerir indicación médica?", answer: "Sí. Según el contexto, es importante contar con diagnóstico o coordinación médica." }], relatedSlugs: ["vendaje-multicapa", "rehabilitacion-postoperatoria", "fisioterapia-mayores"], relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"] }),
   catalogTreatment({ slug: "vendaje-multicapa", indexable: false, clinicalReviewPending: true, name: "Vendaje multicapa", categorySlug: "terapia-manual", title: "Vendaje multicapa en Madrid", description: "Terapia compresiva que requiere valoración profesional, indicación y seguimiento individual.", eyebrow: "Terapia manual · Madrid", intro: "Vendaje multicapa y terapia compresiva dentro de un abordaje valorado de forma individual.", whatIs: "El vendaje multicapa utiliza capas de material compresivo con objetivos concretos dentro del manejo de determinados edemas o situaciones vasculares valoradas.", whenUsed: "Solo puede considerarse tras explorar la indicación, el estado de la piel, antecedentes y contraindicaciones.", limitations: "No es un vendaje deportivo ni debe aplicarse sin valoración específica. Puede requerir coordinación médica.", symptoms: ["Necesidad de valorar terapia compresiva", "Edema con indicación profesional", "Seguimiento de piel y tolerancia", "Dudas sobre vendaje multicapa"], plan: [{ title: "Indicar", body: "Confirmamos si la compresión es apropiada y segura." }, { title: "Aplicar", body: "Vendaje individualizado con explicaciones de cuidado." }, { title: "Controlar", body: "Seguimiento de respuesta y revisión de señales de alerta." }], faq: [{ question: "¿Es igual que un vendaje funcional?", answer: "No. Tiene objetivos, materiales y precauciones distintos." }, { question: "¿Se puede usar en cualquier edema?", answer: "No. La causa del edema y las contraindicaciones deben revisarse primero." }, { question: "¿Puedo retirarlo si molesta?", answer: "Recibirás indicaciones precisas sobre cuidado y qué hacer ante molestias." }], relatedSlugs: ["drenaje-linfatico-manual", "rehabilitacion-postoperatoria", "fisioterapia-mayores"], relatedPathologySlugs: ["rehabilitacion-postoperatoria", "fisioterapia-mayores"] }),
-  catalogTreatment({ slug: "fisioterapia-atm", name: "Fisioterapia ATM", categorySlug: "terapia-manual", title: "Fisioterapia ATM y dolor mandibular en Madrid", description: "Valoración de fisioterapia para molestias de la articulación temporomandibular y dolor mandibular.", eyebrow: "ATM y dolor mandibular · Madrid", intro: "Un enfoque de fisioterapia para explorar movimiento mandibular, dolor y hábitos relevantes.", whatIs: "La fisioterapia de la articulación temporomandibular aborda movimiento mandibular, musculatura relacionada, hábitos y factores que pueden influir en las molestias.", whenUsed: "Puede valorarse ante dolor mandibular, limitación de apertura, molestias al masticar o sensación de tensión en mandíbula y cuello.", limitations: "No se presenta como cura garantizada del bruxismo. Puede requerir coordinación con odontología u otros profesionales según el caso.", symptoms: ["Dolor mandibular", "Dificultad o molestia al abrir la boca", "Molestias al masticar", "Tensión en mandíbula o cuello"], plan: [{ title: "Explorar", body: "Valoramos apertura, movimiento, dolor y hábitos relevantes." }, { title: "Tratar", body: "Técnicas y ejercicio adaptados cuando están indicados." }, { title: "Coordinar", body: "Derivación o trabajo conjunto con otros profesionales cuando procede." }], faq: [{ question: "¿La fisioterapia cura el bruxismo?", answer: "No se plantea como una cura garantizada; puede ayudar a abordar síntomas y función dentro de un enfoque individual." }, { question: "¿Necesito ir al dentista antes?", answer: "Depende del caso. Si hay señales dentales o articulares relevantes se recomendará valoración adecuada." }, { question: "¿Incluye ejercicios?", answer: "Pueden proponerse pautas de movilidad, control y hábitos según la exploración." }], relatedSlugs: ["terapia-manual", "ejercicios-control-motor", "dolor-cervical"], relatedPathologySlugs: ["dolor-cervical"] }),
+  catalogTreatment({
+    slug: "fisioterapia-atm",
+    name: "Fisioterapia ATM",
+    categorySlug: "terapia-manual",
+    // La revisión clínica por Borja sigue pendiente; no atribuirle una firma editorial aún.
+    clinicalReviewPending: true,
+    title: "Fisioterapia ATM y dolor de mandíbula en Madrid",
+    description: "Fisioterapia para dolor mandibular y ATM en Chamberí. Valoración del movimiento, dolor al masticar y ejercicios adaptados. Consulta con Borja Estarellas.",
+    eyebrow: "Fisioterapia ATM · Chamberí, Madrid",
+    intro: "¿Te duele la mandíbula al masticar, hablar o abrir la boca? Valoramos el movimiento mandibular, los músculos y los factores relacionados con tus molestias antes de elegir un tratamiento.",
+    whatIs: "La articulación temporomandibular (ATM) conecta la mandíbula con el cráneo. Los trastornos temporomandibulares pueden afectar a la articulación, los músculos de la masticación y, en algunos casos, relacionarse con dolor de cabeza. La fisioterapia forma parte de las opciones conservadoras cuando la exploración lo indica: ejercicio mandibular supervisado, educación y técnicas manuales adaptadas al caso.",
+    whenUsed: "Se puede valorar si existe dolor al masticar o bostezar, molestias delante del oído o en la sien, dificultad para abrir la boca, chasquidos acompañados de dolor o episodios de bloqueo. Un chasquido aislado sin dolor ni limitación suele ser frecuente y no exige tratamiento por sí solo.",
+    limitations: "El dolor facial o mandibular no siempre se origina en la ATM. El bruxismo y los trastornos temporomandibulares son conceptos diferentes, aunque pueden coexistir. No se promete corregir la mordida ni curar el bruxismo; cuando hay sospecha de causas dentales, articulares u otras señales de alarma, se recomienda valoración médica u odontológica.",
+    symptoms: [
+      "Dolor en la mandíbula al masticar, hablar o bostezar",
+      "Molestias delante del oído o dolor que se extiende a la sien y la cara",
+      "Dificultad o dolor al abrir y cerrar la boca",
+      "Chasquidos dolorosos o sensación de bloqueo mandibular",
+      "Tensión de los músculos de la masticación que limita actividades cotidianas",
+    ],
+    patientSections: [
+      {
+        title: "Dolor al masticar o abrir la boca",
+        description: "La molestia puede aparecer al comer alimentos duros, hablar durante mucho tiempo o bostezar. No basta con localizar el dolor: hay que explorar si intervienen los músculos, la articulación u otras estructuras.",
+        points: [
+          "Se analiza qué movimientos desencadenan las molestias y cómo afectan a tu día a día.",
+          "El objetivo es recuperar comodidad y función, no tratar un chasquido de forma automática.",
+        ],
+      },
+      {
+        title: "Chasquidos, rigidez y bloqueos",
+        description: "Los ruidos de la articulación sin dolor suelen ser frecuentes y no requieren tratamiento. Si aparecen con dolor, bloqueos o limitación de apertura, conviene valorar su causa y repercusión funcional.",
+        points: [
+          "Se diferencia un ruido sin molestias de una limitación funcional real.",
+          "Un bloqueo intenso o súbito puede requerir atención médica u odontológica prioritaria.",
+        ],
+      },
+      {
+        title: "ATM y bruxismo no son lo mismo",
+        description: "El bruxismo se refiere a actividad de apretar o rechinar los dientes; un trastorno temporomandibular implica problemas de dolor o función de la mandíbula y sus estructuras. Pueden coexistir, pero no se consideran diagnósticos equivalentes.",
+        points: [
+          "La fisioterapia no debe presentarse como una cura del bruxismo.",
+          "Si hay desgaste dental, molestias dentales o dudas sobre una férula, la valoración corresponde a odontología.",
+        ],
+      },
+      {
+        title: "Qué puedes esperar de la primera valoración",
+        description: "La consulta puede incluir una entrevista sobre dolor, hábitos, sueño y actividades, seguida de exploración del movimiento mandibular, musculatura y regiones relacionadas. Con esos datos se plantea el abordaje adecuado o una derivación si es necesaria.",
+        points: [
+          "Explicación de las opciones conservadoras y de lo que se espera del seguimiento.",
+          "Ejercicios o pautas de autocuidado individualizados cuando estén indicados, sin maniobras forzadas.",
+        ],
+      },
+    ],
+    clinicalAdvisory: {
+      title: "¿Cuándo es preferible consultar antes con medicina u odontología?",
+      description: "Si no puedes abrir o cerrar la boca con normalidad, tienes un bloqueo importante, no puedes comer o beber, hay hinchazón con fiebre o las molestias comenzaron tras un traumatismo, solicita valoración sanitaria prioritaria. Si tienes dificultades para respirar o tragar, acude a urgencias. El dolor dental o los cambios recientes en la mordida también requieren valoración adecuada. Esta información no sustituye un diagnóstico.",
+    },
+    plan: [
+      {
+        title: "Valorar la función mandibular",
+        body: "Revisamos el dolor, el movimiento al abrir y cerrar, la masticación, los hábitos y las estructuras que pueden estar implicadas. Cuando procede, recomendamos valoración odontológica.",
+      },
+      {
+        title: "Elegir un abordaje conservador",
+        body: "Según la valoración, pueden plantearse ejercicios mandibulares supervisados, educación, medidas de autocuidado y técnicas de terapia manual seleccionadas por su utilidad y tolerancia.",
+      },
+      {
+        title: "Revisar la evolución",
+        body: "La respuesta se sigue en actividades reales como comer, hablar y abrir la boca. Se adaptan las pautas y se coordina una derivación si la evolución o los hallazgos lo requieren.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Es normal que la mandíbula haga clic al abrir la boca?",
+        answer: "Un chasquido sin dolor ni limitación del movimiento es habitual y por sí solo no suele necesitar tratamiento. Si se acompaña de dolor, bloqueo o dificultad para comer, conviene una valoración.",
+      },
+      {
+        question: "¿Puede ayudar la fisioterapia si me duele la mandíbula al masticar?",
+        answer: "Puede formar parte de un tratamiento conservador en determinados trastornos temporomandibulares. El ejercicio mandibular y algunas técnicas de terapia manual cuentan con respaldo clínico para situaciones concretas, especialmente en dolor persistente, pero primero hay que explorar la causa del dolor.",
+      },
+      {
+        question: "¿ATM y bruxismo significan lo mismo?",
+        answer: "No. La ATM es la articulación de la mandíbula; los trastornos temporomandibulares son problemas que pueden afectar su función o producir dolor. El bruxismo es una actividad de apretar o rechinar los dientes. Pueden coexistir y requieren valoraciones distintas.",
+      },
+      {
+        question: "¿Qué se hace en la primera sesión de fisioterapia de ATM?",
+        answer: "Se revisan tus síntomas, antecedentes y las actividades que te molestan, como masticar o bostezar. La exploración puede incluir apertura, movimiento mandibular, musculatura y cuello. A partir de ahí se explica si la fisioterapia está indicada y qué opciones existen.",
+      },
+      {
+        question: "¿Tengo que llevar férula de descarga o acudir primero al dentista?",
+        answer: "No todo dolor mandibular necesita férula. Su indicación y ajuste corresponden al profesional odontológico. Si existen molestias dentales, desgaste, cambios en la mordida o síntomas que lo justifiquen, se recomienda valoración odontológica.",
+      },
+      {
+        question: "¿Me darán ejercicios para hacer en casa?",
+        answer: "Cuando estén indicados, pueden proponerse ejercicios suaves de movilidad o control mandibular y pautas de autocuidado individualizadas. No se recomienda forzar la apertura de la boca sin valoración.",
+      },
+      {
+        question: "¿Cuándo debo consultar con urgencia por la mandíbula?",
+        answer: "Busca valoración sanitaria prioritaria si aparece un bloqueo importante, no puedes comer o beber, hay hinchazón acompañada de fiebre o has sufrido un traumatismo. Ante dificultad para respirar o tragar, acude a urgencias.",
+      },
+      {
+        question: "¿Cuántas sesiones suelen hacer falta?",
+        answer: "No existe un número de sesiones válido para todas las personas. Depende de la causa, el tiempo de evolución, las actividades afectadas y la respuesta a las primeras pautas. El seguimiento se adapta a esos factores.",
+      },
+    ],
+    evidenceSources: [
+      {
+        title: "NIDCR — Los trastornos temporomandibulares (información para pacientes)",
+        url: "https://www.nidcr.nih.gov/espanol/temas-de-salud/los-trastornos-temporomandibulares",
+      },
+      {
+        title: "BMJ — Guía de práctica clínica sobre dolor temporomandibular crónico (2023)",
+        url: "https://www.bmj.com/content/383/bmj-2023-076227",
+      },
+      {
+        title: "NHS — Temporomandibular disorder (TMD)",
+        url: "https://www.nhs.uk/conditions/temporomandibular-disorder-tmd/",
+      },
+    ],
+    relatedSlugs: ["terapia-manual", "ejercicios-control-motor", "dolor-cervical"],
+    relatedPathologySlugs: ["dolor-cervical"],
+    contactMessage: "Quiero consultar una valoración por dolor o molestias de mandíbula / ATM. Me gustaría conocer la disponibilidad de la consulta en Chamberí.",
+  }),
   catalogTreatment({ slug: "ejercicios-estiramiento", indexable: false, name: "Ejercicios de estiramiento", categorySlug: "ejercicio-terapeutico", title: "Ejercicios de estiramiento en Madrid", description: "Ejercicio de estiramiento activo y adaptado para mejorar tolerancia al movimiento y movilidad funcional.", eyebrow: "Ejercicio terapéutico · Madrid", intro: "Estiramientos activos integrados en un programa de movimiento con objetivos funcionales.", whatIs: "Los ejercicios de estiramiento utilizan movimiento activo y dosis ajustada para trabajar tolerancia, movilidad y confianza en determinados gestos.", whenUsed: "Pueden programarse cuando la movilidad limitada afecta actividades y la exploración muestra que el movimiento progresivo puede ayudar.", limitations: "No se prescriben como solución universal ni se confunden con estiramientos asistidos realizados por el fisioterapeuta.", symptoms: ["Sensación de rigidez", "Movilidad limitada en gestos concretos", "Dificultad tras tiempo sentado", "Necesidad de recuperar recorrido activo"], plan: [{ title: "Seleccionar", body: "Elegimos movimientos que se relacionen con tu objetivo." }, { title: "Dosificar", body: "Definimos frecuencia, intensidad y señales para ajustar." }, { title: "Progresar", body: "Integramos movilidad en tareas más funcionales." }], faq: [{ question: "¿Estirar siempre es bueno?", answer: "Depende de la situación y del objetivo. Se prescribe si encaja con tu valoración." }, { question: "¿Es igual que un estiramiento asistido?", answer: "No. Aquí realizas activamente el ejercicio y controlas el movimiento." }, { question: "¿Cuánto debo mantener cada estiramiento?", answer: "La dosis se adapta al ejercicio y a tu respuesta, no es igual para todos." }], relatedSlugs: ["estiramientos-asistidos", "ejercicios-movilidad", "dolor-cervical"], relatedPathologySlugs: ["dolor-cervical", "dolor-lumbar", "esguinces"] }),
   catalogTreatment({ slug: "ejercicios-control-motor", name: "Ejercicios de control motor", categorySlug: "ejercicio-terapeutico", title: "Ejercicios de control motor en Madrid", description: "Trabajo de control motor para mejorar coordinación, calidad de movimiento y confianza en tareas específicas.", eyebrow: "Ejercicio terapéutico · Madrid", intro: "Ejercicios para recuperar coordinación y control en los movimientos que te cuestan.", whatIs: "El control motor trabaja cómo organizas y coordinas el movimiento en una tarea, con atención a la técnica, la respiración, el ritmo y la tolerancia.", whenUsed: "Puede utilizarse cuando existe inseguridad al mover una zona, alteración de un gesto o necesidad de recuperar coordinación antes de aumentar carga.", limitations: "No consiste en mantener una postura perfecta ni en repetir ejercicios genéricos; se adapta a una tarea funcional concreta.", symptoms: ["Inseguridad al moverse", "Dificultad para controlar un gesto", "Dolor al repetir una tarea", "Necesidad de recuperar coordinación"], plan: [{ title: "Observar", body: "Analizamos la tarea que resulta difícil o dolorosa." }, { title: "Practicar", body: "Ejercicios sencillos con feedback y objetivos claros." }, { title: "Transferir", body: "Llevamos el control a actividades reales y más carga." }], faq: [{ question: "¿Es solo para espalda?", answer: "No. Puede aplicarse a distintas regiones y tareas según la valoración." }, { question: "¿Tengo que hacer ejercicios lentos siempre?", answer: "Al inicio puede ser útil; después se progresa a movimientos más funcionales." }, { question: "¿Se combina con fuerza?", answer: "Sí. El control y la fuerza pueden trabajarse de forma complementaria." }], relatedSlugs: ["ejercicios-carga-progresiva", "fisioterapia-atm", "dolor-lumbar"], relatedPathologySlugs: ["dolor-lumbar", "dolor-cervical", "esguinces"] }),
   catalogTreatment({ slug: "ejercicios-propiocepcion", name: "Ejercicios de propiocepción", categorySlug: "ejercicio-terapeutico", title: "Ejercicios de propiocepción en Madrid", description: "Entrenamiento de equilibrio, estabilidad y respuesta al movimiento para recuperar seguridad tras una lesión.", eyebrow: "Ejercicio terapéutico · Madrid", intro: "Trabajo de equilibrio y estabilidad para volver a confiar en tus apoyos y movimientos.", whatIs: "La propiocepción incluye ejercicios que entrenan la percepción y respuesta del cuerpo ante apoyos, cambios de posición y movimiento.", whenUsed: "Suele considerarse tras esguinces, lesiones deportivas o periodos de inactividad cuando se busca recuperar seguridad y control.", limitations: "No se limita a usar superficies inestables. La dificultad se elige según la tarea y la fase de recuperación.", symptoms: ["Inseguridad en apoyos", "Vuelta al deporte", "Recuperación tras esguince", "Dificultad con cambios de dirección"], plan: [{ title: "Evaluar", body: "Observamos apoyo, equilibrio y tarea específica." }, { title: "Entrenar", body: "Ejercicios progresivos de control y reacción." }, { title: "Aplicar", body: "Progresión hacia gestos de trabajo, vida diaria o deporte." }], faq: [{ question: "¿Solo sirve para tobillo?", answer: "No. Puede aplicarse a diferentes articulaciones y tareas." }, { question: "¿Siempre se usa una superficie inestable?", answer: "No. El ejercicio se escoge según el objetivo y la fase." }, { question: "¿Cuándo se empieza tras un esguince?", answer: "Depende de la exploración, el dolor y la estabilidad de cada caso." }], relatedSlugs: ["vendaje-funcional", "ejercicios-carga-progresiva", "esguinces"], relatedPathologySlugs: ["esguinces", "lesiones-deportivas"] }),
