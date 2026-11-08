@@ -6,7 +6,6 @@ type CatalogInput = {
   categorySlug?: string;
   indexable?: boolean;
   clinicalReviewPending?: boolean;
-  availabilityUnconfirmed?: boolean;
   title: string;
   description: string;
   eyebrow: string;
@@ -87,7 +86,6 @@ function catalogTreatment(input: CatalogInput): Treatment {
     categorySlug: input.categorySlug,
     indexable: input.indexable ?? true,
     clinicalReviewPending: input.clinicalReviewPending,
-    availabilityUnconfirmed: input.availabilityUnconfirmed,
     cardDescription: input.description,
     updatedAt: "2026-11-08",
     seo: {
@@ -562,8 +560,8 @@ export const newTechniqueTreatments: Treatment[] = [
         answer: "El drenaje manual suele utilizar maniobras suaves. El dolor intenso no es un objetivo del procedimiento. Si existe dolor importante, hinchazón repentina o signos inflamatorios, se debe aclarar la causa antes de tratar.",
       },
       {
-        question: "¿Se puede hacer drenaje linfático a domicilio en Madrid?",
-        answer: "La modalidad y la disponibilidad deben confirmarse. En cuadros complejos o que requieren compresión y seguimiento especializado puede ser preferible un servicio específico de linfedema.",
+        question: "¿Dónde realiza Borja el drenaje linfático manual?",
+        answer: "Borja realiza drenaje linfático manual en su consulta de la calle de Caracas, 6, Chamberí (Madrid). Se valora la indicación clínica antes de comenzar. No se anuncia automáticamente la modalidad a domicilio para esta técnica.",
       },
       {
         question: "¿Cuándo debería ir al médico por una extremidad hinchada?",
