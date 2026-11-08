@@ -11,6 +11,7 @@ type CatalogInput = {
   eyebrow: string;
   intro: string;
   recognition?: string;
+  introSectionTitle?: string;
   whatIs: string;
   patientSectionsHeading?: string;
   patientSectionsIntro?: string;
@@ -34,7 +35,7 @@ const keywordTargets: Record<string, { primary: string; secondary: string[] }> =
   "terapia-manual": { primary: "terapia manual Madrid", secondary: ["terapia manual Chamberí","fisioterapia manual Almagro"] },
   "ejercicio-terapeutico": { primary: "ejercicio terapéutico Madrid", secondary: ["ejercicio terapéutico Chamberí", "rehabilitación activa Madrid", "readaptación de lesiones Madrid", "ejercicios de rehabilitación"] },
   "fisioterapia-invasiva-ecoguiada": { primary: "fisioterapia invasiva ecoguiada Madrid", secondary: ["técnicas ecoguiadas fisioterapia","fisioterapia invasiva Chamberí"] },
-  "masoterapia": { primary: "masaje terapéutico Madrid", secondary: ["masoterapia Chamberí","masaje descontracturante fisioterapia"] },
+  "masoterapia": { primary: "masaje terapéutico Madrid", secondary: ["masaje descontracturante Madrid", "masaje descontracturante Chamberí", "masaje terapéutico Chamberí", "masoterapia Madrid", "masaje muscular de espalda y cuello"] },
   "estiramientos-asistidos": { primary: "estiramientos asistidos fisioterapia", secondary: ["estiramientos pasivos fisioterapeuta","estiramientos asistidos Madrid"] },
   "movilizaciones-articulares": { primary: "movilización articular fisioterapia", secondary: ["terapia manual articular","movilizaciones articulares Madrid"] },
   "kinesiotape": { primary: "kinesiotape Madrid", secondary: ["vendaje neuromuscular Madrid","kinesiotaping fisioterapia"] },
@@ -95,6 +96,7 @@ function catalogTreatment(input: CatalogInput): Treatment {
     },
     hero: { eyebrow: input.eyebrow, h1: input.title, intro: input.intro },
     recognition: input.recognition ?? input.description,
+    introSectionTitle: input.introSectionTitle,
     whatIs: input.whatIs,
     patientSectionsHeading: input.patientSectionsHeading,
     patientSectionsIntro: input.patientSectionsIntro,
@@ -290,7 +292,154 @@ export const treatmentCategories: Treatment[] = [
 ];
 
 export const newTechniqueTreatments: Treatment[] = [
-  catalogTreatment({ slug: "masoterapia", name: "Masoterapia", categorySlug: "terapia-manual", title: "Masaje terapéutico en Madrid", description: "Masoterapia integrada en una valoración de fisioterapia para molestias musculares y recuperación funcional.", eyebrow: "Terapia manual · Madrid", intro: "Masaje terapéutico adaptado a tu sensibilidad, actividad y objetivos de recuperación.", whatIs: "La masoterapia utiliza maniobras sobre tejidos blandos dentro de una sesión de fisioterapia. Puede buscar reducir sensación de tensión, facilitar movimiento o acompañar un plan de recuperación.", whenUsed: "Puede considerarse ante sobrecarga muscular, sensación de rigidez o después de esfuerzo, siempre valorando el origen de la molestia.", limitations: "No busca sustituir la valoración ni resolver por sí sola problemas de carga, fuerza o movimiento.", symptoms: ["Sobrecarga muscular", "Sensación de tensión", "Molestias tras actividad", "Rigidez que limita el movimiento"], plan: [{ title: "Escuchar", body: "Identificamos la zona, la actividad y los factores que influyen." }, { title: "Tratar", body: "Aplicación manual adaptada a tu tolerancia." }, { title: "Orientar", body: "Pautas de movimiento o carga para después de la sesión." }], faq: [{ question: "¿Es un masaje relajante?", answer: "Es una técnica de fisioterapia con un objetivo definido dentro de la valoración." }, { question: "¿Puede ser intenso?", answer: "La presión se ajusta a tu tolerancia; el dolor no es un requisito." }, { question: "¿Se combina con ejercicio?", answer: "Sí, cuando el ejercicio ayuda a recuperar o mantener función." }], relatedSlugs: ["presion-isquemica", "estiramientos-asistidos", "contracturas"], relatedPathologySlugs: ["contracturas", "dolor-cervical", "lesiones-deportivas"] }),
+  catalogTreatment({
+    slug: "masoterapia",
+    name: "Masoterapia",
+    categorySlug: "terapia-manual",
+    // Contenido documentado con fuentes clínicas; revisión por Borja pendiente.
+    clinicalReviewPending: true,
+    title: "Masaje terapéutico y descontracturante en Madrid",
+    description: "Masaje terapéutico y descontracturante en Chamberí, Madrid. Valoración y tratamiento de fisioterapia adaptado a tu caso con Borja Estarellas.",
+    eyebrow: "Masoterapia · Fisioterapia en Chamberí",
+    intro: "¿Notas sobrecarga en la espalda, el cuello o los hombros? En la consulta de Chamberí valoramos tus molestias antes de decidir si el masaje terapéutico puede ayudarte dentro de un plan de fisioterapia.",
+    introSectionTitle: "¿Cuándo valorar un masaje terapéutico?",
+    recognition: "La sensación de tensión muscular no siempre tiene una causa única. Puede relacionarse con cambios en la actividad, esfuerzo, descanso u otros factores. La primera decisión no es cuánto apretar, sino comprender qué movimiento o actividad te limita y si el tratamiento manual tiene sentido en tu caso.",
+    whatIs: "La masoterapia reúne maniobras manuales sobre los tejidos blandos. Lo que muchas personas buscan como masaje descontracturante es, en fisioterapia, una intervención adaptada a la exploración, la sensibilidad y el objetivo funcional. Puede utilizarse como complemento para aliviar temporalmente algunas molestias o facilitar el movimiento, sin asumir que el dolor se debe a un músculo «anormal» que haya que romper o recolocar.",
+    whenUsed: "Puede valorarse ante molestias musculares de espalda, cuello y hombros, sensación de rigidez tras esfuerzo o sobrecarga y ciertos cuadros de dolor musculoesquelético. La utilidad depende del motivo de consulta y de la respuesta; no todas las molestias requieren masaje ni todas las personas se benefician de la misma presión.",
+    limitations: "La evidencia sobre el masaje para dolor lumbar o cervical es variable y, en general, de certeza limitada; no permite prometer resultados duraderos ni prevenir lesiones por sí solo. Las guías de dolor lumbar consideran las técnicas manuales únicamente como parte de un plan que incluya ejercicio. El masaje no reemplaza la valoración, el movimiento progresivo ni una derivación sanitaria cuando es necesaria.",
+    symptoms: [
+      "Sensación de sobrecarga en espalda, cuello u hombros",
+      "Molestias musculares después de trabajar o entrenar",
+      "Rigidez o incomodidad al mover una zona",
+      "Sensibilidad muscular localizada que interfiere con tus actividades",
+      "Dudas sobre si necesitas masaje, ejercicio u otra intervención",
+    ],
+    patientSectionsHeading: "Masaje descontracturante y masoterapia: qué esperar realmente",
+    patientSectionsIntro: "El objetivo de la fisioterapia no es aplicar más fuerza, sino elegir el recurso adecuado. Estas son las diferencias y preguntas que conviene conocer antes de solicitar una sesión.",
+    patientSections: [
+      {
+        title: "Masaje terapéutico frente a masaje de relajación",
+        description: "El masaje terapéutico se utiliza con un objetivo de fisioterapia definido tras valorar síntomas, actividades y limitaciones. Puede resultar agradable, pero no se ofrece como una promesa de eliminar contracturas ni como una sesión estándar de spa.",
+        points: [
+          "Se acuerdan la zona, la presión y la finalidad de las maniobras.",
+          "La intervención puede ser breve o combinarse con ejercicio y recomendaciones de actividad, según el caso.",
+        ],
+      },
+      {
+        title: "Masaje descontracturante de espalda, cuello y hombros",
+        description: "«Descontracturante» es un término de búsqueda habitual para la sensación de tensión o sobrecarga muscular. Esa sensación puede tener varios factores relacionados; por eso se exploran movimientos, cargas y síntomas antes de elegir una técnica de tejidos blandos.",
+        points: [
+          "Se evita atribuir todo dolor a una «contractura» sin explorar otras posibilidades.",
+          "El abordaje puede incluir trabajo sobre tejidos blandos, movilidad o ejercicio adaptado.",
+        ],
+      },
+      {
+        title: "Puntos gatillo y presión isquémica",
+        description: "En algunos casos se puede considerar presión manual graduada sobre áreas musculares sensibles, técnica que también se denomina presión isquémica. Un punto doloroso a la palpación no constituye por sí solo un diagnóstico ni implica que haya que tratarlo siempre.",
+        points: [
+          "La intensidad se ajusta a tu sensibilidad y puede modificarse o suspenderse.",
+          "La técnica se integra con la valoración del movimiento, la carga y las actividades que quieres recuperar.",
+        ],
+      },
+      {
+        title: "Molestias después del deporte o de una jornada exigente",
+        description: "Tras una actividad intensa puede aparecer sensación de cansancio o sobrecarga muscular. El masaje puede considerarse como recurso complementario si resulta apropiado, pero no sustituye el descanso, la recuperación ni la programación de cargas.",
+        points: [
+          "No se puede garantizar que prevenga lesiones o mejore el rendimiento deportivo.",
+          "Si se trata de una lesión, primero se valora su naturaleza y el plan de recuperación.",
+        ],
+      },
+      {
+        title: "Qué sucede en una valoración de fisioterapia",
+        description: "Antes de proponer masoterapia se revisan el motivo de consulta, los antecedentes relevantes, la evolución del dolor y qué actividades se han visto afectadas. A partir de ahí se explica si el masaje tiene sentido y qué otras medidas pueden acompañarlo.",
+        points: [
+          "Se acuerda una intensidad tolerable; una sesión dolorosa no es necesariamente más eficaz.",
+          "Las pautas se ajustan a tu evolución y no se prescribe automáticamente un bono o número fijo de sesiones.",
+        ],
+      },
+    ],
+    clinicalAdvisory: {
+      title: "¿Cuándo conviene evitar el masaje y consultar primero?",
+      description: "No conviene aplicar masaje sobre una herida abierta, infección de la piel o zona con lesión reciente sin valoración. Si aparecen hinchazón repentina de una pierna, dolor intenso con calor o enrojecimiento, fiebre o dolor importante tras un traumatismo, solicita valoración sanitaria antes de recibir masaje. Avisa también si tomas anticoagulantes, tienes fragilidad ósea o una enfermedad relevante; puede ser necesario adaptar o evitar ciertas maniobras. Esta información no sustituye una exploración clínica.",
+    },
+    plan: [
+      {
+        title: "Comprender la molestia",
+        body: "Revisamos el dolor, la carga de trabajo o entrenamiento, la movilidad, el tiempo de evolución y qué actividades te cuesta realizar. Comprobamos si la terapia manual está indicada.",
+      },
+      {
+        title: "Aplicar una técnica acordada",
+        body: "Si el masaje aporta valor, se adapta la presión, la zona y el tiempo de aplicación a la sensibilidad y a la respuesta. No se busca provocar dolor intenso.",
+      },
+      {
+        title: "Recuperar movimiento y capacidad",
+        body: "Se plantean pautas de actividad y ejercicios cuando corresponda. El seguimiento prioriza volver a moverte y realizar las tareas importantes para ti, no depender de masajes recurrentes.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Masoterapia y masaje descontracturante son lo mismo?",
+        answer: "Masoterapia es un término profesional amplio para técnicas de masaje sobre tejidos blandos. «Masaje descontracturante» es una denominación habitual para solicitar atención por tensión o sobrecarga. La técnica se decide tras valorar el motivo de consulta, no solo por el nombre.",
+      },
+      {
+        question: "¿El masaje terapéutico elimina las contracturas?",
+        answer: "No se puede garantizar. Puede ayudar a manejar temporalmente algunas molestias, pero el dolor muscular tiene causas diversas y la evidencia no justifica prometer que una maniobra elimina una lesión o corrige definitivamente el tejido.",
+      },
+      {
+        question: "¿Un masaje descontracturante tiene que doler para funcionar?",
+        answer: "No. La intensidad se adapta a la tolerancia y a la respuesta. Más presión no significa necesariamente un mejor resultado, y si una maniobra resulta desagradable o empeora los síntomas debe revisarse.",
+      },
+      {
+        question: "¿Sirve para molestias de espalda, cervicales u hombros?",
+        answer: "Puede valorarse como parte de un abordaje de fisioterapia cuando existen molestias musculares en esas zonas. Primero conviene identificar cómo afectan el movimiento y la actividad y comprobar que no haya señales que aconsejen otro tipo de valoración.",
+      },
+      {
+        question: "¿Se combina con ejercicios terapéuticos?",
+        answer: "Sí, cuando está indicado. En dolor lumbar, por ejemplo, la guía NICE propone considerar la terapia manual únicamente dentro de un tratamiento que incluya ejercicio. El objetivo es recuperar función, no depender exclusivamente de técnicas pasivas.",
+      },
+      {
+        question: "¿Es lo mismo que un masaje deportivo?",
+        answer: "No necesariamente. El masaje deportivo suele referirse al contexto de entrenamiento o competición; la masoterapia se define aquí por el objetivo clínico. Si entrenas o practicas deporte, conviene revisar también tus cargas, las molestias y el plan de recuperación.",
+      },
+      {
+        question: "¿Cuánto dura y cuánto cuesta un masaje terapéutico?",
+        answer: "La duración y las condiciones se confirman antes de la cita, según el tipo de valoración y el abordaje necesario. Consulta las tarifas generales de fisioterapia; no se garantiza una sesión de masaje aislada con duración o precio propios.",
+      },
+      {
+        question: "¿Puedo recibir masaje terapéutico a domicilio en Madrid?",
+        answer: "La disponibilidad depende de la zona, la valoración y las características de la intervención. También puedes acudir a la consulta de Borja en la calle de Caracas, 6, Chamberí, previa cita.",
+      },
+      {
+        question: "¿Qué diferencia hay entre masoterapia y presión isquémica?",
+        answer: "La masoterapia engloba maniobras sobre tejidos blandos. La presión isquémica es una técnica manual más concreta sobre zonas musculares sensibles. Ninguna se aplica de forma automática ni sustituye el resto del plan de fisioterapia.",
+      },
+      {
+        question: "¿Cuándo debería acudir al médico antes de pedir un masaje?",
+        answer: "Si existe un dolor intenso tras traumatismo, signos de infección, hinchazón súbita de una pierna u otros síntomas nuevos preocupantes, conviene valoración sanitaria antes de recibir técnicas manuales. Comunica también tus antecedentes y la medicación relevante.",
+      },
+    ],
+    evidenceSources: [
+      {
+        title: "NICE NG59 — Dolor lumbar y ciática: terapia manual junto con ejercicio",
+        url: "https://www.nice.org.uk/guidance/ng59/chapter/recommendations",
+      },
+      {
+        title: "Cochrane (2024) — Masaje para el dolor de cuello",
+        url: "https://www.cochrane.org/es/evidence/CD004871_massage-neck-pain",
+      },
+      {
+        title: "Cochrane (2015) — Masaje para el dolor lumbar",
+        url: "https://www.cochrane.org/evidence/CD001929_massage-low-back-pain",
+      },
+      {
+        title: "NCCIH — Massage Therapy: What You Need to Know",
+        url: "https://www.nccih.nih.gov/health/massage-therapy-what-you-need-to-know",
+      },
+    ],
+    relatedSlugs: ["terapia-manual", "presion-isquemica", "contracturas", "ejercicio-terapeutico", "dolor-cervical"],
+    relatedPathologySlugs: ["contracturas", "dolor-cervical", "dolor-lumbar", "lesiones-deportivas"],
+    contactMessage: "Me gustaría consultar una valoración por molestias musculares y saber si la masoterapia o el masaje terapéutico podrían estar indicados en mi caso.",
+  }),
   catalogTreatment({ slug: "estiramientos-asistidos", indexable: false, name: "Estiramientos asistidos", categorySlug: "terapia-manual", title: "Estiramientos asistidos en Madrid", description: "Movilidad y estiramientos pasivos guiados por fisioterapeuta dentro de un plan individual.", eyebrow: "Terapia manual · Madrid", intro: "Estiramientos realizados con ayuda del fisioterapeuta para trabajar movilidad con control.", whatIs: "Los estiramientos asistidos son movimientos guiados por el fisioterapeuta, que ajusta posición, intensidad y recorrido según tu respuesta.", whenUsed: "Pueden utilizarse cuando existe sensación de rigidez o limitación de movilidad y forman parte de un enfoque más amplio.", limitations: "Ganar recorrido de forma pasiva no garantiza cambios duraderos; suele ser importante acompañarlo de trabajo activo.", symptoms: ["Sensación de acortamiento", "Movilidad limitada", "Rigidez tras inmovilización", "Dificultad para determinados gestos"], plan: [{ title: "Explorar", body: "Comparamos movilidad, síntomas y gestos relevantes." }, { title: "Guiar", body: "Aplicamos movimiento asistido de forma progresiva." }, { title: "Activar", body: "Proponemos movimiento activo para consolidar capacidad." }], faq: [{ question: "¿Son iguales que los ejercicios de estiramiento?", answer: "No. Aquí el movimiento lo guía el fisioterapeuta; los ejercicios activos tienen otro objetivo." }, { question: "¿Deben doler?", answer: "No. La sensación se mantiene dentro de una tolerancia razonable." }, { question: "¿Cuántas sesiones hacen falta?", answer: "Depende de la causa y de tu respuesta; se revisa durante el proceso." }], relatedSlugs: ["ejercicios-estiramiento", "movilizaciones-articulares", "dolor-cervical"], relatedPathologySlugs: ["dolor-cervical", "dolor-lumbar", "esguinces"] }),
   catalogTreatment({ slug: "movilizaciones-articulares", indexable: false, name: "Movilizaciones articulares", categorySlug: "terapia-manual", title: "Movilizaciones articulares en Madrid", description: "Técnicas manuales para explorar y trabajar movilidad articular dentro de un plan de fisioterapia.", eyebrow: "Terapia manual · Madrid", intro: "Movilización articular adaptada a la exploración, la tolerancia y los objetivos de movimiento.", whatIs: "Las movilizaciones articulares son movimientos manuales dirigidos a una articulación para explorar su respuesta y trabajar el rango de movimiento cuando está indicado.", whenUsed: "Pueden considerarse en limitaciones de movilidad, rigidez o tras determinados periodos de inmovilización, siempre con valoración previa.", limitations: "No se aplican ante cualquier dolor ni sustituyen la progresión activa de movilidad y fuerza.", symptoms: ["Rigidez articular", "Dificultad para alcanzar un gesto", "Sensación de bloqueo o limitación", "Movilidad reducida tras lesión"], plan: [{ title: "Valorar el movimiento", body: "Analizamos recorrido, síntomas y tareas afectadas." }, { title: "Movilizar", body: "Técnica adaptada a la articulación y a tu tolerancia." }, { title: "Practicar", body: "Movimiento activo para integrar el cambio en función." }], faq: [{ question: "¿Es lo mismo que una manipulación?", answer: "No necesariamente. Se trata de movilizaciones graduadas y adaptadas al caso." }, { question: "¿Puede mejorar mi movilidad?", answer: "Puede formar parte del plan cuando la exploración lo indica, junto con trabajo activo." }, { question: "¿Se puede hacer a domicilio?", answer: "Depende del caso y de la modalidad acordada." }], relatedSlugs: ["ejercicios-movilidad", "estiramientos-asistidos", "esguinces"], relatedPathologySlugs: ["esguinces", "dolor-cervical", "dolor-lumbar"] }),
   catalogTreatment({ slug: "kinesiotape", name: "Kinesiotape", categorySlug: "terapia-manual", title: "Kinesiotape en Madrid", description: "Vendaje neuromuscular valorado como apoyo temporal dentro de un plan de fisioterapia.", eyebrow: "Terapia manual · Madrid", intro: "Vendaje neuromuscular como herramienta complementaria cuando encaja con tu valoración.", whatIs: "El kinesiotape o vendaje neuromuscular es una cinta elástica aplicada sobre la piel. Puede utilizarse como apoyo temporal en algunas situaciones de fisioterapia.", whenUsed: "Puede valorarse cuando se busca una pauta externa temporal que acompañe movimiento, actividad o percepción de una zona.", limitations: "No corrige por sí solo una lesión ni reemplaza la valoración, el ejercicio o la progresión de carga.", symptoms: ["Necesidad de apoyo temporal", "Molestias durante actividad", "Dudas sobre vendaje neuromuscular", "Plan de recuperación con pautas activas"], plan: [{ title: "Valorar", body: "Comprobamos si el vendaje aporta algo útil a tu caso." }, { title: "Aplicar", body: "Colocación con explicación de uso y cuidados." }, { title: "Revisar", body: "Se integra con el resto del plan, no como único tratamiento." }], faq: [{ question: "¿El kinesiotape cura una lesión?", answer: "No. Es una herramienta complementaria dentro de un plan individual." }, { question: "¿Puedo ducharme con él?", answer: "Recibirás indicaciones de cuidado según el tipo de aplicación." }, { question: "¿Se usa en cualquier lesión?", answer: "No. Se valora si tiene sentido en tu caso concreto." }], relatedSlugs: ["vendaje-funcional", "lesiones-deportivas", "esguinces"], relatedPathologySlugs: ["esguinces", "lesiones-deportivas", "tendinopatias"] }),
