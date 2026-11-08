@@ -110,6 +110,28 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           )}
 
 
+          {treatment.benefitHighlights && treatment.benefitHighlights.length > 0 && (
+            <section className="px-4 py-16" aria-label="Objetivos potenciales del tratamiento">
+              <div className="mx-auto max-w-7xl">
+                <SectionHeader
+                  align="center"
+                  eyebrow="Objetivos del abordaje"
+                  title={treatment.benefitsHeading ?? "Qué se busca con este tratamiento"}
+                  description={treatment.benefitsIntro ?? "Los resultados dependen de la indicación, de las características del paciente y del conjunto del tratamiento."}
+                />
+                <div className="mt-10 grid gap-5 md:grid-cols-3">
+                  {treatment.benefitHighlights.map((benefit) => (
+                    <GlassCard key={benefit.title} variant="solid" hover={false} className="flex flex-col p-7 text-left">
+                      <span className="card-icon !mx-0"><CheckCircle2 aria-hidden="true" /></span>
+                      <h3 className="mt-5 text-xl font-semibold text-[#073B4C]">{benefit.title}</h3>
+                      <p className="mt-3 flex-1 leading-7 text-[var(--color-muted)]">{benefit.description}</p>
+                    </GlassCard>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
           {treatment.patientSections && treatment.patientSections.length > 0 && (
             <section className="px-4 py-20">
               <div className="mx-auto max-w-7xl">
@@ -156,6 +178,17 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
               <div className="mx-auto max-w-5xl rounded-[30px] border border-[#8eb9ca] bg-white p-7 shadow-[0_14px_38px_rgba(15,83,102,0.10)] md:p-10">
                 <h2 id="clinical-advisory-title" className="text-balance text-2xl font-semibold text-[#073B4C] md:text-3xl">{treatment.clinicalAdvisory.title}</h2>
                 <p className="mt-5 leading-8 text-[var(--color-muted)]">{treatment.clinicalAdvisory.description}</p>
+              </div>
+            </section>
+          )}
+
+          {treatment.evidenceSnapshot && (
+            <section className="px-4 py-14" aria-label="Evidencia clínica y límites">
+              <div className="mx-auto max-w-5xl rounded-[30px] border border-[#8eb9ca] bg-white/85 p-7 shadow-[0_14px_38px_rgba(15,83,102,0.10)] md:p-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#0F5366]">Evidencia científica</p>
+                <h2 className="mt-3 text-balance text-2xl font-semibold text-[#073B4C] md:text-3xl">{treatment.evidenceSnapshot.title}</h2>
+                <p className="mt-5 leading-8 text-[#173f50]">{treatment.evidenceSnapshot.summary}</p>
+                <p className="mt-4 leading-7 text-[var(--color-muted)]">{treatment.evidenceSnapshot.limitations}</p>
               </div>
             </section>
           )}
