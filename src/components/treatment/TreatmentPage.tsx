@@ -21,7 +21,12 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
   const whatsappHref = buildWhatsappHref(`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`);
   const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => Boolean(item));
   const category = getTreatmentCategory(treatment.categorySlug);
-  const categoryTechniques = treatment.kind === "category" ? getCategoryTechniques(treatment.slug) : [];
+  // El hub de ejercicio terapéutico ya explica movilidad y estiramientos.
+  // Sus fichas secundarias permanecen accesibles, pero no compiten como tarjetas
+  // comerciales principales mientras estén configuradas como noindex.
+  const categoryTechniques = treatment.kind === "category"
+    ? getCategoryTechniques(treatment.slug).filter((item) => treatment.slug !== "ejercicio-terapeutico" || item.indexable !== false)
+    : [];
   const relatedPathologies = (treatment.relatedPathologySlugs ?? []).map(getTreatment).filter((item): item is Treatment => Boolean(item));
   const homeFocused = ["fisioterapia-domicilio", "rehabilitacion-postoperatoria", "fisioterapia-mayores"].includes(treatment.slug);
   const informationalPage = treatment.kind === "technique" || treatment.kind === "category";
@@ -142,7 +147,10 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           {categoryTechniques.length > 0 && (
             <section className="px-4 py-20">
               <div className="mx-auto max-w-7xl">
-                <SectionHeader align="center" eyebrow="Técnicas y programas" title={`Opciones dentro de ${treatment.name.toLowerCase()}`} description="Cada herramienta se valora según tu situación. Conoce en qué consiste cada enfoque antes de solicitar una valoración." />
+                <SectionHeader align="center" eyebrow="Técnicas y programas" title={treatment.slug === "ejercicio-terapeutico" ? "Programas de ejercicio y readaptación" : `Opciones dentro de ${treatment.name.toLowerCase()}`}
+                  description={treatment.slug === "ejercicio-terapeutico"
+                    ? "Explora control motor, propiocepción y carga progresiva. Los estiramientos y la movilidad activa están explicados en esta misma página como herramientas que se integran en el programa."
+                    : "Cada herramienta se valora según tu situación. Conoce en qué consiste cada enfoque antes de solicitar una valoración."} />
                 <div className="treatment-card-row mt-12">
                   {categoryTechniques.map((item) => <GlassCard key={item.slug} variant="solid" className="group flex min-h-72 flex-col p-7 text-center"><h3 className="flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">{item.name}</h3><p className="mt-4 flex-1 text-sm leading-7 text-[var(--color-muted)]">{item.cardDescription}</p><Link href={getTreatmentPath(item.slug)} className="btn btn--primary mt-6 min-h-10 self-center px-4 text-sm">Conocer la técnica</Link></GlassCard>)}
                 </div>
