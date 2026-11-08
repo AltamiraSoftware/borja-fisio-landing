@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2, Home, MapPinned } from "lucide-react";
 import type { Treatment } from "@/types/content";
-import { getCategoryTechniques, getTreatment, getTreatmentCategory, getTreatmentPath } from "@/content/treatments";
+import { getCategoryTechniques, getTreatment, getTreatmentCategory, getTreatmentPath, isConsolidatedTreatment } from "@/content/treatments";
 import { InteriorHero } from "@/components/common/InteriorHero";
 import { CtaBanner } from "@/components/landing/CtaBanner";
 import { ContactSection } from "@/components/landing/ContactSection";
@@ -19,13 +19,11 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export function TreatmentPage({ treatment }: { treatment: Treatment }) {
   const whatsappHref = buildWhatsappHref(`Hola Borja, quiero consultarte mi caso sobre ${treatment.name.toLowerCase()}. Estoy en Madrid.`);
-  const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => Boolean(item));
+  const related = treatment.relatedSlugs.map(getTreatment).filter((item): item is Treatment => Boolean(item) && !isConsolidatedTreatment(item.slug));
   const category = getTreatmentCategory(treatment.categorySlug);
-  // El hub de ejercicio terapéutico ya explica movilidad y estiramientos.
-  // Sus fichas secundarias permanecen accesibles, pero no compiten como tarjetas
-  // comerciales principales mientras estén configuradas como noindex.
+  const compactCategory = treatment.slug === "terapia-manual" || treatment.slug === "ejercicio-terapeutico";
   const categoryTechniques = treatment.kind === "category"
-    ? getCategoryTechniques(treatment.slug).filter((item) => treatment.slug !== "ejercicio-terapeutico" || item.indexable !== false)
+    ? getCategoryTechniques(treatment.slug).filter((item) => treatment.slug !== "terapia-manual" || !isConsolidatedTreatment(item.slug))
     : [];
   const relatedPathologies = (treatment.relatedPathologySlugs ?? []).map(getTreatment).filter((item): item is Treatment => Boolean(item));
   const homeFocused = ["fisioterapia-domicilio", "rehabilitacion-postoperatoria", "fisioterapia-mayores"].includes(treatment.slug);
@@ -70,10 +68,16 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </>
           }
         />
+        <ContactSection topic={treatment.name} messageIntro={treatment.contactMessage} />
 
         <div className="page-flow-bg">
           <div className="mx-auto max-w-7xl px-4 pt-8">
-            <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Tratamientos", href: "/tratamientos" }, ...(category ? [{ label: category.name, href: getTreatmentPath(category.slug) }] : []), { label: treatment.name }]} />
+            <Breadcrumbs items={[
+              { label: "Inicio", href: "/" },
+              ...(treatment.kind === "pathology" ? [{ label: "Patologías", href: "/patologias" }] : []),
+              ...(category ? [{ label: category.name, href: getTreatmentPath(category.slug) }] : []),
+              { label: treatment.name },
+            ]} />
             {invasiveEducation && (
               <nav aria-label="Secciones de este tratamiento" className="mt-7 flex gap-2 overflow-x-auto rounded-2xl border border-[#a8cbd7]/80 bg-white/75 p-3 shadow-[0_8px_24px_rgba(15,83,102,0.06)]">
                 {[
@@ -215,12 +219,26 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           {categoryTechniques.length > 0 && (
             <section className="px-4 py-20">
               <div className="mx-auto max-w-7xl">
-                <SectionHeader align="center" eyebrow="Técnicas y programas" title={treatment.slug === "ejercicio-terapeutico" ? "Programas de ejercicio y readaptación" : `Opciones dentro de ${treatment.name.toLowerCase()}`}
-                  description={treatment.slug === "ejercicio-terapeutico"
-                    ? "Explora control motor, propiocepción y carga progresiva. Los estiramientos y la movilidad activa están explicados en esta misma página como herramientas que se integran en el programa."
-                    : "Cada herramienta se valora según tu situación. Conoce en qué consiste cada enfoque antes de solicitar una valoración."} />
-                <div className="treatment-card-row mt-12">
-                  {categoryTechniques.map((item) => <GlassCard key={item.slug} variant="solid" className="group flex min-h-72 flex-col p-7 text-center"><h3 className="flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]">{item.name}</h3><p className="mt-4 flex-1 text-sm leading-7 text-[var(--color-muted)]">{item.cardDescription}</p><Link href={getTreatmentPath(item.slug)} className="btn btn--primary mt-6 min-h-10 self-center px-4 text-sm">Conocer la técnica</Link></GlassCard>)}
+                <SectionHeader
+                  align="center"
+                  eyebrow={compactCategory ? "Técnicas incluidas" : "Tratamientos específicos"}
+                  title={treatment.slug === "ejercicio-terapeutico" ? "Ejercicios y programas de rehabilitación" : `Opciones dentro de ${treatment.name.toLowerCase()}`}
+                  description={compactCategory
+                    ? "Estas técnicas se integran dentro de un plan individual. Consulta los servicios especializados que sí disponen de su propia página."
+                    : "La ecografía y cada procedimiento invasivo tienen indicaciones y precauciones propias. Conócelos antes de solicitar una valoración."}
+                />
+                <div className={compactCategory ? "mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" : "treatment-card-row mt-12"}>
+                  {categoryTechniques.map((item) => (
+                    <GlassCard key={item.slug} variant="solid" hover={false} className={compactCategory ? "flex flex-col p-6 text-left" : "group flex min-h-72 flex-col p-7 text-center"}>
+                      <h3 className={compactCategory ? "text-lg font-semibold text-[#073B4C]" : "flex min-h-14 items-center justify-center text-xl font-semibold text-[#073B4C]"}>{item.name}</h3>
+                      <p className="mt-3 flex-1 text-sm leading-7 text-[var(--color-muted)]">{item.whatIs ?? item.cardDescription}</p>
+                      {!isConsolidatedTreatment(item.slug) && (
+                        <Link href={getTreatmentPath(item.slug)} className="btn btn--primary mt-5 min-h-10 self-start px-4 text-sm">
+                          Ver servicio especializado
+                        </Link>
+                      )}
+                    </GlassCard>
+                  ))}
                 </div>
               </div>
             </section>
@@ -268,8 +286,6 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
               {treatment.importedDetail && <p className="mx-auto mt-7 max-w-3xl text-center leading-7 text-[var(--color-muted)]">{treatment.importedDetail.onlineFollowup}</p>}
             </div>
           </section>
-
-          <ContactSection topic={treatment.name} messageIntro={treatment.contactMessage} />
 
           <LocationSection />
 
