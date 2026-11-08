@@ -49,7 +49,7 @@ const keywordTargets: Record<string, { primary: string; secondary: string[] }> =
   "ejercicios-propiocepcion": { primary: "ejercicios de propiocepción", secondary: ["propiocepción tobillo","entrenamiento del equilibrio fisioterapia"] },
   "ejercicios-carga-progresiva": { primary: "carga progresiva fisioterapia", secondary: ["ejercicios para tendinopatías","readaptación de fuerza"] },
   "ejercicios-movilidad": { primary: "ejercicios de movilidad articular", secondary: ["movilidad activa fisioterapia","ejercicios de movilidad funcional"] },
-  "puncion-seca": { primary: "punción seca Madrid", secondary: ["punción seca Chamberí","punción seca ecoguiada"] },
+  "puncion-seca": { primary: "punción seca Madrid", secondary: ["punción seca Chamberí", "punción seca puntos gatillo", "fisioterapia punción seca Madrid", "punción seca ecoguiada", "punción seca dolor muscular"] },
   "electrolisis-percutanea-ecoguiada": { primary: "electrólisis percutánea ecoguiada Madrid", secondary: ["EPI fisioterapia Madrid","electrólisis tendinopatías"] },
   "neuromodulacion-percutanea-ecoguiada": { primary: "neuromodulación percutánea Madrid", secondary: ["neuromodulación ecoguiada Chamberí","neuromodulación invasiva fisioterapia"] },
 };
@@ -850,7 +850,169 @@ export const newTechniqueTreatments: Treatment[] = [
   catalogTreatment({ slug: "ejercicios-propiocepcion", name: "Ejercicios de propiocepción", categorySlug: "ejercicio-terapeutico", title: "Ejercicios de propiocepción en Madrid", description: "Entrenamiento de equilibrio, estabilidad y respuesta al movimiento para recuperar seguridad tras una lesión.", eyebrow: "Ejercicio terapéutico · Madrid", intro: "Trabajo de equilibrio y estabilidad para volver a confiar en tus apoyos y movimientos.", whatIs: "La propiocepción incluye ejercicios que entrenan la percepción y respuesta del cuerpo ante apoyos, cambios de posición y movimiento.", whenUsed: "Suele considerarse tras esguinces, lesiones deportivas o periodos de inactividad cuando se busca recuperar seguridad y control.", limitations: "No se limita a usar superficies inestables. La dificultad se elige según la tarea y la fase de recuperación.", symptoms: ["Inseguridad en apoyos", "Vuelta al deporte", "Recuperación tras esguince", "Dificultad con cambios de dirección"], plan: [{ title: "Evaluar", body: "Observamos apoyo, equilibrio y tarea específica." }, { title: "Entrenar", body: "Ejercicios progresivos de control y reacción." }, { title: "Aplicar", body: "Progresión hacia gestos de trabajo, vida diaria o deporte." }], faq: [{ question: "¿Solo sirve para tobillo?", answer: "No. Puede aplicarse a diferentes articulaciones y tareas." }, { question: "¿Siempre se usa una superficie inestable?", answer: "No. El ejercicio se escoge según el objetivo y la fase." }, { question: "¿Cuándo se empieza tras un esguince?", answer: "Depende de la exploración, el dolor y la estabilidad de cada caso." }], relatedSlugs: ["vendaje-funcional", "ejercicios-carga-progresiva", "esguinces"], relatedPathologySlugs: ["esguinces", "lesiones-deportivas"] }),
   catalogTreatment({ slug: "ejercicios-carga-progresiva", name: "Ejercicios de carga progresiva", categorySlug: "ejercicio-terapeutico", title: "Ejercicios de carga progresiva en Madrid", description: "Planificación de fuerza y tolerancia para volver gradualmente a las actividades que te importan.", eyebrow: "Ejercicio terapéutico · Madrid", intro: "Progresión de carga para recuperar capacidad sin saltar pasos ni depender de una rutina genérica.", whatIs: "La carga progresiva organiza el aumento gradual de esfuerzo, fuerza y tolerancia en función de tu respuesta y del objetivo que quieres recuperar.", whenUsed: "Puede ser útil en tendinopatías, lesiones deportivas, dolor persistente o tras periodos de menor actividad, siempre con valoración.", limitations: "No implica forzar ni ignorar síntomas. La progresión se adapta a la evolución y puede requerir ajustes.", symptoms: ["Dolor al aumentar actividad", "Tendón sensible a la carga", "Vuelta al deporte", "Pérdida de fuerza o resistencia"], plan: [{ title: "Establecer base", body: "Identificamos el nivel actual de tolerancia y las tareas objetivo." }, { title: "Cargar", body: "Aumentos graduales de fuerza, volumen o complejidad." }, { title: "Volver", body: "Transferencia a trabajo, deporte o actividades cotidianas." }], faq: [{ question: "¿Hay que entrenar con dolor?", answer: "La respuesta se valora de forma individual; no se trata de ignorar síntomas." }, { question: "¿Sirve para tendinopatías?", answer: "Puede formar parte del tratamiento cuando está indicado y bien dosificado." }, { question: "¿Cuánto tarda la progresión?", answer: "Depende del punto de partida, el objetivo y la respuesta al programa." }], relatedSlugs: ["tendinopatias", "ejercicios-propiocepcion", "lesiones-deportivas"], relatedPathologySlugs: ["tendinopatias", "lesiones-deportivas", "dolor-lumbar"] }),
   catalogTreatment({ slug: "ejercicios-movilidad", indexable: false, name: "Ejercicios de movilidad", categorySlug: "ejercicio-terapeutico", title: "Ejercicios de movilidad en Madrid", description: "Movimiento activo y progresivo para recuperar rango útil en actividades cotidianas, trabajo o deporte.", eyebrow: "Ejercicio terapéutico · Madrid", intro: "Ejercicios de movilidad orientados a recuperar movimiento útil, no solo a ganar recorrido.", whatIs: "Los ejercicios de movilidad trabajan la capacidad de mover una articulación o región de manera activa, controlada y útil para una tarea.", whenUsed: "Pueden programarse tras rigidez, inmovilización, lesión o cuando un gesto cotidiano requiere recuperar recorrido y control.", limitations: "El objetivo no es alcanzar un rango ideal, sino el movimiento que necesitas con seguridad y tolerancia.", symptoms: ["Rigidez al moverse", "Dificultad en gestos cotidianos", "Movilidad reducida tras lesión", "Necesidad de recuperar rango activo"], plan: [{ title: "Medir", body: "Relacionamos el rango disponible con la actividad que te limita." }, { title: "Mover", body: "Ejercicios activos graduados y comprensibles." }, { title: "Usar", body: "Integramos el movimiento en tareas relevantes." }], faq: [{ question: "¿Movilidad y flexibilidad son lo mismo?", answer: "Se relacionan, pero la movilidad incluye control activo y función." }, { question: "¿Puedo hacerlos todos los días?", answer: "La frecuencia se ajusta al ejercicio y a tu respuesta." }, { question: "¿Sirven después de una lesión?", answer: "Pueden ser útiles en la fase adecuada, tras valoración." }], relatedSlugs: ["movilizaciones-articulares", "ejercicios-estiramiento", "esguinces"], relatedPathologySlugs: ["esguinces", "dolor-cervical", "dolor-lumbar"] }),
-  catalogTreatment({ slug: "puncion-seca", name: "Punción seca", categorySlug: "fisioterapia-invasiva-ecoguiada", title: "Punción seca en Madrid", description: "Valoración de punción seca para determinados cuadros musculoesqueléticos, siempre dentro de un plan individual.", eyebrow: "Técnicas invasivas · Madrid", intro: "Una técnica que puede valorarse en algunos casos musculoesqueléticos, con indicación previa y atención presencial.", indexable: false, clinicalReviewPending: true, whatIs: "La punción seca es una técnica invasiva que utiliza una aguja fina sobre tejido muscular en contextos concretos. Puede realizarse con o sin guía ecográfica según indicación y disponibilidad.", whenUsed: "Puede considerarse en algunos cuadros de dolor muscular o sensibilidad localizada después de historia clínica y exploración individual.", limitations: "No es necesaria para todos los casos ni garantiza resultados. Requiere valorar contraindicaciones, consentimiento y alternativas de tratamiento.", symptoms: ["Dolor muscular persistente", "Zona muscular sensible", "Limitación funcional valorada", "Consulta presencial con valoración previa"], plan: [{ title: "Valorar", body: "Historia clínica, exploración y revisión de precauciones." }, { title: "Explicar", body: "Objetivo, alternativas y posibles reacciones antes de decidir." }, { title: "Integrar", body: "Pautas activas y seguimiento según la respuesta." }], faq: [{ question: "¿La punción seca es para cualquier contractura?", answer: "No. Se considera solo cuando la valoración sugiere que puede aportar valor." }, { question: "¿Puede hacerse con ecografía?", answer: "Según la zona, la indicación y la disponibilidad; no es obligatoria en todos los casos." }, { question: "¿Se realiza a domicilio?", answer: "No. Se plantea únicamente en consulta presencial." }], relatedSlugs: ["presion-isquemica", "ejercicios-carga-progresiva", "contracturas"], relatedPathologySlugs: ["contracturas", "dolor-cervical", "lesiones-deportivas"], clinicOnly: true }),
+  catalogTreatment({
+    slug: "puncion-seca",
+    name: "Punción seca",
+    categorySlug: "fisioterapia-invasiva-ecoguiada",
+    indexable: false,
+    clinicalReviewPending: true,
+    clinicOnly: true,
+    title: "Punción seca en Madrid",
+    description: "Punción seca en Chamberí, Madrid: tratamiento con agujas para determinados cuadros de dolor muscular. Indicaciones, riesgos y valoración con Borja Estarellas.",
+    eyebrow: "Punción seca · Fisioterapia en Chamberí",
+    intro: "La punción seca es una técnica de fisioterapia invasiva que puede valorarse para algunas molestias musculares. Antes de plantearla es importante explorar tu problema, explicar los riesgos y considerar alternativas.",
+    introSectionTitle: "¿Cuándo puede tener sentido valorar la punción seca?",
+    recognition: "Un dolor muscular persistente o una zona sensible a la palpación no significa que necesites una aguja. El fisioterapeuta debe relacionar los síntomas con la movilidad, la fuerza, las tareas que te cuestan y los posibles factores contribuyentes antes de proponer una intervención.",
+    whatIs: "La punción seca utiliza una aguja estéril fina sin administrar medicamentos ni inyectar sustancias. Se aplica sobre determinadas estructuras musculares en contextos clínicos seleccionados. Puede realizarse con o sin ecografía según la zona, el objetivo y la formación disponible; la guía ecográfica es una ayuda anatómica y no demuestra por sí misma mayor eficacia terapéutica.",
+    whenUsed: "Puede considerarse en algunos pacientes con dolor musculoesquelético, sensibilidad muscular localizada o limitaciones funcionales cuando una valoración individual sugiere que puede aportar algo dentro de un plan más amplio. No se indica automáticamente para cualquier contractura, dolor cervical, deportivo o punto gatillo.",
+    limitations: "La investigación sobre punción seca ofrece resultados heterogéneos. Una revisión sistemática de 2026 encontró que en la mayoría de sus estudios no añadió beneficios de reducción del dolor frente al ejercicio terapéutico solo; otras investigaciones hallan beneficios en contextos concretos y a corto plazo. No sustituye el ejercicio ni garantiza resultados. Las técnicas invasivas tienen efectos adversos y requieren consentimiento informado.",
+    symptoms: [
+      "Dolor o sensibilidad muscular que limita movimientos y actividades",
+      "Molestias cervicales o de hombro que requieren valoración individual",
+      "Dolor muscular relacionado con cargas o actividad deportiva",
+      "Dudas sobre opciones de fisioterapia manual frente a una técnica con aguja",
+      "Interés en conocer si se puede utilizar guía ecográfica según la región",
+    ],
+    patientSectionsHeading: "Punción seca: qué es, cuándo se utiliza y qué debes saber",
+    patientSectionsIntro: "La elección de una técnica invasiva requiere información suficiente. Estas diferencias ayudan a decidir con expectativas realistas y sin confundirla con otros procedimientos.",
+    patientSections: [
+      {
+        title: "Punción seca y puntos gatillo musculares",
+        description: "Algunos profesionales consideran la punción seca ante zonas musculares sensibles, a veces denominadas puntos gatillo. La localización de un punto doloroso no explica por sí sola toda la situación clínica y no obliga a realizar una punción.",
+        points: [
+          "Se exploran dolor, función, movimiento y tareas relevantes antes de decidir.",
+          "No se promete eliminar «nudos» musculares ni desactivar definitivamente una lesión con una aguja.",
+        ],
+      },
+      {
+        title: "Punción seca frente a acupuntura o infiltraciones",
+        description: "Aunque pueden utilizar agujas similares, la punción seca en fisioterapia se plantea desde una exploración musculoesquelética y no emplea un medicamento inyectado. Las infiltraciones sí administran sustancias; son procedimientos diferentes con indicaciones distintas.",
+        points: [
+          "El paciente debe conocer qué procedimiento concreto se propone y por qué.",
+          "Se utiliza material estéril de un solo uso y medidas de higiene apropiadas.",
+        ],
+      },
+      {
+        title: "¿Puede realizarse con ecografía?",
+        description: "La ecografía puede ayudar a visualizar determinadas estructuras anatómicas cuando esté indicada. Eso no significa que toda punción seca deba ser ecoguiada ni que utilizar ecografía garantice resultados superiores.",
+        points: [
+          "La modalidad depende de la zona tratada, la indicación y los protocolos aplicables.",
+          "La disponibilidad de punción seca con guía ecográfica se confirma antes de reservar.",
+        ],
+      },
+      {
+        title: "¿Duele y qué ocurre después?",
+        description: "La punción puede provocar molestias durante la intervención y dolor muscular transitorio después. También pueden aparecer pequeños hematomas o sangrado leve. La reacción varía y debe explicarse antes de obtener consentimiento.",
+        points: [
+          "Se valora la tolerancia y se ofrecen instrucciones sobre el cuidado posterior.",
+          "Si aparecen síntomas llamativos o persistentes, se debe solicitar atención sanitaria.",
+        ],
+      },
+      {
+        title: "Riesgos, contraindicaciones y consentimiento",
+        description: "Antes de plantear la punción deben revisarse anticoagulantes, trastornos de coagulación, embarazo cuando proceda, infecciones, problemas de inmunidad, antecedentes relevantes y miedo a las agujas. Los eventos graves son infrecuentes pero posibles; en ciertas regiones torácicas existe riesgo de neumotórax.",
+        points: [
+          "Debe explicarse la relación entre beneficio esperado, alternativas y riesgos específicos de la zona.",
+          "No debe realizarse sin consentimiento informado y una valoración de seguridad adecuada.",
+        ],
+      },
+      {
+        title: "Punción seca dentro de un plan activo",
+        description: "El tratamiento de una lesión o dolor muscular no se agota en la punción. Cuando corresponde, se complementa con ejercicio terapéutico, educación, progresión de carga y seguimiento funcional.",
+        points: [
+          "La respuesta al tratamiento se revisa mediante actividades y síntomas, no solo palpando un punto sensible.",
+          "Si no hay mejoría relevante, debe replantearse la hipótesis clínica y el plan.",
+        ],
+      },
+    ],
+    clinicalAdvisory: {
+      title: "Seguridad: cuándo consultar tras una punción",
+      description: "Antes de cualquier técnica con agujas informa de medicación anticoagulante, problemas de sangrado, embarazo, infección o antecedentes médicos relevantes. Después de una punción cerca del tórax, la aparición de dificultad respiratoria, dolor torácico o tos persistente exige valoración médica urgente por la posibilidad de complicaciones como neumotórax. La información de esta página no sustituye la valoración ni el consentimiento individual.",
+    },
+    plan: [
+      {
+        title: "Valoración y selección",
+        body: "Se revisan antecedentes, síntomas, exploración musculoesquelética, precauciones y alternativas. Solo se plantea la técnica si existe una indicación individual.",
+      },
+      {
+        title: "Información y procedimiento",
+        body: "Se explican beneficios esperados, límites, riesgos, higiene y consentimiento. Si se realiza la punción, la intensidad y la región se adaptan a la valoración.",
+      },
+      {
+        title: "Seguimiento y ejercicio",
+        body: "Se comprueba la respuesta, se dan pautas posteriores y se integran ejercicios o cambios de carga según el objetivo funcional. Se reevalúa el plan si no aporta valor.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Qué es la punción seca en fisioterapia?",
+        answer: "Es una técnica invasiva que introduce una aguja fina y estéril sin inyectar fármacos. Puede utilizarse en determinadas situaciones musculoesqueléticas tras una valoración individual y consentimiento informado.",
+      },
+      {
+        question: "¿La punción seca sirve para cualquier contractura?",
+        answer: "No. La sensación de tensión o la presencia de un punto muscular sensible no constituyen por sí solas una indicación de punción. Primero debe explorarse el motivo de consulta y valorar alternativas.",
+      },
+      {
+        question: "¿Es dolorosa la punción seca?",
+        answer: "Puede producir molestias durante la intervención y dolor muscular transitorio después. La respuesta varía; el objetivo no es provocar dolor intenso ni realizar la técnica sin explicar previamente lo que puede sentirse.",
+      },
+      {
+        question: "¿Qué diferencia hay entre punción seca y acupuntura?",
+        answer: "Ambas pueden emplear agujas, pero la punción seca utilizada en fisioterapia se selecciona a partir de la valoración musculoesquelética. No equivale a una infiltración ni administra sustancias.",
+      },
+      {
+        question: "¿Se puede hacer punción seca ecoguiada?",
+        answer: "En determinadas regiones la ecografía puede ayudar a reconocer estructuras anatómicas. Su uso depende de la indicación, el procedimiento y la disponibilidad; no implica que cualquier punción seca requiera ecografía.",
+      },
+      {
+        question: "¿Tiene riesgos o efectos secundarios?",
+        answer: "Son frecuentes las molestias locales transitorias y pueden aparecer pequeños hematomas. Las complicaciones graves son poco frecuentes pero posibles, incluidos problemas que requieren atención urgente; por eso son necesarios valoración, formación, precauciones y consentimiento.",
+      },
+      {
+        question: "¿Cuántas sesiones de punción seca necesito?",
+        answer: "No existe una cifra válida para todos los pacientes. La decisión depende de la evaluación y de la respuesta, sin asumir que repetir punciones sea mejor que un plan activo de rehabilitación.",
+      },
+      {
+        question: "¿Es mejor la punción seca que el ejercicio terapéutico?",
+        answer: "No se puede afirmar con carácter general. La evidencia comparativa es heterogénea y una revisión de 2026 no encontró beneficio adicional sobre el ejercicio aislado en la mayoría de los estudios incluidos para reducir dolor. La elección depende del contexto.",
+      },
+      {
+        question: "¿Se realiza punción seca a domicilio en Madrid?",
+        answer: "En Fisio Estarellas estos procedimientos invasivos se plantean exclusivamente en consulta, tras valoración y confirmación de la indicación.",
+      },
+      {
+        question: "¿Cuándo debo acudir a urgencias después de una punción?",
+        answer: "Si aparecen dificultad para respirar, dolor torácico, tos persistente u otros síntomas intensos inesperados, especialmente tras tratar una región cercana al tórax, solicita atención médica urgente.",
+      },
+    ],
+    evidenceSources: [
+      {
+        title: "Revisión sistemática (2026) — Punción seca y ejercicio frente a dolor musculoesquelético",
+        url: "https://pubmed.ncbi.nlm.nih.gov/42086197/",
+      },
+      {
+        title: "Revisión y metaanálisis (2026) — Efectos adversos de la punción seca",
+        url: "https://pubmed.ncbi.nlm.nih.gov/42096510/",
+      },
+      {
+        title: "Consenso clínico (2026) — Selección, dosis y seguimiento de punción seca",
+        url: "https://pubmed.ncbi.nlm.nih.gov/42083628/",
+      },
+      {
+        title: "Consejo General de Colegios de Fisioterapeutas — Protocolo sobre punción seca",
+        url: "https://www.consejo-fisioterapia.org/adjuntos/legislacion/legislacion_57.pdf",
+      },
+    ],
+    relatedSlugs: [
+      "fisioterapia-invasiva-ecoguiada",
+      "ecografia-musculoesqueletica",
+      "presion-isquemica",
+      "ejercicio-terapeutico",
+      "contracturas",
+    ],
+    relatedPathologySlugs: ["contracturas", "dolor-cervical", "lesiones-deportivas"],
+    contactMessage: "Quiero consultar si la punción seca puede estar indicada en mi caso. Me gustaría solicitar una valoración en la consulta de Chamberí.",
+  }),
   catalogTreatment({ slug: "electrolisis-percutanea-ecoguiada", name: "Electrólisis percutánea ecoguiada", categorySlug: "fisioterapia-invasiva-ecoguiada", title: "Electrólisis percutánea ecoguiada en Madrid", description: "Información sobre electrólisis percutánea ecoguiada para valorar indicación, precauciones y alternativas en consulta.", eyebrow: "Técnicas invasivas · Madrid", intro: "Una opción que requiere valoración presencial, indicación individual y confirmación de disponibilidad antes de reservar.", indexable: false, clinicalReviewPending: true, clinicOnly: true, whatIs: "La electrólisis percutánea ecoguiada es un procedimiento invasivo que se puede valorar en determinadas situaciones musculoesqueléticas. EPI se utiliza como variante de búsqueda, sin que ello implique una marca o equipo concreto.", whenUsed: "La indicación depende de la exploración, el diagnóstico funcional, los objetivos y las alternativas disponibles. No se plantea como respuesta automática a una tendinopatía.", limitations: "Requiere confirmación clínica y de disponibilidad. No garantiza resultados ni sustituye un programa de ejercicio y progresión de carga.", symptoms: ["Consulta por tendón o tejido musculoesquelético", "Necesidad de valoración individual", "Dudas sobre procedimientos ecoguiados", "Atención presencial"], plan: [{ title: "Explorar", body: "Valoración clínica y revisión de objetivos antes de decidir." }, { title: "Informar", body: "Explicación de indicación, límites, alternativas y precauciones." }, { title: "Acompañar", body: "Plan activo y seguimiento funcional cuando el caso lo requiere." }], faq: [{ question: "¿Es lo mismo que EPI?", answer: "EPI es una denominación usada en búsquedas; la valoración debe centrarse en la indicación clínica, no en una marca." }, { question: "¿Es necesaria para toda tendinopatía?", answer: "No. Muchas tendinopatías se abordan con educación y carga progresiva, entre otras medidas." }, { question: "¿Está disponible siempre?", answer: "La disponibilidad y la indicación deben confirmarse antes de reservar." }], relatedSlugs: ["ecografia-musculoesqueletica", "ejercicios-carga-progresiva", "tendinopatias"], relatedPathologySlugs: ["tendinopatias", "lesiones-deportivas"] }),
   catalogTreatment({ slug: "neuromodulacion-percutanea-ecoguiada", name: "Neuromodulación percutánea ecoguiada", categorySlug: "fisioterapia-invasiva-ecoguiada", title: "Neuromodulación percutánea ecoguiada en Madrid", description: "Información para valorar neuromodulación percutánea ecoguiada, sus precauciones y alternativas en consulta.", eyebrow: "Técnicas invasivas · Madrid", intro: "Procedimiento que requiere valoración presencial, indicación individual y confirmación previa de disponibilidad.", indexable: false, clinicalReviewPending: true, clinicOnly: true, whatIs: "La neuromodulación percutánea ecoguiada es un procedimiento invasivo que puede considerarse en contextos concretos tras exploración individual. La guía ecográfica, cuando procede, busca aportar precisión anatómica.", whenUsed: "No se indica por un diagnóstico aislado. Se valora junto a síntomas, exploración, objetivos funcionales y otras opciones de tratamiento.", limitations: "No garantiza alivio ni sustituye la valoración médica cuando es necesaria, el ejercicio terapéutico o la progresión funcional.", symptoms: ["Consulta por dolor o limitación musculoesquelética", "Necesidad de exploración presencial", "Dudas sobre opciones invasivas", "Plan individualizado"], plan: [{ title: "Analizar", body: "Historia, exploración y posibles precauciones." }, { title: "Decidir", body: "Información clara sobre utilidad potencial, alternativas y límites." }, { title: "Rehabilitar", body: "Trabajo funcional y ejercicio según el objetivo de recuperación." }], faq: [{ question: "¿Está indicada para cualquier dolor?", answer: "No. Se considera solo tras una valoración individual y cuando puede tener sentido clínico." }, { question: "¿Garantiza resultados?", answer: "No. La respuesta varía y se integra dentro de un plan más amplio." }, { question: "¿Se realiza en casa?", answer: "No. Se plantea únicamente en consulta presencial." }], relatedSlugs: ["ecografia-musculoesqueletica", "ejercicio-terapeutico", "dolor-cervical"], relatedPathologySlugs: ["dolor-cervical", "dolor-lumbar", "lesiones-deportivas"] }),
 ];
