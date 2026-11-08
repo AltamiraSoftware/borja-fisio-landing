@@ -69,7 +69,7 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
           <section className="px-4 py-20">
             <div className="mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
-                <SectionHeader eyebrow="¿Te pasa algo parecido?" title={treatment.importedDetail?.introTitle ?? openingTitle} description={treatment.recognition} />
+                <SectionHeader eyebrow={informationalPage ? "Tu caso y la valoración" : "¿Te pasa algo parecido?"} title={treatment.importedDetail?.introTitle ?? treatment.introSectionTitle ?? openingTitle} description={treatment.recognition} />
                 {treatment.importedDetail && (
                   <ul className="mt-7 grid gap-4">
                     {treatment.importedDetail.introPoints.map((point) => (
