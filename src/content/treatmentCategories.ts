@@ -36,7 +36,7 @@ type CatalogInput = {
 
 // Las variantes semánticas son hipótesis de contenido, no métricas de volumen de búsqueda.
 const keywordTargets: Record<string, { primary: string; secondary: string[] }> = {
-  "terapia-manual": { primary: "terapia manual Madrid", secondary: ["terapia manual Chamberí","fisioterapia manual Almagro"] },
+  "terapia-manual": { primary: "terapia manual Madrid", secondary: ["terapia manual Chamberí", "masaje terapéutico Madrid", "masoterapia Chamberí", "movilizaciones articulares", "vendaje funcional", "kinesiotape", "terapia manual Almagro"] },
   "ejercicio-terapeutico": { primary: "ejercicio terapéutico Madrid", secondary: ["ejercicio terapéutico Chamberí", "rehabilitación activa Madrid", "readaptación de lesiones Madrid", "ejercicios de rehabilitación"] },
   "fisioterapia-invasiva-ecoguiada": { primary: "fisioterapia invasiva ecoguiada Madrid", secondary: ["fisioterapia ecoguiada Chamberí", "ecografía musculoesquelética Madrid", "técnicas invasivas fisioterapia Madrid", "punción seca ecoguiada", "electrólisis percutánea ecoguiada", "neuromodulación ecoguiada"] },
   "masoterapia": { primary: "masaje terapéutico Madrid", secondary: ["masaje descontracturante Madrid", "masaje descontracturante Chamberí", "masaje terapéutico Chamberí", "masoterapia Madrid", "masaje muscular de espalda y cuello"] },
@@ -133,7 +133,7 @@ const invasiveTechniques = ["ecografia-musculoesqueletica", "puncion-seca", "ele
 
 export const treatmentCategories: Treatment[] = [
   catalogTreatment({
-    slug: "terapia-manual", name: "Terapia manual", title: "Terapia manual en Madrid", description: "Fisioterapia manual integrada en una valoración y un plan individual para dolor, movilidad y función.", eyebrow: "Terapia manual · Madrid", intro: "Técnicas manuales integradas con valoración, ejercicio y pautas claras para tu recuperación.",
+    slug: "terapia-manual", name: "Terapia manual", title: "Terapia manual en Madrid", description: "Terapia manual y masaje terapéutico en Chamberí, Madrid: masoterapia, movilizaciones, estiramientos y vendajes. Valoración individual con Borja Estarellas.", eyebrow: "Terapia manual · Madrid", intro: "Técnicas manuales integradas con valoración, ejercicio y pautas claras para tu recuperación.",
     patientSectionsHeading: "Técnicas manuales y complementarias dentro del tratamiento",
     patientSectionsIntro: "La exploración determina qué recursos tienen sentido. Aquí se explica brevemente cada técnica; drenaje linfático y ATM mantienen su página especializada.",
     patientSections: [
