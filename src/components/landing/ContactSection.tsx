@@ -23,7 +23,7 @@ export function ContactSection({ topic, headingLevel = 2, messageIntro }: { topi
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formElement = event.currentTarget;
-    track("form_submit_attempt");
+    track("contact_form_submit_attempt");
 
     if (!formElement.checkValidity()) {
       setStatus("error");
@@ -52,7 +52,8 @@ export function ContactSection({ topic, headingLevel = 2, messageIntro }: { topi
 
     setWhatsappUrl(url);
     setStatus("ready");
-    track("lead_form_whatsapp_open", { contact_preference: selectedContactPreference, modality });
+    track("contact_form_valid_submit", { contact_preference: selectedContactPreference, modality });
+    track("whatsapp_open", { contact_preference: selectedContactPreference, modality, source: "contact_form" });
     window.open(url, "_blank", "noopener,noreferrer");
   }
 

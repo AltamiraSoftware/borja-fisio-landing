@@ -17,18 +17,19 @@ export function AnalyticsEvents() {
     const handleClick = (event: MouseEvent) => {
       const link = (event.target as Element).closest("a");
       if (!link) return;
-      if (link.href.includes("wa.me")) track("whatsapp_click", { page_path: window.location.pathname });
+      const details = { page_path: window.location.pathname };
+      if (link.classList.contains("btn")) {
+        track("cta_click", { ...details, cta_label: link.textContent?.trim().slice(0, 100) || "sin_etiqueta" });
+      }
+      if (link.href.includes("wa.me")) track("whatsapp_open", details);
       if (link.href.startsWith("tel:")) track("phone_click", { page_path: window.location.pathname });
-    };
-    const handleSubmit = (event: SubmitEvent) => {
-      const form = event.target as HTMLFormElement;
-      if (form.matches("[data-contact-form]")) track("contact_form_submit", { page_path: window.location.pathname });
+      if (link.hostname === "www.doctoralia.es" || link.hostname === "doctoralia.es") {
+        track("doctoralia_click", details);
+      }
     };
     document.addEventListener("click", handleClick);
-    document.addEventListener("submit", handleSubmit);
     return () => {
       document.removeEventListener("click", handleClick);
-      document.removeEventListener("submit", handleSubmit);
     };
   }, []);
 
