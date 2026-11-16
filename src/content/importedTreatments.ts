@@ -40,12 +40,12 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
     cardTitle: "Fisioterapia a domicilio en Madrid",
     cardDescription:
       "Valoración, terapia manual y ejercicio terapéutico en casa para dolor musculoesquelético y recuperación de la movilidad.",
-    metaTitle: "Fisioterapia a domicilio en Madrid",
+    metaTitle: "Fisioterapeuta a domicilio en Madrid",
     metaDescription:
-      "Fisioterapia a domicilio en Madrid con Borja Estarellas. Valoración, terapia manual y ejercicio para dolor y lesiones. Primera sesión: 60 €.",
-    heroTitle: "Fisioterapia a domicilio en Madrid",
+      "Fisioterapia y rehabilitación a domicilio en Madrid con Borja Estarellas. Valoración y seguimiento por el mismo profesional. Consulta zona y disponibilidad.",
+    heroTitle: "Fisioterapia a domicilio en Madrid con Borja Estarellas",
     heroSubtitle:
-      "Atención en casa para dolor muscular y articular, lesiones y recuperación funcional. Borja adapta la valoración, el tratamiento y los ejercicios a tu situación. Primera sesión: 60 €.",
+      "Atención en casa para dolor muscular y articular, lesiones y recuperación funcional. Borja adapta la valoración, el tratamiento y los ejercicios a tu situación; confirma la zona y disponibilidad antes de reservar.",
     heroBadges: ["Madrid", "Atención en casa", "Recuperación funcional"],
     introTitle: "Tratamiento en casa cuando desplazarte resulta difícil",
     introBody:
@@ -707,10 +707,10 @@ export const importedTreatments: Record<string, ImportedTreatment> = {
     cardTitle: "Ecografía musculoesquelética",
     cardDescription:
       "Valoración con ecógrafo de músculos, tendones y otros tejidos blandos para complementar la exploración clínica y orientar la fisioterapia.",
-    metaTitle: "Ecografía musculoesquelética en Chamberí, Madrid",
+    metaTitle: "Ecografía musculoesquelética en Madrid",
     metaDescription:
-      "Ecografía musculoesquelética en Chamberí con Borja Estarellas. Valoración de músculos y tendones como apoyo a la exploración y al plan de fisioterapia.",
-    heroTitle: "Ecografía musculoesquelética en Chamberí",
+      "Fisioterapia con ecógrafo en Chamberí, Madrid. Borja Estarellas utiliza la ecografía como apoyo a la valoración y a determinadas técnicas ecoguiadas.",
+    heroTitle: "Ecografía musculoesquelética en fisioterapia en Madrid",
     heroSubtitle:
       "Borja dispone de ecógrafo en consulta para observar músculos, tendones y otros tejidos blandos en tiempo real. Una herramienta que complementa la valoración clínica cuando puede aportar información útil para tu lesión.",
     heroBadges: ["Ecógrafo en consulta", "Valoración dinámica", "Sin radiación ionizante"],
