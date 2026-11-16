@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CheckCircle2, Home, MapPinned } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import type { Treatment } from "@/types/content";
 import { getCategoryTechniques, getTreatment, getTreatmentCategory, getTreatmentPath, isConsolidatedTreatment } from "@/content/treatments";
 import { InteriorHero } from "@/components/common/InteriorHero";
@@ -15,7 +15,6 @@ import { Pricing } from "@/components/landing/Pricing";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { siteConfig } from "@/lib/constants";
 import { buildWhatsappHref } from "@/lib/utils";
 import { TreatmentHeroStrip } from "@/components/treatment/TreatmentHeroStrip";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -38,17 +37,6 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
       ? `En qué consiste ${treatment.name.toLocaleLowerCase("es-ES")}`
       : "Entender lo que te limita es el primer paso";
   const symptomsHeading = informationalPage ? "Situaciones en las que puede valorarse" : "Síntomas";
-  const compressionTreatment = treatment.slug === "drenaje-linfatico-manual" || treatment.slug === "vendaje-multicapa";
-  const consultationTitle = treatment.slug === "ecografia-musculoesqueletica"
-    ? "Ecografía en la consulta de Chamberí"
-    : compressionTreatment
-      ? "Tratamiento de edema y compresión en Chamberí"
-      : "Valoración y atención presencial en Chamberí";
-  const consultationDescription = compressionTreatment
-    ? "Borja realiza estas técnicas en su consulta de Chamberí, tras valorar la causa del edema y las precauciones necesarias. La indicación y las condiciones de la sesión se individualizan."
-    : invasiveEducation
-      ? "Borja dispone de ecógrafo y formación en técnicas invasivas ecoguiadas. Estos procedimientos se realizan en consulta, tras valorar la indicación, las alternativas, las precauciones y el consentimiento."
-      : "La indicación, las precauciones y la disponibilidad se revisan antes de realizar cualquier procedimiento presencial.";
 
   return (
     <>
@@ -262,33 +250,6 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </div>
           </section>
 
-          <section className="px-4 py-20">
-            <div className="mx-auto max-w-7xl">
-              <SectionHeader align="center" eyebrow="Modalidades" title={treatment.clinicOnly ? consultationTitle : "En consulta o a domicilio, según tu caso"} description={treatment.clinicOnly ? consultationDescription : "Borja atiende en una consulta independiente dentro del centro Meraki Salud Chamberí. También puedes preguntar por las sesiones a domicilio en Madrid."} />
-              <div className={`mt-12 grid gap-6 ${treatment.clinicOnly ? "mx-auto max-w-2xl" : "md:grid-cols-2"}`}>
-                <GlassCard variant="solid" className="group flex flex-col p-8 text-center md:p-10">
-                  <div className="card-icon"><MapPinned aria-hidden="true" /></div>
-                  <h3 className="mt-6 text-2xl font-semibold text-[#073B4C]">Consulta en Chamberí</h3>
-                  <p className="mt-4 flex-1 leading-8 text-[var(--color-muted)]">{treatment.clinicTreatment ?? "Atención presencial en Caracas, 6, bajo izquierda, Almagro. Confirma disponibilidad antes de acudir."}</p>
-                  {!treatment.clinicOnly && <p className="mt-5 text-lg font-semibold text-[#073B4C]">Desde {siteConfig.priceClinic}</p>}
-                  <Button className="mt-6 self-center" href="/fisioterapia-chamberi">Ver la consulta</Button>
-                </GlassCard>
-                {!treatment.clinicOnly && <GlassCard variant="solid" className="group flex flex-col p-8 text-center md:p-10">
-                  <div className="card-icon"><Home aria-hidden="true" /></div>
-                  <h3 className="mt-6 text-2xl font-semibold text-[#073B4C]">Atención a domicilio</h3>
-                  <p className="mt-4 flex-1 leading-8 text-[var(--color-muted)]">{treatment.homeTreatment}</p>
-                  <p className="mt-5 text-lg font-semibold text-[#073B4C]">Desde {siteConfig.priceHome}</p>
-                  <Button className="mt-6 self-center" href={whatsappHref}>Consultar zona</Button>
-                </GlassCard>}
-              </div>
-              {treatment.slug === "fisioterapia-domicilio" && (
-                <p className="mx-auto mt-7 max-w-3xl text-center leading-7 text-[var(--color-muted)]">
-                  Si necesitas recuperar movilidad o autonomía después de una intervención, consulta también la <Link href="/rehabilitacion-a-domicilio-madrid" className="font-semibold text-[#0F5366] underline underline-offset-4">rehabilitación a domicilio en Madrid</Link>.
-                </p>
-              )}
-              {treatment.importedDetail && <p className="mx-auto mt-7 max-w-3xl text-center leading-7 text-[var(--color-muted)]">{treatment.importedDetail.onlineFollowup}</p>}
-            </div>
-          </section>
 
           <LocationSection />
 
@@ -315,24 +276,6 @@ export function TreatmentPage({ treatment }: { treatment: Treatment }) {
             </div>
           </section>
 
-
-          {treatment.evidenceSources && treatment.evidenceSources.length > 0 && (
-            <section className="px-4 pb-20" aria-labelledby="evidence-sources-title">
-              <div className="mx-auto max-w-4xl">
-                <h2 id="evidence-sources-title" className="text-2xl font-semibold text-[#073B4C]">Fuentes clínicas consultadas</h2>
-                <p className="mt-3 leading-7 text-[var(--color-muted)]">Información sanitaria general para contextualizar los tratamientos. No sustituye una valoración individual.</p>
-                <ul className="mt-5 grid gap-3">
-                  {treatment.evidenceSources.map((source) => (
-                    <li key={source.url}>
-                      <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-medium leading-7 text-[#0F5366] underline underline-offset-4 hover:text-[#14718b] focus-visible:outline-offset-4">
-                        {source.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          )}
 
           {(related.length > 0 || relatedPathologies.length > 0 || category) && (
             <section className="px-4 py-20">
