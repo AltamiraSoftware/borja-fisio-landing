@@ -8,6 +8,7 @@ import { CtaBanner } from "@/components/landing/CtaBanner";
 import { LocationSection } from "@/components/landing/LocationSection";
 import { Services } from "@/components/landing/Services";
 import { AboutBorja } from "@/components/landing/AboutBorja";
+import { ContactSection } from "@/components/landing/ContactSection";
 import { InteriorHero } from "@/components/common/InteriorHero";
 import { TreatmentHeroStrip } from "@/components/treatment/TreatmentHeroStrip";
 import { Button } from "@/components/ui/Button";
@@ -19,13 +20,13 @@ import { getLocalJsonLd } from "@/lib/seo";
 import { buildWhatsappHref } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Fisioterapia en Chamberí, Almagro | Borja Estarellas" },
-  description: "Fisioterapia con Borja Estarellas en Almagro, Chamberí. Consulta independiente dentro del centro Meraki Salud Chamberí, Calle de Caracas, 6. Cita previa.",
+  title: { absolute: "Fisioterapia en Chamberí, Madrid | Borja Estarellas" },
+  description: "Fisioterapia con Borja Estarellas en su consulta independiente de Calle de Caracas, 6, Chamberí. Valoración, ejercicio y técnicas ecoguiadas con cita previa.",
   alternates: { canonical: "/fisioterapia-chamberi" },
   openGraph: {
     ...sharedOpenGraph,
-    title: "Fisioterapia en Chamberí, Almagro | Borja Estarellas",
-    description: "Consulta independiente de fisioterapia dentro del centro Meraki Salud Chamberí, en Calle de Caracas, 6. Atención con cita previa.",
+    title: "Fisioterapia en Chamberí, Madrid | Borja Estarellas",
+    description: "Consulta independiente de fisioterapia en Calle de Caracas, 6, Chamberí. Atención con cita previa.",
     url: `${siteConfig.url}/fisioterapia-chamberi`,
   },
 };
@@ -59,7 +60,7 @@ export default function ChamberiPage() {
       <main className="page-flow-bg">
         <InteriorHero
           eyebrow="Consulta presencial · Chamberí"
-          title="Fisioterapia en Chamberí"
+          title="Tu fisioterapeuta en Chamberí, Madrid"
           intro="Borja Estarellas te atiende con cita previa en una consulta independiente dentro del centro Meraki Salud Chamberí, en el barrio de Almagro."
           actions={
             <>
@@ -69,6 +70,7 @@ export default function ChamberiPage() {
           }
           strip={<TreatmentHeroStrip />}
         />
+        <ContactSection topic="fisioterapia en Chamberí" />
 
         <section className="px-4 py-20 md:py-28">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
