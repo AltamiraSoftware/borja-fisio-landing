@@ -3,7 +3,7 @@ export const siteConfig = {
   fullName: "Borja Estarellas Botín",
   profession: "Fisioterapeuta en Madrid",
   registrationNumber: "15388",
-  url: "https://fisioestarellas.es",
+  url: "https://www.fisioestarellas.es",
   doctoraliaUrl:
     "https://www.doctoralia.es/borja-estarellas-botin/fisioterapeuta/madrid",
   areaServed: "Madrid",
